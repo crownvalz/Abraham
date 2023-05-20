@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Profile View</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
-  
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -51,47 +43,93 @@
       position: relative;
       z-index: 2;
     }
+
+    .slideshow {
+      position: relative;
+      max-width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+    }
   </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Legal Personnel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Legal Personnel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
+
+  <section class="home">
+    <div class="hero text-white text-center py-5" style="background-image: url('img/bg.jpeg'); background-size: cover;">
+      <div class="container hero-content">
+        <h1 style="font-size: 2.5rem;">Welcome to our Profile</h1>
+        <p style="font-size: 1.2rem;">My name is Mr. Abraham, and I am an HR and software development professional based in Dar es Salaam. With extensive experience in these fields, I provide tailored solutions to individuals and businesses. From HR consulting to software development and project management, I am committed to meeting your HR and software needs. Contact me today for expert assistance.</p>
+        <a href="#" class="btn btn-light btn-lg">Learn More</a>
+      </div>
+      <div class="slideshow">
+        <div class="slide" style="background-image: url('img/slide1.jpg');"></div>
+        <div class="slide" style="background-image: url('img/slide2.jpg');"></div>
+      </div>
+    </div>
+  </section>
+    
+  <script>
+    // Slideshow functionality
+    let slideIndex = 0;
+    showSlides();
+  
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 5000); // Change slide every 5 seconds (5000 milliseconds)
+    }
+  </script>
+
     
 
 
-    <section class="home">
-        <div class="hero text-white text-center py-5" style="background-image: url('img/bg.jpeg'); background-size: cover;">
-          <div class="container hero-content">
-            <h1 style="font-size: 2.5rem;">Welcome to our Profile</h1>
-            <p style="font-size: 1.2rem;">My name is Mr. Abraham, and I am an HR and software development professional based in Dar es Salaam. With extensive experience in these fields, I provide tailored solutions to individuals and businesses. From HR consulting to software development and project management, I am committed to meeting your HR and software needs. Contact me today for expert assistance.</p>
-            <a href="#" class="btn btn-light btn-lg">Learn More</a>
-          </div>
-        </div>
-      </section>
+    
       
       
       <section class="features py-5">
