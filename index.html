@@ -1,47 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>Legal Personel</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero {
+      font-weight: 700;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(8, 1, 39, 0.4);
+    }
+  </style>
 </head>
+
 <body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Legal Personel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <section class="home">
-    <div class="hero bg-primary text-white text-center py-5">
-      <h1>Welcome to My Website</h1>
-      <p>This is the hero section of the home page.</p>
+    <div class="hero text-white text-center py-5" style="background-image: url('img/bg.jpeg'); background-size: cover;">
+      <h1 style="font-size: 2.5rem;">Welcome to Profile</h1>
+      <p style="font-size: 1.2rem;">My name is Mr. Abraham, and I am a lawyer based in Dar es Salaam. With extensive experience in various areas of law, I provide tailored legal services to individuals and businesses. From consultations to representation and contract review, I am committed to protecting your rights and achieving favorable outcomes. Contact me today for expert legal assistance.</p>
       <a href="#" class="btn btn-light btn-lg">Learn More</a>
     </div>
   </section>
 
+
+
   <section class="features py-5">
     <div class="container">
-      <h2 class="text-center">Features</h2>
+      <h2 class="text-center">Lagal Services</h2>
       <div class="row">
         <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Feature 1</h5>
-              <p class="card-text">This is the first feature of the website.</p>
-            </div>
-          </div>
+            <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Consultation</h4>
+                  <p class="card-text">Schedule a consultation with our experienced lawyers to discuss your legal issues and receive professional advice tailored to your specific situation.</p>
+                  <a href="#" class="card-link">Learn More</a>
+                  <a href="#" class="card-link">Contact Us</a>
+                </div>
+              </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Feature 2</h5>
-              <p class="card-text">This is the second feature of the website.</p>
-            </div>
-          </div>
+            <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Legal Representation</h4>
+                  <p class="card-text">Our skilled lawyers will provide strong legal representation to protect your rights and interests in court. We handle various types of cases, including civil litigation, criminal defense, and family law.</p>
+                  <a href="#" class="card-link">Learn More</a>
+                  <a href="#" class="card-link">Contact Us</a>
+                </div>
+              </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Feature 3</h5>
-              <p class="card-text">This is the third feature of the website.</p>
-            </div>
-          </div>
+            <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Contract Review</h4>
+                  <p class="card-text">Ensure the legality and fairness of your contracts by having our lawyers review them thoroughly. We will identify any potential risks or issues and provide expert recommendations.</p>
+                  <a href="#" class="card-link">Learn More</a>
+                  <a href="#" class="card-link">Contact Us</a>
+                </div>
+              </div>
         </div>
       </div>
     </div>
@@ -71,6 +128,74 @@
     </div>
   </section>
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+  <section class="testimonial py-5">
+    <div class="container">
+      <h2 class="text-center">Client Testimonials</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p class="mb-0">"Mr. Abraham is an exceptional lawyer. His dedication, knowledge, and attention to detail are truly impressive. He handled my case with utmost professionalism and achieved an outstanding outcome. I highly recommend his services."</p>
+                <footer class="blockquote-footer">John Smith</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p class="mb-0">"I couldn't have asked for a better lawyer than Mr. Abraham. His expertise and strategic approach were instrumental in resolving my legal matter efficiently. He truly cares about his clients and goes above and beyond to ensure their success."</p>
+                <footer class="blockquote-footer">Emily Johnson</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+<footer class="footer py-4" style="background-color: #f8f8f8;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-center text-md-start">&copy; 2023 Mr. Abraham Law Firm. All rights reserved.</p>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-inline text-center text-md-end mb-0">
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="#">About</a></li>
+                    <li class="list-inline-item"><a href="#">Services</a></li>
+                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Get the toggle button element
+    var toggleButton = document.querySelector('[data-bs-toggle="collapse"]');
+    
+    // Add event listener to the toggle button
+    toggleButton.addEventListener('click', function() {
+      // Get the target collapsible element
+      var target = document.querySelector(toggleButton.getAttribute('data-bs-target'));
+      
+      // Check if the target element is currently collapsed
+      var isCollapsed = target.classList.contains('show');
+      
+      // Toggle the collapsed state
+      if (isCollapsed) {
+        target.classList.remove('show');
+      } else {
+        target.classList.add('show');
+      }
+    });
+  </script>
+  
 </body>
+
 </html>
