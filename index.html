@@ -11,6 +11,12 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      
+  
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -20,7 +26,21 @@
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .zoom-effect {
+      transition: transform 0.3s ease;
+    }
+  
+    .zoom-effect:hover {
+      transform: scale(1.1);
+    }
+  </style>
+
+
 </head>
+
+
 
 <body>
 
@@ -169,50 +189,21 @@
           
           <div class="row" data-aos="fade-up">
             <div class="col-lg-12 d-flex justify-content-center">
-              <ul id="portfolio-flters">
+              <ul class="bg-light " id="portfolio-flters">
                 <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-app">Phones</li>
-                <li data-filter=".filter-card">Accessories</li>
-                <li data-filter=".filter-web">Other  Devices</li>
+                <li data-filter=".item-phones">Phones</li>
+                <li data-filter=".item-accessories">Accessories</li>
+                <li data-filter=".item-other">Other Devices</li>
               </ul>
             </div>
           </div>
           
+          
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
+          <div class="col-lg-3 col-md-6 portfolio-item item-accessories zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
               <img src="assets/img/portfolio/portfolio-4.jpeg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/portfolio-4.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
@@ -221,28 +212,18 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpeg" class="img-fluid" alt="">
+          <div class="col-lg-3 col-md-6 portfolio-item item-accessories zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-4.jpeg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="assets/img/portfolio/portfolio-4.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
                 <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
+          <div class="col-lg-3 col-md-6 portfolio-item item-accessories zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
               <img src="assets/img/portfolio/portfolio-7.jpeg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/portfolio-7.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
@@ -251,8 +232,8 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
+          <div class="col-lg-3 col-md-6 portfolio-item item-accessories zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
               <img src="assets/img/portfolio/portfolio-8.jpeg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/portfolio-8.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
@@ -261,11 +242,81 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
+          <div class="col-lg-3 col-md-6 portfolio-item item-phones zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-1.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-phones zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-3.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-phones zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-6.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-6.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-phones zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-3.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-other zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-2.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-other zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-5.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-5.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-other zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
               <img src="assets/img/portfolio/portfolio-9.jpeg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/portfolio-9.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item item-other zoom-effect">
+            <div class="portfolio-wrap shadow" style="border-radius: 30px 90px 30px 90px;">
+              <img src="assets/img/portfolio/portfolio-2.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets/img/portfolio/portfolio-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                 <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -277,48 +328,50 @@
     </section><!-- End Portfolio Section -->
 
 
+
+
 <!-- ======= Facts Section ======= -->
-<section id="facts" class="facts">
-    <div class="container">
-  
-      <div class="section-title">
-        <h2>Facts</h2>
-        <p>With my extensive experience and dedication, I offer top-notch HR and software development services. I am committed to providing personalized solutions and achieving favorable outcomes for my clients. Contact me today for expert assistance.</p>
+<section id="facts" class="facts" style="background-color: #f8f9fa;">
+  <div class="container">
+
+    <div class="section-title">
+      <h2 style="color: #333333;">Facts</h2>
+      <p style="color: #777777; font-size: 16px; font-weight: 400; line-height: 1.7em; margin-bottom: 30px;">With my extensive experience and dedication, I offer top-notch HR and software development services. I am committed to providing personalized solutions and achieving favorable outcomes for my clients. Contact me today for expert assistance.</p>
+    </div>
+
+    <div class="row no-gutters">
+
+      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch zoom-effect" data-aos="fade-up">
+        <div class="count-box shadow p-4 rounded">
+          <i class="bi bi-emoji-smile" style="font-size: 48px; color: #6c757d;"></i>
+          <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter" style="color: #333333; font-size: 36px; font-weight: 700; margin-top: 15px; display: block;"></span>
+          <p style="color: #777777; font-size: 16px; font-weight: 400; line-height: 1.7em; margin-top: 10px;"><strong>Happy Clients</strong> benefiting from my services</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch zoom-effect" data-aos="fade-up">
+        <div class="count-box shadow p-4 rounded">
+          <i class="bi bi-journal-richtext" style="font-size: 48px; color: #6c757d;"></i>
+          <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter" style="color: #333333; font-size: 36px; font-weight: 700; margin-top: 15px; display: block;"></span>
+          <p style="color: #777777; font-size: 16px; font-weight: 400; line-height: 1.7em; margin-top: 10px;"><strong>Projects</strong> handled successfully</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch zoom-effect" data-aos="fade-up">
+        <div class="count-box shadow p-4 rounded">
+          <i class="bi bi-headset" style="font-size: 48px; color: #6c757d;"></i>
+          <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter" style="color: #333333; font-size: 36px; font-weight: 700; margin-top: 15px; display: block;"></span>
+          <p style="color: #777777; font-size: 16px; font-weight: 400; line-height: 1.7em; margin-top: 10px;"><strong>Projects</strong> handled successfully</p>
+        </div>
       </div>
   
-      <div class="row no-gutters">
-  
-        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-          <div class="count-box">
-            <i class="bi bi-emoji-smile"></i>
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Happy Clients</strong> benefiting from my services</p>
-          </div>
+      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch zoom-effect" data-aos="fade-up">
+        <div class="count-box shadow p-4 rounded">
+          <i class="bi bi-journal-richtext" style="font-size: 48px; color: #6c757d;"></i>
+          <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter" style="color: #333333; font-size: 36px; font-weight: 700; margin-top: 15px; display: block;"></span>
+          <p style="color: #777777; font-size: 16px; font-weight: 400; line-height: 1.7em; margin-top: 10px;"><strong>Projects</strong> handled successfully</p>
         </div>
-  
-        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-          <div class="count-box">
-            <i class="bi bi-journal-richtext"></i>
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Projects</strong> handled successfully</p>
-          </div>
-        </div>
-  
-        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-          <div class="count-box">
-            <i class="bi bi-headset"></i>
-            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Hours Of Support</strong> provided to clients</p>
-          </div>
-        </div>
-  
-        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-          <div class="count-box">
-            <i class="bi bi-people"></i>
-            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-            <p><strong>Hard Workers</strong> dedicated to your HR and software development needs</p>
-          </div>
-        </div>
+      </div>
   
       </div>
   
@@ -409,8 +462,8 @@
     </div>
   </section><!-- End Skills Section -->
 
-<!-- ======= Resume Section ======= -->
-<section id="resume" class="resume">
+<!-- ======= Cv Section ======= -->
+<section id="cv" class="cv">
     <div class="container">
   
       <div class="section-title">
@@ -420,8 +473,8 @@
   
       <div class="row">
         <div class="col-lg-6" data-aos="fade-up">
-          <h3 class="resume-title">Summary</h3>
-          <div class="resume-item pb-0">
+          <h3 class="cv-head">Summary</h3>
+          <div class="cv-details pb-0">
             <h4>Abraham Bravo</h4>
             <p><em>Experienced HR professional with a background in software development</em></p>
             <ul>
@@ -431,14 +484,14 @@
               </ul>              
           </div>
   
-          <h3 class="resume-title">Education</h3>
-          <div class="resume-item">
+          <h3 class="cv-head">Education</h3>
+          <div class="cv-details">
             <h4>Master of Business Administration (MBA)</h4>
             <h5>2021 - 2023</h5>
             <p><em>Mzumbe University, Dar es salaam, Tanzania</em></p>
             <p>Relevant details about your MBA degree and any notable achievements.</p>
           </div>
-          <div class="resume-item">
+          <div class="cv-details">
             <h4>Bachelor of Public Administration (BPA)</h4>
             <h5>2015 - 2018</h5>
             <p><em>Mzumbe University, Morogoro, Tanzania</em></p>
@@ -447,8 +500,8 @@
         </div>
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="resume-title">Professional Experience</h3>
-          <div class="resume-item">
+          <h3 class="cv-head">Professional Experience</h3>
+          <div class="cv-details">
             <h4>Banker</h4>
             <h5>2019 - Present</h5>
             <p><em>Azania Bank Limited, Dar es Salaam, Tanzania</em></p>
@@ -456,7 +509,7 @@
               <li>Describe your responsibilities and achievements as a banker at Azania Bank Limited.</li>
             </ul>
           </div>
-          <div class="resume-item">
+          <div class="cv-details">
             <h4>Software Developer</h4>
             <h5>2022 - Present</h5>
             <p><em>Self-employed</em></p>
@@ -472,6 +525,34 @@
   <!-- End Resume Section -->
   
   </main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer class="footer-legal text-center">
+  <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+    <div class="d-flex flex-column align-items-center align-items-lg-start">
+      <div class="company-info">
+        &copy; 2023 This is <strong><span>Mr Abraham</span></strong>. All rights reserved.
+      </div> 
+      <div class="project-info">
+        Project: <strong>Sample Project</strong>
+      </div>
+      <div class="credits">
+        Help Me <a href="#">Review it</a>
+      </div>
+    </div>
+
+    <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+  </div>  
+</footer><!-- End Footer -->
+  
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -484,8 +565,15 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script><!-- portfolio closing btn -->
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/typed.js/typed.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/huyo.js"></script>
+
+  
 
 </body>
 
