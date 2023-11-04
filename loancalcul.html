@@ -1,0 +1,268 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Crowncalz - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Crowncalz
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://Crowncalz.com/Crowncalz-free-skin-bootstrap-3/
+  * Author: Crowncalz.com
+  * License: https://Crowncalz.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="index.php">Crowncalz</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Portfolio Details</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Portfolio Details</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+  <!-- Your HTML content here -->
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Display calculation results -->
+        <div class="alert alert-success" id="calculation-results" style="display: none;">
+          <h4>Calculation Results:</h4>
+                              <!-- Display calculation results -->
+                              <?php if (!empty($result)) : ?>
+                    <div class="alert alert-success">
+                        <h4>Calculation Results:</h4>
+                        <?php echo $result; ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Display error messages -->
+                <?php if (!empty($error)) : ?>
+                    <div class="alert alert-danger">
+                        <h4>Error:</h4>
+                        <?php echo $error; ?>
+                    </div>
+                <?php endif; ?>
+        </div>
+        <!-- Display error messages -->
+        <div class="alert alert-danger" id="error-message" style="display: none;">
+          <h4>Error:</h4>
+        </div>
+        <form id="loan-form">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="loan_type" class="form-label">Loan Type:</label>
+              <select class="form-control" id="loan_type">
+                <option value="">-Select Type-</option>
+                <option value="Staff Loan">Staff Loan</option>
+                <option value="Mortgage">Mortgage</option>
+                <option value="Car Loan">Car Loan</option>
+                <option value="Personal">Personal Loan</option>
+                <option value="Student">Student Loan</option>
+                <option value="Business">Business Loan</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="interest_rate" class="form-label">Interest Rate:</label>
+              <select class="form-control" id="interest_rate">
+                <option value="">-Select Rate-</option>
+                <script>
+                  var interestRates = Array.from({ length: 26 }, (_, i) => (i + 1) * 0.01);
+                  interestRates.forEach(rate => {
+                    var percentageValue = (rate * 100).toFixed(2).replace(/\.00$/, ''); // Convert to percentage and remove ".00"
+                    document.write(`<option value="${rate.toFixed(2)}">${percentageValue}%</option>`);
+                  });
+                </script>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="tenor_months" class="form-label">Tenor (Months):</label>
+              <input type="number" id="tenor_months" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="proposed_loan_amount" class="form-label">Proposed Loan Amount:</label>
+              <input type="number" id="proposed_loan_amount" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="existing_facility_balance" class="form-label">Existing Facility Balance:</label>
+              <input type="number" id="existing_facility_balance" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="abl_existing_monthly_installment" class="form-label">Crown Bank Installment:</label>
+              <input type="number" id="abl_existing_monthly_installment" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="install_with_other_banks" class="form-label">Install with Other Banks:</label>
+              <input type="number" id="install_with_other_banks" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="basicsalary" class="form-label">Basic Salary:</label>
+              <input type="number" id="basicsalary" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="total_allowances" class="form-label">Total Allowances:</label>
+              <input type="number" id="total_allowances" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="net_salary" class="form-label">Net Salary:</label>
+              <input type="number" id="net_salary" class="form-control">
+            </div>
+          </div>
+          <div class="input-group mb-5 d-flex justify-content-between">
+            <!-- Additional elements can be added here -->
+          </div>
+          <div class="input-group mb-3">
+            <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Compute</button>
+          </div>
+          <div class="input-group mb-3">
+            <button class="btn btn-lg btn-light w-100 fs-6">
+              <span class="bi bi-bank me-2"></span>
+              <small>Book this Facility</small>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- Your footer content here -->
+
+  <!-- Add your JavaScript code at the end of the body tag -->
+  <script>
+    // Function to calculate the loan parameters
+    function calculateLoan() {
+      // Retrieve input values from the form
+      const loanType = document.getElementById("loan_type").value;
+      const interestRate = parseFloat(document.getElementById("interest_rate").value);
+      const tenorMonths = parseInt(document.getElementById("tenor_months").value);
+      const proposedLoanAmount = parseFloat(document.getElementById("proposed_loan_amount").value);
+      const existingFacilityBalance = parseFloat(document.getElementById("existing_facility_balance").value);
+      const ablExistingMonthlyInstallment = parseFloat(document.getElementById("abl_existing_monthly_installment").value);
+      const installWithOtherBanks = parseFloat(document.getElementById("install_with_other_banks").value);
+      const netSalary = parseFloat(document.getElementById("net_salary").value);
+      const basicSalary = parseInt(document.getElementById("basicsalary").value);
+      const totalAllowances = parseInt(document.getElementById("total_allowances").value);
+
+      // Perform the calculations here
+      const adjustedNetFixedSalary = netSalary + ablExistingMonthlyInstallment - totalAllowances;
+      const deductionLimit = basicSalary / 3;
+      const totalFacility = proposedLoanAmount + existingFacilityBalance;
+      const monthlyInstallment = totalFacility * (interestRate / 12) * Math.pow(1 + interestRate / 12, tenorMonths) / (Math.pow(1 + interestRate / 12, tenorMonths) - 1);
+      const totalDeductions = monthlyInstallment + installWithOtherBanks;
+      const netSalaryAfterDeductions = adjustedNetFixedSalary - totalDeductions;
+      const debtRatio = (1 - (netSalaryAfterDeductions / basicSalary)) * 100;
+      const grossSalary = basicSalary + totalAllowances;
+
+      // Display results
+      const resultElement = document.getElementById("calculation-results");
+      resultElement.style.display = "block";
+      resultElement.innerHTML = `
+        <p>adjustedNetFixedSalary: TZS ${adjustedNetFixedSalary.toFixed(2)}</p>
+        <p>deductionLimit : TZS ${deductionLimit.toFixed(2)}</p>
+        <p>monthlyInstallment : TZS ${monthlyInstallment.toFixed(2)}</p>
+        <p>totalDeductions: TZS ${totalDeductions.toFixed(2)}</p>
+        <p>netSalaryAfterDeductions: TZS ${netSalaryAfterDeductions.toFixed(2)}</p>
+        <p>Debt Ratio: ${debtRatio.toFixed(2)}%</p>
+        <p>Total Facility: TZS ${totalFacility.toFixed(2)}</p>
+        <p>grossSalary : TZS ${grossSalary.toFixed(2)}</p>
+      `;
+    }
+
+    // Function to handle form submission
+    function handleFormSubmit(event) {
+      event.preventDefault(); // Prevent the form from being submitted
+
+      // Reset previous messages
+      document.getElementById("calculation-results").style.display = "none";
+      document.getElementById("error-message").style.display = "none";
+
+      // Validate and calculate the loan
+      const loanType = document.getElementById("loan_type").value;
+      if (loanType === "") {
+        // Show an error message if loan type is not selected
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML = "Oops! Please select a loan type.";
+      } else {
+        calculateLoan(); // Calculate loan parameters
+      }
+    }
+
+    // Attach the form submission event handler
+    document.getElementById("loan-form").addEventListener("submit", handleFormSubmit);
+  </script>
+
+  <!-- Add your JavaScript links here -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+</body>
+</html>
