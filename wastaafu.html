@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Blog - Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+
+
+  <!-- Include DataTables commands -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+
+  <!-- =======================================================
+  * Template Name: Anyar
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="fixed-top d-flex align-items-center topbar-inner-pages">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">Crownvalz</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </div>
+
+  <main id="main">
+
+
+
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog ">
+  <div class="container shadow" data-aos="fade-up">
+    <div class="row">
+      <!-- Display calculation results -->
+      <div class="alert alert-success" id="calculation-results" style="display: none;">
+        <h4>Calculation Results:</h4>
+        <!-- Display calculation results -->
+        <?php if (!empty($result)) : ?>
+          <div class="alert alert-success">
+            <h4>Calculation Results:</h4>
+            <?php echo $result; ?>
+          </div>
+        <?php endif; ?>
+        <!-- Display error messages -->
+        <?php if (!empty($error)) : ?>
+          <div class="alert alert-danger">
+            <h4>Error:</h4>
+            <?php echo $error; ?>
+          </div>
+        <?php endif; ?>
+      </div>
+      <!-- Display error messages -->
+      <div class="alert alert-danger" id="error-message" style="display: none;">
+        <h4>Error:</h4>
+      </div>
+      <h3>Loan Calculator</h3>
+      <form id="loan-form">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="loan_type" class="form-label">Loan Type:</label>
+            <select class="form-control" id="loan_type">
+              <option value="">-Select Type-</option>
+              <option value="Staff Loan">Staff Loan</option>
+              <option value="Mortgage">Mortgage</option>
+              <option value="Car Loan">Car Loan</option>
+              <option value="Personal">Personal Loan</option>
+              <option value="Student">Student Loan</option>
+              <option value="Business">Business Loan</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "interest_rate" class="form-label">Interest Rate:</label>
+            <select class="form-control" id="interest_rate">
+              <option value="">-Select Loan Type-</option>
+              <option value="0.18">Personal Loan (18%)</option>
+              <option value="0.14">Wastaafu Loan (14%)</option>
+              <option value="0.05">Mortgage Loan (5%)</option>
+              <option value="0.05">Staff Loan (5%)</option>
+              <option value="0.18">Business Loan (18%)</option>
+              <option value="0.12">Car Loan (12%)</option>
+              <option value="0.08">Education Loan (8%)</option>
+              <option value="0.15">Home Improvement Loan (15%)</option>
+              <option value="0.10">Medical Loan (10%)</option>
+              <option value="0.20">Vacation Loan (20%)</option>
+              <option value="0.06">Debt Consolidation Loan (6%)</option>
+              <option value="0.07">Small Business Loan (7%)</option>
+              <!-- Add more loan options and percentages as needed -->
+            </select>   
+
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="tenor_months" class="form-label">Tenor (Months):</label>
+            <input type="number" id="tenor_months" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="proposed_loan_amount" class="form-label">Proposed Loan Amount:</label>
+            <input type="number" id="proposed_loan_amount" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "existing_facility_balance" class="form-label">Existing Facility Balance:</label>
+            <input type="number" id="existing_facility_balance" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "abl_existing_monthly_installment" class="form-label">Crown Bank Installment:</label>
+            <input type="number" id="abl_existing_monthly_installment" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "install_with_other_banks" class="form-label">Install with Other Banks:</label>
+            <input type="number" id="install_with_other_banks" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "basicsalary" class="form-label">Basic Salary:</label>
+            <input type="number" id="basicsalary" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "total_allowances" class="form-label">Total Allowances:</label>
+            <input type="number" id="total_allowances" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "net_salary" class="form-label">Net Salary:</label>
+            <input type="number" id="net_salary" class="form-control">
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Compute</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section><!-- End Blog Section -->
+
+<!-- Modal -->
+<div class="modal fade" id="calculationModal" tabindex="-1" aria-labelledby="calculationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="calculationModalLabel">Calculation Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="calculation-results-content">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Anyar</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script>
+
+    // Function to calculate the loan parameters and display results in the modal
+function calculateLoanAndDisplayInModal() {
+      // Retrieve input values from the form
+      const loanType = document.getElementById("loan_type").value;
+      const interestRate = parseFloat(document.getElementById("interest_rate").value);
+      const tenorMonths = parseInt(document.getElementById("tenor_months").value);
+      const proposedLoanAmount = parseFloat(document.getElementById("proposed_loan_amount").value);
+      const existingFacilityBalance = parseFloat(document.getElementById("existing_facility_balance").value);
+      const ablExistingMonthlyInstallment = parseFloat(document.getElementById("abl_existing_monthly_installment").value);
+      const installWithOtherBanks = parseFloat(document.getElementById("install_with_other_banks").value);
+      const netSalary = parseFloat(document.getElementById("net_salary").value);
+      const basicSalary = parseInt(document.getElementById("basicsalary").value);
+      const totalAllowances = parseInt(document.getElementById("total_allowances").value);
+
+      // Perform the calculations here
+      const adjustedNetFixedSalary = netSalary + ablExistingMonthlyInstallment - totalAllowances;
+      const deductionLimit = basicSalary / 3;
+      const totalFacility = proposedLoanAmount + existingFacilityBalance;
+      const monthlyInstallment = totalFacility * (interestRate / 12) * Math.pow(1 + interestRate / 12, tenorMonths) / (Math.pow(1 + interestRate / 12, tenorMonths) - 1);
+      const totalDeductions = monthlyInstallment + installWithOtherBanks;
+      const netSalaryAfterDeductions = adjustedNetFixedSalary - totalDeductions;
+      const debtRatio = (1 - (netSalaryAfterDeductions / basicSalary)) * 100;
+      const grossSalary = basicSalary + totalAllowances;
+
+  // Display results in the modal
+  const calculationResultsContent = document.getElementById("calculation-results-content");
+  calculationResultsContent.innerHTML = `
+  <table id="example" class="data-table table stripe hover" style="width:100%">
+  
+  <tr>
+      <td>adjustedNetFixedSalary</td>
+      <td>TZS ${adjustedNetFixedSalary.toFixed(2)}</td>
+    </tr>
+    <tr>
+      <td>deductionLimit</td>
+      <td>TZS ${deductionLimit.toFixed(2)}</td>
+    </tr>
+    <tr>
+      <td>monthlyInstallment</td>
+      <td>TZS ${monthlyInstallment.toFixed(2)}</td>
+    </tr>
+    <tr>
+      <td>totalDeductions</td>
+      <td>TZS ${totalDeductions.toFixed(2)}</td>
+    </tr>
+    <tr>
+      <td>netSalaryAfterDeductions</td>
+      <td>TZS ${netSalaryAfterDeductions.toFixed(2)}</td>
+    </tr>
+    <tr>
+      <td>Debt Ratio</td>
+      <td>${debtRatio.toFixed(2)}%</td>
+    </tr>
+    <tr>
+      <td>Total Facility</td>
+      <td>TZS ${totalFacility.toFixed(2)}</td>
+    </tr>
+    <tr>
+      <td>grossSalary</td>
+      <td>TZS ${grossSalary.toFixed(2)}</td>
+    </tr>
+
+</table> 
+  `;
+
+  // Show the modal
+  const calculationModal = new bootstrap.Modal(document.getElementById("calculationModal"));
+  calculationModal.show();
+}
+
+// Update the form submission event handler to call the new function
+function handleFormSubmit(event) {
+  event.preventDefault(); // Prevent the form from being submitted
+  document.getElementById("calculation-results").style.display = "none"; // Hide any previous results
+
+  const loanType = document.getElementById("loan_type").value;
+  if (loanType === "") {
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.style.display = "block";
+    errorMessage.innerHTML = "Oops! Please select a loan type.";
+  } else {
+    calculateLoanAndDisplayInModal(); // Calculate loan parameters and show results in the modal
+  }
+}
+
+document.getElementById("loan-form").addEventListener("submit", handleFormSubmit);
+
+  </script>
+
+    <!-- Vendor JS Files -->
+    <script>
+      new DataTable('#example', {
+          responsive: true
+      });
+        </script>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
