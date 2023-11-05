@@ -1,7 +1,7 @@
 /**
-* Template Name: Techie
+* Template Name: Anyar
 * Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
+* Template URL: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -68,8 +68,8 @@
     let header = select('#header')
     let offset = header.offsetHeight
 
-    if (!header.classList.contains('header-scrolled')) {
-      offset -= 16
+    if (!header.classList.contains('fixed-top')) {
+      offset += 70
     }
 
     let elementPos = select(el).offsetTop
@@ -80,15 +80,22 @@
   }
 
   /**
-   * Toggle .header-scrolled class to #header when page is scrolled
+   * Header fixed top on scroll
    */
   let selectHeader = select('#header')
+  let selectTopbar = select('#topbar')
   if (selectHeader) {
     const headerScrolled = () => {
       if (window.scrollY > 100) {
         selectHeader.classList.add('header-scrolled')
+        if (selectTopbar) {
+          selectTopbar.classList.add('topbar-scrolled')
+        }
       } else {
         selectHeader.classList.remove('header-scrolled')
+        if (selectTopbar) {
+          selectTopbar.classList.remove('topbar-scrolled')
+        }
       }
     }
     window.addEventListener('load', headerScrolled)
@@ -170,10 +177,10 @@
   }
 
   /**
-   * Testimonials slider
+   * Clients Slider
    */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
+  new Swiper('.clients-slider', {
+    speed: 400,
     loop: true,
     autoplay: {
       delay: 5000,
@@ -187,13 +194,20 @@
     },
     breakpoints: {
       320: {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 40
       },
-
-      1200: {
+      480: {
         slidesPerView: 3,
-        spaceBetween: 40
+        spaceBetween: 60
+      },
+      640: {
+        slidesPerView: 4,
+        spaceBetween: 80
+      },
+      992: {
+        slidesPerView: 6,
+        spaceBetween: 120
       }
     }
   });
@@ -205,7 +219,8 @@
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+        itemSelector: '.portfolio-item',
+        layoutMode: 'fitRows'
       });
 
       let portfolioFilters = select('#portfolio-flters li', true);
@@ -236,6 +251,13 @@
   });
 
   /**
+   * Initiate glightbox 
+   */
+  const gLightbox = GLightbox({
+    selector: '.glightbox'
+  });
+
+  /**
    * Portfolio details slider
    */
   new Swiper('.portfolio-details-slider', {
@@ -263,10 +285,5 @@
       mirror: false
     })
   });
-
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
 
 })()
