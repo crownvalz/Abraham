@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Profile View</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="assets2/img/favicon.png" rel="icon">
+  <link href="assets2/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets2/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets2/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets2/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets2/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets2/css/style.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero {
+      font-weight: 700;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(8, 1, 39, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .slideshow {
+      position: relative;
+      max-width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Legal Personnel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <section class="home">
+    <div class="hero text-white text-center py-5" style="background-image: url('img/bg.jpeg'); background-size: cover;">
+      <div class="container hero-content">
+        <h1 style="font-size: 2.5rem;">Welcome to our Profile</h1>
+        <p style="font-size: 1.2rem;">My name is Mr. Abraham, and I am an HR and software development professional based in Dar es Salaam. With extensive experience in these fields, I provide tailored solutions to individuals and businesses. From HR consulting to software development and project management, I am committed to meeting your HR and software needs. Contact me today for expert assistance.</p>
+        <a href="#" class="btn btn-light btn-lg">Learn More</a>
+      </div>
+      <div class="slideshow">
+        <div class="slide" style="background-image: url('img/slide1.jpg');"></div>
+        <div class="slide" style="background-image: url('img/slide2.jpg');"></div>
+      </div>
+    </div>
+  </section>
+    
+  <script>
+    // Slideshow functionality
+    let slideIndex = 0;
+    showSlides();
+  
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 5000); // Change slide every 5 seconds (5000 milliseconds)
+    }
+  </script>
+
+    
+
+
+    
+      
+      
+      <section class="features py-5">
+        <div class="container section-title">
+          <h2 class="text-center">Our Services</h2>
+          <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body ">
+                      <h4 class="card-title">HR Consulting</h4>
+                      <p class="card-text">Schedule a consultation with me to discuss your HR needs and receive professional advice tailored to your specific situation. From recruitment and talent management to employee engagement and performance evaluation, I provide comprehensive HR consulting services.</p>
+                      <a href="#" class="card-link">Learn More</a>
+                      <a href="#" class="card-link">Contact Me</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Software Development</h4>
+                      <p class="card-text">I offer custom software development services to help businesses streamline their operations and achieve their goals. From web applications and mobile apps to database management and system integration, I provide innovative software solutions.</p>
+                      <a href="#" class="card-link">Learn More</a>
+                      <a href="#" class="card-link">Contact Me</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Project Management</h4>
+                      <p class="card-text">Ensure the successful execution of your projects by leveraging my project management expertise. I will oversee project planning, resource allocation, risk management, and timely delivery, ensuring your projects are completed efficiently.</p>
+                      <a href="#" class="card-link">Learn More</a>
+                      <a href="#" class="card-link">Contact Me</a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+ 
+          <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+            <h2>Our other Products and services</h2>
+            <p>Discover our wide range of electronic equipment, including phones, accessories, and more. We offer high-quality products that meet your technological needs. Browse through our portfolio to explore our diverse collection.</p>
+          </div>
+          
+          <div class="row" data-aos="fade-up">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
+                <li data-filter="*" class="filter-active">All</li>
+                <li data-filter=".filter-app">Phones</li>
+                <li data-filter=".filter-card">Accessories</li>
+                <li data-filter=".filter-web">Other  Devices</li>
+              </ul>
+            </div>
+          </div>
+          
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-1.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-2.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-3.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-4.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-4.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-5.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-5.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-6.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-6.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-7.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-7.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-8.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-8.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets2/img/portfolio/portfolio-9.jpeg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets2/img/portfolio/portfolio-9.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="https://wa.me/message/6MT7XQSH65SNI1" title="More Details" target="_blank"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+<!-- ======= Facts Section ======= -->
+<section id="facts" class="facts">
+    <div class="container">
+  
+      <div class="section-title">
+        <h2>Facts</h2>
+        <p>With my extensive experience and dedication, I offer top-notch HR and software development services. I am committed to providing personalized solutions and achieving favorable outcomes for my clients. Contact me today for expert assistance.</p>
+      </div>
+  
+      <div class="row no-gutters">
+  
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
+          <div class="count-box">
+            <i class="bi bi-emoji-smile"></i>
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p><strong>Happy Clients</strong> benefiting from my services</p>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="count-box">
+            <i class="bi bi-journal-richtext"></i>
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <p><strong>Projects</strong> handled successfully</p>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="count-box">
+            <i class="bi bi-headset"></i>
+            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+            <p><strong>Hours Of Support</strong> provided to clients</p>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
+          <div class="count-box">
+            <i class="bi bi-people"></i>
+            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+            <p><strong>Hard Workers</strong> dedicated to your HR and software development needs</p>
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+  </section>
+  <!-- End Facts Section -->
+  
+  
+
+    <!-- ======= Skills Section ======= -->
+<!-- ======= Skills Section ======= -->
+<section id="skills" class="skills section-bg">
+    <div class="container">
+  
+      <div class="section-title">
+        <h2>My Proffesional expertise and Skills</h2>
+        <p>I possess a diverse set of skills that include both HR expertise and software development knowledge.</p>
+      </div>
+  
+      <div class="row skills-content">
+  
+        <div class="col-lg-6" data-aos="fade-up">
+  
+          <div class="progress">
+            <span class="skill">HTML <i class="val">100%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+          <div class="progress">
+            <span class="skill">CSS <i class="val">90%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+          <div class="progress">
+            <span class="skill">JavaScript <i class="val">75%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+          <div class="progress">
+            <span class="skill">Flutter <i class="val">85%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="progress">
+            <span class="skill">PHP <i class="val">80%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+          <div class="progress">
+            <span class="skill">WordPress/CMS <i class="val">90%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+          <div class="progress">
+            <span class="skill">Photoshop <i class="val">55%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+          <div class="progress">
+            <span class="skill">HR Management <i class="val">90%</i></span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  </section><!-- End Skills Section -->
+
+<!-- ======= Resume Section ======= -->
+<section id="resume" class="resume">
+    <div class="container">
+  
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>I am Abraham Bravo, an experienced HR professional with 2 years of experience. I hold an MBA and BPA degree and have knowledge of software development. I have created my own projects using CSS, HTML, Flutter, PHP, and more. Currently, I am working as a Banker at Azania Bank Limited in Dar es Salaam, Tanzania.</p>
+      </div>
+  
+      <div class="row">
+        <div class="col-lg-6" data-aos="fade-up">
+          <h3 class="resume-title">Summary</h3>
+          <div class="resume-item pb-0">
+            <h4>Abraham Bravo</h4>
+            <p><em>Experienced HR professional with a background in software development</em></p>
+            <ul>
+                <li>Dar es Salaam, Tanzania</li>
+                <li>Phone: <a href="tel:+255712220782">+255712220782</a></li>
+                <li>Email: <a href="mailto:gmonoabraham@gmail.com">gmonoabraham@gmail.com</a></li>
+              </ul>              
+          </div>
+  
+          <h3 class="resume-title">Education</h3>
+          <div class="resume-item">
+            <h4>Master of Business Administration (MBA)</h4>
+            <h5>2021 - 2023</h5>
+            <p><em>Mzumbe University, Dar es salaam, Tanzania</em></p>
+            <p>Relevant details about your MBA degree and any notable achievements.</p>
+          </div>
+          <div class="resume-item">
+            <h4>Bachelor of Public Administration (BPA)</h4>
+            <h5>2015 - 2018</h5>
+            <p><em>Mzumbe University, Morogoro, Tanzania</em></p>
+            <p>Relevant details about your BPA degree and any notable achievements.</p>
+          </div>
+        </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="resume-title">Professional Experience</h3>
+          <div class="resume-item">
+            <h4>Banker</h4>
+            <h5>2019 - Present</h5>
+            <p><em>Azania Bank Limited, Dar es Salaam, Tanzania</em></p>
+            <ul>
+              <li>Describe your responsibilities and achievements as a banker at Azania Bank Limited.</li>
+            </ul>
+          </div>
+          <div class="resume-item">
+            <h4>Software Developer</h4>
+            <h5>2022 - Present</h5>
+            <p><em>Self-employed</em></p>
+            <ul>
+              <li>Describe your experience as a software developer and mention any notable projects you have worked on.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  <!-- End Resume Section -->
+  
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets2/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets2/vendor/aos/aos.js"></script>
+  <script src="assets2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets2/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets2/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!-- <script src="assets2/vendor/swiper/swiper-bundle.min.js"></script> -->
+  <script src="assets2/vendor/waypoints/noframework.waypoints.js"></script><!-- portfolio closing btn -->
+
+  <!-- Template Main JS File -->
+  <script src="assets2/js/main.js"></script>
+
+</body>
+
+</html>
