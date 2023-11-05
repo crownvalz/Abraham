@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blog - Anyar Bootstrap Template</title>
+  <title>Blog - Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,34 +42,19 @@
 
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="fixed-top d-flex align-items-center topbar-inner-pages">
-    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
-        <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
-      </div>
-      <div class="cta d-none d-md-block">
-        <a href="#about" class="scrollto">Get Started</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center header-inner-pages">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Anyar</a></h1>
+      <h1 class="logo"><a href="index.html">Crownvalz</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-          <li><a class="active" href="blog.html">Blog</a></li>
+          <li><a href="blog.html">Blog</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -93,204 +78,111 @@
       </nav><!-- .navbar -->
 
     </div>
-  </header><!-- End Header -->
+  </div>
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
 
-        <ol>
-          <li><a href="index.html">Home</a></li>
-        </ol>
-        <h2>Blog</h2>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-
-                  <!-- Display calculation results -->
-        <div class="alert alert-success" id="calculation-results" style="display: none;">
-          <h4>Calculation Results:</h4>
-                              <!-- Display calculation results -->
-                              <?php if (!empty($result)) : ?>
-                    <div class="alert alert-success">
-                        <h4>Calculation Results:</h4>
-                        <?php echo $result; ?>
-                    </div>
-                <?php endif; ?>
-
-                <!-- Display error messages -->
-                <?php if (!empty($error)) : ?>
-                    <div class="alert alert-danger">
-                        <h4>Error:</h4>
-                        <?php echo $error; ?>
-                    </div>
-                <?php endif; ?>
-        </div>
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog ">
+  <div class="container shadow" data-aos="fade-up">
+    <div class="row">
+      <!-- Display calculation results -->
+      <div class="alert alert-success" id="calculation-results" style="display: none;">
+        <h4>Calculation Results:</h4>
+        <!-- Display calculation results -->
+        <?php if (!empty($result)) : ?>
+          <div class="alert alert-success">
+            <h4>Calculation Results:</h4>
+            <?php echo $result; ?>
+          </div>
+        <?php endif; ?>
         <!-- Display error messages -->
-        <div class="alert alert-danger" id="error-message" style="display: none;">
-          <h4>Error:</h4>
-        </div>
-        <form id="loan-form">
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="loan_type" class="form-label">Loan Type:</label>
-              <select class="form-control" id="loan_type">
-                <option value="">-Select Type-</option>
-                <option value="Staff Loan">Staff Loan</option>
-                <option value="Mortgage">Mortgage</option>
-                <option value="Car Loan">Car Loan</option>
-                <option value="Personal">Personal Loan</option>
-                <option value="Student">Student Loan</option>
-                <option value="Business">Business Loan</option>
-              </select>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="interest_rate" class="form-label">Interest Rate:</label>
-              <select class="form-control" id="interest_rate">
-                <option value="">-Select Rate-</option>
-                <script>
-                  var interestRates = Array.from({ length: 26 }, (_, i) => (i + 1) * 0.01);
-                  interestRates.forEach(rate => {
-                    var percentageValue = (rate * 100).toFixed(2).replace(/\.00$/, ''); // Convert to percentage and remove ".00"
-                    document.write(`<option value="${rate.toFixed(2)}">${percentageValue}%</option>`);
-                  });
-                </script>
-              </select>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="tenor_months" class="form-label">Tenor (Months):</label>
-              <input type="number" id="tenor_months" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="proposed_loan_amount" class="form-label">Proposed Loan Amount:</label>
-              <input type="number" id="proposed_loan_amount" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="existing_facility_balance" class="form-label">Existing Facility Balance:</label>
-              <input type="number" id="existing_facility_balance" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="abl_existing_monthly_installment" class="form-label">Crown Bank Installment:</label>
-              <input type="number" id="abl_existing_monthly_installment" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="install_with_other_banks" class="form-label">Install with Other Banks:</label>
-              <input type="number" id="install_with_other_banks" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="basicsalary" class="form-label">Basic Salary:</label>
-              <input type="number" id="basicsalary" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="total_allowances" class="form-label">Total Allowances:</label>
-              <input type="number" id="total_allowances" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="net_salary" class="form-label">Net Salary:</label>
-              <input type="number" id="net_salary" class="form-control">
-            </div>
+        <?php if (!empty($error)) : ?>
+          <div class="alert alert-danger">
+            <h4>Error:</h4>
+            <?php echo $error; ?>
           </div>
-          <div class="input-group mb-5 d-flex justify-content-between">
-            <!-- Additional elements can be added here -->
-          </div>
-          <div class="input-group mb-3">
-            <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Compute</button>
-          </div>
-          <div class="input-group mb-3">
-            <button class="btn btn-lg btn-light w-100 fs-6">
-              <span class="bi bi-bank me-2"></span>
-              <small>Book this Facility</small>
-            </button>
-          </div>
-        </form>
-
-        </div>
-
+        <?php endif; ?>
       </div>
-    </section><!-- End Blog Section -->
+      <!-- Display error messages -->
+      <div class="alert alert-danger" id="error-message" style="display: none;">
+        <h4>Error:</h4>
+      </div>
+      <h3>Loan Calculator</h3>
+      <form id="loan-form">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="loan_type" class="form-label">Loan Type:</label>
+            <select class="form-control" id="loan_type">
+              <option value="">-Select Type-</option>
+              <option value="Staff Loan">Staff Loan</option>
+              <option value="Mortgage">Mortgage</option>
+              <option value="Car Loan">Car Loan</option>
+              <option value="Personal">Personal Loan</option>
+              <option value="Student">Student Loan</option>
+              <option value="Business">Business Loan</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "interest_rate" class="form-label">Interest Rate:</label>
+            <select class="form-control" id="interest_rate">
+              <option value="">-Select Rate-</option>
+              <script>
+                var interestRates = Array.from({ length: 26 }, (_, i) => (i + 1) * 0.01);
+                interestRates.forEach(rate => {
+                  var percentageValue = (rate * 100).toFixed(2).replace(/\.00$/, ''); // Convert to percentage and remove ".00"
+                  document.write(`<option value="${rate.toFixed(2)}">${percentageValue}%</option>`);
+                });
+              </script>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="tenor_months" class="form-label">Tenor (Months):</label>
+            <input type="number" id="tenor_months" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="proposed_loan_amount" class="form-label">Proposed Loan Amount:</label>
+            <input type="number" id="proposed_loan_amount" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "existing_facility_balance" class="form-label">Existing Facility Balance:</label>
+            <input type="number" id="existing_facility_balance" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "abl_existing_monthly_installment" class="form-label">Crown Bank Installment:</label>
+            <input type="number" id="abl_existing_monthly_installment" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "install_with_other_banks" class="form-label">Install with Other Banks:</label>
+            <input type="number" id="install_with_other_banks" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "basicsalary" class="form-label">Basic Salary:</label>
+            <input type="number" id="basicsalary" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "total_allowances" class="form-label">Total Allowances:</label>
+            <input type="number" id="total_allowances" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for "net_salary" class="form-label">Net Salary:</label>
+            <input type="number" id="net_salary" class="form-control">
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Compute</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section><!-- End Blog Section -->
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          </div>
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-info">
-            <h3>About Anyar</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
     <div class="container">
       <div class="copyright">
