@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample Page</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="content">
+        <h1>Main Content Goes Here</h1>
+        <p>This is the content of your page.</p>
+    </div>
+
+    <script>
+        // Using JavaScript to include the header
+        var headerElement = document.getElementById("header");
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "header.html", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                headerElement.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
+```
