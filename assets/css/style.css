@@ -1,9 +1,9 @@
 /**
-* Template Name: Shuffle
+* Template Name: crownvalz
 * Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/bootstrap-3-one-page-template-free-shuffle/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Template URL: https://crownvalz.com/bootstrap-3-one-page-template-free-crownvalz/
+* Author: crownvalz.com
+* License: https://crownvalz.com/license/
 */
 
 /*--------------------------------------------------------------
@@ -20,7 +20,7 @@ a {
 }
 
 a:hover {
-  color: #2ae0c4;
+  color: #334240;
   text-decoration: none;
 }
 
@@ -268,7 +268,7 @@ h6 {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(3, 131, 190, 0.8);
+  background: rgba(144, 142, 142, 0.187);
   transition: 0.3s;
   z-index: 999;
 }
@@ -501,7 +501,7 @@ h6 {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(0deg, rgb(42, 44, 57) 0%, rgb(51, 54, 74) 100%);
+  background: linear-gradient(0deg, rgb(23, 28, 62) 0%, rgb(3, 21, 136) 100%);
   padding: 0;
 }
 
@@ -557,11 +557,11 @@ h6 {
   margin: 10px;
   color: #fff;
   animation-delay: 0.8s;
-  border: 2px solid #ef6603;
+  border: 2px solid #1303ef;
 }
 
 #bravo .btn-get-started:hover {
-  background: #ef6603;
+  background: #033eef;
   color: #fff;
   text-decoration: none;
 }

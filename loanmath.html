@@ -87,15 +87,16 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2>Loan Calculator</h2>
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
+            <li><a href="loanmath.html">Loan</a></li>
+            <li>Loan Calculator</li>
           </ol>
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs Section -->
+    </section><!-- Breadcrumbs Section -->
 
     <section class="inner-page">
       <div class="container">
@@ -120,22 +121,9 @@
           <div class="alert alert-danger" id="error-message" style="display: none;">
             <h4>Error:</h4>
           </div>
-          <h3>Loan Calculator</h3>
           <form id="loan-form">
             <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="loan_type" class="form-label">Loan Type:</label>
-                <select class="form-control" id="loan_type">
-                  <option value="">-Select Type-</option>
-                  <option value="Staff Loan">Staff Loan</option>
-                  <option value="Mortgage">Mortgage</option>
-                  <option value="Car Loan">Car Loan</option>
-                  <option value="Personal">Personal Loan</option>
-                  <option value="Student">Student Loan</option>
-                  <option value="Business">Business Loan</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
+              <div class="col-md-12 mb-3">
                 <label for "interest_rate" class="form-label">Interest Rate:</label>
                 <select class="form-control" id="interest_rate">
                   <option value="">-Select Loan Type-</option>
@@ -237,7 +225,6 @@
     // Function to calculate the loan parameters and display results in the modal
 function calculateLoanAndDisplayInModal() {
       // Retrieve input values from the form
-      const loanType = document.getElementById("loan_type").value;
       const interestRate = parseFloat(document.getElementById("interest_rate").value);
       const tenorMonths = parseInt(document.getElementById("tenor_months").value);
       const proposedLoanAmount = parseFloat(document.getElementById("proposed_loan_amount").value);
@@ -309,8 +296,8 @@ function handleFormSubmit(event) {
   event.preventDefault(); // Prevent the form from being submitted
   document.getElementById("calculation-results").style.display = "none"; // Hide any previous results
 
-  const loanType = document.getElementById("loan_type").value;
-  if (loanType === "") {
+  const interestRate = document.getElementById("interest_rate").value;
+  if (interestRate === "") {
     const errorMessage = document.getElementById("error-message");
     errorMessage.style.display = "block";
     errorMessage.innerHTML = "Oops! Please select a loan type.";
@@ -320,16 +307,15 @@ function handleFormSubmit(event) {
 }
 
 document.getElementById("loan-form").addEventListener("submit", handleFormSubmit);
+</script>
 
-  </script>
+<script>
+    new DataTable('#example', {
+        responsive: true
+    });
+</script>
 
-    <!-- Vendor JS Files -->
-    <script>
-      new DataTable('#example', {
-          responsive: true
-      });
-        </script>
-  <!-- Vendor JS Files -->
+<!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
