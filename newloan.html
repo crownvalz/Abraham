@@ -202,6 +202,25 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <script>
 
+document.getElementById("interest_rate").addEventListener("change", function() {
+    // Get the selected interest rate
+    const selectedRate = parseFloat(this.value);
+
+    // Automatically set the tenure based on the selected rate
+    let tenure;
+    if (selectedRate === 0.18) {
+      tenure = 12; // Set tenure for 18% interest rate
+    } else if (selectedRate === 0.14) {
+      tenure = 24; // Set tenure for 14% interest rate
+    } else {
+      tenure = 0; // Default tenure value
+    }
+
+    // Update the tenure input field
+    document.getElementById("tenor_months").value = tenure;
+  });
+
+
     // Function to calculate the loan parameters and display results in the modal
 function calculateLoanAndDisplayInModal() {
       // Retrieve input values from the form
