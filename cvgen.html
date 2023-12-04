@@ -18,50 +18,55 @@
     <div class="row">
         <div class="col-md-12">
             <form id="form">
-              <!-- Step 1: Personal Information -->
-              <div id="step1" style="display: none;">
-                <h1>Personal Information</h1>
-                <div class="d-flex flex-wrap">
-                    <div class="mb-3 col-md-3">
-                        <label for="firstname" class="form-label">Firstname:</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="secname" class="form-label">Second Name:</label>
-                        <input type="text" class="form-control" id="secname" name="secname" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="jobtitle" class="form-label">Job Title:</label>
-                        <input type="text" class="form-control" id="jobtitle" name="jobtitle" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="position" class="form-label">Position held:</label>
-                        <input type="text" class="form-control" id="position" name="position" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="company" class="form-label">Company:</label>
-                        <input type="text" class="form-control" id="company" name="company" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="duties" class="form-label">Duties held:</label>
-                        <input type="text" class="form-control" id="duties" name="duties" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                        <label for="term" class="form-label">Term:</label>
-                        <select id="term" class="form-select" name="term" required>
-                            <option value="-">-</option>
-                            <option value="Permanent">Permanent</option>
-                            <option value="Internship">Internship</option>
-                            <option value="Specified time contract">Specified time contract</option>
-                            <option value="Apprenticeship">Apprenticeship</option>
-                        </select>
+                <!-- Step 1: Personal Information -->
+                <div id="step1" style="display: none;">
+                    <h1>Personal Information</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="firstname" class="form-label">Firstname:</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="secname" class="form-label">Second Name:</label>
+                                <input type="text" class="form-control" id="secname" name="secname" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="jobtitle" class="form-label">Job Title:</label>
+                                <input type="text" class="form-control" id="jobtitle" name="jobtitle" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="position" class="form-label">Position held:</label>
+                                <input type="text" class="form-control" id="position" name="position" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="company" class="form-label">Company:</label>
+                                <input type="text" class="form-control" id="company" name="company" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="duties" class="form-label">Duties held:</label>
+                                <input type="text" class="form-control" id="duties" name="duties" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="term" class="form-label">Term:</label>
+                                <select id="term" class="form-select" name="term" required>
+                                    <option value="-">-</option>
+                                    <option value="Permanent">Permanent</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Specified time contract">Specified time contract</option>
+                                    <option value="Apprenticeship">Apprenticeship</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Empty column for the second set of fields on larger screens -->
+                        </div>
                     </div>
                 </div>
-              </div>
 
                     <!-- Step 2: Contact Details -->
                     <div id="step2" style="display: none;">
