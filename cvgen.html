@@ -77,21 +77,21 @@
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs Section ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>CV Generator</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="loanmath.html">CV Generator</a></li>
-            <li>CV Generator</li>
-          </ol>
-        </div>
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>CV Generator</h2>
+        <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="loanmath.html">CV Generator</a></li>
+        <li>CV Generator</li>
+        </ol>
+    </div>
 
-      </div>
-    </section><!-- Breadcrumbs Section -->
+    </div>
+</section><!-- Breadcrumbs Section -->
 
     <section class="inner-page">
 <!-- HTML structure -->
@@ -279,6 +279,21 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="year" class="form-label">year:</label>
+                                    <select id="year" class="form-select" name="year" required>
+                                        <option value="-">-</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <!-- Add other year options here -->
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -289,7 +304,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="declaration" name="declaration" value="true" required>
+                                    <input type="checkbox" class="form-check-input" id="declaration" name="declaration" value="Declaration: I declare that every detail given is true and complete to the best of my knowledge. Apparently, I do understand that I will be accountable for every information herein." required>
                                     <label class="form-check-label" for="declaration">Declaration: I declare that every detail given is true and complete to the best of my knowledge. Apparently, I do understand that I will be accountable for every information herein.</label>
                                 </div>
                             </div>
@@ -394,8 +409,9 @@
         const address = formData.get('address');
         const declaration = formData.get('declaration');
         const education = formData.get('education');
-        const university = formData.get('university');
-    
+        const university = formData.get('university');        
+        const year = formData.get('year');
+
         const templateName = 'template.docx';
         const newName = 'generate.docx';
     
@@ -427,8 +443,8 @@
           .replace(/{{address}}/g, address)
           .replace(/{{declaration}}/g, declaration)
           .replace(/{{education}}/g, education)
-          .replace(/{{university}}/g, university);
-    
+          .replace(/{{year}}/g, year)
+          .replace(/{{university}}/g, university);    
         // Overwrite the content in the document.xml file with updated content
         templateZip.file('word/document.xml', updatedContent);
     
