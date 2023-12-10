@@ -86,7 +86,6 @@
         <ol>
         <li><a href="index.html">Home</a></li>
         <li><a href="loanmath.html">CV Generator</a></li>
-        <li>CV Generator</li>
         </ol>
     </div>
 
@@ -106,50 +105,45 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="firstname" class="form-label">First Name:</label>
+                                    <label for="firstname" class="form-label">Given Names:</label>
                                     <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter your first name" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="secname" class="form-label">Second Name:</label>
-                                    <input type="text" class="form-control" id="secname" name="secname" placeholder="Enter your second name" required>
+                                    <label for="surname" class="form-label">Surname:</label>
+                                    <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter your second name" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="jobtitle1" class="form-label">Current Job Title:</label>
+                                    <input type="text" class="form-control" id="jobtitle1" name="jobtitle1" placeholder="Enter your current job title" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                                    <label for="position1" class="form-label">Current Position Held:</label>
+                                    <input type="text" class="form-control" id="position1" name="position1" placeholder="Enter your current position" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="jobtitle" class="form-label">Job Title:</label>
-                                    <input type="text" class="form-control" id="jobtitle" name="jobtitle" placeholder="Enter your job title" required>
+                                    <label for="company1" class="form-label">Company:</label>
+                                    <input type="text" class="form-control" id="company1" name="company1" placeholder="Enter your company" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="position" class="form-label">Position Held:</label>
-                                    <input type="text" class="form-control" id="position" name="position" placeholder="Enter your position" required>
+                                    <label for="duties" class="form-label">Current Duties:</label>
+                                    <input type="text" class="form-control" id="duties1" name="duties1" placeholder="Enter your current duties" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="company" class="form-label">Company:</label>
-                                    <input type="text" class="form-control" id="company" name="company" placeholder="Enter your company" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6">
-                                <div class="mb-3">
-                                    <label for="duties" class="form-label">Duties Held:</label>
-                                    <input type="text" class="form-control" id="duties" name="duties" placeholder="Enter your duties" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6">
-                                <div class="mb-3">
-                                    <label for="term" class="form-label">Term:</label>
-                                    <select id="term" class="form-select" name="term" required>
+                                    <label for="term1" class="form-label">Term:</label>
+                                    <select id="term1" class="form-select" name="term1" required>
                                         <option value="-">-</option>
                                         <option value="Permanent">Permanent</option>
                                         <option value="Internship">Internship</option>
@@ -164,19 +158,25 @@
 
                 <!-- Step 2: Contact Details -->
                 <div id="step2" style="display: none;">
-                    <h1>Contact Details</h1>
+                    <h1>Contacts & Biograph</h1>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-12 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone:</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" required>
+                                    <label for="aboutme" class="form-label">Biograph / Profile Bio:</label>
+                                    <textarea class="form-control" name="aboutme" cols="20" rows="4" id="aboutme" >As a Relationship Officer and seasoned Business Professional, I possess a wealth of experience in the dynamic realms of core banking. My expertise spans relationship building, Human Resources, and the intricate operations vital to banking. I excel in comprehending key banking functions like cross-selling and fostering robust relationships, while demonstrating proficiency in Fund Transfers, Inward and Outward Checks, TAX banking, and ATM custodianship.</textarea>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="aboutme" class="form-label">About Me:</label>
-                                    <input type="text" class="form-control" id="aboutme" name="aboutme" required>
+                                    <label for="phone" class="form-label">Phone:</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="255" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
@@ -192,7 +192,7 @@
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input type="text" class="form-control" id="address" name="address" required>
+                                    <input type="text" class="form-control" id="address" name="address" value="P.o.Box ">
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
@@ -205,39 +205,39 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Work Experience -->
+                <!-- Step 3: Other Work Experience -->
                 <div id="step3" style="display: none;">
-                    <h1>Work Experience</h1>
+                    <h1>Other Work Experience</h1>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="jobtitle" class="form-label">Job Title:</label>
-                                    <input type="text" class="form-control" id="jobtitle" name="jobtitle" required>
+                                    <label for="jobtitle2" class="form-label">Job Title:</label>
+                                    <input type="text" class="form-control" id="jobtitle2" name="jobtitle2" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="position" class="form-label">Position held:</label>
-                                    <input type="text" class="form-control" id="position" name="position" required>
+                                    <label for="position1" class="form-label">Position held:</label>
+                                    <input type="text" class="form-control" id="position2" name="position2" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="company" class="form-label">Company:</label>
-                                    <input type="text" class="form-control" id="company" name="company" required>
+                                    <label for="company2" class="form-label">Company:</label>
+                                    <input type="text" class="form-control" id="company2" name="company2" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="duties" class="form-label">Duties held:</label>
-                                    <input type="text" class="form-control" id="duties" name="duties" required>
+                                    <label for="duties2" class="form-label">Duties held:</label>
+                                    <input type="text" class="form-control" id="duties2" name="duties2" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="term" class="form-label">Term:</label>
-                                    <select id="term" class="form-select" name="term" required>
+                                    <label for="term2" class="form-label">Term:</label>
+                                    <select id="term2" class="form-select" name="term2" required>
                                         <option value="-">-</option>
                                         <option value="Permanent">Permanent</option>
                                         <option value="Internship">Internship</option>
@@ -250,26 +250,27 @@
                     </div>
                 </div>
 
-                <!-- Step 4: Education -->
+            <!-- Step 4: Education -->
                 <div id="step4" style="display: none;">
-                    <h1>Education</h1>
+                    <strong><h2>Education</h2></strong>
                     <div class="container">
-                        <div class="row">
+                        <div class="row" >
+                            <h5>Masters degree degree</h5>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="education" class="form-label">Education:</label>
-                                    <select id="education" class="form-select" name="education" required>
+                                    <label for="masteducation" class="form-label">Education:</label>
+                                    <select id="masteducation" class="form-select" name="masteducation" required>
                                         <option value="-">-</option>
-                                        <option value="Bachelor of Public Administration">Bachelor of Public Administration</option>
-                                        <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+                                        <option value="Masters of Public Administration">Masters of Public Administration</option>
+                                        <option value="Masters of Business Administration">Masters of Business Administration</option>
                                         <!-- Add other education options here -->
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="university" class="form-label">University:</label>
-                                    <select id="university" class="form-select" name="university" required>
+                                    <label for="mastuniversity" class="form-label">University:</label>
+                                    <select id="mastuniversity" class="form-select" name="mastuniversity" required>
                                         <option value="-">-</option>
                                         <option value="Mzumbe University">Mzumbe University</option>
                                         <option value="University of Dar es salaam">University of Dar es salaam</option>
@@ -281,8 +282,93 @@
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="year" class="form-label">year:</label>
-                                    <select id="year" class="form-select" name="year" required>
+                                    <label for="mastyear" class="form-label">year:</label>
+                                    <select id="mastyear" class="form-select" name="mastyear" required>
+                                        <option value="-">-</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <!-- Add other year options here -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <h5>Bachelor degree</h5>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="bacheducation" class="form-label">Bachelor Education:</label>
+                                    <select id="bacheducation" class="form-select" name="bacheducation" required>
+                                        <option value="-">-</option>
+                                        <option value="Bachelor of Public Administration">Bachelor of Public Administration</option>
+                                        <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+                                        <!-- Add other education options here -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="bachuniversity" class="form-label">University:</label>
+                                    <select id="bachuniversity" class="form-select" name="bachuniversity" required>
+                                        <option value="-">-</option>
+                                        <option value="Mzumbe University">Mzumbe University</option>
+                                        <option value="University of Dar es salaam">University of Dar es salaam</option>
+                                        <option value="Ardhi University">Ardhi University</option>
+                                        <option value="Tumaini University">Tumaini University</option>
+                                        <!-- Add other university options here -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="bachyear" class="form-label">year:</label>
+                                    <select id="bachyear" class="form-select" name="bachyear" required>
+                                        <option value="-">-</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <!-- Add other year options here -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5>Advance / Certificate / Foundation</h5>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="certeducation" class="form-label">Education:</label>
+                                    <select id="certeducation" class="form-select" name="certeducation" required>
+                                        <option value="-">-</option>
+                                        <option value="Bachelor of Public Administration">Bachelor of Public Administration</option>
+                                        <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+                                        <!-- Add other education options here -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="certcol" class="form-label">University:</label>
+                                    <select id="certcol" class="form-select" name="certcol" required>
+                                        <option value="-">-</option>
+                                        <option value="Mzumbe University">Mzumbe University</option>
+                                        <option value="University of Dar es salaam">University of Dar es salaam</option>
+                                        <option value="Ardhi University">Ardhi University</option>
+                                        <option value="Tumaini University">Tumaini University</option>
+                                        <!-- Add other university options here -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="certyear" class="form-label">year:</label>
+                                    <select id="certyear" class="form-select" name="certyear" required>
                                         <option value="-">-</option>
                                         <option value="2018">2018</option>
                                         <option value="2019">2019</option>
@@ -300,12 +386,74 @@
 
                 <!-- Step 5: Declaration -->
                 <div id="step5" style="display: none;">
+                    <strong><h2>Referees</h2></strong>
                     <div class="container">
                         <div class="row">
+                            <h5>1st Referee</h5>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="referee1" class="form-label">Full name:</label>
+                                    <input type="text" class="form-control" id="referee1" name="referee1" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="refposition1" class="form-label">Designation:</label>
+                                    <input type="text" class="form-control" id="refposition1" name="refposition1" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="refcompany1" class="form-label">Company:</label>
+                                    <input type="text" class="form-control" id="refcompany1" name="refcompany1" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <label for="phone" class="form-label">Mobile:</label>
+                                <div class="input-group">
+                                    <select id="ctrcode" class="col-2 form-select input-group-text" name="ctrcode" required>
+                                        <option value="+255">+255</option>
+                                        <option value="+254">+254</option>
+                                    </select>
+                                    <input type="text" class="form-control col-10 col-md-10" id="refphone1" name="refphone1" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <h5>2nd Referee</h5>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="referee2" class="form-label">Full name:</label>
+                                    <input type="text" class="form-control" id="referee2" name="referee2" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="refposition2" class="form-label">Designation:</label>
+                                    <input type="text" class="form-control" id="refposition2" name="refposition2" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="refcompany2" class="form-label">Company:</label>
+                                    <input type="text" class="form-control" id="refcompany2" name="refcompany2" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-3 col-sm-6">
+                                <label for="phone" class="form-label">Mobile:</label>
+                                <div class="input-group">
+                                    <select id="ctrcode" class="col-2 form-select input-group-text" name="ctrcode">
+                                        <option value="+255">+255</option>
+                                        <option value="+254">+254</option>
+                                    </select>
+                                    <input type="text" class="form-control col-10 col-md-10" id="refphone2" name="refphone2" required>
+                                </div>
+                            </div>
                             <div class="col-sm-12">
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="declaration" name="declaration" value="Declaration: I declare that every detail given is true and complete to the best of my knowledge. Apparently, I do understand that I will be accountable for every information herein." required>
-                                    <label class="form-check-label" for="declaration">Declaration: I declare that every detail given is true and complete to the best of my knowledge. Apparently, I do understand that I will be accountable for every information herein.</label>
+                                    <label class="form-check-label" for="declaration"><strong>Declaration: </strong>I declare that every detail given is true and complete to the best of my knowledge. Apparently, I do understand that I will be accountable for every information herein.</label>
                                 </div>
                             </div>
                         </div>
@@ -348,11 +496,18 @@
     const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
 
-    function showStep(step) {
+        function showStep(step) {
         for (let i = 1; i <= 5; i++) {
             document.getElementById('step' + i).style.display = 'none';
         }
         document.getElementById('step' + step).style.display = 'block';
+
+        // Hide the previous button for step 1
+        if (step === 1) {
+            prevBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'inline';
+        }
     }
 
     function nextPrev(n) {
@@ -394,23 +549,45 @@
     
         const form = document.getElementById('form');
         const formData = new FormData(form);
+
+        const year = formData.get('year');
         const firstname = formData.get('firstname');
-        const secname = formData.get('secname');
-        const email = formData.get('email');
-        const jobtitle = formData.get('jobtitle');
-        const position = formData.get('position');
-        const company = formData.get('company');
-        const duties = formData.get('duties');
-        const term = formData.get('term');
-        const phone = formData.get('phone');
+        const surname = formData.get('surname');
+        const jobtitle1 = formData.get('jobtitle1');
+        const position1 = formData.get('position1');
+        const company1 = formData.get('company1');
+        const duties1 = formData.get('duties1');
+        const term1 = formData.get('term1');
         const aboutme = formData.get('aboutme');
-        const dob = formData.get('dob');
+        const phone = formData.get('phone');
+        const email = formData.get('email');
         const gender = formData.get('gender');
         const address = formData.get('address');
+        const dob = formData.get('dob');
+        const jobtitle2 = formData.get('jobtitle2');
+        const position2 = formData.get('position2');
+        const company2 = formData.get('company2');
+        const duties2 = formData.get('duties2');
+        const term2 = formData.get('term2');
+        const masteducation = formData.get('masteducation');
+        const mastuniversity = formData.get('mastuniversity');
+        const mastyear = formData.get('mastyear');
+        const bacheducation = formData.get('bacheducation');
+        const bachuniversity = formData.get('bachuniversity');
+        const bachyear = formData.get('bachyear');
+        const certeducation = formData.get('certeducation');
+        const certcol = formData.get('certcol');
+        const certyear = formData.get('certyear');
+        const referee1 = formData.get('referee1');
+        const refposition1 = formData.get('refposition1');
+        const refcompany1 = formData.get('refcompany1');
+        const refphone1 = formData.get('refphone1');
+        const referee2 = formData.get('referee2');
+        const refposition2 = formData.get('refposition2');
+        const refcompany2 = formData.get('refcompany2');
+        const refphone2 = formData.get('refphone2');
         const declaration = formData.get('declaration');
-        const education = formData.get('education');
-        const university = formData.get('university');        
-        const year = formData.get('year');
+
 
         const templateName = 'template.docx';
         const newName = 'generate.docx';
@@ -428,23 +605,49 @@
     
         // Replace placeholders with form values
         const updatedContent = content
-          .replace(/{{firstname}}/g, firstname)
-          .replace(/{{secname}}/g, secname)
-          .replace(/{{email}}/g, email)
-          .replace(/{{jobtitle}}/g, jobtitle)
-          .replace(/{{position}}/g, position)
-          .replace(/{{company}}/g, company)
-          .replace(/{{duties}}/g, duties)
-          .replace(/{{term}}/g, term)
-          .replace(/{{phone}}/g, phone)
-          .replace(/{{aboutme}}/g, aboutme)
-          .replace(/{{dob}}/g, dob)
-          .replace(/{{gender}}/g, gender)
-          .replace(/{{address}}/g, address)
-          .replace(/{{declaration}}/g, declaration)
-          .replace(/{{education}}/g, education)
-          .replace(/{{year}}/g, year)
-          .replace(/{{university}}/g, university);    
+        // Personal informations
+        .replace(/{{firstname}}/g, firstname)
+        .replace(/{{surname}}/g, surname)
+        .replace(/{{jobtitle1}}/g, jobtitle1)
+        .replace(/{{position1}}/g, position1)
+        .replace(/{{company1}}/g, company1)
+        .replace(/{{duties1}}/g, duties1)
+        .replace(/{{term1}}/g, term1)
+        // Biograph informations
+        .replace(/{{aboutme}}/g, aboutme)
+        .replace(/{{phone}}/g, phone)
+        .replace(/{{email}}/g, email)
+        .replace(/{{gender}}/g, gender)
+        .replace(/{{address}}/g, address)
+        .replace(/{{dob}}/g, dob)
+        // Experience Informations
+        .replace(/{{jobtitle2}}/g, jobtitle2)
+        .replace(/{{position2}}/g, position2)
+        .replace(/{{company2}}/g, company2)
+        .replace(/{{duties2}}/g, duties2)
+        .replace(/{{term2}}/g, term2)
+        // Masters Education Informations
+        .replace(/{{masteducation}}/g, masteducation)
+        .replace(/{{mastuniversity}}/g, mastuniversity)
+        .replace(/{{mastyear}}/g, mastyear)
+        // Bachelor Education Informations
+        .replace(/{{bacheducation}}/g, bacheducation)
+        .replace(/{{bachuniversity}}/g, bachuniversity)
+        .replace(/{{bachyear}}/g, bachyear)
+        // Certificate Education Informations
+        .replace(/{{certeducation}}/g, certeducation)
+        .replace(/{{certcol}}/g, certcol)
+        .replace(/{{certyear}}/g, certyear)
+        // referees Informations & declaration
+        .replace(/{{referee1}}/g, referee1)
+        .replace(/{{refposition1}}/g, refposition1)
+        .replace(/{{refcompany1}}/g, refcompany1)
+        .replace(/{{refphone1}}/g, refphone1)
+        .replace(/{{referee2}}/g, referee2)
+        .replace(/{{refposition2}}/g, refposition2)
+        .replace(/{{refcompany2}}/g, refcompany2)
+        .replace(/{{refphone2}}/g, refphone2)
+        .replace(/{{declaration}}/g, declaration);    
         // Overwrite the content in the document.xml file with updated content
         templateZip.file('word/document.xml', updatedContent);
     
