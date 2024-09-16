@@ -3,79 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 5 Form</title>
+    <title>Multi-step Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <form>
-            <!-- Degree -->
-            <div class="mb-3">
-                <label for="degree" class="form-label">Degree <span class="text-danger">*</span></label>
-                <select class="form-select" id="degree" required>
-                    <option selected>MBA</option>
-                    <option value="1">BBA</option>
-                    <option value="2">MSc</option>
-                </select>
+        <form id="multiStepForm">
+            <!-- Step 1: Degree and Major -->
+            <div class="step active">
+                <h5>Step 1: Degree and Major</h5>
+                <div class="mb-3">
+                    <label for="degree" class="form-label">Degree <span class="text-danger">*</span></label>
+                    <select class="form-select" id="degree" required>
+                        <option selected>MBA</option>
+                        <option value="1">BBA</option>
+                        <option value="2">MSc</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="major" class="form-label">Major</label>
+                    <input type="text" class="form-control" id="major" value="Corporate Management">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
             </div>
 
-            <!-- Major -->
-            <div class="mb-3">
-                <label for="major" class="form-label">Major</label>
-                <input type="text" class="form-control" id="major" value="Corporate Management">
-            </div>
-
-            <!-- School -->
-            <div class="mb-3">
-                <label for="school" class="form-label">School</label>
-                <input type="text" class="form-control" id="school" value="Mzumbe University">
-            </div>
-
-            <!-- Start Date -->
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="startMonth" class="form-label">Start Date</label>
-                    <div class="input-group">
-                        <select class="form-select" id="startMonth">
-                            <option selected>October</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                        </select>
-                        <input type="number" class="form-control" id="startYear" value="2021" min="1900" max="2099">
+            <!-- Step 2: School and Dates -->
+            <div class="step">
+                <h5>Step 2: School and Dates</h5>
+                <div class="mb-3">
+                    <label for="school" class="form-label">School</label>
+                    <input type="text" class="form-control" id="school" value="Mzumbe University">
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="startMonth" class="form-label">Start Date</label>
+                        <div class="input-group">
+                            <select class="form-select" id="startMonth">
+                                <option selected>October</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                            </select>
+                            <input type="number" class="form-control" id="startYear" value="2021" min="1900" max="2099">
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- End Date -->
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="endMonth" class="form-label">End Date</label>
-                    <div class="input-group">
-                        <select class="form-select" id="endMonth">
-                            <option selected>December</option>
-                            <option value="1">November</option>
-                            <option value="2">October</option>
-                        </select>
-                        <input type="number" class="form-control" id="endYear" value="2023" min="1900" max="2099">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="endMonth" class="form-label">End Date</label>
+                        <div class="input-group">
+                            <select class="form-select" id="endMonth">
+                                <option selected>December</option>
+                                <option value="1">November</option>
+                                <option value="2">October</option>
+                            </select>
+                            <input type="number" class="form-control" id="endYear" value="2023" min="1900" max="2099">
+                        </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
             </div>
 
-            <!-- Country -->
-            <div class="mb-3">
-                <label for="country" class="form-label">Country</label>
-                <input type="text" class="form-control" id="country" value="Tanzania, United Republic of">
+            <!-- Step 3: Country and City -->
+            <div class="step">
+                <h5>Step 3: Location</h5>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country" value="Tanzania, United Republic of">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" value="Dar Es Salaam">
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
-
-            <!-- City -->
-            <div class="mb-3">
-                <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city" value="Dar Es Salaam">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll(".step");
+
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                step.classList.toggle("active", index === stepIndex);
+            });
+        }
+
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Form submitted successfully!");
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
