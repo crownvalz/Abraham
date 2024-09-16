@@ -12,9 +12,44 @@
         .step.active {
             display: block;
         }
+        .navbar-brand img {
+            width: 50px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
+    <!-- Navbar with Hamburger Menu on the left and Logo on the right -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Hamburger Menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Logo on the Right -->
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/50" alt="Logo">
+            </a>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h3>Education Qualifications</h3>
         <form id="educationForm">
@@ -150,7 +185,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label for="endMonth3" class="form-label">End Date</label>
-                        <div class="input-group">
+                        <div class="                        input-group">
                             <select class="form-select" id="endMonth3">
                                 <option selected>June</option>
                                 <option value="1">May</option>
@@ -170,9 +205,9 @@
         let currentStep = 0;
         const steps = document.querySelectorAll(".step");
 
-        function showStep(stepIndex) {
-            steps.forEach((step, index) => {
-                step.classList.toggle("active", index === stepIndex);
+        function showStep(step) {
+            steps.forEach((element, index) => {
+                element.classList.toggle("active", index === step);
             });
         }
 
@@ -190,10 +225,12 @@
             }
         }
 
-        document.getElementById("educationForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Form submitted successfully!");
+        document.getElementById('educationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Form Submitted!');
         });
+
+        showStep(currentStep);
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
