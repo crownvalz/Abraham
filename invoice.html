@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-step Form</title>
+    <title>Multi-step Education Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .step {
@@ -16,55 +16,98 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form id="multiStepForm">
-            <!-- Step 1: Degree and Major -->
+        <h3>Education Qualifications</h3>
+        <form id="educationForm">
+            <!-- Step 1: First Education Qualification -->
             <div class="step active">
-                <h5>Step 1: Degree and Major</h5>
+                <h5>Step 1: Education Qualification 1</h5>
                 <div class="mb-3">
-                    <label for="degree" class="form-label">Degree <span class="text-danger">*</span></label>
-                    <select class="form-select" id="degree" required>
+                    <label for="degree1" class="form-label">Degree <span class="text-danger">*</span></label>
+                    <select class="form-select" id="degree1" required>
                         <option selected>MBA</option>
                         <option value="1">BBA</option>
                         <option value="2">MSc</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="major" class="form-label">Major</label>
-                    <input type="text" class="form-control" id="major" value="Corporate Management">
+                    <label for="major1" class="form-label">Major</label>
+                    <input type="text" class="form-control" id="major1" value="Corporate Management">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-            </div>
-
-            <!-- Step 2: School and Dates -->
-            <div class="step">
-                <h5>Step 2: School and Dates</h5>
                 <div class="mb-3">
-                    <label for="school" class="form-label">School</label>
-                    <input type="text" class="form-control" id="school" value="Mzumbe University">
+                    <label for="school1" class="form-label">School</label>
+                    <input type="text" class="form-control" id="school1" value="Mzumbe University">
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label for="startMonth" class="form-label">Start Date</label>
+                        <label for="startMonth1" class="form-label">Start Date</label>
                         <div class="input-group">
-                            <select class="form-select" id="startMonth">
+                            <select class="form-select" id="startMonth1">
                                 <option selected>October</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                             </select>
-                            <input type="number" class="form-control" id="startYear" value="2021" min="1900" max="2099">
+                            <input type="number" class="form-control" id="startYear1" value="2021" min="1900" max="2099">
                         </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
-                        <label for="endMonth" class="form-label">End Date</label>
+                        <label for="endMonth1" class="form-label">End Date</label>
                         <div class="input-group">
-                            <select class="form-select" id="endMonth">
+                            <select class="form-select" id="endMonth1">
                                 <option selected>December</option>
                                 <option value="1">November</option>
                                 <option value="2">October</option>
                             </select>
-                            <input type="number" class="form-control" id="endYear" value="2023" min="1900" max="2099">
+                            <input type="number" class="form-control" id="endYear1" value="2023" min="1900" max="2099">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 2: Second Education Qualification -->
+            <div class="step">
+                <h5>Step 2: Education Qualification 2</h5>
+                <div class="mb-3">
+                    <label for="degree2" class="form-label">Degree <span class="text-danger">*</span></label>
+                    <select class="form-select" id="degree2" required>
+                        <option selected>BBA</option>
+                        <option value="1">MBA</option>
+                        <option value="2">MSc</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="major2" class="form-label">Major</label>
+                    <input type="text" class="form-control" id="major2" value="Business Administration">
+                </div>
+                <div class="mb-3">
+                    <label for="school2" class="form-label">School</label>
+                    <input type="text" class="form-control" id="school2" value="University of Dar Es Salaam">
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="startMonth2" class="form-label">Start Date</label>
+                        <div class="input-group">
+                            <select class="form-select" id="startMonth2">
+                                <option selected>August</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                            </select>
+                            <input type="number" class="form-control" id="startYear2" value="2017" min="1900" max="2099">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="endMonth2" class="form-label">End Date</label>
+                        <div class="input-group">
+                            <select class="form-select" id="endMonth2">
+                                <option selected>July</option>
+                                <option value="1">June</option>
+                                <option value="2">May</option>
+                            </select>
+                            <input type="number" class="form-control" id="endYear2" value="2020" min="1900" max="2099">
                         </div>
                     </div>
                 </div>
@@ -72,16 +115,50 @@
                 <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
             </div>
 
-            <!-- Step 3: Country and City -->
+            <!-- Step 3: Third Education Qualification -->
             <div class="step">
-                <h5>Step 3: Location</h5>
+                <h5>Step 3: Education Qualification 3</h5>
                 <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" value="Tanzania, United Republic of">
+                    <label for="degree3" class="form-label">Degree <span class="text-danger">*</span></label>
+                    <select class="form-select" id="degree3" required>
+                        <option selected>MSc</option>
+                        <option value="1">BBA</option>
+                        <option value="2">MBA</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" value="Dar Es Salaam">
+                    <label for="major3" class="form-label">Major</label>
+                    <input type="text" class="form-control" id="major3" value="Finance">
+                </div>
+                <div class="mb-3">
+                    <label for="school3" class="form-label">School</label>
+                    <input type="text" class="form-control" id="school3" value="Ardhi University">
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="startMonth3" class="form-label">Start Date</label>
+                        <div class="input-group">
+                            <select class="form-select" id="startMonth3">
+                                <option selected>September</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                            </select>
+                            <input type="number" class="form-control" id="startYear3" value="2014" min="1900" max="2099">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="endMonth3" class="form-label">End Date</label>
+                        <div class="input-group">
+                            <select class="form-select" id="endMonth3">
+                                <option selected>June</option>
+                                <option value="1">May</option>
+                                <option value="2">April</option>
+                            </select>
+                            <input type="number" class="form-control" id="endYear3" value="2017" min="1900" max="2099">
+                        </div>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
                 <button type="submit" class="btn btn-success">Submit</button>
@@ -113,7 +190,7 @@
             }
         }
 
-        document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+        document.getElementById("educationForm").addEventListener("submit", function(event) {
             event.preventDefault();
             alert("Form submitted successfully!");
         });
