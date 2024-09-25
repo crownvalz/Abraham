@@ -99,12 +99,18 @@
 <div class="step">
     <h5>Step 4: Your Information from ID</h5>
     
-    <!-- Full Name -->
-    <div class="mb-3">
-        <label for="fullName" class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="fullName" value="John Doe" readonly>
+    <!-- First Name and Last Name -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" value="John" readonly>
+        </div>
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" value="Doe" readonly>
+        </div>
     </div>
-    
+
     <!-- Date of Birth -->
     <div class="mb-3">
         <label for="dob" class="form-label">Date of Birth</label>
@@ -144,7 +150,6 @@
     <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
     <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
 </div>
-
         <!-- Step 5: Choose Account Type and Currency -->
         <div class="step">
             <h5>Step 5: Choose Account Type and Currency</h5>
