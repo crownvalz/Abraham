@@ -96,23 +96,54 @@
         </div>
 
         <!-- Step 4: Populate Information from ID -->
-        <div class="step">
-            <h5>Step 4: Your Information from ID</h5>
-            <div class="mb-3">
-                <label for="fullName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fullName" value="John Doe" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="dob" class="form-label">Date of Birth</label>
-                <input type="text" class="form-control" id="dob" value="01/01/1990" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" value="P.O. Box 123, Dar es Salaam" readonly>
-            </div>
-            <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
-            <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-        </div>
+<div class="step">
+    <h5>Step 4: Your Information from ID</h5>
+    
+    <!-- Full Name -->
+    <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" value="John Doe" readonly>
+    </div>
+    
+    <!-- Date of Birth -->
+    <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input type="text" class="form-control" id="dob" value="01/01/1990" readonly>
+    </div>
+    
+    <!-- Gender -->
+    <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <input type="text" class="form-control" id="gender" value="Male" readonly>
+    </div>
+
+    <!-- Nationality -->
+    <div class="mb-3">
+        <label for="nationality" class="form-label">Nationality</label>
+        <input type="text" class="form-control" id="nationality" value="Tanzanian" readonly>
+    </div>
+
+    <!-- Address -->
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" value="P.O. Box 123, Dar es Salaam" readonly>
+    </div>
+    
+    <!-- ID Expiry Date -->
+    <div class="mb-3">
+        <label for="idExpiryDate" class="form-label">ID Expiry Date</label>
+        <input type="text" class="form-control" id="idExpiryDate" value="31/12/2030" readonly>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" value="+255-712-345678" readonly>
+    </div>
+
+    <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+</div>
 
         <!-- Step 5: Choose Account Type and Currency -->
         <div class="step">
