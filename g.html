@@ -3,47 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bond Calculator</title>
+    <title>Professional Bond Calculator</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styling */
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .calculator-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .modal-content {
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-footer {
+            border-top: none;
+        }
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
     <div class="container mt-5">
-        <h1 class="text-center">Bond Calculator</h1>
-        
-        <!-- Bond Calculator Form -->
-        <form id="bondForm" class="mt-4">
-            <div class="mb-3">
-                <label for="faceValue" class="form-label">Face Value (Principal Amount)</label>
-                <input type="number" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="calculator-card">
+                    <h1 class="text-center mb-4">Professional Bond Calculator</h1>
+                    <!-- Bond Calculator Form -->
+                    <form id="bondForm" class="mt-4">
+                        <div class="mb-3">
+                            <label for="faceValue" class="form-label">Face Value (Principal Amount)</label>
+                            <input type="number" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="couponRate" class="form-label">Coupon Rate (%)</label>
+                            <input type="number" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="yearsToMaturity" class="form-label">Years to Maturity</label>
+                            <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
+                            <select class="form-select" id="paymentFrequency" required>
+                                <option value="1">Annually</option>
+                                <option value="2">Semi-Annually</option>
+                                <option value="4">Quarterly</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Calculate</button>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="couponRate" class="form-label">Coupon Rate (%)</label>
-                <input type="number" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
-            </div>
-            <div class="mb-3">
-                <label for="yearsToMaturity" class="form-label">Years to Maturity</label>
-                <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
-            </div>
-            <div class="mb-3">
-                <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
-                <select class="form-select" id="paymentFrequency" required>
-                    <option value="1">Annually</option>
-                    <option value="2">Semi-Annually</option>
-                    <option value="4">Quarterly</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Calculate</button>
-        </form>
+        </div>
     </div>
 
     <!-- Result Modal -->
     <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Bond Calculation Result</h5>
+                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
