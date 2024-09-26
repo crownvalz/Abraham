@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bond Calculator</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Simple Bond Calculator</h1>
+        
+        <!-- Bond Calculator Form -->
+        <form id="bondForm" class="mt-4">
+            <div class="mb-3">
+                <label for="faceValue" class="form-label">Face Value (Principal Amount)</label>
+                <input type="number" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
+            </div>
+            <div class="mb-3">
+                <label for="couponRate" class="form-label">Coupon Rate (%)</label>
+                <input type="number" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
+            </div>
+            <div class="mb-3">
+                <label for="yearsToMaturity" class="form-label">Years to Maturity</label>
+                <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
+            </div>
+            <div class="mb-3">
+                <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
+                <select class="form-select" id="paymentFrequency" required>
+                    <option value="1">Annually</option>
+                    <option value="2">Semi-Annually</option>
+                    <option value="4">Quarterly</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+    </div>
+
+    <!-- Result Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Bond Calculation Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="annualCoupon"></p>
+                    <p id="totalInterest"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Script -->
+    <script>
+        document.getElementById('bondForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const faceValue = parseFloat(document.getElementById('faceValue').value);
+            const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
+            const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
+            const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
+
+            // Calculate annual coupon payment
+            const annualCouponPayment = faceValue * couponRate;
+
+            // Calculate total interest over the life of the bond
+            const totalInterest = annualCouponPayment * yearsToMaturity;
+
+            // Update modal content
+            document.getElementById('annualCoupon').innerText = `Annual Coupon Payment: $${annualCouponPayment.toFixed(2)}`;
+            document.getElementById('totalInterest').innerText = `Total Interest Earned Over ${yearsToMaturity} Years: $${totalInterest.toFixed(2)}`;
+
+            // Show the modal
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
+        });
+    </script>
+</body>
+</html>
