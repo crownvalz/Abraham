@@ -88,26 +88,63 @@
         </div>
     </div>
 
-    <!-- Result Modal -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Result Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <!-- First row: Annual Coupon -->
+                    <div class="row py-2">
+                        <div class="col-6">
+                            <strong>Annual Coupon Payment:</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p id="annualCoupon" class="mb-0"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Second row: Total Interest -->
+                    <div class="row py-2">
+                        <div class="col-6">
+                            <strong>Total Interest Earned:</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p id="totalInterest" class="mb-0"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Third row: Total Bond Value -->
+                    <div class="row py-2">
+                        <div class="col-6">
+                            <strong>Total Bond Value:</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p id="totalBondValue" class="mb-0"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Fourth row: Total Future Value -->
+                    <div class="row py-2">
+                        <div class="col-6">
+                            <strong>Total Future Value:</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p id="totalFutureValue" class="mb-0"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p id="annualCoupon"></p>
-                    <p id="totalInterest"></p>
-                    <p id="totalBondValue"></p>
-                    <p id="totalFutureValue"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Footer Section -->
     <footer class="footer">
