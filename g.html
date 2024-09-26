@@ -43,10 +43,58 @@
             font-size: 1.25rem;
             font-weight: 600;
         }
+        .footer {
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+        }
+        .navbar-custom {
+            background-color: #343a40;
+            color: white;
+        }
+        .navbar-brand {
+            color: white !important;
+            font-weight: 600;
+        }
+        .navbar-toggler {
+            color: white;
+            border-color: white;
+        }
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+        .currency-format {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header with Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bond Calculator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bond Calculator Section -->
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -55,12 +103,12 @@
                     <!-- Bond Calculator Form -->
                     <form id="bondForm" class="mt-4">
                         <div class="mb-3">
-                            <label for="faceValue" class="form-label">Face Value (Principal Amount)</label>
-                            <input type="number" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
+                            <label for="faceValue" class="form-label">Face Value (Principal Amount) (TZS)</label>
+                            <input type="text" class="form-control currency-format" id="faceValue" placeholder="Enter bond's face value" required>
                         </div>
                         <div class="mb-3">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
-                            <input type="number" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
+                            <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
                         </div>
                         <div class="mb-3">
                             <label for="yearsToMaturity" class="form-label">Years to Maturity</label>
@@ -92,6 +140,8 @@
                 <div class="modal-body">
                     <p id="annualCoupon"></p>
                     <p id="totalInterest"></p>
+                    <p id="totalBondValue"></p>
+                    <p id="totalFutureValue"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -100,16 +150,32 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>Bond Calculator © 2024</p>
+    </footer>
+
     <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom Script -->
     <script>
+        // Format number with commas
+        function formatNumberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Format input value with commas
+        document.getElementById('faceValue').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/,/g, '');
+            e.target.value = formatNumberWithCommas(value);
+        });
+
         document.getElementById('bondForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             // Get form values
-            const faceValue = parseFloat(document.getElementById('faceValue').value);
+            const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, ''));
             const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
             const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
             const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
@@ -120,9 +186,17 @@
             // Calculate total interest over the life of the bond
             const totalInterest = annualCouponPayment * yearsToMaturity;
 
+            // Calculate total bond value (principal + interest)
+            const totalBondValue = faceValue + totalInterest;
+
+            // Calculate future value considering the coupon frequency
+            const totalFutureValue = annualCouponPayment * paymentFrequency * yearsToMaturity;
+
             // Update modal content
-            document.getElementById('annualCoupon').innerText = `Annual Coupon Payment: $${annualCouponPayment.toFixed(2)}`;
-            document.getElementById('totalInterest').innerText = `Total Interest Earned Over ${yearsToMaturity} Years: $${totalInterest.toFixed(2)}`;
+            document.getElementById('annualCoupon').innerText = `Annual Coupon Payment: TZS ${formatNumberWithCommas(annualCouponPayment.toFixed(2))}`;
+            document.getElementById('totalInterest').innerText = `Total Interest Earned Over ${yearsToMaturity} Years: TZS ${formatNumberWithCommas(totalInterest.toFixed(2))}`;
+            document.getElementById('totalBondValue').innerText = `Total Bond Value: TZS ${formatNumberWithCommas(totalBondValue.toFixed(2))}`;
+            document.getElementById('totalFutureValue').innerText = `Total Future Value (with Coupon Frequency): TZS ${formatNumberWithCommas(totalFutureValue.toFixed(2))}`;
 
             // Show the modal
             const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
