@@ -3,76 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Bond Calculator</title>
+    <title>Bond Calculator</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Custom Styling */
+        /* Reduced Custom CSS */
         body {
             background-color: #f5f7fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .calculator-card {
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 2rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .form-label {
-            font-weight: 500;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            transition: background-color 0.3s ease-in-out;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .modal-content {
-            border-radius: 10px;
-            padding: 1.5rem;
-        }
-        .modal-header {
-            border-bottom: none;
-        }
-        .modal-footer {
-            border-top: none;
-        }
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+        .modal-body p {
+            margin-bottom: 0.5rem;
         }
         .footer {
             text-align: center;
-            padding: 1rem 0;
+            padding: 1rem;
             font-size: 1rem;
             background-color: #f8f9fa;
-        }
-        .navbar-custom {
-            background-color: #343a40;
-            color: white;
-        }
-        .navbar-brand {
-            color: white !important;
-            font-weight: 600;
-        }
-        .navbar-toggler {
-            color: white;
-            border-color: white;
-        }
-        .navbar-toggler-icon {
-            background-color: white;
-        }
-        .currency-format {
-            text-align: right;
         }
     </style>
 </head>
 <body>
 
     <!-- Header with Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Bond Calculator</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,13 +40,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Home</a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">About</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -95,16 +54,16 @@
     </nav>
 
     <!-- Bond Calculator Section -->
-    <div class="container mt-5">
+    <div class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-8 col-12">
                 <div class="calculator-card">
                     <h1 class="text-center mb-4">Bond Calculator</h1>
                     <!-- Bond Calculator Form -->
-                    <form id="bondForm" class="mt-4">
+                    <form id="bondForm">
                         <div class="mb-3">
                             <label for="faceValue" class="form-label">Face Value (Principal Amount) (TZS)</label>
-                            <input type="text" class="form-control currency-format" id="faceValue" placeholder="Enter bond's face value" required>
+                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                         </div>
                         <div class="mb-3">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
