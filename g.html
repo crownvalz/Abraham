@@ -38,20 +38,6 @@
             background-color: #007bff;
             color: #fff;
         }
-        .navbar {
-            padding: 1rem 1.5rem; /* Add padding for better spacing */
-        }
-        .nav-link {
-            font-size: 1.1rem; /* Increase font size */
-            transition: color 0.3s; /* Smooth transition for hover effect */
-        }
-        .nav-link:hover {
-            color: #0056b3; /* Change color on hover */
-        }
-        .navbar-brand h2 {
-            font-size: 1.5rem; /* Adjust brand font size */
-            margin: 0; /* Remove bottom margin */
-        }
         footer {
             margin-top: 2rem;
             padding: 1rem;
@@ -60,26 +46,50 @@
             font-size: 0.9rem;
             color: #6c757d;
         }
-        /* Centering the title */
-        .calculator-card h2 {
-            text-align: center; /* Center the title */
+
+        /* Validation Styles */
+        .form-control.invalid {
+            border-color: red;
+            padding-right: 2.5rem;
+            position: relative;
+        }
+        .form-control.invalid ~ .input-icon {
+            display: block;
+            color: red;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .form-control.valid {
+            border-color: green;
+            padding-right: 2.5rem;
+        }
+        .input-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+        .input-icon.success {
+            color: green;
+            display: block;
         }
     </style>
 </head>
 <body>
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-light border-bottom">
-        <a class="navbar-brand" href="#">
-            <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Add your logo URL -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px; height: auto;"> <!-- Adjust logo size -->
+            <h2 class="mb-0">123 Bank Plc</h2>
         </a>
-        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
-
 
     <div class="container">
         <div class="row justify-content-center">
@@ -190,52 +200,88 @@
 
     <!-- Custom Script -->
     <script>
-        // Animate Hamburger Menu
-        const toggler = document.querySelector('.navbar-toggler');
-        toggler.addEventListener('click', () => {
-            toggler.classList.toggle('collapsed');
-        });
+        // Form validation
+        (function () {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
 
-        // Format input with commas as the user types in the face value field
-        const faceValueInput = document.getElementById('faceValue');
-        faceValueInput.addEventListener('input', function() {
-            let value = this.value.replace(/,/g, '');
-            this.value = new Intl.NumberFormat().format(value);
-        });
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    const inputFields = form.querySelectorAll('.form-control, .form-select');
+                    let valid = true;
 
-        // Form validation and styling
-        document.getElementById('bondForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            validateForm();
-        });
+                    inputFields.forEach((field) => {
+                        const icon = field.nextElementSibling;
 
-        function validateForm() {
-            const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
-            let isValid = true;
+                        if (!field.checkValidity()) {
+                            field.classList.add('invalid');
+                            field.classList.remove('valid');
+                            icon.classList.remove('success');
+                            valid = false;
+                        } else {
+                            field.classList.add('valid');
+                            field.classList.remove('invalid');
+                            icon.classList.add('success');
+                        }
+                    });
 
-            formFields.forEach(field => {
-                const icon = field.nextElementSibling;
-                if (field.value.trim() === '') {
-                    field.classList.add('invalid');
-                    field.classList.remove('valid');
-                    icon.classList.remove('success');
-                    isValid = false;
-                } else {
-                    field.classList.add('valid');
-                    field.classList.remove('invalid');
-                    icon.classList.add('success');
-                }
+                    if (!valid) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
             });
+        })();
 
-            return isValid;
+        // Function to format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        // Real-time validation on input
-        const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
-        formFields.forEach(field => {
-            field.addEventListener('input', () => {
-                validateForm();
-            });
+        document.getElementById('faceValue').addEventListener('input', function () {
+            // Remove non-digit characters
+            let value = this.value.replace(/[^0-9]/g, '');
+            // Format with commas
+            this.value = formatNumber(value);
+        });
+
+        document.getElementById('bondForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, '')); // Remove commas for calculation
+            const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
+            const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
+            const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
+
+            if (isNaN(faceValue) || isNaN(couponRate) || isNaN(yearsToMaturity) || isNaN(paymentFrequency)) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Calculate annual coupon payment
+            const annualCouponPayment = faceValue * couponRate;
+
+            // Calculate total interest over the life of the bond
+            const totalInterest = annualCouponPayment * yearsToMaturity;
+
+            // Total Bond Value (Face Value + Interest Earned)
+            const totalBondValue = faceValue + totalInterest;
+
+            // Total Future Value assuming reinvestment (basic example)
+            const totalFutureValue = faceValue * Math.pow((1 + couponRate / paymentFrequency), paymentFrequency * yearsToMaturity);
+
+            // Update modal content
+            document.getElementById('annualCoupon').innerText = `TZS ${formatNumber(annualCouponPayment.toFixed(2))}`;
+            document.getElementById('totalInterest').innerText = `TZS ${formatNumber(totalInterest.toFixed(2))}`;
+            document.getElementById('totalBondValue').innerText = `TZS ${formatNumber(totalBondValue.toFixed(2))}`;
+            document.getElementById('totalFutureValue').innerText = `TZS ${formatNumber(totalFutureValue.toFixed(2))}`;
+
+            // Show the modal
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
         });
     </script>
 </body>
