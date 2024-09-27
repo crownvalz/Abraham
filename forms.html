@@ -1,1 +1,109 @@
-f
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+        }
+
+        .form-check-label {
+            font-size: 0.9rem;
+        }
+
+        .btn-calculate, .btn-clear {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .btn-calculate {
+            background-color: #000;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-clear {
+            background-color: #f8f9fa;
+            color: #000;
+            border: 1px solid #ced4da;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="calculator-form">
+            <div class="logo">
+                <img src="your-logo.png" alt="Logo">
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount</label>
+                    <input type="text" class="form-control" id="loanAmount" placeholder="0.00">
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="includeFee">
+                    <label class="form-check-label" for="includeFee">Include initiation fee in your home loan?</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestRate">Interest Rate %</label>
+                    <input type="text" class="form-control" id="interestRate" placeholder="11.75">
+                </div>
+
+                <div class="form-group">
+                    <label for="loanTerm">Loan Term in Months</label>
+                    <input type="text" class="form-control" id="loanTerm" value="240" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalPayments">Additional monthly payments</label>
+                    <select class="form-control" id="additionalPayments">
+                        <option value="">None</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-calculate mb-2">Calculate</button>
+                <button type="reset" class="btn btn-clear">Clear</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
