@@ -16,63 +16,35 @@
             background-color: #ffffff;
             border-radius: 10px;
             padding: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
         }
         .form-label {
             font-weight: 500;
         }
         .btn-primary {
-            background-color: #000;
-            border-color: #000;
+            background-color: #007bff;
+            border-color: #007bff;
             transition: background-color 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background-color: #333;
+            background-color: #0056b3;
         }
         .btn-outline-primary {
-            border-color: #000;
-            color: #000;
+            border-color: #007bff;
+            color: #007bff;
         }
         .btn-outline-primary:hover {
-            background-color: #000;
+            background-color: #007bff;
             color: #fff;
         }
-        .navbar {
-            background-color: #ffffff;
-            padding: 1rem;
-        }
-        .navbar-brand img {
-            height: 40px;
-        }
-        .navbar-toggler {
-            border: none;
-        }
-        .navbar-toggler-icon {
-            background-color: #000;
-            display: block;
-            width: 25px;
-            height: 2px;
-            margin: 5px 0;
-            transition: transform 0.4s;
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(2) {
-            opacity: 0;
-        }
-        .form-spacing {
-            margin-bottom: 1.5rem;
-        }
         footer {
-            background-color: #f8f9fa;
-            padding: 1rem 0;
-            text-align: center;
             margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
 
         /* Validation Styles */
@@ -84,6 +56,10 @@
         .form-control.invalid ~ .input-icon {
             display: block;
             color: red;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         .form-control.valid {
             border-color: green;
@@ -98,60 +74,71 @@
         }
         .input-icon.success {
             color: green;
+            display: block;
         }
     </style>
 </head>
 <body>
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-light border-bottom">
-        <a class="navbar-brand" href="#">
-            <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Add your logo URL -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px; height: auto;"> <!-- Adjust logo size -->
+            <h2 class="mb-0">123 Bank Plc</h2>
         </a>
-        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-8 col-12">
                 <div class="calculator-card">
-                    <h2 class="mb-4">Loan details</h2>
+                    <h2 class="mb-4">Bond Calculator</h2>
                     <!-- Bond Calculator Form -->
-                    <form id="bondForm" class="mt-4">
-                        <div class="mb-3 form-spacing position-relative">
+                    <form id="bondForm" class="mt-4 needs-validation" novalidate>
+                        <div class="mb-3">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
                             <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                             <span class="input-icon">!</span>
+                            <div class="invalid-feedback">
+                                Please enter a valid bond amount.
+                            </div>
                         </div>
 
-                        <div class="mb-3 form-spacing position-relative">
+                        <div class="mb-3">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
                             <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
                             <span class="input-icon">!</span>
+                            <div class="invalid-feedback">
+                                Please enter a valid coupon rate.
+                            </div>
                         </div>
 
-                        <div class="mb-3 form-spacing position-relative">
-                            <label for="yearsToMaturity" class="form-label">Loan Term in Years</label>
-                            <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
+                        <div class="mb-3">
+                            <label for="yearsToMaturity" class="form-label">Bond Term in Years</label>
+                            <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" min="1" required>
                             <span class="input-icon">!</span>
+                            <div class="invalid-feedback">
+                                Please enter a valid number of years.
+                            </div>
                         </div>
 
-                        <div class="mb-3 form-spacing position-relative">
+                        <div class="mb-3">
                             <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
                             <select class="form-select" id="paymentFrequency" required>
-                                <option value="">Choose...</option>
+                                <option value="" disabled selected>Select frequency</option>
                                 <option value="1">Annually</option>
                                 <option value="2">Semi-Annually</option>
                                 <option value="4">Quarterly</option>
                             </select>
                             <span class="input-icon">!</span>
+                            <div class="invalid-feedback">
+                                Please select a payment frequency.
+                            </div>
                         </div>
 
-                        <!-- Checkbox example -->
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="initiationFee">
                             <label class="form-check-label" for="initiationFee">
@@ -167,9 +154,45 @@
         </div>
     </div>
 
+    <!-- Result Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6"><strong>Annual Coupon Payment:</strong></div>
+                        <div class="col-6 text-end"><p id="annualCoupon"></p></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><strong>Total Interest Earned:</strong></div>
+                        <div class="col-6 text-end"><p id="totalInterest"></p></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><strong>Total Bond Value:</strong></div>
+                        <div class="col-6 text-end"><p id="totalBondValue"></p></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><strong>Total Future Value:</strong></div>
+                        <div class="col-6 text-end"><p id="totalFutureValue"></p></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>Bond Calculator &copy; 2024</p>
+        <p>Bond Calculator - 123 Bank Plc &copy; 2024</p>
     </footer>
 
     <!-- Bootstrap 5 JS and dependencies -->
@@ -177,54 +200,89 @@
 
     <!-- Custom Script -->
     <script>
-        // Animate Hamburger Menu
-        const toggler = document.querySelector('.navbar-toggler');
-        toggler.addEventListener('click', () => {
-            toggler.classList.toggle('collapsed');
-        });
+        // Form validation
+        (function () {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
 
-        // Format input with commas as the user types in the face value field
-        const faceValueInput = document.getElementById('faceValue');
-        faceValueInput.addEventListener('input', function() {
-            let value = this.value.replace(/,/g, '');
-            this.value = new Intl.NumberFormat().format(value);
-        });
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    const inputFields = form.querySelectorAll('.form-control, .form-select');
+                    let valid = true;
 
-        // Form validation and styling
-        document.getElementById('bondForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            validateForm();
-        });
+                    inputFields.forEach((field) => {
+                        const icon = field.nextElementSibling;
 
-        function validateForm() {
-            const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
-            let isValid = true;
+                        if (!field.checkValidity()) {
+                            field.classList.add('invalid');
+                            field.classList.remove('valid');
+                            icon.classList.remove('success');
+                            valid = false;
+                        } else {
+                            field.classList.add('valid');
+                            field.classList.remove('invalid');
+                            icon.classList.add('success');
+                        }
+                    });
 
-            formFields.forEach(field => {
-                const icon = field.nextElementSibling;
-                if (field.value.trim() === '') {
-                    field.classList.add('invalid');
-                    field.classList.remove('valid');
-                    icon.classList.remove('success');
-                    isValid = false;
-                } else {
-                    field.classList.add('valid');
-                    field.classList.remove('invalid');
-                    icon.classList.add('success');
-                }
+                    if (!valid) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
             });
+        })();
 
-            return isValid;
+        // Function to format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        // Real-time validation on input
-        const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
-        formFields.forEach(field => {
-            field.addEventListener('input', () => {
-                validateForm();
-            });
+        document.getElementById('faceValue').addEventListener('input', function () {
+            // Remove non-digit characters
+            let value = this.value.replace(/[^0-9]/g, '');
+            // Format with commas
+            this.value = formatNumber(value);
+        });
+
+        document.getElementById('bondForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, '')); // Remove commas for calculation
+            const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
+            const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
+            const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
+
+            if (isNaN(faceValue) || isNaN(couponRate) || isNaN(yearsToMaturity) || isNaN(paymentFrequency)) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Calculate annual coupon payment
+            const annualCouponPayment = faceValue * couponRate;
+
+            // Calculate total interest over the life of the bond
+            const totalInterest = annualCouponPayment * yearsToMaturity;
+
+            // Total Bond Value (Face Value + Interest Earned)
+            const totalBondValue = faceValue + totalInterest;
+
+            // Total Future Value assuming reinvestment (basic example)
+            const totalFutureValue = faceValue * Math.pow((1 + couponRate / paymentFrequency), paymentFrequency * yearsToMaturity);
+
+            // Update modal content
+            document.getElementById('annualCoupon').innerText = `TZS ${formatNumber(annualCouponPayment.toFixed(2))}`;
+            document.getElementById('totalInterest').innerText = `TZS ${formatNumber(totalInterest.toFixed(2))}`;
+            document.getElementById('totalBondValue').innerText = `TZS ${formatNumber(totalBondValue.toFixed(2))}`;
+            document.getElementById('totalFutureValue').innerText = `TZS ${formatNumber(totalFutureValue.toFixed(2))}`;
+
+            // Show the modal
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
         });
     </script>
-
 </body>
 </html>
