@@ -16,35 +16,63 @@
             background-color: #ffffff;
             border-radius: 10px;
             padding: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
         }
         .form-label {
             font-weight: 500;
         }
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #000;
+            border-color: #000;
             transition: background-color 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #333;
         }
         .btn-outline-primary {
-            border-color: #007bff;
-            color: #007bff;
+            border-color: #000;
+            color: #000;
         }
         .btn-outline-primary:hover {
-            background-color: #007bff;
+            background-color: #000;
             color: #fff;
         }
-        footer {
-            margin-top: 2rem;
+        .navbar {
+            background-color: #ffffff;
             padding: 1rem;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler-icon {
+            background-color: #000;
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 5px 0;
+            transition: transform 0.4s;
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(2) {
+            opacity: 0;
+        }
+        .form-spacing {
+            margin-bottom: 1.5rem;
+        }
+        footer {
             background-color: #f8f9fa;
+            padding: 1rem 0;
             text-align: center;
-            font-size: 0.9rem;
-            color: #6c757d;
+            margin-top: 2rem;
         }
 
         /* Validation Styles */
@@ -56,10 +84,6 @@
         .form-control.invalid ~ .input-icon {
             display: block;
             color: red;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
         }
         .form-control.valid {
             border-color: green;
@@ -74,22 +98,23 @@
         }
         .input-icon.success {
             color: green;
-            display: block;
         }
     </style>
 </head>
 <body>
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px; height: auto;"> <!-- Adjust logo size -->
-            <h2 class="mb-0">123 Bank Plc</h2>
+    <nav class="navbar navbar-light border-bottom">
+        <a class="navbar-brand" href="#">
+            <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Add your logo URL -->
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
+
 
     <div class="container">
         <div class="row justify-content-center">
