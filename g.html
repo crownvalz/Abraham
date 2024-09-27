@@ -230,7 +230,8 @@
 
             formFields.forEach(field => {
                 const icon = field.nextElementSibling;
-                const errorMsg = document.getElementById(field.id + 'Error');
+                const errorMsg = field.nextElementSibling.nextElementSibling;
+
                 if (field.value.trim() === '') {
                     field.classList.add('invalid');
                     field.classList.remove('valid');
