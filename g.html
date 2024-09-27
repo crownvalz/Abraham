@@ -67,40 +67,37 @@
         }
         .form-spacing {
             margin-bottom: 1.5rem;
-            position: relative;
-        }
-        .form-control {
-            position: relative;
-        }
-        .form-control.invalid {
-            border-color: red;
-        }
-        .form-control.valid {
-            border-color: green;
-        }
-        .form-spacing .icon-invalid {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: red;
-            font-size: 1.2rem;
-            display: none;
-        }
-        .form-spacing .icon-valid {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: green;
-            font-size: 1.2rem;
-            display: none;
         }
         footer {
             background-color: #f8f9fa;
             padding: 1rem 0;
             text-align: center;
             margin-top: 2rem;
+        }
+
+        /* Validation Styles */
+        .form-control.invalid {
+            border-color: red;
+            padding-right: 2.5rem;
+            position: relative;
+        }
+        .form-control.invalid ~ .input-icon {
+            display: block;
+            color: red;
+        }
+        .form-control.valid {
+            border-color: green;
+            padding-right: 2.5rem;
+        }
+        .input-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+        .input-icon.success {
+            color: green;
         }
     </style>
 </head>
@@ -125,37 +122,41 @@
                     <h2 class="mb-4">Loan details</h2>
                     <!-- Bond Calculator Form -->
                     <form id="bondForm" class="mt-4">
-                        <div class="mb-3 form-spacing">
+                        <div class="mb-3 form-spacing position-relative">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
                             <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
-                            <i class="icon-invalid fas fa-exclamation-circle"></i>
-                            <i class="icon-valid fas fa-check-circle"></i>
+                            <span class="input-icon">!</span>
                         </div>
 
-                        <div class="mb-3 form-spacing">
+                        <div class="mb-3 form-spacing position-relative">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
                             <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
-                            <i class="icon-invalid fas fa-exclamation-circle"></i>
-                            <i class="icon-valid fas fa-check-circle"></i>
+                            <span class="input-icon">!</span>
                         </div>
 
-                        <div class="mb-3 form-spacing">
+                        <div class="mb-3 form-spacing position-relative">
                             <label for="yearsToMaturity" class="form-label">Loan Term in Years</label>
                             <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
-                            <i class="icon-invalid fas fa-exclamation-circle"></i>
-                            <i class="icon-valid fas fa-check-circle"></i>
+                            <span class="input-icon">!</span>
                         </div>
 
-                        <div class="mb-3 form-spacing">
+                        <div class="mb-3 form-spacing position-relative">
                             <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
                             <select class="form-select" id="paymentFrequency" required>
-                                <option value="">Select frequency</option>
+                                <option value="">Choose...</option>
                                 <option value="1">Annually</option>
                                 <option value="2">Semi-Annually</option>
                                 <option value="4">Quarterly</option>
                             </select>
-                            <i class="icon-invalid fas fa-exclamation-circle"></i>
-                            <i class="icon-valid fas fa-check-circle"></i>
+                            <span class="input-icon">!</span>
+                        </div>
+
+                        <!-- Checkbox example -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="initiationFee">
+                            <label class="form-check-label" for="initiationFee">
+                                Include initiation fee in your bond?
+                            </label>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Calculate</button>
@@ -173,55 +174,55 @@
 
     <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <!-- Custom Script -->
     <script>
-        // Validate inputs with red border, red exclamation icon, and green border with check icon when valid
-        const form = document.getElementById('bondForm');
-        const inputs = form.querySelectorAll('.form-control, .form-select');
-
-        inputs.forEach(input => {
-            input.addEventListener('input', () => {
-                const iconInvalid = input.parentElement.querySelector('.icon-invalid');
-                const iconValid = input.parentElement.querySelector('.icon-valid');
-
-                if (!input.value || input.validity.patternMismatch || input.validity.typeMismatch) {
-                    input.classList.add('invalid');
-                    input.classList.remove('valid');
-                    iconInvalid.style.display = 'block';
-                    iconValid.style.display = 'none';
-                } else {
-                    input.classList.add('valid');
-                    input.classList.remove('invalid');
-                    iconValid.style.display = 'block';
-                    iconInvalid.style.display = 'none';
-                }
-            });
+        // Animate Hamburger Menu
+        const toggler = document.querySelector('.navbar-toggler');
+        toggler.addEventListener('click', () => {
+            toggler.classList.toggle('collapsed');
         });
 
-        form.addEventListener('submit', function (event) {
+        // Format input with commas as the user types in the face value field
+        const faceValueInput = document.getElementById('faceValue');
+        faceValueInput.addEventListener('input', function() {
+            let value = this.value.replace(/,/g, '');
+            this.value = new Intl.NumberFormat().format(value);
+        });
+
+        // Form validation and styling
+        document.getElementById('bondForm').addEventListener('submit', function (event) {
             event.preventDefault();
+            validateForm();
+        });
 
-            inputs.forEach(input => {
-                const iconInvalid = input.parentElement.querySelector('.icon-invalid');
-                const iconValid = input.parentElement.querySelector('.icon-valid');
+        function validateForm() {
+            const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
+            let isValid = true;
 
-                if (!input.value || input.validity.patternMismatch || input.validity.typeMismatch) {
-                    input.classList.add('invalid');
-                    input.classList.remove('valid');
-                    iconInvalid.style.display = 'block';
-                    iconValid.style.display = 'none';
+            formFields.forEach(field => {
+                const icon = field.nextElementSibling;
+                if (field.value.trim() === '') {
+                    field.classList.add('invalid');
+                    field.classList.remove('valid');
+                    icon.classList.remove('success');
+                    isValid = false;
                 } else {
-                    input.classList.add('valid');
-                    input.classList.remove('invalid');
-                    iconValid.style.display = 'block';
-                    iconInvalid.style.display = 'none';
+                    field.classList.add('valid');
+                    field.classList.remove('invalid');
+                    icon.classList.add('success');
                 }
             });
 
-            // Additional form validation logic...
+            return isValid;
+        }
+
+        // Real-time validation on input
+        const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
+        formFields.forEach(field => {
+            field.addEventListener('input', () => {
+                validateForm();
+            });
         });
     </script>
 
