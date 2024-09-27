@@ -229,10 +229,7 @@
             const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
             const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
 
-            if (isNaN(faceValue) || isNaN(couponRate) || isNaN(yearsToMaturity) || isNaN(paymentFrequency)) {
-                alert('Please fill in all required fields.');
-                return;
-            }
+            
 
             // Calculate annual coupon payment
             const annualCouponPayment = faceValue * couponRate;
