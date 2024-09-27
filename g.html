@@ -75,37 +75,38 @@
         }
         /* Hamburger to X animation */
         .navbar-toggler-icon {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
             position: relative;
+            width: 30px;
+            height: 2px;
+            background-color: #000;
+            display: inline-block;
             transition: all 0.3s ease-in-out;
         }
         .navbar-toggler-icon::before,
         .navbar-toggler-icon::after {
             content: '';
             position: absolute;
-            width: 24px;
+            width: 30px;
             height: 2px;
             background-color: #000;
             transition: all 0.3s ease-in-out;
         }
         .navbar-toggler-icon::before {
-            top: 6px;
+            top: -8px;
         }
         .navbar-toggler-icon::after {
-            bottom: 6px;
-        }
-        .navbar-toggler.active .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-            top: 12px;
-        }
-        .navbar-toggler.active .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-            bottom: 12px;
+            top: 8px;
         }
         .navbar-toggler.active .navbar-toggler-icon {
             background-color: transparent;
+        }
+        .navbar-toggler.active .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .navbar-toggler.active .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+            top: 0;
         }
     </style>
 </head>
@@ -134,6 +135,7 @@
             </ul>
         </div>
     </nav>
+
 
     <div class="container">
         <div class="row justify-content-center">
