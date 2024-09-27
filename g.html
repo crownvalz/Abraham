@@ -136,96 +136,58 @@
         </div>
     </nav>
 
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="calculator-card">
-                    <h2 class="mb-4">Bond Calculator</h2>
-                    <!-- Bond Calculator Form -->
-                    <form id="bondForm" class="mt-4 needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
-                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
-                            <div class="invalid-feedback">
-                                Please enter a valid bond amount.
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="couponRate" class="form-label">Coupon Rate (%)</label>
-                            <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="yearsToMaturity" class="form-label">Bond Term in Years</label>
-                            <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" min="1" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
-                            <select class="form-select" id="paymentFrequency" required>
-                                <option value="" disabled selected>Select frequency</option>
-                                <option value="1">Annually</option>
-                                <option value="2">Semi-Annually</option>
-                                <option value="4">Quarterly</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a payment frequency.
-                            </div>
-                        </div>
-
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="initiationFee">
-                            <label class="form-check-label" for="initiationFee">
-                                Include initiation fee in your bond?
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100">Calculate</button>
-                        <button type="reset" class="btn btn-outline-primary w-100 mt-2">Clear</button>
-                    </form>
+    <div class="container mt-5">
+        <div class="calculator-card">
+            <h2>Bond Calculator</h2>
+            <form id="bondForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="faceValue" class="form-label">Face Value (TZS)</label>
+                    <input type="text" class="form-control" id="faceValue" required>
                 </div>
-            </div>
+                <div class="mb-3">
+                    <label for="couponRate" class="form-label">Coupon Rate (%)</label>
+                    <input type="number" class="form-control" id="couponRate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="yearsToMaturity" class="form-label">Years to Maturity</label>
+                    <input type="number" class="form-control" id="yearsToMaturity" required>
+                </div>
+                <div class="mb-3">
+                    <label for="paymentFrequency" class="form-label">Payment Frequency (per year)</label>
+                    <input type="number" class="form-control" id="paymentFrequency" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
         </div>
     </div>
 
     <!-- Result Modal -->
     <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                    <h5 class="modal-title" id="resultModalLabel">Bond Calculation Results</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-6"><strong>Annual Coupon Payment:</strong></div>
-                        <div class="col-6 text-end"><p id="annualCoupon"></p></div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6"><strong>Total Interest Earned:</strong></div>
-                        <div class="col-6 text-end"><p id="totalInterest"></p></div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6"><strong>Total Bond Value:</strong></div>
-                        <div class="col-6 text-end"><p id="totalBondValue"></p></div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6"><strong>Total Future Value:</strong></div>
-                        <div class="col-6 text-end"><p id="totalFutureValue"></p></div>
-                    </div>
+                    <p>Annual Coupon Payment: <span id="annualCoupon"></span></p>
+                    <p>Total Interest Over Life: <span id="totalInterest"></span></p>
+                    <p>Total Bond Value: <span id="totalBondValue"></span></p>
+                    <p>Total Future Value: <span id="totalFutureValue"></span></p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Hamburger menu toggle animation
+        const toggler = document.querySelector('.navbar-toggler');
+        toggler.addEventListener('click', function () {
+            this.classList.toggle('active');
+        });
+
         // Form validation
         (function () {
             'use strict';
@@ -284,13 +246,6 @@
             // Show the modal
             const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
             resultModal.show();
-        });
-
-        
-        // Hamburger menu toggle animation
-        const toggler = document.querySelector('.navbar-toggler');
-        toggler.addEventListener('click', function () {
-            this.classList.toggle('active');
         });
     </script>
 </body>
