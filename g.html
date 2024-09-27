@@ -99,6 +99,11 @@
         .input-icon.success {
             color: green;
         }
+        .error-message {
+            color: red;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 <body>
@@ -126,18 +131,21 @@
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
                             <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                             <span class="input-icon">!</span>
+                            <div class="error-message" id="faceValueError"></div>
                         </div>
 
                         <div class="mb-3 form-spacing position-relative">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
                             <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
                             <span class="input-icon">!</span>
+                            <div class="error-message" id="couponRateError"></div>
                         </div>
 
                         <div class="mb-3 form-spacing position-relative">
                             <label for="yearsToMaturity" class="form-label">Loan Term in Years</label>
                             <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
                             <span class="input-icon">!</span>
+                            <div class="error-message" id="yearsToMaturityError"></div>
                         </div>
 
                         <div class="mb-3 form-spacing position-relative">
@@ -149,9 +157,9 @@
                                 <option value="4">Quarterly</option>
                             </select>
                             <span class="input-icon">!</span>
+                            <div class="error-message" id="paymentFrequencyError"></div>
                         </div>
 
-                        <!-- Checkbox example -->
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="initiationFee">
                             <label class="form-check-label" for="initiationFee">
@@ -202,15 +210,18 @@
 
             formFields.forEach(field => {
                 const icon = field.nextElementSibling;
+                const errorMsg = document.getElementById(field.id + 'Error');
                 if (field.value.trim() === '') {
                     field.classList.add('invalid');
                     field.classList.remove('valid');
                     icon.classList.remove('success');
+                    errorMsg.textContent = 'This field is required.';
                     isValid = false;
                 } else {
                     field.classList.add('valid');
                     field.classList.remove('invalid');
                     icon.classList.add('success');
+                    errorMsg.textContent = '';
                 }
             });
 
