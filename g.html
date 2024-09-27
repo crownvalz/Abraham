@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bond Calculator</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Custom Styling */
         body {
             background-color: #f5f7fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,75 +17,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
         }
-        .form-label {
-            font-weight: 500;
-        }
-        .btn-primary {
-            background-color: #000;
-            border-color: #000;
-            transition: background-color 0.3s ease-in-out;
-        }
-        .btn-primary:hover {
-            background-color: #333;
-        }
-        .btn-outline-primary {
-            border-color: #000;
-            color: #000;
-        }
-        .btn-outline-primary:hover {
-            background-color: #000;
-            color: #fff;
-        }
-        .navbar {
-            background-color: #ffffff;
-            padding: 1rem;
-        }
-        .navbar-brand img {
-            height: 40px;
-        }
-        .navbar-toggler {
-            border: none;
-        }
-        .navbar-toggler-icon {
-            background-color: #000;
-            display: block;
-            width: 25px;
-            height: 2px;
-            margin: 5px 0;
-            transition: transform 0.4s;
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(2) {
-            opacity: 0;
-        }
-        .form-spacing {
-            margin-bottom: 1.5rem;
-        }
-        footer {
-            background-color: #f8f9fa;
-            padding: 1rem 0;
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        /* Validation Styles */
-        .form-control.invalid {
-            border-color: red;
-            padding-right: 2.5rem;
-            position: relative;
-        }
-        .form-control.invalid ~ .input-icon {
-            display: block;
-            color: red;
-        }
-        .form-control.valid {
-            border-color: green;
-            padding-right: 2.5rem;
+        .modal {
+            transition: opacity 0.3s ease;
         }
         .input-icon {
             position: absolute;
@@ -98,6 +29,7 @@
         }
         .input-icon.success {
             color: green;
+            display: block;
         }
         .error-message {
             color: red;
@@ -108,14 +40,11 @@
 </head>
 <body>
 
-    <!-- Top Navbar -->
     <nav class="navbar navbar-light border-bottom">
         <a class="navbar-brand" href="#">
-            <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Add your logo URL -->
+            <img src="https://via.placeholder.com/40" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
@@ -125,30 +54,29 @@
             <div class="col-md-6">
                 <div class="calculator-card">
                     <h2 class="mb-4">Loan details</h2>
-                    <!-- Bond Calculator Form -->
                     <form id="bondForm" class="mt-4">
-                        <div class="mb-3 form-spacing position-relative">
+                        <div class="mb-3 position-relative">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
                             <input type="tel" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                             <span class="input-icon">!</span>
                             <div class="error-message" id="faceValueError"></div>
                         </div>
 
-                        <div class="mb-3 form-spacing position-relative">
+                        <div class="mb-3 position-relative">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
                             <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
                             <span class="input-icon">!</span>
                             <div class="error-message" id="couponRateError"></div>
                         </div>
 
-                        <div class="mb-3 form-spacing position-relative">
+                        <div class="mb-3 position-relative">
                             <label for="yearsToMaturity" class="form-label">Loan Term in Years</label>
                             <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
                             <span class="input-icon">!</span>
                             <div class="error-message" id="yearsToMaturityError"></div>
                         </div>
 
-                        <div class="mb-3 form-spacing position-relative">
+                        <div class="mb-3 position-relative">
                             <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
                             <select class="form-select" id="paymentFrequency" required>
                                 <option value="">Choose...</option>
@@ -160,13 +88,6 @@
                             <div class="error-message" id="paymentFrequencyError"></div>
                         </div>
 
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="initiationFee">
-                            <label class="form-check-label" for="initiationFee">
-                                Include initiation fee in your bond?
-                            </label>
-                        </div>
-
                         <button type="submit" class="btn btn-primary w-100">Calculate</button>
                         <button type="reset" class="btn btn-outline-primary w-100 mt-2">Clear</button>
                     </form>
@@ -175,7 +96,6 @@
         </div>
     </div>
 
-    <!-- Result Modal -->
     <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -193,30 +113,19 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>Bond Calculator &copy; 2024</p>
     </footer>
 
-    <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom Script -->
     <script>
-        // Animate Hamburger Menu
-        const toggler = document.querySelector('.navbar-toggler');
-        toggler.addEventListener('click', () => {
-            toggler.classList.toggle('collapsed');
-        });
-
-        // Format input with commas as the user types in the face value field
         const faceValueInput = document.getElementById('faceValue');
+
         faceValueInput.addEventListener('input', function() {
             let value = this.value.replace(/,/g, '');
             this.value = new Intl.NumberFormat().format(value);
         });
 
-        // Form validation and styling
         document.getElementById('bondForm').addEventListener('submit', function (event) {
             event.preventDefault();
             if (validateForm()) {
@@ -237,6 +146,24 @@
                     field.classList.remove('valid');
                     icon.classList.remove('success');
                     errorMsg.textContent = 'This field is required.';
+                    isValid = false;
+                } else if (field.id === 'faceValue' && parseFloat(field.value.replace(/,/g, '')) <= 0) {
+                    field.classList.add('invalid');
+                    field.classList.remove('valid');
+                    icon.classList.remove('success');
+                    errorMsg.textContent = 'Face value must be greater than zero.';
+                    isValid = false;
+                } else if (field.id === 'couponRate' && (parseFloat(field.value) < 0 || parseFloat(field.value) > 100)) {
+                    field.classList.add('invalid');
+                    field.classList.remove('valid');
+                    icon.classList.remove('success');
+                    errorMsg.textContent = 'Coupon rate must be between 0 and 100.';
+                    isValid = false;
+                } else if (field.id === 'yearsToMaturity' && (parseInt(field.value) <= 0 || !Number.isInteger(parseFloat(field.value)))) {
+                    field.classList.add('invalid');
+                    field.classList.remove('valid');
+                    icon.classList.remove('success');
+                    errorMsg.textContent = 'Years to maturity must be a positive integer.';
                     isValid = false;
                 } else {
                     field.classList.add('valid');
@@ -286,7 +213,6 @@
             resultModal.show();
         }
 
-        // Real-time validation on input
         const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
         formFields.forEach(field => {
             field.addEventListener('input', () => {
@@ -294,6 +220,5 @@
             });
         });
     </script>
-
 </body>
 </html>
