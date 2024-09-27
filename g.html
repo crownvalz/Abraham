@@ -129,7 +129,7 @@
                     <form id="bondForm" class="mt-4">
                         <div class="mb-3 form-spacing position-relative">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
-                            <input type="phone" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
+                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                             <span class="input-icon">!</span>
                             <div class="error-message" id="faceValueError"></div>
                         </div>
@@ -175,6 +175,24 @@
         </div>
     </div>
 
+    <!-- Result Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="calculationResult"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>Bond Calculator &copy; 2024</p>
@@ -201,7 +219,9 @@
         // Form validation and styling
         document.getElementById('bondForm').addEventListener('submit', function (event) {
             event.preventDefault();
-            validateForm();
+            if (validateForm()) {
+                calculateBondPrice();
+            }
         });
 
         function validateForm() {
@@ -221,11 +241,35 @@
                     field.classList.add('valid');
                     field.classList.remove('invalid');
                     icon.classList.add('success');
-                    errorMsg.textContent = '';
+                    errorMsg.textContent = ''; // Clear error message
                 }
             });
 
             return isValid;
+        }
+
+        function calculateBondPrice() {
+            const faceValue = parseFloat(faceValueInput.value.replace(/,/g, ''));
+            const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
+            const yearsToMaturity = parseInt(document.getElementById('yearsToMaturity').value);
+            const paymentFrequency = parseInt(document.getElementById('paymentFrequency').value);
+
+            // Calculate bond price (simplified formula)
+            const couponPayment = faceValue * couponRate / paymentFrequency;
+            const totalPayments = yearsToMaturity * paymentFrequency;
+            let bondPrice = 0;
+
+            for (let i = 1; i <= totalPayments; i++) {
+                bondPrice += couponPayment / Math.pow(1 + couponRate / paymentFrequency, i);
+            }
+
+            bondPrice += faceValue / Math.pow(1 + couponRate / paymentFrequency, totalPayments);
+
+            // Display result in modal
+            const resultText = `The calculated bond price is: TZS ${bondPrice.toFixed(2)}`;
+            document.getElementById('calculationResult').innerText = resultText;
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
         }
 
         // Real-time validation on input
