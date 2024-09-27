@@ -16,26 +16,26 @@
             background-color: #ffffff;
             border-radius: 10px;
             padding: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
         }
         .form-label {
             font-weight: 500;
         }
         .btn-primary {
-            background-color: #000;
-            border-color: #000;
+            background-color: #007bff;
+            border-color: #007bff;
             transition: background-color 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background-color: #333;
+            background-color: #0056b3;
         }
         .btn-outline-primary {
-            border-color: #000;
-            color: #000;
+            border-color: #007bff;
+            color: #007bff;
         }
         .btn-outline-primary:hover {
-            background-color: #000;
+            background-color: #007bff;
             color: #fff;
         }
         .navbar {
@@ -46,7 +46,7 @@
             transition: color 0.3s; /* Smooth transition for hover effect */
         }
         .nav-link:hover {
-            color: #007bff; /* Change color on hover */
+            color: #0056b3; /* Change color on hover */
         }
         .navbar-brand h2 {
             font-size: 1.5rem; /* Adjust brand font size */
@@ -69,7 +69,7 @@
 <body>
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px; height: auto;"> <!-- Adjust logo size -->
             <h2 class="mb-0">123 Bank Plc</h2>
@@ -94,7 +94,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-8 col-12">
                 <div class="calculator-card">
                     <h2 class="mb-4">Bond Calculator</h2>
                     <!-- Bond Calculator Form -->
@@ -130,7 +130,6 @@
                             </div>
                         </div>
 
-                        <!-- Checkbox example -->
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="initiationFee">
                             <label class="form-check-label" for="initiationFee">
@@ -184,7 +183,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Bond Calculator</p>
+        <p>Bond Calculator - 123 Bank Plc &copy; 2024</p>
     </footer>
 
     <!-- Bootstrap 5 JS and dependencies -->
@@ -196,7 +195,7 @@
         (function () {
             'use strict';
             const forms = document.querySelectorAll('.needs-validation');
-            
+
             Array.prototype.slice.call(forms).forEach(function (form) {
                 form.addEventListener('submit', function (event) {
                     if (!form.checkValidity()) {
