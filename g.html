@@ -39,20 +39,18 @@
             color: #fff;
         }
         .navbar {
-            background-color: #ffffff;
-            padding: 1rem;
+            padding: 1rem 1.5rem; /* Add padding for better spacing */
         }
-        .navbar-brand img {
-            height: 40px;
+        .nav-link {
+            font-size: 1.1rem; /* Increase font size */
+            transition: color 0.3s; /* Smooth transition for hover effect */
         }
-        .form-check-input {
-            border-radius: 50%;
+        .nav-link:hover {
+            color: #007bff; /* Change color on hover */
         }
-        input:invalid {
-            border-color: red;
-        }
-        input:valid {
-            border-color: #28a745;
+        .navbar-brand h2 {
+            font-size: 1.5rem; /* Adjust brand font size */
+            margin: 0; /* Remove bottom margin */
         }
         footer {
             margin-top: 2rem;
@@ -66,11 +64,11 @@
 </head>
 <body>
 
-<!-- Top Navbar -->
+    <!-- Top Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-        <a class="navbar-brand" href="#">
-            <img src="img/logo.png" alt="Logo"> <!-- Add your logo URL -->
-           <h2 class="mb-4">Bond Calculator</h2>
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px; height: auto;"> <!-- Adjust logo size -->
+            <h2 class="mb-0">123 Bank Plc</h2>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
