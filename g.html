@@ -7,7 +7,6 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Custom Styling */
         body {
             background-color: #f5f7fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,9 +18,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
         }
-        .form-label {
-            font-weight: 500;
-        }
         .btn-primary {
             background-color: #000;
             border-color: #000;
@@ -30,38 +26,30 @@
         .btn-primary:hover {
             background-color: #333;
         }
-        .btn-outline-primary {
-            border-color: #000;
-            color: #000;
-        }
         .btn-outline-primary:hover {
             background-color: #000;
             color: #fff;
         }
-        .navbar {
-            background-color: #ffffff;
-            padding: 1rem;
-        }
-        .navbar-brand img {
-            height: 40px;
-        }
         .form-check-input {
             border-radius: 50%;
         }
-        input:invalid {
-            border-color: black;
+        .invalid-input {
+            border-color: red !important;
         }
-        input.invalid-input {
-            border-color: red;
+        .navbar {
+            padding: 0.5rem 1rem;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .dropdown-menu {
+            width: 100%;
         }
         footer {
             background-color: #f8f9fa;
             padding: 1rem 0;
             text-align: center;
             margin-top: 2rem;
-        }
-        .offcanvas-body {
-            padding: 1rem;
         }
     </style>
 </head>
@@ -72,38 +60,21 @@
         <a class="navbar-brand" href="#">
             <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Add your logo URL -->
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Home</a></li>
+            <li><a class="dropdown-item" href="#">About</a></li>
+            <li><a class="dropdown-item" href="#">Contact</a></li>
+        </ul>
     </nav>
-
-    <!-- Offcanvas Sidebar (Hamburger Menu) -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="calculator-card">
                     <h2 class="mb-4">Loan details</h2>
-                    <!-- Bond Calculator Form -->
                     <form id="bondForm" class="mt-4">
                         <div class="mb-3">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
@@ -129,12 +100,9 @@
                             </select>
                         </div>
 
-                        <!-- Checkbox example -->
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="initiationFee">
-                            <label class="form-check-label" for="initiationFee">
-                                Include initiation fee in your bond?
-                            </label>
+                            <input class="form-check-input" type="checkbox" id="initiationFee">
+                            <label class="form-check-label" for="initiationFee">Include initiation fee in your bond?</label>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Calculate</button>
@@ -191,22 +159,13 @@
 
     <!-- Custom Script -->
     <script>
-        // Format input with commas as the user types in the face value field
-        const faceValueInput = document.getElementById('faceValue');
-        faceValueInput.addEventListener('input', function() {
-            let value = this.value.replace(/,/g, '');
-            this.value = new Intl.NumberFormat().format(value);
-        });
-
-        // Form validation without showing error initially
-        document.getElementById('bondForm').addEventListener('submit', function (event) {
+        const bondForm = document.getElementById('bondForm');
+        bondForm.addEventListener('submit', function(event) {
             event.preventDefault();
-
             let isValid = true;
-            const requiredFields = ['faceValue', 'couponRate', 'yearsToMaturity', 'paymentFrequency'];
-            
-            requiredFields.forEach(id => {
-                const input = document.getElementById(id);
+
+            const inputs = bondForm.querySelectorAll('input, select');
+            inputs.forEach(input => {
                 if (!input.value) {
                     input.classList.add('invalid-input');
                     isValid = false;
@@ -215,31 +174,29 @@
                 }
             });
 
-            if (!isValid) {
-                return;
-            }
+            if (!isValid) return;
 
-            // Get form values
             const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, ''));
             const couponRate = parseFloat(document.getElementById('couponRate').value);
             const yearsToMaturity = parseInt(document.getElementById('yearsToMaturity').value);
             const paymentFrequency = parseInt(document.getElementById('paymentFrequency').value);
 
-            // Perform calculations and show results in the modal
             const annualCoupon = faceValue * (couponRate / 100);
             const totalInterest = annualCoupon * yearsToMaturity;
             const totalBondValue = faceValue + totalInterest;
-            const totalFutureValue = totalBondValue;
 
-            document.getElementById('annualCoupon').textContent = new Intl.NumberFormat().format(annualCoupon);
-            document.getElementById('totalInterest').textContent = new Intl.NumberFormat().format(totalInterest);
-            document.getElementById('totalBondValue').textContent = new Intl.NumberFormat().format(totalBondValue);
-            document.getElementById('totalFutureValue').textContent = new Intl.NumberFormat().format(totalFutureValue);
+            document.getElementById('annualCoupon').textContent = annualCoupon.toLocaleString();
+            document.getElementById('totalInterest').textContent = totalInterest.toLocaleString();
+            document.getElementById('totalBondValue').textContent = totalBondValue.toLocaleString();
+            document.getElementById('totalFutureValue').textContent = totalBondValue.toLocaleString();
 
-            // Show modal
             new bootstrap.Modal(document.getElementById('resultModal')).show();
         });
-    </script>
 
+        document.getElementById('faceValue').addEventListener('input', function() {
+            let value = this.value.replace(/,/g, '');
+            this.value = new Intl.NumberFormat().format(value);
+        });
+    </script>
 </body>
 </html>
