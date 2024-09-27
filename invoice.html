@@ -3,236 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-step Education Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Checklist Questionnaire</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .step {
-            display: none;
-        }
-        .step.active {
-            display: block;
-        }
-        .navbar-brand img {
-            width: 50px;
-            height: auto;
-        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-    <!-- Navbar with Hamburger Menu on the left and Logo on the right -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <!-- Hamburger Menu -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Collapsible Menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Logo on the Right -->
-            <a class="navbar-brand" href="#">
-                <img src="https://via.placeholder.com/50" alt="Logo">
-            </a>
-        </div>
-    </nav>
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Branch Operations Checklist</h1>
 
-    <div class="container mt-5">
-        <h3>Education Qualifications</h3>
-        <form id="educationForm">
-            <!-- Step 1: First Education Qualification -->
-            <div class="step active">
-                <h5>Step 1: Education Qualification 1</h5>
-                <div class="mb-3">
-                    <label for="degree1" class="form-label">Degree <span class="text-danger">*</span></label>
-                    <select class="form-select" id="degree1" required>
-                        <option selected>MBA</option>
-                        <option value="1">BBA</option>
-                        <option value="2">MSc</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="major1" class="form-label">Major</label>
-                    <input type="text" class="form-control" id="major1" value="Corporate Management">
-                </div>
-                <div class="mb-3">
-                    <label for="school1" class="form-label">School</label>
-                    <input type="text" class="form-control" id="school1" value="Mzumbe University">
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="startMonth1" class="form-label">Start Date</label>
-                        <div class="input-group">
-                            <select class="form-select" id="startMonth1">
-                                <option selected>October</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                            </select>
-                            <input type="number" class="form-control" id="startYear1" value="2021" min="1900" max="2099">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="endMonth1" class="form-label">End Date</label>
-                        <div class="input-group">
-                            <select class="form-select" id="endMonth1">
-                                <option selected>December</option>
-                                <option value="1">November</option>
-                                <option value="2">October</option>
-                            </select>
-                            <input type="number" class="form-control" id="endYear1" value="2023" min="1900" max="2099">
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-            </div>
+        <!-- Questionnaire Form -->
+        <form id="checklistForm">
 
-            <!-- Step 2: Second Education Qualification -->
+            <!-- Step 1 - Account Opening -->
             <div class="step">
-                <h5>Step 2: Education Qualification 2</h5>
+                <h3>Step 1: Account Opening</h3>
                 <div class="mb-3">
-                    <label for="degree2" class="form-label">Degree <span class="text-danger">*</span></label>
-                    <select class="form-select" id="degree2" required>
-                        <option selected>BBA</option>
-                        <option value="1">MBA</option>
-                        <option value="2">MSc</option>
+                    <label class="form-label">All accounts closed and activated are supported, recorded and filed accordingly?</label>
+                    <select class="form-select" name="account_closed" required>
+                        <option value="N/A">N/A</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="major2" class="form-label">Major</label>
-                    <input type="text" class="form-control" id="major2" value="Business Administration">
+                    <label class="form-label">All opened accounts comply with KYC checklist?</label>
+                    <select class="form-select" name="kyc_compliance" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label for="school2" class="form-label">School</label>
-                    <input type="text" class="form-control" id="school2" value="University of Dar Es Salaam">
+                    <label class="form-label">All opened accounts were categorized on a risk base?</label>
+                    <select class="form-select" name="risk_base" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="startMonth2" class="form-label">Start Date</label>
-                        <div class="input-group">
-                            <select class="form-select" id="startMonth2">
-                                <option selected>August</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                            </select>
-                            <input type="number" class="form-control" id="startYear2" value="2017" min="1900" max="2099">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="endMonth2" class="form-label">End Date</label>
-                        <div class="input-group">
-                            <select class="form-select" id="endMonth2">
-                                <option selected>July</option>
-                                <option value="1">June</option>
-                                <option value="2">May</option>
-                            </select>
-                            <input type="number" class="form-control" id="endYear2" value="2020" min="1900" max="2099">
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
-                <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+                <button type="button" class="btn btn-primary next-step">Next</button>
             </div>
 
-            <!-- Step 3: Third Education Qualification -->
-            <div class="step">
-                <h5>Step 3: Education Qualification 3</h5>
+            <!-- Step 2 - ATM Reconciliation -->
+            <div class="step hidden">
+                <h3>Step 2: ATM Reconciliation</h3>
                 <div class="mb-3">
-                    <label for="degree3" class="form-label">Degree <span class="text-danger">*</span></label>
-                    <select class="form-select" id="degree3" required>
-                        <option selected>MSc</option>
-                        <option value="1">BBA</option>
-                        <option value="2">MBA</option>
+                    <label class="form-label">ATM reconciliation has been done timely?</label>
+                    <select class="form-select" name="atm_reconciliation" required>
+                        <option value="N/A">N/A</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="major3" class="form-label">Major</label>
-                    <input type="text" class="form-control" id="major3" value="Finance">
+                    <label class="form-label">Do you have any pending items in ATM reconciliation? (If yes, please mention)</label>
+                    <select class="form-select" name="pending_atm_items" required>
+                        <option value="N/A">N/A</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-secondary prev-step">Previous</button>
+                <button type="button" class="btn btn-primary next-step">Next</button>
+            </div>
+
+            <!-- Step 3 - Vault & Tills -->
+            <div class="step hidden">
+                <h3>Step 3: Vault & Tills</h3>
+                <div class="mb-3">
+                    <label class="form-label">Branch vault & tills are balancing?</label>
+                    <select class="form-select" name="vault_tills" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label for="school3" class="form-label">School</label>
-                    <input type="text" class="form-control" id="school3" value="Ardhi University">
+                    <label class="form-label">Time stamp is working?</label>
+                    <select class="form-select" name="time_stamp" required>
+                        <option value="N/A">N/A</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="startMonth3" class="form-label">Start Date</label>
-                        <div class="input-group">
-                            <select class="form-select" id="startMonth3">
-                                <option selected>September</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                            </select>
-                            <input type="number" class="form-control" id="startYear3" value="2014" min="1900" max="2099">
-                        </div>
-                    </div>
+                <button type="button" class="btn btn-secondary prev-step">Previous</button>
+                <button type="button" class="btn btn-primary next-step">Next</button>
+            </div>
+
+            <!-- Step 4 - Customer Complaints -->
+            <div class="step hidden">
+                <h3>Step 4: Customer Complaints</h3>
+                <div class="mb-3">
+                    <label class="form-label">All received complaints have been attended, and in case of closure, customers have been notified?</label>
+                    <select class="form-select" name="customer_complaints" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="endMonth3" class="form-label">End Date</label>
-                        <div class="                        input-group">
-                            <select class="form-select" id="endMonth3">
-                                <option selected>June</option>
-                                <option value="1">May</option>
-                                <option value="2">April</option>
-                            </select>
-                            <input type="number" class="form-control" id="endYear3" value="2017" min="1900" max="2099">
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">All GePG transactions were processed successfully?</label>
+                    <select class="form-select" name="gepg_transactions" required>
+                        <option value="N/A">N/A</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
-                <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                <button type="button" class="btn btn-secondary prev-step">Previous</button>
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
+
         </form>
+
+        <!-- Summary Section -->
+        <div id="summary" class="hidden">
+            <h3>Summary</h3>
+            <p id="summaryContent"></p>
+            <button class="btn btn-primary" onclick="location.reload();">Restart</button>
+        </div>
+
     </div>
 
     <script>
+        const steps = document.querySelectorAll('.step');
         let currentStep = 0;
-        const steps = document.querySelectorAll(".step");
 
-        function showStep(step) {
-            steps.forEach((element, index) => {
-                element.classList.toggle("active", index === step);
-            });
-        }
-
-        function nextStep() {
-            if (currentStep < steps.length - 1) {
+        document.querySelectorAll('.next-step').forEach(button => {
+            button.addEventListener('click', () => {
+                steps[currentStep].classList.add('hidden');
                 currentStep++;
-                showStep(currentStep);
-            }
-        }
-
-        function prevStep() {
-            if (currentStep > 0) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        }
-
-        document.getElementById('educationForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Form Submitted!');
+                steps[currentStep].classList.remove('hidden');
+            });
         });
 
-        showStep(currentStep);
+        document.querySelectorAll('.prev-step').forEach(button => {
+            button.addEventListener('click', () => {
+                steps[currentStep].classList.add('hidden');
+                currentStep--;
+                steps[currentStep].classList.remove('hidden');
+            });
+        });
+
+        document.getElementById('checklistForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let summaryContent = '';
+            const formData = new FormData(this);
+            formData.forEach((value, key) => {
+                summaryContent += `<p><strong>${key.replace(/_/g, ' ').toUpperCase()}</strong>: ${value}</p>`;
+            });
+            document.getElementById('summaryContent').innerHTML = summaryContent;
+            document.getElementById('checklistForm').classList.add('hidden');
+            document.getElementById('summary').classList.remove('hidden');
+        });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
