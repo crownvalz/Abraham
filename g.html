@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
             background-color: #f5f7fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         .calculator-card {
             background-color: #ffffff;
             border-radius: 10px;
@@ -21,123 +19,52 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
         }
-
         .form-label {
             font-weight: 500;
         }
-
         .btn-primary {
             background-color: #000;
             border-color: #000;
             transition: background-color 0.3s ease-in-out;
         }
-
         .btn-primary:hover {
             background-color: #333;
         }
-
         .btn-outline-primary {
             border-color: #000;
             color: #000;
         }
-
         .btn-outline-primary:hover {
             background-color: #000;
             color: #fff;
         }
-
         .navbar {
             background-color: #ffffff;
             padding: 1rem;
         }
-
         .navbar-brand img {
             height: 40px;
         }
-
         .form-check-input {
             border-radius: 50%;
         }
-
         input:invalid {
             border-color: black;
         }
-
         input.invalid-input {
-            border-color: red !important;
+            border-color: red;
         }
-
         footer {
             background-color: #f8f9fa;
             padding: 1rem 0;
             text-align: center;
             margin-top: 2rem;
         }
-
         .offcanvas-body {
             padding: 1rem;
         }
-
-        /* Hamburger Icon Styling */
-        .navbar-toggler-icon {
-            position: relative;
-            width: 24px;
-            height: 2px;
-            background-color: #000;
-            display: inline-block;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .navbar-toggler-icon::before,
-        .navbar-toggler-icon::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #000;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .navbar-toggler-icon::before {
-            top: -8px;
-        }
-
-        .navbar-toggler-icon::after {
-            bottom: -8px;
-        }
-
-        .navbar-toggler.collapsed .navbar-toggler-icon {
-            background-color: transparent;
-        }
-
-        .navbar-toggler.collapsed .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-            top: 0;
-        }
-
-        .navbar-toggler.collapsed .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-            bottom: 0;
-        }
-
-        /* Responsive Centering */
-        @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
-            }
-
-            .navbar {
-                padding: 10px;
-            }
-
-            .calculator-card {
-                margin-top: 20px;
-                padding: 10px;
-            }
-        }
     </style>
 </head>
-
 <body>
 
     <!-- Top Navbar -->
@@ -145,8 +72,7 @@
         <a class="navbar-brand" href="#">
             <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Add your logo URL -->
         </a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
@@ -181,20 +107,17 @@
                     <form id="bondForm" class="mt-4">
                         <div class="mb-3">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
-                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value"
-                                required>
+                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
-                            <input type="number" step="0.01" class="form-control" id="couponRate"
-                                placeholder="Enter coupon rate" required>
+                            <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="yearsToMaturity" class="form-label">Loan Term in Years</label>
-                            <input type="number" class="form-control" id="yearsToMaturity"
-                                placeholder="Enter years to maturity" required>
+                            <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
                         </div>
 
                         <div class="mb-3">
@@ -233,30 +156,22 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6"><strong>Annual Coupon Payment:</strong></div>
-                        <div class="col-6 text-end">
-                            <p id="annualCoupon"></p>
-                        </div>
+                        <div class="col-6 text-end"><p id="annualCoupon"></p></div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-6"><strong>Total Interest Earned:</strong></div>
-                        <div class="col-6 text-end">
-                            <p id="totalInterest"></p>
-                        </div>
+                        <div class="col-6 text-end"><p id="totalInterest"></p></div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-6"><strong>Total Bond Value:</strong></div>
-                        <div class="col-6 text-end">
-                            <p id="totalBondValue"></p>
-                        </div>
+                        <div class="col-6 text-end"><p id="totalBondValue"></p></div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-6"><strong>Total Future Value:</strong></div>
-                        <div class="col-6 text-end">
-                            <p id="totalFutureValue"></p>
-                        </div>
+                        <div class="col-6 text-end"><p id="totalFutureValue"></p></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -278,7 +193,7 @@
     <script>
         // Format input with commas as the user types in the face value field
         const faceValueInput = document.getElementById('faceValue');
-        faceValueInput.addEventListener('input', function () {
+        faceValueInput.addEventListener('input', function() {
             let value = this.value.replace(/,/g, '');
             this.value = new Intl.NumberFormat().format(value);
         });
@@ -289,7 +204,7 @@
 
             let isValid = true;
             const requiredFields = ['faceValue', 'couponRate', 'yearsToMaturity', 'paymentFrequency'];
-
+            
             requiredFields.forEach(id => {
                 const input = document.getElementById(id);
                 if (!input.value) {
@@ -327,5 +242,4 @@
     </script>
 
 </body>
-
 </html>
