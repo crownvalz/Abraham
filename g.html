@@ -7,7 +7,6 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Custom Styling */
         body {
             background-color: #f5f7fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,10 +16,10 @@
             border-radius: 10px;
             padding: 2rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         .form-label {
-            font-weight: 500;
+            font-weight: 600;
         }
         .btn-primary {
             background-color: #000;
@@ -50,20 +49,6 @@
         }
         .navbar-toggler-icon {
             background-color: #000;
-            display: block;
-            width: 25px;
-            height: 2px;
-            margin: 5px 0;
-            transition: transform 0.4s;
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(2) {
-            opacity: 0;
         }
         .form-spacing {
             margin-bottom: 1.5rem;
@@ -74,20 +59,11 @@
             text-align: center;
             margin-top: 2rem;
         }
-
-        /* Validation Styles */
         .form-control.invalid {
             border-color: red;
-            padding-right: 2.5rem;
-            position: relative;
-        }
-        .form-control.invalid ~ .input-icon {
-            display: block;
-            color: red;
         }
         .form-control.valid {
             border-color: green;
-            padding-right: 2.5rem;
         }
         .input-icon {
             position: absolute;
@@ -95,9 +71,6 @@
             top: 50%;
             transform: translateY(-50%);
             display: none;
-        }
-        .input-icon.success {
-            color: green;
         }
         .error-message {
             color: red;
@@ -115,8 +88,6 @@
         </a>
         <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
 
@@ -124,8 +95,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="calculator-card">
-                    <h2 class="mb-4">Loan details</h2>
-                    <!-- Bond Calculator Form -->
+                    <h2 class="mb-4 text-center">Bond Calculator</h2>
                     <form id="bondForm" class="mt-4">
                         <div class="mb-3 form-spacing position-relative">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
@@ -142,7 +112,7 @@
                         </div>
 
                         <div class="mb-3 form-spacing position-relative">
-                            <label for="yearsToMaturity" class="form-label">Loan Term in Years</label>
+                            <label for="yearsToMaturity" class="form-label">Loan Term (Years)</label>
                             <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" required>
                             <span class="input-icon">!</span>
                             <div class="error-message" id="yearsToMaturityError"></div>
@@ -161,7 +131,7 @@
                         </div>
 
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="initiationFee">
+                            <input class="form-check-input" type="checkbox" id="initiationFee">
                             <label class="form-check-label" for="initiationFee">
                                 Include initiation fee in your bond?
                             </label>
@@ -203,20 +173,6 @@
 
     <!-- Custom Script -->
     <script>
-        // Animate Hamburger Menu
-        const toggler = document.querySelector('.navbar-toggler');
-        toggler.addEventListener('click', () => {
-            toggler.classList.toggle('collapsed');
-        });
-
-        // Format input with commas as the user types in the face value field
-        const faceValueInput = document.getElementById('faceValue');
-        faceValueInput.addEventListener('input', function() {
-            let value = this.value.replace(/,/g, '');
-            this.value = new Intl.NumberFormat().format(value);
-        });
-
-        // Form validation and styling
         document.getElementById('bondForm').addEventListener('submit', function (event) {
             event.preventDefault();
             if (validateForm()) {
@@ -235,13 +191,13 @@
                 if (field.value.trim() === '') {
                     field.classList.add('invalid');
                     field.classList.remove('valid');
-                    icon.classList.remove('success');
+                    icon.style.display = 'block';
                     errorMsg.textContent = 'This field is required.';
                     isValid = false;
                 } else {
                     field.classList.add('valid');
                     field.classList.remove('invalid');
-                    icon.classList.add('success');
+                    icon.style.display = 'none';
                     errorMsg.textContent = ''; // Clear error message
                 }
             });
@@ -250,12 +206,12 @@
         }
 
         function calculateBondPrice() {
-            const faceValue = parseFloat(faceValueInput.value.replace(/,/g, ''));
+            const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, ''));
             const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
             const yearsToMaturity = parseInt(document.getElementById('yearsToMaturity').value);
             const paymentFrequency = parseInt(document.getElementById('paymentFrequency').value);
 
-            // Calculate bond price (simplified formula)
+            // Calculate bond price
             const couponPayment = faceValue * couponRate / paymentFrequency;
             const totalPayments = yearsToMaturity * paymentFrequency;
             let bondPrice = 0;
@@ -263,36 +219,22 @@
             for (let i = 1; i <= totalPayments; i++) {
                 bondPrice += couponPayment / Math.pow(1 + couponRate / paymentFrequency, i);
             }
-
             bondPrice += faceValue / Math.pow(1 + couponRate / paymentFrequency, totalPayments);
 
-            // Additional calculations
             const totalCouponPayments = couponPayment * totalPayments;
             const totalReceived = bondPrice + totalCouponPayments;
-            const npv = bondPrice; // For simplicity, we're treating the bond price as NPV here
-            const totalInterestEarned = totalCouponPayments - bondPrice; // Total interest earned
 
             // Display results in modal
             const resultsHtml = `
                 <p><strong>Calculated Bond Price:</strong> TZS ${bondPrice.toFixed(2)}</p>
                 <p><strong>Total Coupon Payments:</strong> TZS ${totalCouponPayments.toFixed(2)}</p>
                 <p><strong>Total Amount Received:</strong> TZS ${totalReceived.toFixed(2)}</p>
-                <p><strong>Net Present Value (NPV):</strong> TZS ${npv.toFixed(2)}</p>
-                <p><strong>Total Interest Earned:</strong> TZS ${totalInterestEarned.toFixed(2)}</p>
             `;
             
             document.getElementById('calculationResults').innerHTML = resultsHtml;
             const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
             resultModal.show();
         }
-
-        // Real-time validation on input
-        const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
-        formFields.forEach(field => {
-            field.addEventListener('input', () => {
-                validateForm();
-            });
-        });
     </script>
 
 </body>
