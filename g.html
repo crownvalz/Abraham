@@ -1,164 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bond Calculator</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f5f7fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .calculator-card {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem;
-        }
-        .navbar { padding: 1rem 1.5rem; }
-        .nav-link { font-size: 1.1rem; transition: color 0.3s; }
-        .nav-link:hover { color: #007bff; }
-        footer {
-            margin-top: 2rem;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px;">
-            <h2 class="mb-0">123 Bank Plc</h2>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="calculator-card">
-                    <h2 class="mb-4 text-center">Bond Calculator</h2>
-                    <form id="bondForm" class="mt-4 needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
-                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
-                            <div class="invalid-feedback">Please enter a valid bond amount.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="couponRate" class="form-label">Coupon Rate (%)</label>
-                            <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="yearsToMaturity" class="form-label">Bond Term in Years</label>
-                            <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" min="1" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="paymentFrequency" class="form-label">Coupon Payment Frequency</label>
-                            <select class="form-select" id="paymentFrequency" required>
-                                <option value="" disabled selected>Select frequency</option>
-                                <option value="1">Annually</option>
-                                <option value="2">Semi-Annually</option>
-                                <option value="4">Quarterly</option>
-                            </select>
-                            <div class="invalid-feedback">Please select a payment frequency.</div>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="initiationFee">
-                            <label class="form-check-label" for="initiationFee">Include initiation fee in your bond?</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Calculate</button>
-                        <button type="reset" class="btn btn-outline-primary w-100 mt-2">Clear</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Result Modal -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="result-item"><strong>Annual Coupon Payment:</strong> <span id="annualCoupon"></span></div>
-                    <div class="result-item"><strong>Total Interest Earned:</strong> <span id="totalInterest"></span></div>
-                    <div class="result-item"><strong>Total Bond Value:</strong> <span id="totalBondValue"></span></div>
-                    <div class="result-item"><strong>Total Future Value:</strong> <span id="totalFutureValue"></span></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer><p>Bond Calculator</p></footer>
-
-    <!-- Bootstrap 5 JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const bondForm = document.getElementById('bondForm');
-
-            // Format input with commas and validate
-            bondForm.addEventListener('input', (e) => {
-                if (e.target.id === 'faceValue') {
-                    e.target.value = e.target.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace(/[^\d,]/g, '');
+// Custom Script
+<script>
+    // Form validation
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
                 }
-            });
-
-            bondForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, ''));
-                const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
-                const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
-                const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
-
-                if (!faceValue || !couponRate || !yearsToMaturity || !paymentFrequency) return alert('Please fill in all required fields.');
-
-                const annualCouponPayment = faceValue * couponRate;
-                const totalInterest = annualCouponPayment * yearsToMaturity;
-                const totalBondValue = faceValue + totalInterest;
-                const totalFutureValue = faceValue * Math.pow((1 + couponRate / paymentFrequency), paymentFrequency * yearsToMaturity);
-
-                // Display results in modal
-                document.getElementById('annualCoupon').innerText = `TZS ${annualCouponPayment.toLocaleString()}`;
-                document.getElementById('totalInterest').innerText = `TZS ${totalInterest.toLocaleString()}`;
-                document.getElementById('totalBondValue').innerText = `TZS ${totalBondValue.toLocaleString()}`;
-                document.getElementById('totalFutureValue').innerText = `TZS ${totalFutureValue.toLocaleString()}`;
-
-                const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-                resultModal.show();
-            });
-
-            // Reset button behavior
-            document.querySelector('button[type="reset"]').addEventListener('click', function () {
-                this.classList.remove('active');
-            });
+                form.classList.add('was-validated');
+            }, false);
         });
-    </script>
-</body>
-</html>
+    })();
+
+    // Function to format number with commas
+    function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    document.getElementById('faceValue').addEventListener('input', function () {
+        // Remove non-digit characters
+        let value = this.value.replace(/[^0-9]/g, '');
+        // Format with commas
+        this.value = formatNumber(value);
+    });
+
+    document.getElementById('bondForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Get form values
+        const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, '')); // Remove commas for calculation
+        const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
+        const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
+        const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
+
+        if (isNaN(faceValue) || isNaN(couponRate) || isNaN(yearsToMaturity) || isNaN(paymentFrequency)) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        // Calculate annual coupon payment
+        const annualCouponPayment = faceValue * couponRate;
+
+        // Calculate total interest over the life of the bond
+        const totalInterest = annualCouponPayment * yearsToMaturity;
+
+        // Total Bond Value (Face Value + Interest Earned)
+        const totalBondValue = faceValue + totalInterest;
+
+        // Total Future Value assuming reinvestment (basic example)
+        const totalFutureValue = faceValue * Math.pow((1 + couponRate / paymentFrequency), paymentFrequency * yearsToMaturity);
+
+        // Update modal content
+        document.getElementById('annualCoupon').innerText = `TZS ${formatNumber(annualCouponPayment.toFixed(2))}`;
+        document.getElementById('totalInterest').innerText = `TZS ${formatNumber(totalInterest.toFixed(2))}`;
+        document.getElementById('totalBondValue').innerText = `TZS ${formatNumber(totalBondValue.toFixed(2))}`;
+        document.getElementById('totalFutureValue').innerText = `TZS ${formatNumber(totalFutureValue.toFixed(2))}`;
+
+        // Show the modal
+        const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+        resultModal.show();
+    });
+
+    // Reset button functionality
+    const resetButton = document.querySelector('button[type="reset"]');
+    resetButton.addEventListener('click', function () {
+        // Reset the button's classes
+        this.classList.remove('active'); // Remove the active state
+        this.classList.remove('btn-primary'); // Ensure it returns to the outline style
+    });
+</script>
