@@ -38,6 +38,33 @@
             background-color: #007bff;
             color: #fff;
         }
+        .navbar {
+            background-color: #ffffff;
+            padding: 1rem;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler-icon {
+            background-color: #000;
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 5px 0;
+            transition: transform 0.4s;
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(2) {
+            opacity: 0;
+        }
         footer {
             margin-top: 2rem;
             padding: 1rem;
@@ -56,10 +83,6 @@
         .form-control.invalid ~ .input-icon {
             display: block;
             color: red;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
         }
         .form-control.valid {
             border-color: green;
@@ -74,7 +97,6 @@
         }
         .input-icon.success {
             color: green;
-            display: block;
         }
     </style>
 </head>
@@ -86,7 +108,9 @@
             <img src="img/logo.png" alt="Logo" class="me-2" style="width: 40px; height: auto;"> <!-- Adjust logo size -->
             <h2 class="mb-0">123 Bank Plc</h2>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
@@ -200,6 +224,12 @@
 
     <!-- Custom Script -->
     <script>
+    
+    // Animate Hamburger Menu
+        const toggler = document.querySelector('.navbar-toggler');
+        toggler.addEventListener('click', () => {
+            toggler.classList.toggle('collapsed');
+        });
         // Form validation
         (function () {
             'use strict';
@@ -283,6 +313,7 @@
             const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
             resultModal.show();
         });
+        
     </script>
 </body>
 </html>
