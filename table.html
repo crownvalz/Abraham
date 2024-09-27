@@ -66,6 +66,9 @@
         .navbar-toggler.collapsed span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
         }
+        .details-row {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -115,36 +118,65 @@
                         <th>Position</th>
                         <th>Date Applied</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-toggle="collapse" data-target="#details1" class="accordion-toggle">
                         <td>1</td>
                         <td>John Doe</td>
                         <td>Software Developer</td>
                         <td>2024-09-25</td>
                         <td><span class="badge bg-success">Approved</span></td>
+                        <td><button class="btn btn-link" data-toggle="collapse" data-target="#details1">Details</button></td>
                     </tr>
-                    <tr>
+                    <tr id="details1" class="details-row">
+                        <td colspan="6">
+                            <strong>Contact:</strong> john.doe@example.com <br>
+                            <strong>Phone:</strong> +1 234 567 8900
+                        </td>
+                    </tr>
+                    <tr data-toggle="collapse" data-target="#details2" class="accordion-toggle">
                         <td>2</td>
                         <td>Jane Smith</td>
                         <td>Data Analyst</td>
                         <td>2024-09-23</td>
                         <td><span class="badge bg-warning text-dark">Pending</span></td>
+                        <td><button class="btn btn-link" data-toggle="collapse" data-target="#details2">Details</button></td>
                     </tr>
-                    <tr>
+                    <tr id="details2" class="details-row">
+                        <td colspan="6">
+                            <strong>Contact:</strong> jane.smith@example.com <br>
+                            <strong>Phone:</strong> +1 234 567 8901
+                        </td>
+                    </tr>
+                    <tr data-toggle="collapse" data-target="#details3" class="accordion-toggle">
                         <td>3</td>
                         <td>Michael Johnson</td>
                         <td>UX/UI Designer</td>
                         <td>2024-09-20</td>
                         <td><span class="badge bg-danger">Rejected</span></td>
+                        <td><button class="btn btn-link" data-toggle="collapse" data-target="#details3">Details</button></td>
                     </tr>
-                    <tr>
+                    <tr id="details3" class="details-row">
+                        <td colspan="6">
+                            <strong>Contact:</strong> michael.johnson@example.com <br>
+                            <strong>Phone:</strong> +1 234 567 8902
+                        </td>
+                    </tr>
+                    <tr data-toggle="collapse" data-target="#details4" class="accordion-toggle">
                         <td>4</td>
                         <td>Lisa Brown</td>
                         <td>Project Manager</td>
                         <td>2024-09-18</td>
                         <td><span class="badge bg-success">Approved</span></td>
+                        <td><button class="btn btn-link" data-toggle="collapse" data-target="#details4">Details</button></td>
+                    </tr>
+                    <tr id="details4" class="details-row">
+                        <td colspan="6">
+                            <strong>Contact:</strong> lisa.brown@example.com <br>
+                            <strong>Phone:</strong> +1 234 567 8903
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -180,8 +212,18 @@
             $('#jobApplicationsTable').DataTable({
                 responsive: true,
                 lengthChange: false,
-                pageLength: 5
+                pageLength: 5,
+                "columnDefs": [{
+                    "orderable": false,
+                    "targets": -1 // Disable ordering on the action column
+                }]
             });
+        });
+        
+        // Toggle collapsible rows
+        $('.accordion-toggle').on('click', function() {
+            const target = $(this).data('target');
+            $(target).collapse('toggle');
         });
     </script>
 
