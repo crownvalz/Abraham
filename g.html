@@ -60,6 +60,10 @@
             font-size: 0.9rem;
             color: #6c757d;
         }
+        /* Centering the title */
+        .calculator-card h2 {
+            text-align: center; /* Center the title */
+        }
     </style>
 </head>
 <body>
@@ -97,7 +101,7 @@
                     <form id="bondForm" class="mt-4 needs-validation" novalidate>
                         <div class="mb-3">
                             <label for="faceValue" class="form-label">Total Bond Amount (TZS)</label>
-                            <input type="number" class="form-control" id="faceValue" placeholder="Enter bond's face value" min="0" step="any" required>
+                            <input type="text" class="form-control" id="faceValue" placeholder="Enter bond's face value" required>
                             <div class="invalid-feedback">
                                 Please enter a valid bond amount.
                             </div>
@@ -106,13 +110,11 @@
                         <div class="mb-3">
                             <label for="couponRate" class="form-label">Coupon Rate (%)</label>
                             <input type="number" step="0.01" class="form-control" id="couponRate" placeholder="Enter coupon rate" required>
-                            
                         </div>
 
                         <div class="mb-3">
                             <label for="yearsToMaturity" class="form-label">Bond Term in Years</label>
                             <input type="number" class="form-control" id="yearsToMaturity" placeholder="Enter years to maturity" min="1" required>
-                            
                         </div>
 
                         <div class="mb-3">
@@ -206,11 +208,23 @@
             });
         })();
 
+        // Function to format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        document.getElementById('faceValue').addEventListener('input', function () {
+            // Remove non-digit characters
+            let value = this.value.replace(/[^0-9]/g, '');
+            // Format with commas
+            this.value = formatNumber(value);
+        });
+
         document.getElementById('bondForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             // Get form values
-            const faceValue = parseFloat(document.getElementById('faceValue').value);
+            const faceValue = parseFloat(document.getElementById('faceValue').value.replace(/,/g, '')); // Remove commas for calculation
             const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
             const yearsToMaturity = parseFloat(document.getElementById('yearsToMaturity').value);
             const paymentFrequency = parseFloat(document.getElementById('paymentFrequency').value);
@@ -233,10 +247,10 @@
             const totalFutureValue = faceValue * Math.pow((1 + couponRate / paymentFrequency), paymentFrequency * yearsToMaturity);
 
             // Update modal content
-            document.getElementById('annualCoupon').innerText = `TZS ${annualCouponPayment.toLocaleString()}`;
-            document.getElementById('totalInterest').innerText = `TZS ${totalInterest.toLocaleString()}`;
-            document.getElementById('totalBondValue').innerText = `TZS ${totalBondValue.toLocaleString()}`;
-            document.getElementById('totalFutureValue').innerText = `TZS ${totalFutureValue.toLocaleString()}`;
+            document.getElementById('annualCoupon').innerText = `TZS ${formatNumber(annualCouponPayment.toFixed(2))}`;
+            document.getElementById('totalInterest').innerText = `TZS ${formatNumber(totalInterest.toFixed(2))}`;
+            document.getElementById('totalBondValue').innerText = `TZS ${formatNumber(totalBondValue.toFixed(2))}`;
+            document.getElementById('totalFutureValue').innerText = `TZS ${formatNumber(totalFutureValue.toFixed(2))}`;
 
             // Show the modal
             const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
