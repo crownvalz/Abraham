@@ -19,9 +19,6 @@
         .navbar-brand img {
             height: 40px;
         }
-        .navbar-toggler {
-            border: none;
-        }
         footer {
             background-color: #343a40;
             color: #ffffff;
@@ -54,6 +51,28 @@
             margin: 0;
             font-weight: bold;
         }
+        /* Hamburger Animation */
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+        .navbar-toggler span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin: 5px 0;
+            transition: all 0.4s ease-in-out;
+        }
+        .navbar-toggler.collapsed span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar-toggler.collapsed span:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar-toggler.collapsed span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
     </style>
 </head>
 <body>
@@ -66,7 +85,9 @@
             </a>
             <h1 class="mx-auto">Safe Bank Plc</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
 
@@ -128,6 +149,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap Icons CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+
+    <!-- Custom Script -->
+    <script>
+        // Toggle animation for hamburger icon
+        const toggler = document.querySelector('.navbar-toggler');
+        toggler.addEventListener('click', () => {
+            toggler.classList.toggle('collapsed');
+        });
+    </script>
 
 </body>
 </html>
