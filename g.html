@@ -16,88 +16,53 @@
             background-color: #ffffff;
             border-radius: 10px;
             padding: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
         }
         .form-label {
             font-weight: 500;
         }
         .btn-primary {
-            background-color: #000;
-            border-color: #000;
+            background-color: #007bff;
+            border-color: #007bff;
             transition: background-color 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background-color: #333;
+            background-color: #0056b3;
         }
         .btn-outline-primary {
-            border-color: #000;
-            color: #000;
+            border-color: #007bff;
+            color: #007bff;
         }
         .btn-outline-primary:hover {
-            background-color: #000;
+            background-color: #007bff;
             color: #fff;
         }
         .navbar {
-            background-color: #ffffff;
-            padding: 1rem;
+            padding: 1rem 1.5rem; /* Add padding for better spacing */
         }
-        .navbar-brand img {
-            height: 40px;
+        .nav-link {
+            font-size: 1.1rem; /* Increase font size */
+            transition: color 0.3s; /* Smooth transition for hover effect */
         }
-        .navbar-toggler {
-            border: none;
+        .nav-link:hover {
+            color: #0056b3; /* Change color on hover */
         }
-        .navbar-toggler-icon {
-            background-color: #000;
-            display: block;
-            width: 25px;
-            height: 2px;
-            margin: 5px 0;
-            transition: transform 0.4s;
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        .navbar-toggler.collapsed .navbar-toggler-icon:nth-child(2) {
-            opacity: 0;
-        }
-        .form-spacing {
-            margin-bottom: 1.5rem;
+        .navbar-brand h2 {
+            font-size: 1.5rem; /* Adjust brand font size */
+            margin: 0; /* Remove bottom margin */
         }
         footer {
-            background-color: #f8f9fa;
-            padding: 1rem 0;
-            text-align: center;
             margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
-
-        /* Validation Styles */
-        .form-control.invalid {
-            border-color: red;
-            padding-right: 2.5rem;
-            position: relative;
-        }
-        .form-control.invalid ~ .input-icon {
-            display: block;
-            color: red;
-        }
-        .form-control.valid {
-            border-color: green;
-            padding-right: 2.5rem;
-        }
-        .input-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: none;
-        }
-        .input-icon.success {
-            color: green;
+        /* Centering the title */
+        .calculator-card h2 {
+            text-align: center; /* Center the title */
         }
     </style>
 </head>
