@@ -51,28 +51,6 @@
             margin: 0;
             font-weight: bold;
         }
-        /* Hamburger Animation */
-        .navbar-toggler {
-            border: none;
-            outline: none;
-        }
-        .navbar-toggler span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: black;
-            margin: 5px 0;
-            transition: all 0.4s ease-in-out;
-        }
-        .navbar-toggler.collapsed span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .navbar-toggler.collapsed span:nth-child(2) {
-            opacity: 0;
-        }
-        .navbar-toggler.collapsed span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
 
         /* Custom Form Styling */
         .calculator-form {
@@ -110,15 +88,6 @@
             color: #000;
             border: 1px solid #ced4da;
         }
-
-        .result {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 20px;
-            display: none;
-        }
-
     </style>
 </head>
 <body>
@@ -187,9 +156,24 @@
                 <button type="button" class="btn btn-calculate mb-2" onclick="calculateLoan()">Calculate</button>
                 <button type="reset" class="btn btn-clear">Clear</button>
             </form>
-            
-            <div class="result" id="result">
-                Monthly Payment: $<span id="monthlyPayment"></span>
+        </div>
+    </div>
+
+    <!-- Modal to Show Results -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Loan Calculation Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Your Monthly Payment is:</p>
+                    <h3 class="text-success">$<span id="monthlyPayment"></span></h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -240,9 +224,10 @@
             // Calculate monthly payment
             const monthlyPayment = (loanAmount * interestRate) / (1 - Math.pow(1 + interestRate, -loanTerm)) + additionalPayments;
 
-            // Show result
+            // Display result in the modal
             document.getElementById('monthlyPayment').innerText = monthlyPayment.toFixed(2);
-            document.getElementById('result').style.display = 'block';
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
         }
     </script>
 </body>
