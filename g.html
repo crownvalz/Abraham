@@ -250,28 +250,39 @@
         }
 
         function calculateBondPrice() {
-            const faceValue = parseFloat(faceValueInput.value.replace(/,/g, ''));
-            const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
-            const yearsToMaturity = parseInt(document.getElementById('yearsToMaturity').value);
-            const paymentFrequency = parseInt(document.getElementById('paymentFrequency').value);
+    const faceValue = parseFloat(faceValueInput.value.replace(/,/g, ''));
+    const couponRate = parseFloat(document.getElementById('couponRate').value) / 100;
+    const yearsToMaturity = parseInt(document.getElementById('yearsToMaturity').value);
+    const paymentFrequency = parseInt(document.getElementById('paymentFrequency').value);
 
-            // Calculate bond price (simplified formula)
-            const couponPayment = faceValue * couponRate / paymentFrequency;
-            const totalPayments = yearsToMaturity * paymentFrequency;
-            let bondPrice = 0;
+    // Calculate bond price (simplified formula)
+    const couponPayment = faceValue * couponRate / paymentFrequency;
+    const totalPayments = yearsToMaturity * paymentFrequency;
+    let bondPrice = 0;
 
-            for (let i = 1; i <= totalPayments; i++) {
-                bondPrice += couponPayment / Math.pow(1 + couponRate / paymentFrequency, i);
-            }
+    for (let i = 1; i <= totalPayments; i++) {
+        bondPrice += couponPayment / Math.pow(1 + couponRate / paymentFrequency, i);
+    }
 
-            bondPrice += faceValue / Math.pow(1 + couponRate / paymentFrequency, totalPayments);
+    bondPrice += faceValue / Math.pow(1 + couponRate / paymentFrequency, totalPayments);
 
-            // Display result in modal
-            const resultText = `The calculated bond price is: TZS ${bondPrice.toFixed(2)}`;
-            document.getElementById('calculationResult').innerText = resultText;
-            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-            resultModal.show();
-        }
+    // Additional calculations
+    const totalCouponPayments = couponPayment * totalPayments;
+    const totalReceived = bondPrice + totalCouponPayments;
+    const npv = bondPrice; // For simplicity, we're treating the bond price as NPV here
+
+    // Display results in modal
+    const resultsHtml = `
+        <p><strong>Calculated Bond Price:</strong> TZS ${bondPrice.toFixed(2)}</p>
+        <p><strong>Total Coupon Payments:</strong> TZS ${totalCouponPayments.toFixed(2)}</p>
+        <p><strong>Total Amount Received:</strong> TZS ${totalReceived.toFixed(2)}</p>
+        <p><strong>Net Present Value (NPV):</strong> TZS ${npv.toFixed(2)}</p>
+    `;
+    
+    document.getElementById('calculationResults').innerHTML = resultsHtml;
+    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+    resultModal.show();
+}
 
         // Real-time validation on input
         const formFields = document.querySelectorAll('#bondForm .form-control, #bondForm .form-select');
