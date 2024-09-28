@@ -3,7 +3,13 @@ body {
     background-color: #f5f7fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.navbar {
+    background-color: #ffffff;
+    padding: 1rem;
+}
+.navbar-brand img {
+    height: 40px;
+}
 footer {
     background-color: #343a40;
     color: #ffffff;
