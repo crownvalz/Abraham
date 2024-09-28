@@ -20,18 +20,19 @@
     background-color: #555;
 }
 
-.btn-primary {
-    background-color: #007bff; /* Improved button color */
-    border-color: #007bff;
+.btn-dark {
+    background-color: #343a40; /* Darker button color */
+    border-color: #343a40;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+.btn-dark.btn-dark:hover {
+    background-color: #23272b; /* Slightly darker on hover */
+    border-color: #23272b;
 }
 
 /* Modal Styling */
 .modal-content {
-    background-color: #2b2b2b;
+    background-color: #343a40;
     color: #ffffff;
 }
 
@@ -41,4 +42,50 @@
 
 .modal-footer {
     border-top: 1px solid #444;
+}
+
+.modal-title {
+    color: #ffffff;
+}
+
+.modal-body p {
+    color: #d1d1d1;
+}
+
+/* Align text in the modal result */
+#modalResult h4 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#modalResult p {
+    text-align: left;
+    margin: 0.5rem 0;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #1a1a1a;
+    color: #d1d1d1;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 1rem;
+    }
+
+    .modal-dialog {
+        max-width: 90%;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
 }
