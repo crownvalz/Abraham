@@ -170,4 +170,4 @@ document.addEventListener('DOMContentLoaded', function () {
         bondFields.style.display = 'block';
         loanFields.style.display = 'none';
     });
-});
+}); 
