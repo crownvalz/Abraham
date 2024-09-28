@@ -19,10 +19,12 @@ function formatNumberWithCommas(input) {
 
 document.getElementById('bondAmount').addEventListener('input', function () {
     formatNumberWithCommas(this);
+    validateInput(this);
 });
 
 document.getElementById('loanAmount').addEventListener('input', function () {
     formatNumberWithCommas(this);
+    validateInput(this);
 });
 
 // Form submission event
@@ -56,14 +58,22 @@ function calculateBond() {
     if (isNaN(bondAmount) || bondAmount <= 0) {
         showValidationError(bondAmountInput);
         valid = false;
+    } else {
+        showValidInput(bondAmountInput);
     }
+
     if (isNaN(interestRate) || interestRate <= 0) {
         showValidationError(bondInterestRateInput);
         valid = false;
+    } else {
+        showValidInput(bondInterestRateInput);
     }
+
     if (isNaN(years) || years <= 0) {
         showValidationError(bondYearsInput);
         valid = false;
+    } else {
+        showValidInput(bondYearsInput);
     }
 
     if (valid) {
@@ -101,14 +111,22 @@ function calculateLoan() {
     if (isNaN(loanAmount) || loanAmount <= 0) {
         showValidationError(loanAmountInput);
         valid = false;
+    } else {
+        showValidInput(loanAmountInput);
     }
+
     if (isNaN(interestRate) || interestRate <= 0) {
         showValidationError(loanInterestRateInput);
         valid = false;
+    } else {
+        showValidInput(loanInterestRateInput);
     }
+
     if (isNaN(years) || years <= 0) {
         showValidationError(loanYearsInput);
         valid = false;
+    } else {
+        showValidInput(loanYearsInput);
     }
 
     if (valid) {
@@ -136,14 +154,23 @@ document.getElementById('clearFormBtn').addEventListener('click', function () {
     clearValidationErrors();
 });
 
+// Function to show red border for invalid input
 function showValidationError(input) {
+    input.classList.remove('is-valid');
     input.classList.add('is-invalid');
 }
 
+// Function to show green border for valid input
+function showValidInput(input) {
+    input.classList.remove('is-invalid');
+    input.classList.add('is-valid');
+}
+
+// Function to clear all validation errors
 function clearValidationErrors() {
     const inputs = document.querySelectorAll('.form-control');
     inputs.forEach(input => {
-        input.classList.remove('is-invalid');
+        input.classList.remove('is-invalid', 'is-valid');
     });
 }
 
