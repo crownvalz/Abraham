@@ -65,13 +65,14 @@ footer .social-icons a:hover {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
 .calculator-container {
     max-width: 100%; /* Ensure it doesn’t overflow */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto; /* Center on larger screens */
+    background-color: #fff !important;
+    padding: 2rem !important;
 }
 
 @media (max-width: 768px) {
@@ -81,14 +82,58 @@ footer .social-icons a:hover {
     }
 }
 
-.calculator-container {
-    background-color: #fff !important;
-    padding: 2rem !important;
-}
 .button-group {
     margin-top: 2rem;
 }
 
 button {
     margin-bottom: 1rem; /* Add space between buttons */
+}
+
+/* Floating Label Styles */
+.form-floating-label {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-floating-label label {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 0 0.25rem;
+    transition: all 0.3s ease;
+    color: #6c757d;
+    pointer-events: none;
+}
+
+.form-floating-label input,
+.form-floating-label select {
+    padding: 1rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.form-floating-label input:focus,
+.form-floating-label input:valid,
+.form-floating-label select:focus,
+.form-floating-label select:valid {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+.form-floating-label input:focus + label,
+.form-floating-label input:valid + label,
+.form-floating-label select:focus + label,
+.form-floating-label select:valid + label {
+    top: -0.5rem;
+    left: 0.75rem;
+    font-size: 0.85rem;
+    color: #007bff;
+    background-color: white;
+    padding: 0 0.25rem;
 }
