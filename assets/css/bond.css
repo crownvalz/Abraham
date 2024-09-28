@@ -87,32 +87,9 @@ footer .social-icons a:hover {
     margin-bottom: 1.5rem;
 }
 
-.button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 
 /* Validation styling */
 .is-invalid {
     border: 2px solid red;
 }
 
-/* Dark button styling */
-.btn-dark {
-    background-color: #343a40;
-    border-color: #343a40;
-}
-
-.btn-dark:hover {
-    background-color: #23272b;
-    border-color: #23272b;
-}
-
-/* Light button styling */
-.btn-light {
-    background-color: #ffffff;
-    color: #343a40;
-    border-color: #ffffff;
-}
