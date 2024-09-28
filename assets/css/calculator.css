@@ -1,43 +1,44 @@
-/* Dark theme for calculator */
-body {
-    background-color: #181818;
-    color: #ffffff;
-}
-
+/* Calculator Form Styling */
 .calculator-container {
-    background-color: #212529;
+    background-color: #343a40;
+    color: #ffffff;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
-.calculator-form .form-control {
-    background-color: #2b2b2b;
-    border: none;
-    color: #ffffff;
+.calculator-form label {
+    color: #d1d1d1;
 }
 
-.form-select {
-    background-color: #2b2b2b;
-    border: none;
+.calculator-form input {
+    background-color: #444;
     color: #ffffff;
+    border: 1px solid #555;
 }
 
-label {
-    color: #ffffff;
+.calculator-form input:focus {
+    background-color: #555;
 }
 
 .btn-primary {
-    background-color: #007bff;
-    border: none;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #138496;
 }
 
-#bondResult, #loanResult {
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 1rem;
+/* Modal Styling */
+.modal-content {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+.modal-header {
+    border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+    border-top: 1px solid #444;
 }
