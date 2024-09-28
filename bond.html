@@ -48,8 +48,8 @@
 
     <!-- Calculator Form -->
     <div class="container calculator-container mt-5 mb-5">
-    <!-- Form for selecting between calculators -->
     <form id="calculatorForm" class="calculator-form">
+        <!-- Calculator Type Dropdown -->
         <div class="form-group">
             <label for="calculatorType">Select Calculator</label>
             <select class="form-control" id="calculatorType">
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <!-- Loan Calculator Fields (hidden by default) -->
+        <!-- Loan Calculator Fields -->
         <div id="loanCalculatorFields" style="display: none;">
             <h4 class="mt-4">Loan Calculator</h4>
             <div class="form-group">
@@ -102,8 +102,8 @@
         </div>
 
         <!-- Buttons -->
-        <button type="submit" class="btn btn-dark mt-4">Calculate</button>
-        <button type="button" class="btn btn-secondary mt-4 ml-2" id="clearFormBtn">Clear</button>
+        <button type="submit" class="btn btn-dark mt-4 btn-block">Calculate</button>
+        <button type="button" class="btn btn-light mt-4 btn-block" id="clearFormBtn">Clear</button>
     </form>
 </div>
 
