@@ -93,9 +93,6 @@ footer .social-icons a:hover {
     gap: 0.5rem;
 }
 
-button {
-    width: 100%;
-}
 
 /* Validation styling */
 .is-invalid {
