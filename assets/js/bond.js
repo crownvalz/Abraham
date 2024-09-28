@@ -1,58 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const toggler = document.querySelector('.navbar-toggler');
     const calculatorType = document.getElementById('calculatorType');
-    const bondFields = document.getElementById('bondCalculatorFields');
-    const loanFields = document.getElementById('loanCalculatorFields');
-    const bondAmountInput = document.getElementById('bondAmount');
-    const loanAmountInput = document.getElementById('loanAmount');
+    const bondCalculatorFields = document.getElementById('bondCalculatorFields');
+    const loanCalculatorFields = document.getElementById('loanCalculatorFields');
+    const clearFormBtn = document.getElementById('clearFormBtn');
+    const calculatorForm = document.getElementById('calculatorForm');
 
-    // Add comma formatting while typing for bond amount
-    bondAmountInput.addEventListener('input', function () {
-        bondAmountInput.value = formatInputWithCommas(this.value);
+    // Toggle animation for hamburger icon
+    toggler.addEventListener('click', () => {
+        toggler.classList.toggle('collapsed');
     });
-
-    // Add comma formatting while typing for loan amount
-    loanAmountInput.addEventListener('input', function () {
-        loanAmountInput.value = formatInputWithCommas(this.value);
-    });
-
-    // Function to format input with commas
-    function formatInputWithCommas(value) {
-        // Remove any non-digit characters (except for periods)
-        const cleanedValue = value.replace(/[^0-9.]/g, '');
-
-        // Split the value by the decimal point (if exists)
-        const parts = cleanedValue.split('.');
-        // Add commas to the integer part
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        
-        // Join integer and decimal parts (if any)
-        return parts.join('.');
-    }
 
     // Switching between Bond and Loan calculator fields
-    calculatorType.addEventListener('change', function (event) {
-        if (this.value === 'loan') {
-            bondFields.style.display = 'none';
-            loanFields.style.display = 'block';
+    calculatorType.addEventListener('change', (event) => {
+        if (event.target.value === 'loan') {
+            bondCalculatorFields.style.display = 'none';
+            loanCalculatorFields.style.display = 'block';
         } else {
-            bondFields.style.display = 'block';
-            loanFields.style.display = 'none';
+            bondCalculatorFields.style.display = 'block';
+            loanCalculatorFields.style.display = 'none';
         }
     });
 
     // Clear form button functionality
-    document.getElementById('clearFormBtn').addEventListener('click', function () {
-        document.getElementById('calculatorForm').reset();
+    clearFormBtn.addEventListener('click', () => {
+        calculatorForm.reset();
         clearValidationErrors();
-        bondFields.style.display = 'block';
-        loanFields.style.display = 'none';
+        bondCalculatorFields.style.display = 'block';
+        loanCalculatorFields.style.display = 'none';
     });
 
     // Handle form submission
-    document.getElementById('calculatorForm').addEventListener('submit', function (e) {
+    calculatorForm.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        const calculatorTypeValue = document.getElementById('calculatorType').value;
+        const calculatorTypeValue = calculatorType.value;
 
         if (calculatorTypeValue === 'bond') {
             calculateBond();
@@ -63,18 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Bond Calculation
     function calculateBond() {
-        const bondAmount = parseFloat(bondAmountInput.value.replace(/,/g, ''));
+        const bondAmountInput = document.getElementById('bondAmount');
         const bondInterestRateInput = document.getElementById('bondInterestRate');
         const bondYearsInput = document.getElementById('bondYears');
         const bondFrequencyInput = document.getElementById('bondFrequency');
 
+        const bondAmount = parseFloat(bondAmountInput.value.replace(/,/g, ''));
         const interestRate = parseFloat(bondInterestRateInput.value);
         const years = parseInt(bondYearsInput.value);
         const interestFrequency = bondFrequencyInput.value;
 
         let valid = true;
-
-        // Clear previous validation errors
         clearValidationErrors();
 
         // Validate form fields
@@ -92,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (valid) {
-            // Perform bond calculation
             const compoundingPeriods = getCompoundingPeriods(interestFrequency);
             const totalAmount = bondAmount * Math.pow(1 + (interestRate / 100) / compoundingPeriods, compoundingPeriods * years);
             const interestPerPeriod = bondAmount * (interestRate / 100) / compoundingPeriods;
@@ -113,19 +92,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Loan Calculation
     function calculateLoan() {
-        const loanAmount = parseFloat(loanAmountInput.value.replace(/,/g, ''));
+        const loanAmountInput = document.getElementById('loanAmount');
         const loanInterestRateInput = document.getElementById('loanInterestRate');
         const loanYearsInput = document.getElementById('loanYears');
 
+        const loanAmount = parseFloat(loanAmountInput.value.replace(/,/g, ''));
         const interestRate = parseFloat(loanInterestRateInput.value);
         const years = parseInt(loanYearsInput.value);
 
         let valid = true;
-
-        // Clear previous validation errors
         clearValidationErrors();
 
-        // Validate form fields
         if (isNaN(loanAmount) || loanAmount <= 0) {
             showValidationError(loanAmountInput);
             valid = false;
@@ -140,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (valid) {
-            // Perform loan calculation
             const monthlyInterestRate = (interestRate / 100) / 12;
             const totalMonths = years * 12;
             const monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalMonths));
