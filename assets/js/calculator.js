@@ -3,6 +3,19 @@ function formatNumberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+// Add commas while user is typing
+function addCommasOnInput(event) {
+    const value = event.target.value.replace(/,/g, ''); // Remove commas first
+    if (!isNaN(value) && value !== '') {
+        event.target.value = formatNumberWithCommas(value);
+    }
+}
+
+// Attach event listeners to inputs for adding commas
+document.querySelectorAll('.amount-input').forEach(input => {
+    input.addEventListener('input', addCommasOnInput);
+});
+
 // Function to switch between calculators
 document.getElementById('calculatorType').addEventListener('change', function () {
     const calculatorType = this.value;
@@ -31,22 +44,32 @@ document.getElementById('bondCalculator').addEventListener('submit', function (e
     const bondAmount = parseFloat(document.getElementById('bondAmount').value.replace(/,/g, ''));
     const interestRate = parseFloat(document.getElementById('interestRate').value);
     const years = parseInt(document.getElementById('years').value);
+    const interestFrequency = document.getElementById('interestFrequency').value;
 
     if (!isNaN(bondAmount) && !isNaN(interestRate) && !isNaN(years)) {
-        const bondResult = bondAmount * Math.pow(1 + (interestRate / 100), years);
+        let compoundingPeriods = 1;
+        switch (interestFrequency) {
+            case 'monthly': compoundingPeriods = 12; break;
+            case 'quarterly': compoundingPeriods = 4; break;
+            case 'semi-annually': compoundingPeriods = 2; break;
+            case 'yearly': compoundingPeriods = 1; break;
+        }
+
+        const interest = bondAmount * Math.pow(1 + (interestRate / 100) / compoundingPeriods, compoundingPeriods * years);
         const resultHTML = `
             <h4>Bond Calculation Result</h4>
             <p><strong>Bond Amount:</strong> $${formatNumberWithCommas(bondAmount.toFixed(2))}</p>
             <p><strong>Interest Rate:</strong> ${interestRate.toFixed(2)}%</p>
             <p><strong>Years:</strong> ${years} years</p>
+            <p><strong>Interest Frequency:</strong> ${interestFrequency.charAt(0).toUpperCase() + interestFrequency.slice(1)}</p>
             <hr>
-            <p><strong>Total Bond Value:</strong> $${formatNumberWithCommas(bondResult.toFixed(2))}</p>
+            <p><strong>Total Amount:</strong> $${formatNumberWithCommas(interest.toFixed(2))}</p>
         `;
         showModal(resultHTML);
     }
 });
 
-// Loan Calculator Validation and Calculation
+// Loan Calculator Validation and Calculation (similar logic)
 document.getElementById('loanCalculator').addEventListener('submit', function (e) {
     e.preventDefault();
     const loanAmount = parseFloat(document.getElementById('loanAmount').value.replace(/,/g, ''));
