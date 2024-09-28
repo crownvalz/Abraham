@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bond and Loan Calculator</title>
+    <title>Bond Calculator</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/bond.css">
-    <link rel="stylesheet" href="assets/css/calculator.css">
+    <link rel="stylesheet" href="bond.css">
 </head>
 <body>
 
-        <!-- Top Navbar -->
+    <!-- Top Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light border-bottom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <a class="navbar-brand" href="#">
@@ -46,97 +45,31 @@
         </div>
     </nav>
 
-    <!-- Calculator Form -->
-    <div class="container calculator-container mt-5 mb-5">
-        <!-- Form for selecting between calculators -->
-        <form id="calculatorForm" class="calculator-form">
-            <div class="form-group mb-4">
-                <label for="calculatorType">Select Calculator</label>
-                <select class="form-control" id="calculatorType">
-                    <option value="bond">Bond</option>
-                    <option value="loan">Loan</option>
-                </select>
-            </div>
-            
-            <!-- Bond Calculator Fields -->
-            <div id="bondCalculatorFields">
-                <h4 class="mt-4">Bond Calculator</h4>
-                <div class="form-group mb-3">
-                    <label for="bondAmount">Amount (TZS)</label>
-                    <input type="tel" class="form-control" id="bondAmount" placeholder="Enter Amount">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="bondInterestRate">Interest Rate (%)</label>
-                    <input type="tel" class="form-control" id="bondInterestRate" placeholder="Enter Interest Rate">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="bondYears">Years</label>
-                    <input type="tel" class="form-control" id="bondYears" placeholder="Enter Duration">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="bondFrequency">Interest Paid</label>
-                    <select class="form-control" id="bondFrequency">
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="semi-annually">Semi-annually</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Loan Calculator Fields (hidden by default) -->
-            <div id="loanCalculatorFields" style="display: none;">
-                <h4 class="mt-4">Loan Calculator</h4>
-                <div class="form-group mb-3">
-                    <label for="loanAmount">Amount (TZS)</label>
-                    <input type="text" class="form-control" id="loanAmount" placeholder="Enter Amount">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="loanInterestRate">Interest Rate (%)</label>
-                    <input type="text" class="form-control" id="loanInterestRate" placeholder="Enter Interest Rate">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="loanYears">Years</label>
-                    <input type="text" class="form-control" id="loanYears" placeholder="Enter Duration">
-                </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="button-group mt-4">
-                <button type="submit" class="btn btn-dark w-100">Calculate</button>
-                <button type="button" class="btn btn-light w-100 mt-3" id="clearFormBtn">Clear</button>
-            </div>
-        </form>
-    </div>
-
     <!-- Footer -->
-    <footer class="text-center mt-5">
-        <p>Bond Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
-    </footer>
-
-    <!-- Modal for displaying results -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="modalResult">
-                    <!-- Calculation results will be displayed here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
                 </div>
             </div>
+            <hr class="my-4">
+            <p class="mb-0">Bond Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+
     <!-- Custom JS -->
-    <script src="assets/js/bond.js"></script>
-    <script src="assets/js/calculator.js"></script>
+    <script src="bond.js"></script>
 
 </body>
 </html>
