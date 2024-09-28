@@ -101,40 +101,6 @@ footer .social-icons a:hover {
     text-align: center; /* Center heading for form */
 }
 
-.button-group {
-    text-align: center;
-}
-
-button {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    width: 100%;
-}
-
-button.btn-dark {
-    background-color: #343a40;
-    border: none;
-    color: #fff;
-}
-
-button.btn-dark:hover {
-    background-color: #23272b;
-}
-
-button.btn-light {
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    color: #343a40;
-}
-
-button.btn-light:hover {
-    background-color: #e2e6ea;
-}
-
-.button-group {
-    margin-top: 1rem; /* Add space between the form and buttons */
-}
 
 .clearfix {
     content: "";
