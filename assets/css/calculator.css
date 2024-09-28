@@ -1,26 +1,36 @@
-/* Add spacing between footer and form */
+/* Container for calculator */
 .calculator-container {
     background-color: #282c34;
     color: #ffffff;
     padding: 2rem;
     border-radius: 8px;
-    margin-bottom: 2rem; /* Spacing between form and footer */
+    margin-bottom: 2rem; 
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Validation styling for empty fields */
+/* Form elements spacing */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Validation styling */
 .is-invalid {
     border: 2px solid red;
 }
 
-/* Dark button styling */
+/* Button styling */
 .btn-dark {
     background-color: #343a40;
     border-color: #343a40;
+    width: 100%;
 }
 
-.btn-dark:hover {
-    background-color: #23272b;
-    border-color: #23272b;
+.btn-light {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    width: 100%;
 }
 
 footer {
