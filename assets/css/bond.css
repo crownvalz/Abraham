@@ -82,6 +82,10 @@ footer .social-icons a:hover {
     margin-right: auto;
 }
 
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
 .button-group {
     display: flex;
     flex-direction: column;
