@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    box-sizing: border-box;
 }
 
 .navbar {
@@ -84,11 +85,19 @@ footer .social-icons a:hover {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
-
-
-
-
+/* Form Styling */
+.calculator-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%; /* Ensure full width */
+    max-width: 600px; /* Control the maximum width */
+}
 
 .calculator-form {
     max-width: 600px;
