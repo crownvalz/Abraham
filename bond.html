@@ -48,61 +48,70 @@
 
     <!-- Calculator Form -->
     <div class="container calculator-container mt-5 mb-5">
+    <!-- Form for selecting between calculators -->
     <form id="calculatorForm" class="calculator-form">
-        <!-- Calculator Type Dropdown -->
-        <div class="form-group">
-            <label for="calculatorType">Choose Calculation</label>
+        <div class="form-group mb-4">
+            <label for="calculatorType">Select Calculator</label>
             <select class="form-control" id="calculatorType">
                 <option value="bond">Bond Calculator</option>
                 <option value="loan">Loan Calculator</option>
             </select>
         </div>
-
+        
         <!-- Bond Calculator Fields -->
-        <div id="bondCalculatorFields" class="calculator-section">
-            <h4>Bond Calculator</h4>
-            <div class="form-group">
-                <input type="text" class="form-control" id="bondAmount" placeholder="Bond Amount (TZS)">
+        <div id="bondCalculatorFields">
+            <h4 class="mt-4">Bond Calculator</h4>
+            <div class="form-group mb-3">
+                <label for="bondAmount">Bond Amount (TZS)</label>
+                <input type="text" class="form-control" id="bondAmount" placeholder="Enter Bond Amount">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)">
+            <div class="form-group mb-3">
+                <label for="bondInterestRate">Interest Rate (%)</label>
+                <input type="text" class="form-control" id="bondInterestRate" placeholder="Enter Interest Rate">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="bondYears" placeholder="Bond Duration (Years)">
+            <div class="form-group mb-3">
+                <label for="bondYears">Years</label>
+                <input type="text" class="form-control" id="bondYears" placeholder="Enter Duration (Years)">
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
+                <label for="bondFrequency">Interest Paid</label>
                 <select class="form-control" id="bondFrequency">
-                    <option value="monthly">Interest Paid Monthly</option>
-                    <option value="quarterly">Interest Paid Quarterly</option>
-                    <option value="semi-annually">Interest Paid Semi-Annually</option>
-                    <option value="yearly">Interest Paid Yearly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="semi-annually">Semi-annually</option>
+                    <option value="yearly">Yearly</option>
                 </select>
             </div>
         </div>
 
-        <!-- Loan Calculator Fields -->
-        <div id="loanCalculatorFields" class="calculator-section" style="display: none;">
-            <h4>Loan Calculator</h4>
-            <div class="form-group">
-                <input type="text" class="form-control" id="loanAmount" placeholder="Loan Amount (TZS)">
+        <!-- Loan Calculator Fields (hidden by default) -->
+        <div id="loanCalculatorFields" style="display: none;">
+            <h4 class="mt-4">Loan Calculator</h4>
+            <div class="form-group mb-3">
+                <label for="loanAmount">Loan Amount (TZS)</label>
+                <input type="text" class="form-control" id="loanAmount" placeholder="Enter Loan Amount">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
+            <div class="form-group mb-3">
+                <label for="loanInterestRate">Interest Rate (%)</label>
+                <input type="text" class="form-control" id="loanInterestRate" placeholder="Enter Interest Rate">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="loanYears" placeholder="Loan Duration (Years)">
+            <div class="form-group mb-3">
+                <label for="loanYears">Years</label>
+                <input type="text" class="form-control" id="loanYears" placeholder="Enter Duration (Years)">
             </div>
         </div>
 
         <!-- Buttons -->
-        <button type="submit" class="btn btn-dark mt-4 btn-block">Calculate</button>
-        <button type="button" class="btn btn-light mt-2 btn-block" id="clearFormBtn">Clear</button>
+        <div class="button-group mt-4">
+            <button type="submit" class="btn btn-dark w-100">Calculate</button>
+            <button type="button" class="btn btn-light w-100 mt-3" id="clearFormBtn">Clear</button>
+        </div>
     </form>
 </div>
 
 <!-- Footer -->
 <footer>
-    <p>Bond & Loan Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
+    <p>Bond Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
 </footer>
 
 <!-- Modal for displaying results -->
