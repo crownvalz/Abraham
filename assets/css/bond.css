@@ -64,3 +64,58 @@ footer .social-icons a:hover {
 .navbar-toggler.collapsed span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+
+
+
+
+
+
+/* Styling for the form and layout adjustments */
+.calculator-container {
+    background-color: #282c34;
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+button {
+    width: 100%;
+}
+
+/* Validation styling */
+.is-invalid {
+    border: 2px solid red;
+}
+
+/* Dark button styling */
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+    border-color: #23272b;
+}
+
+/* Light button styling */
+.btn-light {
+    background-color: #ffffff;
+    color: #343a40;
+    border-color: #ffffff;
+}
