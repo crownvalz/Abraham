@@ -2,7 +2,7 @@ document.getElementById('calculatorType').addEventListener('change', function ()
     const calculatorType = this.value;
     const bondCalculatorFields = document.getElementById('bondCalculatorFields');
     const loanCalculatorFields = document.getElementById('loanCalculatorFields');
-    
+
     if (calculatorType === 'bond') {
         bondCalculatorFields.style.display = 'block';
         loanCalculatorFields.style.display = 'none';
@@ -12,7 +12,20 @@ document.getElementById('calculatorType').addEventListener('change', function ()
     }
 });
 
-// Form validation and calculation logic for bond and loan
+// Format input fields with commas as the user types
+function formatNumberWithCommas(input) {
+    input.value = input.value.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+document.getElementById('bondAmount').addEventListener('input', function () {
+    formatNumberWithCommas(this);
+});
+
+document.getElementById('loanAmount').addEventListener('input', function () {
+    formatNumberWithCommas(this);
+});
+
+// Form submission event
 document.getElementById('calculatorForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -62,7 +75,7 @@ function calculateBond() {
             <h4>Bond Calculation Result</h4>
             <p><strong>Bond Amount:</strong> TZS ${formatNumberWithCommas(bondAmount.toFixed(2))}</p>
             <p><strong>Interest Rate:</strong> ${interestRate.toFixed(2)}%</p>
-            <p><strong>Years:</strong> ${years} years</p>
+            <p><strong>Duration:</strong> ${years} years</p>
             <p><strong>Interest Frequency:</strong> ${interestFrequency.charAt(0).toUpperCase() + interestFrequency.slice(1)}</p>
             <hr>
             <p><strong>Interest per ${interestFrequency.charAt(0).toUpperCase() + interestFrequency.slice(1)}:</strong> TZS ${formatNumberWithCommas(interestPerPeriod.toFixed(2))}</p>
@@ -108,7 +121,7 @@ function calculateLoan() {
             <h4>Loan Calculation Result</h4>
             <p><strong>Loan Amount:</strong> TZS ${formatNumberWithCommas(loanAmount.toFixed(2))}</p>
             <p><strong>Interest Rate:</strong> ${interestRate.toFixed(2)}%</p>
-            <p><strong>Years:</strong> ${years} years</p>
+            <p><strong>Duration:</strong> ${years} years</p>
             <hr>
             <p><strong>Monthly Payment:</strong> TZS ${formatNumberWithCommas(monthlyPayment.toFixed(2))}</p>
             <p><strong>Total Payment After ${years} Years:</strong> TZS ${formatNumberWithCommas(totalPayment.toFixed(2))}</p>
@@ -116,6 +129,12 @@ function calculateLoan() {
         showModal(resultHTML);
     }
 }
+
+// Clear button logic
+document.getElementById('clearFormBtn').addEventListener('click', function () {
+    document.getElementById('calculatorForm').reset();
+    clearValidationErrors();
+});
 
 function showValidationError(input) {
     input.classList.add('is-invalid');
@@ -126,10 +145,6 @@ function clearValidationErrors() {
     inputs.forEach(input => {
         input.classList.remove('is-invalid');
     });
-}
-
-function formatNumberWithCommas(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 function getCompoundingPeriods(frequency) {
@@ -152,9 +167,3 @@ function showModal(content) {
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     resultModal.show();
 }
-
-// Clear button logic
-document.getElementById('clearFormBtn').addEventListener('click', function () {
-    document.getElementById('calculatorForm').reset();
-    clearValidationErrors();
-});
