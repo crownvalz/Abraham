@@ -1,12 +1,14 @@
 /* Custom Styling */
 body {
-    background-color: #f5f7fa;
+    background-color: #1c1c1e;
+    color: #f5f5f5;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
-    background-color: #ffffff;
+    background-color: #333;
     padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-brand img {
@@ -14,14 +16,14 @@ body {
 }
 
 footer {
-    background-color: #343a40;
-    color: #ffffff;
+    background-color: #1c1c1e;
+    color: #f5f5f5;
     padding: 2rem 0;
     text-align: center;
 }
 
 footer .footer-links a {
-    color: #ffffff;
+    color: #f5f5f5;
     text-decoration: none;
     margin: 0 10px;
     font-size: 1rem;
@@ -32,13 +34,13 @@ footer .footer-links a:hover {
 }
 
 footer .social-icons a {
-    color: #ffffff;
+    color: #f5f5f5;
     font-size: 1.5rem;
     margin: 0 10px;
 }
 
 footer .social-icons a:hover {
-    color: #17a2b8;
+    color: #00bcd4;
 }
 
 .navbar-nav {
@@ -48,6 +50,7 @@ footer .social-icons a:hover {
 
 .navbar h1 {
     font-size: 1.5rem;
+    color: #f5f5f5;
     margin: 0;
     font-weight: bold;
 }
@@ -62,7 +65,7 @@ footer .social-icons a:hover {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: black;
+    background-color: #f5f5f5;
     margin: 5px 0;
     transition: all 0.4s ease-in-out;
 }
@@ -84,9 +87,9 @@ footer .social-icons a:hover {
     max-width: 100%;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #2e2e30;
 }
 
 @media (max-width: 768px) {
@@ -107,32 +110,33 @@ button {
 
 /* Dropdown and Form Field Styles */
 form select, form input[type="text"], form input[type="tel"] {
-    background-color: #f9f9f9;
-    border: 1px solid #ced4da;
+    background-color: #3a3a3c;
+    border: 1px solid #4a4a4c;
     border-radius: 25px;
     padding: 12px 15px;
     font-size: 1rem;
+    color: #f5f5f5;
     transition: border-color 0.3s ease-in-out;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 form select:hover, form input[type="text"]:hover, form input[type="tel"]:hover {
-    border-color: #007bff;
+    border-color: #00bcd4;
 }
 
 form select:focus, form input[type="text"]:focus, form input[type="tel"]:focus {
-    border-color: #007bff;
+    border-color: #00bcd4;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
 }
 
 form select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE2IDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuMzMgMGwuNy43TDggNi42bDYtNS45LjctLjctMS4zMi0xLjMtNy4zNSA3LjM1eiIgZmlsbD0iIzAwN2JmZiIvPjwvc3ZnPg==') no-repeat right 12px center;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE2IDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuMzMgMGwuNy43TDggNi42bDYtNS45LjctLjctMS4zMi0xLjMtNy4zNSA3LjM1eiIgZmlsbD0iIzAwY2QyZiIvPjwvc3ZnPg==') no-repeat right 12px center;
     padding-right: 40px;
-    background-color: #f9f9f9;
+    background-color: #3a3a3c;
 }
 
 form select:focus {
@@ -143,25 +147,25 @@ form select:focus {
 label {
     font-size: 1rem;
     font-weight: bold;
-    color: #495057;
+    color: #f5f5f5;
 }
 
 h4 {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #343a40;
+    color: #f5f5f5;
     margin-bottom: 1rem;
 }
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #00bcd4;
     color: #fff;
     border: none;
     transition: background-color 0.3s ease-in-out;
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #008ba3;
 }
 
 button#clearFormBtn {
