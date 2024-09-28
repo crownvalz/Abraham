@@ -1,6 +1,6 @@
 /* Calculator Form Styling */
 .calculator-container {
-    background-color: #343a40;
+    background-color: #282c34; /* Dark theme */
     color: #ffffff;
     padding: 2rem;
     border-radius: 8px;
@@ -10,23 +10,23 @@
     color: #d1d1d1;
 }
 
-.calculator-form input {
+.calculator-form input, .calculator-form select {
     background-color: #444;
     color: #ffffff;
     border: 1px solid #555;
 }
 
-.calculator-form input:focus {
+.calculator-form input:focus, .calculator-form select:focus {
     background-color: #555;
 }
 
 .btn-primary {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
+    background-color: #007bff; /* Improved button color */
+    border-color: #007bff;
 }
 
 .btn-primary:hover {
-    background-color: #138496;
+    background-color: #0056b3;
 }
 
 /* Modal Styling */
