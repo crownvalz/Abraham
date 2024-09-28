@@ -51,65 +51,58 @@
     <form id="calculatorForm" class="calculator-form">
         <!-- Calculator Type Dropdown -->
         <div class="form-group">
-            <label for="calculatorType">Select Calculator</label>
+            <label for="calculatorType">Choose Calculation</label>
             <select class="form-control" id="calculatorType">
                 <option value="bond">Bond Calculator</option>
                 <option value="loan">Loan Calculator</option>
             </select>
         </div>
-        
+
         <!-- Bond Calculator Fields -->
-        <div id="bondCalculatorFields">
-            <h4 class="mt-4">Bond Calculator</h4>
+        <div id="bondCalculatorFields" class="calculator-section">
+            <h4>Bond Calculator</h4>
             <div class="form-group">
-                <label for="bondAmount">Bond Amount (TZS)</label>
-                <input type="text" class="form-control" id="bondAmount" placeholder="Enter Bond Amount">
+                <input type="text" class="form-control" id="bondAmount" placeholder="Bond Amount (TZS)">
             </div>
             <div class="form-group">
-                <label for="bondInterestRate">Interest Rate (%)</label>
-                <input type="text" class="form-control" id="bondInterestRate" placeholder="Enter Interest Rate">
+                <input type="text" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)">
             </div>
             <div class="form-group">
-                <label for="bondYears">Years</label>
-                <input type="text" class="form-control" id="bondYears" placeholder="Enter Duration (Years)">
+                <input type="text" class="form-control" id="bondYears" placeholder="Bond Duration (Years)">
             </div>
             <div class="form-group">
-                <label for="bondFrequency">Interest Paid</label>
                 <select class="form-control" id="bondFrequency">
-                    <option value="monthly">Monthly</option>
-                    <option value="quarterly">Quarterly</option>
-                    <option value="semi-annually">Semi-annually</option>
-                    <option value="yearly">Yearly</option>
+                    <option value="monthly">Interest Paid Monthly</option>
+                    <option value="quarterly">Interest Paid Quarterly</option>
+                    <option value="semi-annually">Interest Paid Semi-Annually</option>
+                    <option value="yearly">Interest Paid Yearly</option>
                 </select>
             </div>
         </div>
 
         <!-- Loan Calculator Fields -->
-        <div id="loanCalculatorFields" style="display: none;">
-            <h4 class="mt-4">Loan Calculator</h4>
+        <div id="loanCalculatorFields" class="calculator-section" style="display: none;">
+            <h4>Loan Calculator</h4>
             <div class="form-group">
-                <label for="loanAmount">Loan Amount (TZS)</label>
-                <input type="text" class="form-control" id="loanAmount" placeholder="Enter Loan Amount">
+                <input type="text" class="form-control" id="loanAmount" placeholder="Loan Amount (TZS)">
             </div>
             <div class="form-group">
-                <label for="loanInterestRate">Interest Rate (%)</label>
-                <input type="text" class="form-control" id="loanInterestRate" placeholder="Enter Interest Rate">
+                <input type="text" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
             </div>
             <div class="form-group">
-                <label for="loanYears">Years</label>
-                <input type="text" class="form-control" id="loanYears" placeholder="Enter Duration (Years)">
+                <input type="text" class="form-control" id="loanYears" placeholder="Loan Duration (Years)">
             </div>
         </div>
 
         <!-- Buttons -->
         <button type="submit" class="btn btn-dark mt-4 btn-block">Calculate</button>
-        <button type="button" class="btn btn-light mt-4 btn-block" id="clearFormBtn">Clear</button>
+        <button type="button" class="btn btn-light mt-2 btn-block" id="clearFormBtn">Clear</button>
     </form>
 </div>
 
 <!-- Footer -->
 <footer>
-    <p>Bond Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
+    <p>Bond & Loan Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
 </footer>
 
 <!-- Modal for displaying results -->
