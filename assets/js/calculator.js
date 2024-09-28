@@ -55,7 +55,9 @@ document.getElementById('bondCalculator').addEventListener('submit', function (e
             case 'yearly': compoundingPeriods = 1; break;
         }
 
-        const interest = bondAmount * Math.pow(1 + (interestRate / 100) / compoundingPeriods, compoundingPeriods * years);
+        const totalAmount = bondAmount * Math.pow(1 + (interestRate / 100) / compoundingPeriods, compoundingPeriods * years);
+        const interestPerPeriod = bondAmount * (interestRate / 100) / compoundingPeriods;
+
         const resultHTML = `
             <h4>Bond Calculation Result</h4>
             <p><strong>Bond Amount:</strong> $${formatNumberWithCommas(bondAmount.toFixed(2))}</p>
@@ -63,7 +65,8 @@ document.getElementById('bondCalculator').addEventListener('submit', function (e
             <p><strong>Years:</strong> ${years} years</p>
             <p><strong>Interest Frequency:</strong> ${interestFrequency.charAt(0).toUpperCase() + interestFrequency.slice(1)}</p>
             <hr>
-            <p><strong>Total Amount:</strong> $${formatNumberWithCommas(interest.toFixed(2))}</p>
+            <p><strong>Interest per ${interestFrequency.charAt(0).toUpperCase() + interestFrequency.slice(1)}:</strong> $${formatNumberWithCommas(interestPerPeriod.toFixed(2))}</p>
+            <p><strong>Total Amount After ${years} Years:</strong> $${formatNumberWithCommas(totalAmount.toFixed(2))}</p>
         `;
         showModal(resultHTML);
     }
