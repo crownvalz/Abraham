@@ -1,4 +1,3 @@
-
 /* Custom Styling */
 body {
     background-color: #f5f7fa;
@@ -64,36 +63,4 @@ footer .social-icons a:hover {
 }
 .navbar-toggler.collapsed span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
-}
-
-
-
-/* Modal Styling */
-.modal-header {
-    background-color: #343a40;
-    color: #fff;
-}
-
-.modal-footer button {
-    border-radius: 6px;
-}
-
-/* Validation Styling */
-.is-invalid {
-    border: 2px solid red;
-}
-
-/* Add some spacing between form elements */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-
-    button {
-        font-size: 0.9rem;
-    }
-
-    .navbar h1 {
-        font-size: 1.25rem;
-    }
 }
