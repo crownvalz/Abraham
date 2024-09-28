@@ -85,3 +85,10 @@ footer .social-icons a:hover {
     background-color: #fff !important;
     padding: 2rem !important;
 }
+.button-group {
+    margin-top: 2rem;
+}
+
+button {
+    margin-bottom: 1rem; /* Add space between buttons */
+}
