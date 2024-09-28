@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const loanCalculatorFields = document.getElementById('loanCalculatorFields');
     const clearFormBtn = document.getElementById('clearFormBtn');
     const calculatorForm = document.getElementById('calculatorForm');
+    const bondAmountInput = document.getElementById('bondAmount');
+    const loanAmountInput = document.getElementById('loanAmount');
 
     // Toggle animation for hamburger icon
     toggler.addEventListener('click', () => {
@@ -20,6 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
             bondCalculatorFields.style.display = 'block';
             loanCalculatorFields.style.display = 'none';
         }
+    });
+
+    // Add commas to bond and loan amount inputs as user types
+    bondAmountInput.addEventListener('input', function () {
+        this.value = formatInputWithCommas(this.value);
+    });
+
+    loanAmountInput.addEventListener('input', function () {
+        this.value = formatInputWithCommas(this.value);
     });
 
     // Clear form button functionality
@@ -44,12 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Bond Calculation
     function calculateBond() {
-        const bondAmountInput = document.getElementById('bondAmount');
+        const bondAmount = parseFloat(bondAmountInput.value.replace(/,/g, ''));
         const bondInterestRateInput = document.getElementById('bondInterestRate');
         const bondYearsInput = document.getElementById('bondYears');
         const bondFrequencyInput = document.getElementById('bondFrequency');
 
-        const bondAmount = parseFloat(bondAmountInput.value.replace(/,/g, ''));
         const interestRate = parseFloat(bondInterestRateInput.value);
         const years = parseInt(bondYearsInput.value);
         const interestFrequency = bondFrequencyInput.value;
@@ -92,11 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Loan Calculation
     function calculateLoan() {
-        const loanAmountInput = document.getElementById('loanAmount');
+        const loanAmount = parseFloat(loanAmountInput.value.replace(/,/g, ''));
         const loanInterestRateInput = document.getElementById('loanInterestRate');
         const loanYearsInput = document.getElementById('loanYears');
 
-        const loanAmount = parseFloat(loanAmountInput.value.replace(/,/g, ''));
         const interestRate = parseFloat(loanInterestRateInput.value);
         const years = parseInt(loanYearsInput.value);
 
@@ -133,6 +142,12 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             showModal(resultHTML);
         }
+    }
+
+    // Helper function to format input with commas
+    function formatInputWithCommas(inputValue) {
+        inputValue = inputValue.replace(/,/g, ''); // Remove existing commas
+        return inputValue.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // Add commas
     }
 
     function showValidationError(input) {
