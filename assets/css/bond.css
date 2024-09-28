@@ -67,22 +67,6 @@ footer .social-icons a:hover {
 
 
 
-
-
-
-/* Styling for the form and layout adjustments */
-.calculator-container {
-    background-color: #282c34;
-    color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    width: 100%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .form-group {
     margin-bottom: 1.5rem;
 }
