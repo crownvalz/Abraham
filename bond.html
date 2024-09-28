@@ -15,15 +15,13 @@
 
     <!-- Top Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="img/logo.png" alt="Logo">
+                <img src="img/logo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
             </a>
             <h1 class="mx-auto">Safe Bank Plc</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
@@ -47,15 +45,14 @@
     </nav>
 
     <!-- Calculator Form -->
-        <!-- Calculator Form -->
     <div class="container calculator-container mt-5 mb-5">
         <!-- Form for selecting between calculators -->
         <form id="calculatorForm" class="calculator-form">
             <div class="form-group mb-4">
                 <label for="calculatorType">Select Calculator</label>
                 <select class="form-control" id="calculatorType">
-                    <option value="bond">Bond Calculator</option>
-                    <option value="loan">Loan Calculator</option>
+                    <option value="bond">Bond</option>
+                    <option value="loan">Loan</option>
                 </select>
             </div>
             
@@ -63,8 +60,8 @@
             <div id="bondCalculatorFields">
                 <h4 class="mt-4">Bond Calculator</h4>
                 <div class="form-group mb-3">
-                    <label for="bondAmount">Bond Amount (TZS)</label>
-                    <input type="tel" class="form-control" id="bondAmount" placeholder="Enter Bond Amount">
+                    <label for="bondAmount">Amount (TZS)</label>
+                    <input type="tel" class="form-control" id="bondAmount" placeholder="Enter Amount">
                 </div>
                 <div class="form-group mb-3">
                     <label for="bondInterestRate">Interest Rate (%)</label>
@@ -72,7 +69,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="bondYears">Years</label>
-                    <input type="tel" class="form-control" id="bondYears" placeholder="Enter Duration (Years)">
+                    <input type="tel" class="form-control" id="bondYears" placeholder="Enter Duration">
                 </div>
                 <div class="form-group mb-3">
                     <label for="bondFrequency">Interest Paid</label>
@@ -89,8 +86,8 @@
             <div id="loanCalculatorFields" style="display: none;">
                 <h4 class="mt-4">Loan Calculator</h4>
                 <div class="form-group mb-3">
-                    <label for="loanAmount">Loan Amount (TZS)</label>
-                    <input type="text" class="form-control" id="loanAmount" placeholder="Enter Loan Amount">
+                    <label for="loanAmount">Amount (TZS)</label>
+                    <input type="text" class="form-control" id="loanAmount" placeholder="Enter Amount">
                 </div>
                 <div class="form-group mb-3">
                     <label for="loanInterestRate">Interest Rate (%)</label>
@@ -98,7 +95,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="loanYears">Years</label>
-                    <input type="text" class="form-control" id="loanYears" placeholder="Enter Duration (Years)">
+                    <input type="text" class="form-control" id="loanYears" placeholder="Enter Duration">
                 </div>
             </div>
 
@@ -111,7 +108,7 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer class="text-center mt-5">
         <p>Bond Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
     </footer>
 
@@ -135,9 +132,6 @@
 
     <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap Icons CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
-
     <!-- Custom JS -->
     <script src="assets/js/bond.js"></script>
     <script src="assets/js/calculator.js"></script>
