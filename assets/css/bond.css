@@ -3,50 +3,35 @@ body {
     background-color: #f5f7fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .navbar {
     background-color: #ffffff;
     padding: 1rem;
 }
+
+/* Ensures the logo image scales properly */
 .navbar-brand img {
     height: 40px;
+    max-width: 100%;
 }
-footer {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 2rem 0;
-    text-align: center;
-}
-footer .footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
-}
-footer .footer-links a:hover {
-    text-decoration: underline;
-}
-footer .social-icons a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-footer .social-icons a:hover {
-    color: #17a2b8;
-}
-.navbar-nav {
-    flex-grow: 1;
-    justify-content: center;
-}
+
+/* Centers the bank name */
 .navbar h1 {
     font-size: 1.5rem;
     margin: 0;
     font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
 }
-/* Hamburger Animation */
+
+/* Aligns toggle button to the right */
 .navbar-toggler {
     border: none;
     outline: none;
+    margin-left: auto;
 }
+
+/* Adjusting the hamburger icon style */
 .navbar-toggler span {
     display: block;
     width: 25px;
@@ -55,12 +40,49 @@ footer .social-icons a:hover {
     margin: 5px 0;
     transition: all 0.4s ease-in-out;
 }
+
 .navbar-toggler.collapsed span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
+
 .navbar-toggler.collapsed span:nth-child(2) {
     opacity: 0;
 }
+
 .navbar-toggler.collapsed span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Centers the navbar links */
+.navbar-nav {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+footer .footer-links a:hover {
+    text-decoration: underline;
+}
+
+footer .social-icons a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+footer .social-icons a:hover {
+    color: #17a2b8;
 }
