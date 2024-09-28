@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bond & Loan Calculator</title>
+    <title>Bond and Loan Calculator</title>
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/bond.css" rel="stylesheet"> <!-- Custom CSS -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/bond.css">
+    <link rel="stylesheet" href="assets/css/calculator.css">
 </head>
 <body>
 
@@ -14,101 +17,117 @@
     <nav class="navbar navbar-expand-lg navbar-light border-bottom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <a class="navbar-brand" href="#">
-                <img src="img/logo.png" alt="Logo"> <!-- Add your logo URL -->
+                <img src="img/logo.png" alt="Logo">
             </a>
             <h1 class="mx-auto">Safe Bank Plc</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Centered Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Loans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Main Form Container -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <form id="calculatorForm">
-                    <div class="form-group mb-3">
-                        <label for="calculatorType">Select Calculator</label>
-                        <select id="calculatorType" class="form-select">
-                            <option value="bond">Bond Calculator</option>
-                            <option value="loan">Loan Calculator</option>
-                        </select>
-                    </div>
+    <!-- Calculator Form -->
+    <div class="container calculator-container mt-5 mb-5">
+    <form id="calculatorForm" class="calculator-form">
+        <!-- Calculator Type Dropdown -->
+        <div class="form-group">
+            <label for="calculatorType">Choose Calculation</label>
+            <select class="form-control" id="calculatorType">
+                <option value="bond">Bond Calculator</option>
+                <option value="loan">Loan Calculator</option>
+            </select>
+        </div>
 
-                    <!-- Bond Calculator Fields -->
-                    <div id="bondCalculatorFields" class="calculator-fields">
-                        <div class="form-group mb-3">
-                            <label for="bondAmount">Bond Amount (TZS)</label>
-                            <input type="text" id="bondAmount" class="form-control" placeholder="Enter bond amount">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="bondInterestRate">Interest Rate (%)</label>
-                            <input type="text" id="bondInterestRate" class="form-control" placeholder="Enter interest rate">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="bondYears">Duration (Years)</label>
-                            <input type="text" id="bondYears" class="form-control" placeholder="Enter duration in years">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="bondFrequency">Interest Frequency</label>
-                            <select id="bondFrequency" class="form-select">
-                                <option value="monthly">Monthly</option>
-                                <option value="quarterly">Quarterly</option>
-                                <option value="semi-annually">Semi-Annually</option>
-                                <option value="yearly">Yearly</option>
-                            </select>
-                        </div>
-                    </div>
+        <!-- Bond Calculator Fields -->
+        <div id="bondCalculatorFields" class="calculator-section">
+            <h4>Bond Calculator</h4>
+            <div class="form-group">
+                <input type="text" class="form-control" id="bondAmount" placeholder="Bond Amount (TZS)">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="bondYears" placeholder="Bond Duration (Years)">
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="bondFrequency">
+                    <option value="monthly">Interest Paid Monthly</option>
+                    <option value="quarterly">Interest Paid Quarterly</option>
+                    <option value="semi-annually">Interest Paid Semi-Annually</option>
+                    <option value="yearly">Interest Paid Yearly</option>
+                </select>
+            </div>
+        </div>
 
-                    <!-- Loan Calculator Fields -->
-                    <div id="loanCalculatorFields" class="calculator-fields" style="display: none;">
-                        <div class="form-group mb-3">
-                            <label for="loanAmount">Loan Amount (TZS)</label>
-                            <input type="text" id="loanAmount" class="form-control" placeholder="Enter loan amount">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="loanInterestRate">Interest Rate (%)</label>
-                            <input type="text" id="loanInterestRate" class="form-control" placeholder="Enter interest rate">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="loanYears">Duration (Years)</label>
-                            <input type="text" id="loanYears" class="form-control" placeholder="Enter duration in years">
-                        </div>
-                    </div>
+        <!-- Loan Calculator Fields -->
+        <div id="loanCalculatorFields" class="calculator-section" style="display: none;">
+            <h4>Loan Calculator</h4>
+            <div class="form-group">
+                <input type="text" class="form-control" id="loanAmount" placeholder="Loan Amount (TZS)">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="loanYears" placeholder="Loan Duration (Years)">
+            </div>
+        </div>
 
-                    <!-- Buttons -->
-                    <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-dark w-100 me-2">Calculate</button>
-                        <button type="button" id="clearFormBtn" class="btn btn-light w-100">Clear</button>
-                    </div>
-                </form>
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-dark mt-4 btn-block">Calculate</button>
+        <button type="button" class="btn btn-light mt-2 btn-block" id="clearFormBtn">Clear</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>Bond & Loan Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
+</footer>
+
+<!-- Modal for displaying results -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalResult">
+                <!-- Calculation results will be displayed here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-
-    <!-- Modal for Results -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="modalResult">
-                    <!-- Results will be displayed here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="text-center py-3">
-        <p>Bond & Loan Calculator &copy; 2024 Safe Bank Plc. All rights reserved.</p>
-    </footer>
+</div>
 
     <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bond.js"></script> <!-- Custom JS -->
+    <!-- Custom JS -->
+    <script src="assets/js/bond.js"></script>
+    <script src="assets/js/calculator.js"></script>
+
 </body>
 </html>
