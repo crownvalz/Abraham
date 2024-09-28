@@ -1,46 +1,57 @@
-body {
-    background-color: #333;
-    color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Styling for the form and layout adjustments */
+.calculator-container {
+    background-color: #282c34;
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.navbar {
-    background-color: #444;
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-.navbar h1 {
-    color: #fff;
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+button {
+    width: 100%;
+}
+
+/* Validation styling */
+.is-invalid {
+    border: 2px solid red;
+}
+
+/* Dark button styling */
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+    border-color: #23272b;
+}
+
+/* Light button styling */
+.btn-light {
+    background-color: #ffffff;
+    color: #343a40;
+    border-color: #ffffff;
 }
 
 footer {
-    background-color: #444;
-    color: #ddd;
-}
-
-footer p {
-    margin: 0;
-}
-
-.calculator-fields {
-    margin-bottom: 20px;
-}
-
-.btn-dark {
-    background-color: #000;
-    color: #fff;
-}
-
-.btn-light {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #ddd;
-}
-
-/* Input validation */
-.is-invalid {
-    border-color: red;
-}
-
-.is-valid {
-    border-color: green;
+    background-color: #1a1a1a;
+    color: #d1d1d1;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 2rem;
 }
