@@ -2,51 +2,67 @@
 body {
     background-color: #f5f7fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
 .navbar {
     background-color: #ffffff;
     padding: 1rem;
 }
+
 .navbar-brand img {
     height: 40px;
 }
+
 footer {
     background-color: #343a40;
     color: #ffffff;
     padding: 2rem 0;
     text-align: center;
 }
+
 footer .footer-links a {
     color: #ffffff;
     text-decoration: none;
     margin: 0 10px;
     font-size: 1rem;
 }
+
 footer .footer-links a:hover {
     text-decoration: underline;
 }
+
 footer .social-icons a {
     color: #ffffff;
     font-size: 1.5rem;
     margin: 0 10px;
 }
+
 footer .social-icons a:hover {
     color: #17a2b8;
 }
+
 .navbar-nav {
     flex-grow: 1;
     justify-content: center;
 }
+
 .navbar h1 {
     font-size: 1.5rem;
     margin: 0;
     font-weight: bold;
 }
+
 /* Hamburger Animation */
 .navbar-toggler {
     border: none;
     outline: none;
 }
+
 .navbar-toggler span {
     display: block;
     width: 25px;
@@ -55,29 +71,18 @@ footer .social-icons a:hover {
     margin: 5px 0;
     transition: all 0.4s ease-in-out;
 }
+
 .navbar-toggler.collapsed span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
+
 .navbar-toggler.collapsed span:nth-child(2) {
     opacity: 0;
 }
+
 .navbar-toggler.collapsed span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Form Styling */
 .calculator-container {
@@ -85,11 +90,16 @@ footer .social-icons a:hover {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 1rem; /* Add margin for spacing */
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .calculator-form {
     max-width: 600px;
+    width: 100%; /* Ensure the form takes full width up to 600px */
     margin: 0 auto;
 }
 
@@ -98,9 +108,8 @@ footer .social-icons a:hover {
     font-weight: bold;
     margin-bottom: 1rem;
     color: #343a40;
-    text-align: center; /* Center heading for form */
+    text-align: center;
 }
-
 
 .clearfix {
     content: "";
@@ -132,7 +141,7 @@ footer .social-icons a:hover {
 @media (max-width: 768px) {
     .calculator-container {
         padding: 1.5rem;
-        margin: 1rem; /* Margin added for mobile view */
+        margin: 1rem;
     }
 
     .form-group input,
