@@ -1,13 +1,33 @@
-// Toggle animation for hamburger icon
-const toggler = document.querySelector('.navbar-toggler');
-toggler.addEventListener('click', () => {
-    toggler.classList.toggle('collapsed');
-});
-
 document.addEventListener('DOMContentLoaded', function () {
     const calculatorType = document.getElementById('calculatorType');
     const bondFields = document.getElementById('bondCalculatorFields');
     const loanFields = document.getElementById('loanCalculatorFields');
+    const bondAmountInput = document.getElementById('bondAmount');
+    const loanAmountInput = document.getElementById('loanAmount');
+
+    // Add comma formatting while typing for bond amount
+    bondAmountInput.addEventListener('input', function () {
+        bondAmountInput.value = formatInputWithCommas(this.value);
+    });
+
+    // Add comma formatting while typing for loan amount
+    loanAmountInput.addEventListener('input', function () {
+        loanAmountInput.value = formatInputWithCommas(this.value);
+    });
+
+    // Function to format input with commas
+    function formatInputWithCommas(value) {
+        // Remove any non-digit characters (except for periods)
+        const cleanedValue = value.replace(/[^0-9.]/g, '');
+
+        // Split the value by the decimal point (if exists)
+        const parts = cleanedValue.split('.');
+        // Add commas to the integer part
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        
+        // Join integer and decimal parts (if any)
+        return parts.join('.');
+    }
 
     // Switching between Bond and Loan calculator fields
     calculatorType.addEventListener('change', function (event) {
@@ -43,12 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Bond Calculation
     function calculateBond() {
-        const bondAmountInput = document.getElementById('bondAmount');
+        const bondAmount = parseFloat(bondAmountInput.value.replace(/,/g, ''));
         const bondInterestRateInput = document.getElementById('bondInterestRate');
         const bondYearsInput = document.getElementById('bondYears');
         const bondFrequencyInput = document.getElementById('bondFrequency');
 
-        const bondAmount = parseFloat(bondAmountInput.value.replace(/,/g, ''));
         const interestRate = parseFloat(bondInterestRateInput.value);
         const years = parseInt(bondYearsInput.value);
         const interestFrequency = bondFrequencyInput.value;
@@ -94,11 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Loan Calculation
     function calculateLoan() {
-        const loanAmountInput = document.getElementById('loanAmount');
+        const loanAmount = parseFloat(loanAmountInput.value.replace(/,/g, ''));
         const loanInterestRateInput = document.getElementById('loanInterestRate');
         const loanYearsInput = document.getElementById('loanYears');
 
-        const loanAmount = parseFloat(loanAmountInput.value.replace(/,/g, ''));
         const interestRate = parseFloat(loanInterestRateInput.value);
         const years = parseInt(loanYearsInput.value);
 
