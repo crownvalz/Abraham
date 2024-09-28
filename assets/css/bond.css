@@ -80,3 +80,8 @@ footer .social-icons a:hover {
         padding: 1rem;
     }
 }
+
+.calculator-container {
+    background-color: #fff !important;
+    padding: 2rem !important;
+}
