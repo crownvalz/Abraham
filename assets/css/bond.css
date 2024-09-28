@@ -2,11 +2,16 @@
 body {
     background-color: #f5f7fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar {
     background-color: #ffffff;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between; /* Ensure logo and menu are spaced */
+    align-items: center;
 }
 
 .navbar-brand img {
@@ -85,6 +90,7 @@ footer .social-icons a:hover {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem; /* Add margin for spacing */
 }
 
 .calculator-form {
@@ -97,6 +103,7 @@ footer .social-icons a:hover {
     font-weight: bold;
     margin-bottom: 1rem;
     color: #343a40;
+    text-align: center; /* Center heading for form */
 }
 
 .form-group label {
@@ -107,10 +114,11 @@ footer .social-icons a:hover {
 .form-group input,
 .form-group select {
     border-radius: 6px;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid #ced4da;
     width: 100%;
     font-size: 1rem;
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
 .form-group input:focus,
@@ -151,6 +159,16 @@ button.btn-light:hover {
     background-color: #e2e6ea;
 }
 
+.button-group {
+    margin-top: 1rem; /* Add space between the form and buttons */
+}
+
+.clearfix {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 /* Modal Styling */
 .modal-header {
     background-color: #343a40;
@@ -175,6 +193,7 @@ button.btn-light:hover {
 @media (max-width: 768px) {
     .calculator-container {
         padding: 1.5rem;
+        margin: 1rem; /* Margin added for mobile view */
     }
 
     .form-group input,
@@ -184,5 +203,9 @@ button.btn-light:hover {
 
     button {
         font-size: 0.9rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.25rem;
     }
 }
