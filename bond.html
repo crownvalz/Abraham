@@ -59,7 +59,7 @@
             <form id="bondCalculator" class="calculator-form">
                 <div class="mb-3">
                     <label for="bondAmount" class="form-label">Bond Amount</label>
-                    <input type="text" id="bondAmount" class="form-control" required>
+                    <input type="text" id="bondAmount" class="form-control amount-input" required>
                 </div>
                 <div class="mb-3">
                     <label for="interestRate" class="form-label">Interest Rate (%)</label>
@@ -69,6 +69,15 @@
                     <label for="years" class="form-label">Years</label>
                     <input type="number" id="years" class="form-control" required>
                 </div>
+                <div class="mb-3">
+                    <label for="interestFrequency" class="form-label">Interest Payment Frequency</label>
+                    <select id="interestFrequency" class="form-select" required>
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="semi-annually">Semi-Annually</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary w-100">Calculate Bond</button>
             </form>
 
@@ -76,7 +85,7 @@
             <form id="loanCalculator" class="calculator-form d-none">
                 <div class="mb-3">
                     <label for="loanAmount" class="form-label">Loan Amount</label>
-                    <input type="text" id="loanAmount" class="form-control" required>
+                    <input type="text" id="loanAmount" class="form-control amount-input" required>
                 </div>
                 <div class="mb-3">
                     <label for="loanInterestRate" class="form-label">Interest Rate (%)</label>
