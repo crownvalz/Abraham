@@ -1,0 +1,43 @@
+/* Dark theme for calculator */
+body {
+    background-color: #181818;
+    color: #ffffff;
+}
+
+.calculator-container {
+    background-color: #212529;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.calculator-form .form-control {
+    background-color: #2b2b2b;
+    border: none;
+    color: #ffffff;
+}
+
+.form-select {
+    background-color: #2b2b2b;
+    border: none;
+    color: #ffffff;
+}
+
+label {
+    color: #ffffff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#bondResult, #loanResult {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+}
