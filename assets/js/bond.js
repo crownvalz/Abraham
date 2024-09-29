@@ -90,7 +90,7 @@ document.getElementById("clearFormBtn").addEventListener("click", function() {
 });
 
 
-  // Update navbar toggler icon
-    navbarToggler.addEventListener('click', function () {
-        this.classList.toggle('collapsed');
-    });
+// Toggle button animation
+document.querySelector('.navbar-toggler').addEventListener('click', function() {
+    this.classList.toggle('collapsed');
+});
