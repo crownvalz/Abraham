@@ -51,32 +51,6 @@ footer .social-icons a:hover {
     font-weight: bold;
 }
 
-/* Hamburger Animation */
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 5px 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.navbar-toggler.collapsed span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggler.collapsed span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggler.collapsed span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
 .calculator-container {
     max-width: 600px;
     padding: 2rem;
@@ -86,13 +60,36 @@ footer .social-icons a:hover {
     background-color: #fff;
 }
 
-@media (max-width: 768px) {
-    .calculator-container {
-        max-width: 95%;
-        padding: 1.5rem;
-    }
-}
-
 .button-group {
     margin-top: 20px;
+}
+
+/* Add this CSS at the bottom of your existing CSS */
+.navbar-toggler {
+    border: none; /* Remove default border */
+}
+
+.navbar-toggler:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.navbar-toggler .line {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler.collapsed .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.collapsed .line:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.navbar-toggler.collapsed .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
