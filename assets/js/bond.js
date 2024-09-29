@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     const modalResult = document.getElementById('modalResult');
     const bondFrequency = document.getElementById('bondFrequency');
-    const navbarToggler = document.querySelector('.navbar-toggler');
     const alertBox = document.getElementById('alert');
 
     // Toggle calculator fields
