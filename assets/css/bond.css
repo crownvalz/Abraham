@@ -29,6 +29,10 @@ body {
     justify-content: center;
 }
 
+.navbar-nav .nav-link {
+    color: #f0f0f0 !important;
+}
+
 /* Footer */
 footer {
     background-color: #1c1c1c; /* Darker footer background */
