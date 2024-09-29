@@ -8,6 +8,16 @@ body {
     height: 40px;
 }
 
+.navbar-toggler.custom-toggler {
+    border-color: transparent;
+}
+
+.navbar-toggler.custom-toggler .navbar-toggler-icon {
+    background-image: url('img/toggle-icon.svg'); /* Add your custom icon here */
+    width: 25px;
+    height: 25px;
+}
+
 footer {
     background-color: #343a40;
     color: #ffffff;
@@ -16,6 +26,7 @@ footer {
 
 .calculator-form {
     max-width: 600px;
+    width: 100%;
 }
 
 .form-select, .form-control {
@@ -30,4 +41,15 @@ footer {
 .success {
     border: 1px solid green;
     background-color: #e7f9e7;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .calculator-form {
+        width: 90%;
+    }
+
+    .navbar-brand h1 {
+        font-size: 1.5rem;
+    }
 }
