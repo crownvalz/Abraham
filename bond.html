@@ -4,94 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="stylesheet" href="path/to/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bond.css"> <!-- Link to your CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
 </head>
 <body>
-    <nav class="navbar">
-        <h1>Calculator</h1>
-    </nav>
 
-    <div class="calculator-container">
-        <form id="calculatorForm" class="calculator-form">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Calculator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+<div class="calculator-container">
+    <form id="calculatorForm" class="calculator-form">
+        <div class="form-group">
+            <label for="calculatorType">Select Calculator Type:</label>
+            <select id="calculatorType" class="form-control">
+                <option value="bond">Bond Calculator</option>
+                <option value="loan">Loan Calculator</option>
+            </select>
+        </div>
+
+        <div id="bondCalculatorFields">
             <div class="form-floating">
-                <select id="calculatorType" class="form-select" required>
-                    <option value="">Select Calculator</option>
-                    <option value="bond">Bond Calculator</option>
-                    <option value="loan">Loan Calculator</option>
+                <input type="text" id="bondAmount" class="form-control" placeholder="Bond Amount">
+                <label for="bondAmount">Bond Amount (TZS)</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" id="bondInterestRate" class="form-control" placeholder="Interest Rate">
+                <label for="bondInterestRate">Interest Rate (%)</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" id="bondYears" class="form-control" placeholder="Years">
+                <label for="bondYears">Years</label>
+            </div>
+            <div class="form-group">
+                <label for="bondFrequency">Payment Frequency:</label>
+                <select id="bondFrequency" class="form-control">
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="semi-annually">Semi-annually</option>
+                    <option value="yearly">Yearly</option>
                 </select>
-                <label for="calculatorType">Calculator Type</label>
             </div>
+        </div>
 
-            <div id="bondCalculatorFields" style="display: none;">
-                <div class="form-floating">
-                    <input type="text" id="bondAmount" class="form-control" placeholder="Bond Amount" required>
-                    <label for="bondAmount">Bond Amount</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" id="bondInterestRate" class="form-control" placeholder="Interest Rate" required>
-                    <label for="bondInterestRate">Interest Rate (%)</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" id="bondYears" class="form-control" placeholder="Duration (Years)" required>
-                    <label for="bondYears">Duration (Years)</label>
-                </div>
-                <div class="form-floating">
-                    <select id="bondFrequency" class="form-select" required>
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="semi-annually">Semi-annually</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
-                    <label for="bondFrequency">Payment Frequency</label>
-                </div>
+        <div id="loanCalculatorFields" style="display:none;">
+            <div class="form-floating">
+                <input type="text" id="loanAmount" class="form-control" placeholder="Loan Amount">
+                <label for="loanAmount">Loan Amount (TZS)</label>
             </div>
-
-            <div id="loanCalculatorFields" style="display: none;">
-                <div class="form-floating">
-                    <input type="text" id="loanAmount" class="form-control" placeholder="Loan Amount" required>
-                    <label for="loanAmount">Loan Amount</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" id="loanInterestRate" class="form-control" placeholder="Interest Rate" required>
-                    <label for="loanInterestRate">Interest Rate (%)</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" id="loanYears" class="form-control" placeholder="Duration (Years)" required>
-                    <label for="loanYears">Duration (Years)</label>
-                </div>
+            <div class="form-floating">
+                <input type="text" id="loanInterestRate" class="form-control" placeholder="Interest Rate">
+                <label for="loanInterestRate">Interest Rate (%)</label>
             </div>
+            <div class="form-floating">
+                <input type="text" id="loanYears" class="form-control" placeholder="Years">
+                <label for="loanYears">Years</label>
+            </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Calculate</button>
-            <button type="button" id="clearFormBtn" class="btn btn-secondary">Clear</button>
-        </form>
-    </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+        <button type="button" id="clearFormBtn" class="btn btn-secondary">Clear</button>
+    </form>
+</div>
 
-    <!-- Result Modal -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="modalResult"></div>
+<!-- Result Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalResult"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-        </div>
-        <div class="social-icons">
-            <a href="#">Icon 1</a>
-            <a href="#">Icon 2</a>
-        </div>
-    </footer>
-
-    <script src="path/to/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script> <!-- Link to your JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script> <!-- Link to your JavaScript -->
 </body>
 </html>
