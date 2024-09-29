@@ -3,96 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
+    <title>Bond Calculator</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/bond.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Calculator</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-</nav>
-
-<div class="calculator-container">
-    <form id="calculatorForm" class="calculator-form">
-        <div class="form-group">
-            <label for="calculatorType">Select Calculator Type:</label>
-            <select id="calculatorType" class="form-control">
-                <option value="bond">Bond Calculator</option>
-                <option value="loan">Loan Calculator</option>
-            </select>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand me-auto" href="#">
+                <img src="img/logo.png" alt="Logo"> <!-- Add your logo URL -->
+            </a>
+            <h1 class="mx-auto">Safe Bank Plc</h1>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
 
-        <div id="bondCalculatorFields">
-            <div class="form-floating">
-                <input type="text" id="bondAmount" class="form-control" placeholder="Bond Amount">
-                <label for="bondAmount">Bond Amount (TZS)</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" id="bondInterestRate" class="form-control" placeholder="Interest Rate">
-                <label for="bondInterestRate">Interest Rate (%)</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" id="bondYears" class="form-control" placeholder="Years">
-                <label for="bondYears">Years</label>
-            </div>
-            <div class="form-group">
-                <label for="bondFrequency">Payment Frequency:</label>
-                <select id="bondFrequency" class="form-control">
-                    <option value="monthly">Monthly</option>
-                    <option value="quarterly">Quarterly</option>
-                    <option value="semi-annually">Semi-annually</option>
-                    <option value="yearly">Yearly</option>
-                </select>
-            </div>
+        <!-- Centered Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Loans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+    
+    <!-- Calculator Form -->
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <form id="calculatorForm" class="calculator-form p-4 shadow-sm rounded-3 bg-light">
+                <div id="alert" class="alert d-none" role="alert"></div> <!-- Validation alert -->
 
-        <div id="loanCalculatorFields" style="display:none;">
-            <div class="form-floating">
-                <input type="text" id="loanAmount" class="form-control" placeholder="Loan Amount">
-                <label for="loanAmount">Loan Amount (TZS)</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" id="loanInterestRate" class="form-control" placeholder="Interest Rate">
-                <label for="loanInterestRate">Interest Rate (%)</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" id="loanYears" class="form-control" placeholder="Years">
-                <label for="loanYears">Years</label>
-            </div>
-        </div>
+                <div class="form-group mb-3 text-center">
+                    <label for="calculatorType" class="form-label">Select Calculator</label>
+                    <select class="form-select" id="calculatorType" aria-label="Select Calculator">
+                        <option value="bond">Bond</option>
+                        <option value="loan">Loan</option>
+                    </select>
+                </div>
 
-        <button type="submit" class="btn btn-primary">Calculate</button>
-        <button type="button" id="clearFormBtn" class="btn btn-secondary">Clear</button>
-    </form>
-</div>
+                <!-- Bond Calculator Fields -->
+                <div id="bondCalculatorFields">
+                    <h4 class="text-center mt-4">Bond Calculator</h4>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="bondAmount" placeholder="Amount (TZS)" required>
+                        <label for="bondAmount">Amount (TZS)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)" required>
+                        <label for="bondInterestRate">Interest Rate (%)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="bondYears" placeholder="Duration (Years)" required>
+                        <label for="bondYears">Duration (Years)</label>
+                    </div>
+                    <div class="form-group mb-3">
+                        <select class="form-select" id="bondFrequency" aria-label="Bond Interest Frequency">
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="semi-annually">Semi-annually</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                </div>
 
-<!-- Result Modal -->
-<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modalResult"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                <!-- Loan Calculator Fields (hidden by default) -->
+                <div id="loanCalculatorFields" style="display: none;">
+                    <h4 class="text-center mt-4">Loan Calculator</h4>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="loanAmount" placeholder="Amount (TZS)" required>
+                        <label for="loanAmount">Amount (TZS)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)" required>
+                        <label for="loanInterestRate">Interest Rate (%)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="loanYears" placeholder="Duration (Years)" required>
+                        <label for="loanYears">Duration (Years)</label>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-dark">Calculate</button>
+                    <button type="button" class="btn btn-outline-secondary" id="clearFormBtn">Clear</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js"></script> <!-- Link to your JavaScript -->
+<!-- Footer -->
+    <footer class="text-center mt-5">
+        <p>Bond Calculator &copy; 2024 Safe Bank Plc.</p>
+    </footer>
+    
+    <!-- Result Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Calculation Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalResult">
+                    <!-- Result will be displayed here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/bond.js"></script>
+
 </body>
 </html>
