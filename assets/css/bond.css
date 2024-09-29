@@ -80,18 +80,18 @@ footer .social-icons a:hover {
 }
 
 .calculator-container {
-    max-width: 100%; /* Ensure it doesn’t overflow */
+    max-width: 600px; /* Set a max width for better alignment */
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Center on larger screens */
-    background-color: #fff !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto; /* Center on larger screens with margin */
+    background-color: #fff;
 }
 
 @media (max-width: 768px) {
     .calculator-container {
         max-width: 95%; /* Ensure mobile devices have appropriate spacing */
-        padding: 1rem;
+        padding: 1.5rem; /* Slightly reduced padding for smaller screens */
     }
 }
 
@@ -104,37 +104,22 @@ button {
 }
 
 /* Custom Styling for Select Dropdowns */
-.custom-select {
-    position: relative;
-    appearance: none; /* Remove default arrow */
+.form-select, .form-control {
+    height: 50px; /* Uniform height for all input types */
+    border-radius: 5px;
+}
+
+.form-select {
     padding: 0.5rem 2rem 0.5rem 1rem; /* Adjust padding for better visibility */
     background-color: #ffffff;
     border: 1px solid #ced4da;
-    border-radius: 0.25rem;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
 
-.custom-select:focus {
+.form-select:focus, .form-control:focus {
     border-color: #495057; /* Darker border on focus */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Arrow styling */
-.custom-select::after {
-    content: "▼"; /* Arrow character */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    color: #6c757d; /* Color of the arrow */
-    pointer-events: none; /* Prevent click on the arrow */
-}
-
-/* Change color when dropdown is open */
-.custom-select:focus::after {
-    color: #495057; /* Change color of arrow when focused */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .error {
@@ -143,10 +128,39 @@ button {
 
 .success {
     border: 1px solid green;
+    background-color: #e7f9e7;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
 }
 
+/* Button styles */
+.btn {
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
 
+.btn-dark {
+    background-color: #343a40;
+    border: none;
+}
 
+.btn-dark:hover {
+    background-color: #23272b; /* Darker shade on hover */
+    transform: translateY(-1px); /* Slight lift effect on hover */
+}
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #ffffff;
+}
 
 /* Modal result styling */
 #modalResult h5 {
@@ -158,14 +172,3 @@ button {
     font-size: 1rem;
     margin-bottom: 0.5rem;
 }
-
-/* Input validation success */
-.success {
-    border: 2px solid green;
-    background-color: #e7f9e7;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-}
-
