@@ -10,7 +10,14 @@ body {
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 40px; /* Adjust logo size */
+}
+
+.navbar h1 {
+    font-size: 1.5rem; /* Adjust font size for bank name */
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Make bank name bold */
+    color: #343a40; /* Change color to match Bootstrap dark text */
 }
 
 footer {
@@ -20,36 +27,26 @@ footer {
     text-align: center;
 }
 
-footer .footer-links a {
+footer .footer-links a,
+footer .social-icons a {
     color: #ffffff;
     text-decoration: none;
     margin: 0 10px;
     font-size: 1rem;
 }
 
-footer .footer-links a:hover {
-    text-decoration: underline;
+footer .footer-links a:hover,
+footer .social-icons a:hover {
+    text-decoration: underline; /* Change on hover */
 }
 
 footer .social-icons a {
-    color: #ffffff;
     font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-footer .social-icons a:hover {
-    color: #17a2b8;
 }
 
 .navbar-nav {
     flex-grow: 1;
-    justify-content: center;
-}
-
-.navbar h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: bold;
+    justify-content: center; /* Center navbar links */
 }
 
 /* Hamburger Animation */
@@ -72,7 +69,7 @@ footer .social-icons a:hover {
 }
 
 .navbar-toggler.collapsed span:nth-child(2) {
-    opacity: 0;
+    opacity: 0; /* Hide middle line */
 }
 
 .navbar-toggler.collapsed span:nth-child(3) {
@@ -84,7 +81,7 @@ footer .social-icons a:hover {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 2rem auto; /* Center on larger screens with margin */
+    margin: 2rem auto; /* Center on larger screens */
     background-color: #fff;
 }
 
@@ -107,6 +104,7 @@ button {
 .form-select, .form-control {
     height: 50px; /* Uniform height for all input types */
     border-radius: 5px;
+    transition: border-color 0.3s ease;
 }
 
 .form-select {
@@ -114,7 +112,6 @@ button {
     background-color: #ffffff;
     border: 1px solid #ced4da;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
 }
 
 .form-select:focus, .form-control:focus {
@@ -123,16 +120,16 @@ button {
 }
 
 .error {
-    border: 1px solid red;
+    border: 1px solid red; /* Error styling */
 }
 
 .success {
-    border: 1px solid green;
+    border: 1px solid green; /* Success border */
     background-color: #e7f9e7;
     background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
     background-repeat: no-repeat;
     background-position: right 10px center;
-    background-size: 20px;
+    background-size: 20px; /* Background size */
 }
 
 /* Button styles */
@@ -200,14 +197,4 @@ button {
 .form-control:focus {
     border-color: #495057; /* Change border color on focus */
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add shadow */
-}
-/* Custom Styles for Navbar */
-.navbar-brand img {
-    height: 40px; /* Adjust logo size */
-}
-
-h1 {
-    font-size: 1.5rem; /* Adjust font size for bank name */
-    font-weight: bold; /* Make bank name bold */
-    color: #343a40; /* Change color to match Bootstrap dark text */
 }
