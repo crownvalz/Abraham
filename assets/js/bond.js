@@ -1,134 +1,104 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     const calculatorType = document.getElementById('calculatorType');
     const bondCalculatorFields = document.getElementById('bondCalculatorFields');
     const loanCalculatorFields = document.getElementById('loanCalculatorFields');
+    const bondAmount = document.getElementById('bondAmount');
+    const bondInterestRate = document.getElementById('bondInterestRate');
+    const bondYears = document.getElementById('bondYears');
+    const loanAmount = document.getElementById('loanAmount');
+    const loanInterestRate = document.getElementById('loanInterestRate');
+    const loanYears = document.getElementById('loanYears');
+    const clearFormBtn = document.getElementById('clearFormBtn');
     const calculatorForm = document.getElementById('calculatorForm');
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     const modalResult = document.getElementById('modalResult');
-    const clearFormBtn = document.getElementById('clearFormBtn');
-    const navbarToggler = document.querySelector('.navbar-toggler');
 
+    // Toggle calculator fields
     calculatorType.addEventListener('change', function () {
-        bondCalculatorFields.style.display = this.value === 'bond' ? 'block' : 'none';
-        loanCalculatorFields.style.display = this.value === 'loan' ? 'block' : 'none';
-    });
-
-    calculatorForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        
-        // Clear previous errors
-        const inputs = this.querySelectorAll('.form-control');
-        inputs.forEach(input => {
-            input.classList.remove('error');
-            input.classList.remove('valid');
-            const icon = document.getElementById(input.id + 'Icon');
-            if (icon) icon.innerHTML = ''; // Clear icons
-        });
-
-        let isValid = true;
-        if (calculatorType.value === 'bond') {
-            const bondAmount = document.getElementById('bondAmount').value;
-            const bondInterestRate = document.getElementById('bondInterestRate').value;
-            const bondYears = document.getElementById('bondYears').value;
-            const bondFrequency = document.getElementById('bondFrequency').value;
-
-            if (!bondAmount || !bondInterestRate || !bondYears) {
-                isValid = false;
-                if (!bondAmount) document.getElementById('bondAmount').classList.add('error');
-                if (!bondInterestRate) document.getElementById('bondInterestRate').classList.add('error');
-                if (!bondYears) document.getElementById('bondYears').classList.add('error');
-            } else {
-                inputs.forEach(input => input.classList.add('valid'));
-                const icon = document.getElementById('bondAmountIcon');
-                icon.innerHTML = '<i class="bi bi-check-circle text-success"></i>'; // Show tick icon
-            }
-
-            if (isValid) {
-                const bondResult = calculateBond(bondAmount, bondInterestRate, bondYears, bondFrequency);
-                modalResult.innerHTML = bondResult;
-                resultModal.show();
-            }
-        } else if (calculatorType.value === 'loan') {
-            const loanAmount = document.getElementById('loanAmount').value;
-            const loanInterestRate = document.getElementById('loanInterestRate').value;
-            const loanYears = document.getElementById('loanYears').value;
-
-            if (!loanAmount || !loanInterestRate || !loanYears) {
-                isValid = false;
-                if (!loanAmount) document.getElementById('loanAmount').classList.add('error');
-                if (!loanInterestRate) document.getElementById('loanInterestRate').classList.add('error');
-                if (!loanYears) document.getElementById('loanYears').classList.add('error');
-            } else {
-                inputs.forEach(input => input.classList.add('valid'));
-                const icon = document.getElementById('loanAmountIcon');
-                icon.innerHTML = '<i class="bi bi-check-circle text-success"></i>'; // Show tick icon
-            }
-
-            if (isValid) {
-                const loanResult = calculateLoan(loanAmount, loanInterestRate, loanYears);
-                modalResult.innerHTML = loanResult;
-                resultModal.show();
-            }
+        if (this.value === 'bond') {
+            bondCalculatorFields.style.display = 'block';
+            loanCalculatorFields.style.display = 'none';
+        } else {
+            bondCalculatorFields.style.display = 'none';
+            loanCalculatorFields.style.display = 'block';
         }
     });
 
+    // Function to format input with commas
+    function formatInput(input) {
+        input.value = input.value.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    // Add event listeners to format inputs
+    [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
+        input.addEventListener('input', () => formatInput(input));
+    });
+
+    // Handle form submission
+    calculatorForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Perform validations and calculations here
+        let isValid = true;
+
+        // Validate Bond Inputs
+        if (calculatorType.value === 'bond') {
+            if (!bondAmount.value || !bondInterestRate.value || !bondYears.value) {
+                isValid = false;
+                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('error'));
+            } else {
+                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.remove('error'));
+                // Show success border
+                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('success'));
+            }
+        } else {
+            // Validate Loan Inputs
+            if (!loanAmount.value || !loanInterestRate.value || !loanYears.value) {
+                isValid = false;
+                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('error'));
+            } else {
+                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.remove('error'));
+                // Show success border
+                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('success'));
+            }
+        }
+
+        if (isValid) {
+            let result;
+            if (calculatorType.value === 'bond') {
+                // Bond calculation logic
+                const amount = parseFloat(bondAmount.value.replace(/,/g, ''));
+                const interestRate = parseFloat(bondInterestRate.value);
+                const years = parseFloat(bondYears.value);
+                const frequency = bondFrequency.value;
+
+                // Calculate interest based on frequency
+                let interestPaid = (amount * interestRate / 100) * years;
+                let frequencyText = frequency.charAt(0).toUpperCase() + frequency.slice(1);
+
+                result = `For a bond of TZS ${amount.toLocaleString()}, with an interest rate of ${interestRate}%, over ${years} years, the interest paid is TZS ${interestPaid.toLocaleString()} (${frequencyText}).`;
+            } else {
+                // Loan calculation logic
+                const amount = parseFloat(loanAmount.value.replace(/,/g, ''));
+                const interestRate = parseFloat(loanInterestRate.value);
+                const years = parseFloat(loanYears.value);
+                
+                result = `For a loan of TZS ${amount.toLocaleString()}, with an interest rate of ${interestRate}%, over ${years} years, the total amount paid is TZS ${(amount + (amount * interestRate / 100) * years).toLocaleString()}.`;
+            }
+
+            modalResult.innerHTML = result;
+            resultModal.show();
+        }
+    });
+
+    // Clear Form
     clearFormBtn.addEventListener('click', function () {
         calculatorForm.reset();
-        inputs.forEach(input => {
-            input.classList.remove('error');
-            input.classList.remove('valid');
-            const icon = document.getElementById(input.id + 'Icon');
-            if (icon) icon.innerHTML = ''; // Clear icons
+        [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
+            input.classList.remove('error', 'success');
+            input.value = '';
         });
         bondCalculatorFields.style.display = 'block';
         loanCalculatorFields.style.display = 'none';
     });
-
-    // Toggle Navbar Button
-    navbarToggler.addEventListener('click', function () {
-        this.classList.toggle('collapsed');
-    });
-
-    function calculateBond(amount, interestRate, years, frequency) {
-        const principal = parseFloat(amount.replace(/,/g, ''));
-        const rate = parseFloat(interestRate) / 100; // Annual interest
-        const paymentsPerYear = frequency === 'monthly' ? 12 :
-                                frequency === 'quarterly' ? 4 :
-                                frequency === 'semi-annually' ? 2 : 1; // Yearly
-        const payments = years * paymentsPerYear;
-
-        const monthlyPayment = (principal * rate / paymentsPerYear) / (1 - Math.pow(1 + (rate / paymentsPerYear), -payments));
-        const totalPayment = monthlyPayment * payments;
-        const totalInterest = totalPayment - principal;
-
-        return `
-            <p><strong>Bond Calculation Details:</strong></p>
-            <p>Monthly Payment: TZS ${monthlyPayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-            <p>Total Payment Over ${years} Years: TZS ${totalPayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-            <p>Total Interest Paid: TZS ${totalInterest.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-        `;
-    }
-
-    function calculateLoan(amount, interestRate, years) {
-        const principal = parseFloat(amount.replace(/,/g, ''));
-        const rate = parseFloat(interestRate) / 100 / 12; // Monthly interest
-        const payments = years * 12;
-
-        const monthlyPayment = (principal * rate) / (1 - Math.pow(1 + rate, -payments));
-        const totalPayment = monthlyPayment * payments;
-        const totalInterest = totalPayment - principal;
-
-        return `
-            <p><strong>Loan Calculation Details:</strong></p>
-            <p>Monthly Payment: TZS ${monthlyPayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-            <p>Total Payment Over ${years} Years: TZS ${totalPayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-            <p>Total Interest Paid: TZS ${totalInterest.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
-        `;
-    }
-
-    // Format number with commas
-    window.formatNumber = function(input) {
-        let value = input.value.replace(/,/g, '');
-        input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
 });
