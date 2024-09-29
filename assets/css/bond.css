@@ -4,10 +4,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.navbar {
-    background-color: #ffffff;
-}
-
 .navbar-brand img {
     height: 40px;
 }
@@ -18,24 +14,20 @@ footer {
     padding: 2rem 0;
 }
 
-.calculator-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+.calculator-form {
+    max-width: 600px;
 }
 
 .form-select, .form-control {
-    border-radius: 5px;
     height: 50px;
-}
-
-button {
     border-radius: 5px;
 }
 
-.modal-dialog-centered {
-    display: flex;
-    align-items: center;
-    min-height: calc(100% - 1rem);
+.error {
+    border: 1px solid red;
+}
+
+.success {
+    border: 1px solid green;
+    background-color: #e7f9e7;
 }
