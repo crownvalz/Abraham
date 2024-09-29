@@ -46,65 +46,69 @@
     </nav>
 
     <!-- Calculator Form -->
-    <div class="container mt-5 mb-5 d-flex justify-content-center">
-        <form id="calculatorForm" class="calculator-form p-4 shadow-sm rounded-3 bg-light">
-            <div class="form-group mb-4 text-center">
-                <label for="calculatorType" class="form-label">Select Calculator</label>
-                <select class="form-select" id="calculatorType" aria-label="Select Calculator">
-                    <option value="bond">Bond</option>
-                    <option value="loan">Loan</option>
-                </select>
-            </div>
-
-            <!-- Bond Calculator Fields -->
-            <div id="bondCalculatorFields">
-                <h4 class="text-center mt-4">Bond Calculator</h4>
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="bondAmount" placeholder="Amount (TZS)">
-                    <label for="bondAmount">Amount (TZS)</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)">
-                    <label for="bondInterestRate">Interest Rate (%)</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="bondYears" placeholder="Duration (Years)">
-                    <label for="bondYears">Duration (Years)</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="bondFrequency" aria-label="Bond Interest Frequency">
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="semi-annually">Semi-annually</option>
-                        <option value="yearly">Yearly</option>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <form id="calculatorForm" class="calculator-form p-4 shadow-sm rounded-3 bg-light">
+                <div class="form-group mb-4 text-center">
+                    <label for="calculatorType" class="form-label">Select Calculator</label>
+                    <select class="form-select" id="calculatorType" aria-label="Select Calculator">
+                        <option value="bond">Bond</option>
+                        <option value="loan">Loan</option>
                     </select>
                 </div>
-            </div>
 
-            <!-- Loan Calculator Fields (hidden by default) -->
-            <div id="loanCalculatorFields" style="display: none;">
-                <h4 class="text-center mt-4">Loan Calculator</h4>
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="loanAmount" placeholder="Amount (TZS)">
-                    <label for="loanAmount">Amount (TZS)</label>
+                <!-- Bond Calculator Fields -->
+                <div id="bondCalculatorFields">
+                    <h4 class="text-center mt-4">Bond Calculator</h4>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="bondAmount" placeholder="Amount (TZS)">
+                        <label for="bondAmount">Amount (TZS)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)">
+                        <label for="bondInterestRate">Interest Rate (%)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="bondYears" placeholder="Duration (Years)">
+                        <label for="bondYears">Duration (Years)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="bondFrequency" aria-label="Bond Interest Frequency">
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="semi-annually">Semi-annually</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
-                    <label for="loanInterestRate">Interest Rate (%)</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="loanYears" placeholder="Duration (Years)">
-                    <label for="loanYears">Duration (Years)</label>
-                </div>
-            </div>
 
-            <!-- Buttons -->
-            <div class="d-grid gap-2 mt-4">
-                <button type="submit" class="btn btn-dark">Calculate</button>
-                <button type="button" class="btn btn-outline-secondary" id="clearFormBtn">Clear</button>
-            </div>
-        </form>
+                <!-- Loan Calculator Fields (hidden by default) -->
+                <div id="loanCalculatorFields" style="display: none;">
+                    <h4 class="text-center mt-4">Loan Calculator</h4>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="loanAmount" placeholder="Amount (TZS)">
+                        <label for="loanAmount">Amount (TZS)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
+                        <label for="loanInterestRate">Interest Rate (%)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" step="0.01" class="form-control" id="loanYears" placeholder="Duration (Years)">
+                        <label for="loanYears">Duration (Years)</label>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-dark">Calculate</button>
+                    <button type="button" class="btn btn-outline-secondary" id="clearFormBtn">Clear</button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
     <!-- Footer -->
     <footer class="text-center mt-5">
