@@ -1,61 +1,100 @@
-document.getElementById('calculatorType').addEventListener('change', function() {
-    const bondFields = document.getElementById('bondCalculatorFields');
-    const loanFields = document.getElementById('loanCalculatorFields');
-    if (this.value === 'bond') {
-        bondFields.style.display = 'block';
-        loanFields.style.display = 'none';
-    } else {
-        bondFields.style.display = 'none';
-        loanFields.style.display = 'block';
-    }
-});
+document.addEventListener('DOMContentLoaded', function () {
+    const calculatorType = document.getElementById('calculatorType');
+    const bondCalculatorFields = document.getElementById('bondCalculatorFields');
+    const loanCalculatorFields = document.getElementById('loanCalculatorFields');
+    const calculatorForm = document.getElementById('calculatorForm');
+    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+    const modalResult = document.getElementById('modalResult');
+    const clearFormBtn = document.getElementById('clearFormBtn');
 
-document.getElementById('calculatorForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const calculatorType = document.getElementById('calculatorType').value;
-    let isValid = true;
-    const inputs = calculatorType === 'bond' ? ['bondAmount', 'bondInterestRate', 'bondYears'] : ['loanAmount', 'loanInterestRate', 'loanYears'];
+    calculatorType.addEventListener('change', function () {
+        bondCalculatorFields.style.display = this.value === 'bond' ? 'block' : 'none';
+        loanCalculatorFields.style.display = this.value === 'loan' ? 'block' : 'none';
+    });
 
-    inputs.forEach(id => {
-        const input = document.getElementById(id);
-        if (!input.value) {
-            input.classList.add('error');
-            isValid = false;
-        } else {
-            input.classList.remove('error');
+    calculatorForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        
+        // Clear previous errors
+        const inputs = this.querySelectorAll('.form-control');
+        inputs.forEach(input => input.classList.remove('error'));
+
+        let isValid = true;
+        if (calculatorType.value === 'bond') {
+            const bondAmount = document.getElementById('bondAmount').value;
+            const bondInterestRate = document.getElementById('bondInterestRate').value;
+            const bondYears = document.getElementById('bondYears').value;
+
+            if (!bondAmount || !bondInterestRate || !bondYears) {
+                isValid = false;
+                if (!bondAmount) document.getElementById('bondAmount').classList.add('error');
+                if (!bondInterestRate) document.getElementById('bondInterestRate').classList.add('error');
+                if (!bondYears) document.getElementById('bondYears').classList.add('error');
+            }
+
+            if (isValid) {
+                const bondResult = calculateBond(bondAmount, bondInterestRate, bondYears);
+                modalResult.innerHTML = bondResult;
+                resultModal.show();
+            }
+        } else if (calculatorType.value === 'loan') {
+            const loanAmount = document.getElementById('loanAmount').value;
+            const loanInterestRate = document.getElementById('loanInterestRate').value;
+            const loanYears = document.getElementById('loanYears').value;
+
+            if (!loanAmount || !loanInterestRate || !loanYears) {
+                isValid = false;
+                if (!loanAmount) document.getElementById('loanAmount').classList.add('error');
+                if (!loanInterestRate) document.getElementById('loanInterestRate').classList.add('error');
+                if (!loanYears) document.getElementById('loanYears').classList.add('error');
+            }
+
+            if (isValid) {
+                const loanResult = calculateLoan(loanAmount, loanInterestRate, loanYears);
+                modalResult.innerHTML = loanResult;
+                resultModal.show();
+            }
         }
     });
 
-    if (!isValid) return;
+    clearFormBtn.addEventListener('click', function () {
+        calculatorForm.reset();
+        inputs.forEach(input => input.classList.remove('error'));
+        bondCalculatorFields.style.display = 'block';
+        loanCalculatorFields.style.display = 'none';
+    });
 
-    let result;
-    if (calculatorType === 'bond') {
-        const amount = parseFloat(document.getElementById('bondAmount').value);
-        const interestRate = parseFloat(document.getElementById('bondInterestRate').value) / 100;
-        const years = parseFloat(document.getElementById('bondYears').value);
-        const frequency = document.getElementById('bondFrequency').value;
+    function calculateBond(amount, interestRate, years) {
+        const principal = parseFloat(amount);
+        const rate = parseFloat(interestRate) / 100 / 12; // Monthly interest
+        const payments = years * 12;
 
-        // Calculate Bond result (simple example)
-        result = amount * Math.pow(1 + interestRate, years);
-    } else {
-        const amount = parseFloat(document.getElementById('loanAmount').value);
-        const interestRate = parseFloat(document.getElementById('loanInterestRate').value) / 100;
-        const years = parseFloat(document.getElementById('loanYears').value);
+        const monthlyPayment = (principal * rate) / (1 - Math.pow(1 + rate, -payments));
+        const totalPayment = monthlyPayment * payments;
+        const totalInterest = totalPayment - principal;
 
-        // Calculate Loan result (simple example)
-        const monthlyRate = interestRate / 12;
-        const numberOfPayments = years * 12;
-        result = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+        return `
+            <p><strong>Bond Calculation Details:</strong></p>
+            <p>Monthly Payment: TZS ${monthlyPayment.toFixed(2)}</p>
+            <p>Total Payment Over ${years} Years: TZS ${totalPayment.toFixed(2)}</p>
+            <p>Total Interest Paid: TZS ${totalInterest.toFixed(2)}</p>
+        `;
     }
 
-    document.getElementById('modalResult').innerText = `The result is: ${result.toFixed(2)} TZS`;
-    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-    resultModal.show();
-});
+    function calculateLoan(amount, interestRate, years) {
+        const principal = parseFloat(amount);
+        const rate = parseFloat(interestRate) / 100 / 12; // Monthly interest
+        const payments = years * 12;
 
-document.getElementById('clearFormBtn').addEventListener('click', function() {
-    document.getElementById('calculatorForm').reset();
-    document.querySelectorAll('.form-control').forEach(input => input.classList.remove('error'));
-    document.getElementById('bondCalculatorFields').style.display = 'block';
-    document.getElementById('loanCalculatorFields').style.display = 'none';
+        const monthlyPayment = (principal * rate) / (1 - Math.pow(1 + rate, -payments));
+        const totalPayment = monthlyPayment * payments;
+        const totalInterest = totalPayment - principal;
+
+        return `
+            <p><strong>Loan Calculation Details:</strong></p>
+            <p>Monthly Payment: TZS ${monthlyPayment.toFixed(2)}</p>
+            <p>Total Payment Over ${years} Years: TZS ${totalPayment.toFixed(2)}</p>
+            <p>Total Interest Paid: TZS ${totalInterest.toFixed(2)}</p>
+        `;
+    }
 });
