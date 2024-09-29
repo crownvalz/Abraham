@@ -17,7 +17,6 @@ footer {
     background-color: #343a40;
     color: #ffffff;
     padding: 2rem 0;
-    text-align: center;
 }
 
 footer .footer-links a {
@@ -55,7 +54,6 @@ footer .social-icons a:hover {
 /* Hamburger Animation */
 .navbar-toggler {
     border: none;
-    outline: none;
 }
 
 .navbar-toggler span {
@@ -80,48 +78,21 @@ footer .social-icons a:hover {
 }
 
 .calculator-container {
-    max-width: 600px; /* Set a max width for better alignment */
+    max-width: 600px;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 2rem auto; /* Center on larger screens with margin */
+    margin: 2rem auto;
     background-color: #fff;
 }
 
 @media (max-width: 768px) {
     .calculator-container {
-        max-width: 95%; /* Ensure mobile devices have appropriate spacing */
-        padding: 1.5rem; /* Slightly reduced padding for smaller screens */
+        max-width: 95%;
+        padding: 1.5rem;
     }
 }
 
-/* Input Validation Styles */
-.error {
-    border: 1px solid red; /* Red border for invalid inputs */
-}
-
-.success {
-    border: 1px solid green; /* Green border for valid inputs */
-    background-color: #e7f9e7;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-}
-
-/* Button styles */
-.btn {
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-dark {
-    background-color: #343a40;
-    border: none;
-}
-
-.btn-dark:hover {
-    background-color: #23272b; /* Darker shade on hover */
-    transform: translateY(-1px); /* Slight lift effect on hover */
+.button-group {
+    margin-top: 20px;
 }
