@@ -116,7 +116,6 @@ button {
 }
 
 .custom-select:focus {
-    outline: none;
     border-color: #495057; /* Darker border on focus */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
