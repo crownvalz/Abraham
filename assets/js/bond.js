@@ -28,12 +28,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to format input with commas
     function formatInput(input) {
-        input.value = input.value.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        const cleanedValue = input.value.replace(/,/g, ''); // Remove commas
+        const parsedValue = parseFloat(cleanedValue);
+        if (!isNaN(parsedValue)) {
+            input.value = parsedValue.toLocaleString(); // Format with commas
+        } else {
+            input.value = ''; // Clear if not a valid number
+        }
     }
 
     // Add event listeners to format inputs
     [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
         input.addEventListener('input', () => formatInput(input));
+        input.addEventListener('focus', () => {
+            input.classList.remove('error'); // Remove error on focus
+        });
     });
 
     // Handle form submission
@@ -47,21 +56,27 @@ document.addEventListener("DOMContentLoaded", function () {
         if (calculatorType.value === 'bond') {
             if (!bondAmount.value || !bondInterestRate.value || !bondYears.value) {
                 isValid = false;
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('error'));
+                [bondAmount, bondInterestRate, bondYears].forEach(input => {
+                    input.classList.add('error');
+                });
             } else {
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.remove('error'));
-                // Show success border
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('success'));
+                [bondAmount, bondInterestRate, bondYears].forEach(input => {
+                    input.classList.remove('error');
+                    input.classList.add('success');
+                });
             }
         } else {
             // Validate Loan Inputs
             if (!loanAmount.value || !loanInterestRate.value || !loanYears.value) {
                 isValid = false;
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('error'));
+                [loanAmount, loanInterestRate, loanYears].forEach(input => {
+                    input.classList.add('error');
+                });
             } else {
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.remove('error'));
-                // Show success border
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('success'));
+                [loanAmount, loanInterestRate, loanYears].forEach(input => {
+                    input.classList.remove('error');
+                    input.classList.add('success');
+                });
             }
         }
 
