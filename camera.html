@@ -54,7 +54,7 @@
         </div>
 
         <div id="step-2" class="step">
-            <h2>Step 2: Enter Phone Number</h2>
+            <h2>Step 2: Enter Details</h2>
             <div id="selfInput" class="hidden">
                 <label for="phoneSelf" class="form-label">Phone Number:</label>
                 <input type="tel" class="form-control" id="phoneSelf" required>
@@ -199,7 +199,7 @@
         }
 
         function submitForm() {
-            // Hide all steps
+            // Hide all steps and show success message
             for (let i = 1; i <= 9; i++) {
                 document.getElementById(`step-${i}`).classList.remove('active');
             }
