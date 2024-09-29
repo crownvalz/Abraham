@@ -201,3 +201,13 @@ button {
     border-color: #495057; /* Change border color on focus */
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add shadow */
 }
+/* Custom Styles for Navbar */
+.navbar-brand img {
+    height: 40px; /* Adjust logo size */
+}
+
+h1 {
+    font-size: 1.5rem; /* Adjust font size for bank name */
+    font-weight: bold; /* Make bank name bold */
+    color: #343a40; /* Change color to match Bootstrap dark text */
+}
