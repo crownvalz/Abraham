@@ -89,7 +89,8 @@ document.getElementById("clearFormBtn").addEventListener("click", function() {
     document.getElementById("loanCalculatorFields").style.display = "none";
 });
 
-// Navbar toggler icon update
-    navbarToggler.addEventListener('click', function () {
-        this.classList.toggle('collapsed');
-    });
+// Toggle animation for hamburger icon
+        const toggler = document.querySelector('.navbar-toggler');
+        toggler.addEventListener('click', () => {
+            toggler.classList.toggle('collapsed');
+        });
