@@ -38,6 +38,14 @@ body.dark-mode button {
     color: #ffffff;
 }
 
+/* Button Hover */
+button:hover {
+    background-color: #005fcc;
+}
+
+body.dark-mode button:hover {
+    background-color: #006fdc;
+}
 
 /* Calculator Container (Dark Mode) */
 body.dark-mode .calculator-container {
