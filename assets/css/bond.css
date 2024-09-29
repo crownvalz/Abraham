@@ -5,6 +5,15 @@ body {
 }
 
 /* Custom Styling for Navbar */
+.navbar {
+    background-color: #ffffff;
+    padding: 1rem;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
 .navbar-nav {
     flex-grow: 1;
     justify-content: center;
