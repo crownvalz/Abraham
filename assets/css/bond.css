@@ -1,55 +1,113 @@
-/* Custom Styling */
+/* Reset some default styling */
 body {
-    background-color: #f5f7fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background for better contrast */
+}
+
+/* Custom Styling for Navbar */
+.navbar {
+    background-color: #ffffff; /* Navbar background */
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 50px; /* Logo height */
 }
 
-.navbar-toggler.custom-toggler {
-    border-color: transparent;
+.navbar-nav .nav-link {
+    color: #000; /* Text color for nav links */
 }
 
-.navbar-toggler.custom-toggler .navbar-toggler-icon {
-    background-image: url('img/toggle-icon.svg'); /* Add your custom icon here */
-    width: 25px;
-    height: 25px;
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Color on hover */
 }
 
-footer {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 2rem 0;
+/* Custom Styling for Toggle Button */
+.custom-toggler {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.line {
+    display: block;
+    width: 30px; /* Width of the lines */
+    height: 3px; /* Height of the lines */
+    margin: 5px auto; /* Space between the lines */
+    background-color: #000; /* Color of the lines */
+    transition: all 0.3s ease; /* Animation for smooth transition */
+}
+
+.navbar-toggler.collapsed .line:nth-child(1) {
+    transform: none; /* Reset transformation when collapsed */
+}
+
+.navbar-toggler.collapsed .line:nth-child(2) {
+    opacity: 1; /* Show the middle line */
+}
+
+.navbar-toggler.collapsed .line:nth-child(3) {
+    transform: none; /* Reset transformation when collapsed */
+}
+
+/* When navbar is expanded */
+.navbar-toggler:not(.collapsed) .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Rotate the first line */
+}
+
+.navbar-toggler:not(.collapsed) .line:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.navbar-toggler:not(.collapsed) .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Rotate the last line */
+}
+
+/* Form Styles */
+.container {
+    max-width: 600px; /* Maximum width of the form */
+    margin: auto; /* Center the form */
 }
 
 .calculator-form {
-    max-width: 600px;
-    width: 100%;
+    background-color: #ffffff; /* Form background */
+    border-radius: 10px; /* Rounded corners for the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding inside the form */
 }
 
-.form-select, .form-control {
-    height: 50px;
-    border-radius: 5px;
+/* Form Fields */
+.form-floating {
+    margin-bottom: 1.5rem; /* Spacing between fields */
 }
 
-.error {
-    border: 1px solid red;
+/* Button Styles */
+.btn {
+    font-weight: bold; /* Bold text on buttons */
 }
 
-.success {
-    border: 1px solid green;
-    background-color: #e7f9e7;
+/* Modal Styles */
+.modal-content {
+    padding: 20px; /* Padding inside the modal */
 }
 
-/* Ensure responsiveness */
-@media (max-width: 768px) {
-    .calculator-form {
-        width: 90%;
+.modal-header {
+    border-bottom: none; /* Remove bottom border of the modal header */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff; /* Footer background */
+    padding: 10px 0; /* Padding for footer */
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .line {
+        width: 25px; /* Smaller lines on mobile */
     }
-
-    .navbar-brand h1 {
-        font-size: 1.5rem;
+    
+    .container {
+        padding: 0 15px; /* Padding for mobile */
     }
 }
