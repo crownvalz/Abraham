@@ -102,3 +102,6 @@ footer .social-icons a:hover {
 button {
     margin-bottom: 1rem; /* Add space between buttons */
 }
+.error {
+    border: 1px solid red;
+}
