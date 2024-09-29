@@ -95,10 +95,6 @@ footer .social-icons a:hover {
     }
 }
 
-
-
-
-
 .calculator-form {
     background-color: #ffffff; /* Form background */
     border-radius: 10px; /* Rounded corners for the form */
@@ -141,6 +137,7 @@ footer {
         padding: 0 15px; /* Padding for mobile */
     }
 }
+
 .input-error {
     border: 2px solid red; /* Red border for errors */
 }
