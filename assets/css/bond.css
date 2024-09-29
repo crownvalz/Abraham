@@ -138,3 +138,14 @@ footer {
         padding: 0 15px; /* Padding for mobile */
     }
 }
+.input-error {
+    border: 2px solid red; /* Red border for errors */
+}
+
+.input-success {
+    border: 2px solid green; /* Green border for success */
+}
+
+.alert {
+    margin-bottom: 1rem;
+}
