@@ -31,11 +31,28 @@ footer .footer-links a:hover {
     text-decoration: underline;
 }
 
+footer .social-icons a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+footer .social-icons a:hover {
+    color: #17a2b8;
+}
+
 .navbar-nav {
     flex-grow: 1;
     justify-content: center;
 }
 
+.navbar h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Hamburger Animation */
 .navbar-toggler {
     border: none;
     outline: none;
@@ -62,19 +79,18 @@ footer .footer-links a:hover {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Calculator Container */
 .calculator-container {
-    max-width: 100%;
+    max-width: 100%; /* Ensure it doesn’t overflow */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    background-color: #fff;
+    margin: 0 auto; /* Center on larger screens */
+    background-color: #fff !important;
 }
 
 @media (max-width: 768px) {
     .calculator-container {
-        max-width: 95%;
+        max-width: 95%; /* Ensure mobile devices have appropriate spacing */
         padding: 1rem;
     }
 }
@@ -84,37 +100,5 @@ footer .footer-links a:hover {
 }
 
 button {
-    margin-bottom: 1rem;
-    border-radius: 25px;
-}
-
-/* Dropdown and Form Field Styles */
-form select, form input[type="text"], form input[type="tel"] {
-    background-color: #f9f9f9;
-    border: 1px solid #ced4da;
-    border-radius: 25px;
-    padding: 12px 15px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease-in-out;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-form select:hover, form input[type="text"]:hover, form input[type="tel"]:hover {
-    border-color: #007bff;
-}
-
-form select:focus, form input[type="text"]:focus, form input[type="tel"]:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-form select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="none" stroke="black" stroke-width=".5" d="M2 0L0 2h4z"/></svg>') no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 8px 10px;
-    padding-right: 2rem;
+    margin-bottom: 1rem; /* Add space between buttons */
 }
