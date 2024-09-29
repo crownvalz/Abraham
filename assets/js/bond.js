@@ -1,4 +1,4 @@
-And my js as well; document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const toggler = document.querySelector('.navbar-toggler');
     const calculatorType = document.getElementById('calculatorType');
     const bondCalculatorFields = document.getElementById('bondCalculatorFields');
@@ -7,11 +7,6 @@ And my js as well; document.addEventListener('DOMContentLoaded', function () {
     const calculatorForm = document.getElementById('calculatorForm');
     const bondAmountInput = document.getElementById('bondAmount');
     const loanAmountInput = document.getElementById('loanAmount');
-
-    // Toggle animation for hamburger icon
-    toggler.addEventListener('click', () => {
-        toggler.classList.toggle('collapsed');
-    });
 
     // Switching between Bond and Loan calculator fields
     calculatorType.addEventListener('change', (event) => {
