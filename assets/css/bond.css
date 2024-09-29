@@ -94,22 +94,14 @@ footer .social-icons a:hover {
         padding: 1.5rem; /* Slightly reduced padding for smaller screens */
     }
 }
-    
-    
-    
-    
-    
 
-
-
-
-
+/* Input Validation Styles */
 .error {
     border: 1px solid red; /* Red border for invalid inputs */
 }
 
 .success {
-    border: 1px solid green;
+    border: 1px solid green; /* Green border for valid inputs */
     background-color: #e7f9e7;
     background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
     background-repeat: no-repeat;
