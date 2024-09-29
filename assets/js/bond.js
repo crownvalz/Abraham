@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     const modalResult = document.getElementById('modalResult');
     const bondFrequency = document.getElementById('bondFrequency');
-    const alertBox = document.getElementById('alert');
+    const navbarToggler = document.querySelector('.navbar-toggler');
 
     // Toggle calculator fields
     calculatorType.addEventListener('change', function () {
@@ -26,20 +26,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Add event listener for amount input formatting
-    [bondAmount, loanAmount].forEach(input => {
-        input.addEventListener('input', function () {
-            this.value = formatAmount(this.value);
-        });
-    });
+    // Format input with commas
+    function formatInput(input) {
+        let value = input.value.replace(/,/g, ''); // Remove commas
+        if (!isNaN(value) && value.length > 0) {
+            input.value = Number(value).toLocaleString('en'); // Add commas
+        } else {
+            input.value = '';
+        }
+    }
+
+    // Input field event listeners
+    bondAmount.addEventListener('input', function() { formatInput(this); });
+    bondInterestRate.addEventListener('input', function() { formatInput(this); });
+    bondYears.addEventListener('input', function() { formatInput(this); });
+    loanAmount.addEventListener('input', function() { formatInput(this); });
+    loanInterestRate.addEventListener('input', function() { formatInput(this); });
+    loanYears.addEventListener('input', function() { formatInput(this); });
 
     // Handle form submission
     calculatorForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // Reset validation classes and alert
+        // Reset validation classes
         resetValidation();
-        alertBox.classList.add('d-none');
 
         let isValid = true;
 
@@ -51,8 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 markValid([bondAmount, bondInterestRate, bondYears]);
             }
-        } else {
-            // Validate Loan Inputs
+        }
+
+        // Validate Loan Inputs
+        if (calculatorType.value === 'loan') {
             if (!loanAmount.value || !loanInterestRate.value || !loanYears.value) {
                 isValid = false;
                 markInvalid([loanAmount, loanInterestRate, loanYears]);
@@ -61,110 +73,53 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
+        // Show result modal if valid
         if (isValid) {
-            let result;
-            if (calculatorType.value === 'bond') {
-                // Bond calculation logic
-                const amount = parseFloat(bondAmount.value.replace(/,/g, ''));
-                const interestRate = parseFloat(bondInterestRate.value);
-                const years = parseFloat(bondYears.value);
-                const frequency = bondFrequency.value;
-
-                const totalInterest = (amount * interestRate / 100) * years;
-                let paymentFrequency;
-                let interestPaid;
-
-                if (frequency === 'monthly') {
-                    interestPaid = totalInterest / (years * 12);
-                    paymentFrequency = "Monthly";
-                } else if (frequency === 'quarterly') {
-                    interestPaid = totalInterest / (years * 4);
-                    paymentFrequency = "Quarterly";
-                } else if (frequency === 'semi-annually') {
-                    interestPaid = totalInterest / (years * 2);
-                    paymentFrequency = "Semi-annually";
-                } else if (frequency === 'yearly') {
-                    interestPaid = totalInterest / years;
-                    paymentFrequency = "Yearly";
-                }
-
-                result = `
-                    <div>
-                        <h5>Bond Calculation Summary:</h5>
-                        <hr>
-                        <p><strong>Bond Amount:</strong> TZS ${amount.toLocaleString()}</p>
-                        <p><strong>Interest Rate:</strong> ${interestRate}%</p>
-                        <p><strong>Duration:</strong> ${years} years</p>
-                        <p><strong>Total Interest:</strong> TZS ${totalInterest.toLocaleString()}</p>
-                        <p><strong>Interest Paid (${paymentFrequency}):</strong> TZS ${interestPaid.toLocaleString()}</p>
-                    </div>
-                `;
-            } else {
-                const amount = parseFloat(loanAmount.value.replace(/,/g, ''));
-                const interestRate = parseFloat(loanInterestRate.value);
-                const years = parseFloat(loanYears.value);
-                const totalPaid = amount + (amount * interestRate / 100) * years;
-                const monthlyPayment = totalPaid / (years * 12);
-
-                result = `
-                    <div>
-                        <h5>Loan Calculation Summary:</h5>
-                        <hr>
-                        <p><strong>Loan Amount:</strong> TZS ${amount.toLocaleString()}</p>
-                        <p><strong>Interest Rate:</strong> ${interestRate}%</p>
-                        <p><strong>Duration:</strong> ${years} years</p>
-                        <p><strong>Total Payment:</strong> TZS ${totalPaid.toLocaleString()}</p>
-                        <p><strong>Monthly Payment:</strong> TZS ${monthlyPayment.toLocaleString()}</p>
-                    </div>
-                `;
-            }
-
-            modalResult.innerHTML = result;
+            // Replace with your calculation logic
+            const result = calculate(); // Call your calculation function
+            modalResult.textContent = `The result is: ${result}`;
             resultModal.show();
-        } else {
-            alertBox.classList.remove('d-none');
-            alertBox.textContent = "Please fill in all required fields.";
         }
     });
 
-    // Clear form
-    clearFormBtn.addEventListener('click', function () {
+    // Clear Form Button
+    clearFormBtn.addEventListener('click', function() {
         calculatorForm.reset();
         resetValidation();
-        bondCalculatorFields.style.display = 'block';
-        loanCalculatorFields.style.display = 'none';
     });
 
-    // Reset validation states
+    // Function to reset validation
     function resetValidation() {
-        [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
-            input.classList.remove('error', 'success');
-            input.value = '';
-        });
-    }
-
-    // Mark inputs as valid
-    function markValid(inputs) {
+        const inputs = [
+            bondAmount,
+            bondInterestRate,
+            bondYears,
+            loanAmount,
+            loanInterestRate,
+            loanYears,
+        ];
         inputs.forEach(input => {
-            input.classList.remove('error');
-            input.classList.add('success');
+            input.classList.remove('input-error', 'input-success');
         });
     }
 
-    // Mark inputs as invalid
+    // Function to mark fields as invalid
     function markInvalid(inputs) {
         inputs.forEach(input => {
-            input.classList.add('error');
+            input.classList.add('input-error');
         });
     }
 
-    // Format amount with commas
-    function formatAmount(value) {
-        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // Function to mark fields as valid
+    function markValid(inputs) {
+        inputs.forEach(input => {
+            input.classList.add('input-success');
+        });
     }
 
-    // Navbar toggler icon update
-    navbarToggler.addEventListener('click', function () {
-        this.classList.toggle('collapsed');
-    });
+    // Example calculation function (replace with your logic)
+    function calculate() {
+        // Your calculation logic here
+        return "Calculated Value"; // Replace with the actual calculation result
+    }
 });
