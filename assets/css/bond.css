@@ -20,27 +20,6 @@ footer {
     text-align: center;
 }
 
-footer .footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
-}
-
-footer .footer-links a:hover {
-    text-decoration: underline;
-}
-
-footer .social-icons a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-footer .social-icons a:hover {
-    color: #17a2b8;
-}
-
 .navbar-nav {
     flex-grow: 1;
     justify-content: center;
@@ -52,112 +31,55 @@ footer .social-icons a:hover {
     font-weight: bold;
 }
 
-/* Hamburger Animation */
-.navbar-toggler {
-    border: none;
-    outline: none;
-}
-
-.navbar-toggler span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 5px 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.navbar-toggler.collapsed span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggler.collapsed span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggler.collapsed span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-.calculator-container {
-    max-width: 600px; /* Set a max width for better alignment */
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 2rem auto; /* Center on larger screens with margin */
-    background-color: #fff;
-}
-
-@media (max-width: 768px) {
-    .calculator-container {
-        max-width: 95%; /* Ensure mobile devices have appropriate spacing */
-        padding: 1.5rem; /* Slightly reduced padding for smaller screens */
-    }
-}
-
 .calculator-form {
-    background-color: #ffffff; /* Form background */
-    border-radius: 10px; /* Rounded corners for the form */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 20px; /* Padding inside the form */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-/* Form Fields */
 .form-floating {
-    margin-bottom: 1.5rem; /* Spacing between fields */
+    margin-bottom: 1.5rem;
 }
 
-/* Button Styles */
 .btn {
-    font-weight: bold; /* Bold text on buttons */
+    font-weight: bold;
 }
 
-/* Modal Styles */
 .modal-content {
-    padding: 20px; /* Padding inside the modal */
+    padding: 20px;
 }
 
 .modal-header {
-    border-bottom: none; /* Remove bottom border of the modal header */
+    border-bottom: none;
 }
 
-/* Footer Styles */
-footer {
-    background-color: #ffffff; /* Footer background */
-    padding: 10px 0; /* Padding for footer */
-}
-
-/* Responsive Styles */
-@media (max-width: 576px) {
-    .line {
-        width: 25px; /* Smaller lines on mobile */
-    }
-    
-    .container {
-        padding: 0 15px; /* Padding for mobile */
-    }
-}
-
-/* Validation Styles */
 .input-error {
-    border: 2px solid red; /* Red border for errors */
+    border: 2px solid red;
 }
 
 .input-success {
-    border: 2px solid green; /* Green border for success */
+    border: 2px solid green;
 }
 
-/* Alert Styles */
 .alert {
     margin-bottom: 1rem;
-    padding: 10px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
 }
 
-/* Hide alert by default */
-.alert.d-none {
-    display: none;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .calculator-container {
+        max-width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .line {
+        width: 25px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
 }
