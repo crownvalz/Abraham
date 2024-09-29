@@ -1,4 +1,4 @@
-/* Reset some default styling */
+/* Custom Styling */
 body {
     background-color: #f5f7fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,8 +10,7 @@ body {
 }
 
 .navbar-brand img {
-    height: 30px; /* Adjusted size for the logo */
-    max-height: 40px; /* Ensure it doesn't exceed this height */
+    height: 40px;
 }
 
 footer {
@@ -95,6 +94,10 @@ footer .social-icons a:hover {
         padding: 1.5rem; /* Slightly reduced padding for smaller screens */
     }
 }
+
+
+
+
 
 .calculator-form {
     background-color: #ffffff; /* Form background */
