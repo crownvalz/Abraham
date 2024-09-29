@@ -160,23 +160,3 @@ button {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Dark Mode */
-.dark-mode {
-    background-color: #121212; /* Even darker background for full dark mode */
-    color: #ffffff; /* Light text */
-}
-
-.dark-mode input, .dark-mode select, .dark-mode textarea {
-    background-color: #333333;
-    color: #ffffff;
-    border-color: #555555;
-}
-
-.dark-mode input::placeholder, .dark-mode select::placeholder {
-    color: #cccccc;
-}
-
-.dark-mode footer {
-    background-color: #1c1c1c;
-    color: #ffffff;
-}
