@@ -88,3 +88,13 @@ document.getElementById("clearFormBtn").addEventListener("click", function() {
     document.getElementById("bondCalculatorFields").style.display = "block";
     document.getElementById("loanCalculatorFields").style.display = "none";
 });
+
+
+  // Update navbar toggler icon
+    navbarToggler.addEventListener('click', function () {
+        if (this.classList.contains('collapsed')) {
+            this.classList.remove('collapsed');
+        } else {
+            this.classList.add('collapsed');
+        }
+    });
