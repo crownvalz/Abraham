@@ -1,15 +1,13 @@
-/* Body Styling */
+/* General Styling for Body and Navbar */
 body {
-    background-color: #2c2c2c; /* Dark background for the overall page */
-    color: #f0f0f0; /* Light text for the body */
+    background-color: #1e1e1e;
+    color: #f0f0f0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar */
 .navbar {
-    background-color: #1f1f1f; /* Dark navbar background */
+    background-color: #2d2d2d;
     padding: 1rem;
-    border-bottom: 1px solid #555; /* Subtle border for navbar */
 }
 
 .navbar-brand img {
@@ -18,137 +16,15 @@ body {
 
 .navbar h1 {
     font-size: 1.5rem;
+    color: #f0f0f0;
     margin: 0;
     font-weight: bold;
-    color: #ffffff;
 }
 
-/* Center the navbar items */
-.navbar-nav {
-    flex-grow: 1;
-    justify-content: center;
+.navbar-nav .nav-link {
+    color: #f0f0f0 !important;
 }
 
-/* Footer */
-footer {
-    background-color: #1c1c1c; /* Darker footer background */
-    color: #ffffff; /* White text for contrast */
-    padding: 2rem 0;
-    text-align: center;
-    border-top: 1px solid #444; /* Subtle border */
-}
-
-footer .footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
-}
-
-footer .footer-links a:hover {
-    text-decoration: underline;
-}
-
-footer .social-icons a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-footer .social-icons a:hover {
-    color: #007aff; /* Bright color for hover effect */
-}
-
-/* Input Fields */
-input, select, textarea {
-    background-color: #333333; /* Dark background for inputs */
-    color: #ffffff; /* Bright text inside input fields */
-    border: 1px solid #555555; /* Subtle border for inputs */
-    padding: 10px;
-    border-radius: 4px;
-    width: 100%; /* Make the input fields full-width */
-}
-
-input::placeholder, select::placeholder {
-    color: #cccccc; /* Light placeholder color */
-}
-
-/* Input Fields on Focus */
-input:focus, select:focus, textarea:focus {
-    background-color: #444444; /* Lighter background on focus */
-    border-color: #007aff; /* Blue border on focus */
-    color: #ffffff; /* Ensure the text stays bright */
-}
-
-/* Label Styling */
-label {
-    color: #f0f0f0; /* Light color for labels */
-}
-
-/* Button Styling */
-button {
-    background-color: #007aff; /* Bright blue button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #005bb5; /* Darker blue on hover */
-}
-
-button:disabled {
-    background-color: #555555; /* Gray color for disabled buttons */
-}
-
-/* Calculator Container */
-.calculator-container {
-    max-width: 100%; /* Ensure the container doesn't overflow */
-    background-color: #1f1f1f; /* Darker background for the calculator */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    color: #f0f0f0;
-}
-
-/* Button Group */
-.button-group {
-    margin-top: 2rem;
-}
-
-button {
-    margin-bottom: 1rem; /* Space between buttons */
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .calculator-container {
-        max-width: 95%; /* Ensures appropriate spacing for mobile devices */
-        padding: 1rem;
-    }
-}
-
-/* Dark Mode Button in Footer */
-.dark-mode-toggle {
-    background-color: #007aff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-
-.dark-mode-toggle:hover {
-    background-color: #005bb5;
-}
-
-/* Hamburger Animation */
 .navbar-toggler {
     border: none;
     outline: none;
@@ -158,40 +34,138 @@ button {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: #f0f0f0;
     margin: 5px 0;
     transition: all 0.4s ease-in-out;
 }
 
-.navbar-toggler.collapsed span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+/* Dark Mode Toggle Button (remove color change) */
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: #f0f0f0;
 }
 
-.navbar-toggler.collapsed span:nth-child(2) {
-    opacity: 0;
+/* Input Fields and Forms */
+.form-control {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #f0f0f0;
 }
 
-.navbar-toggler.collapsed span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+.form-control::placeholder {
+    color: #b3b3b3;
 }
 
-/* Dark Mode */
-.dark-mode {
-    background-color: #121212; /* Even darker background for full dark mode */
-    color: #ffffff; /* Light text */
+select.form-control {
+    background-color: #333;
+    color: #f0f0f0;
 }
 
-.dark-mode input, .dark-mode select, .dark-mode textarea {
-    background-color: #333333;
-    color: #ffffff;
-    border-color: #555555;
+button {
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.dark-mode input::placeholder, .dark-mode select::placeholder {
-    color: #cccccc;
+button:hover {
+    background-color: #0056b3;
 }
 
-.dark-mode footer {
-    background-color: #1c1c1c;
-    color: #ffffff;
+.button-group .btn-light {
+    background-color: #6c757d;
+    border: none;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+}
+
+.modal-header {
+    border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+    border-top: 1px solid #444;
+}
+
+.modal-title {
+    color: #f0f0f0;
+}
+
+.modal-body {
+    color: #f0f0f0;
+}
+
+/* Footer */
+footer {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+}
+
+footer .footer-links a {
+    color: #f0f0f0;
+}
+
+footer .footer-links a:hover {
+    text-decoration: underline;
+}
+
+footer .social-icons a {
+    color: #f0f0f0;
+    font-size: 1.5rem;
+}
+
+footer .social-icons a:hover {
+    color: #17a2b8;
+}
+
+/* Calculator Container */
+.calculator-container {
+    max-width: 100%;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    background-color: #333;
+}
+
+@media (max-width: 768px) {
+    .calculator-container {
+        max-width: 95%;
+        padding: 1rem;
+    }
+}
+
+/* Additional Fixes for Text Visibility */
+h4, label, p, a, span {
+    color: #f0f0f0 !important;
+}
+
+h1, h5 {
+    color: #f0f0f0;
+}
+
+input, select, option, button {
+    color: #f0f0f0;
+}
+
+/* Fixing input border color on focus */
+.form-control:focus {
+    border-color: #007bff;
+}
+
+/* Footer Button for Light/Dark Toggle */
+.toggle-btn {
+    background: none;
+    border: 1px solid #f0f0f0;
+    color: #f0f0f0;
+}
+
+.toggle-btn:hover {
+    background-color: #f0f0f0;
+    color: #1e1e1e;
 }
