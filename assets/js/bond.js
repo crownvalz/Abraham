@@ -30,26 +30,26 @@ document.addEventListener("DOMContentLoaded", function () {
     calculatorForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // Validate form fields
+        // Reset validation classes
+        resetValidation();
+
         let isValid = true;
 
         // Validate Bond Inputs
         if (calculatorType.value === 'bond') {
             if (!bondAmount.value || !bondInterestRate.value || !bondYears.value) {
                 isValid = false;
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('error'));
+                markInvalid([bondAmount, bondInterestRate, bondYears]);
             } else {
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.remove('error'));
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('success'));
+                markValid([bondAmount, bondInterestRate, bondYears]);
             }
         } else {
             // Validate Loan Inputs
             if (!loanAmount.value || !loanInterestRate.value || !loanYears.value) {
                 isValid = false;
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('error'));
+                markInvalid([loanAmount, loanInterestRate, loanYears]);
             } else {
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.remove('error'));
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('success'));
+                markValid([loanAmount, loanInterestRate, loanYears]);
             }
         }
 
@@ -119,13 +119,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear form
     clearFormBtn.addEventListener('click', function () {
         calculatorForm.reset();
+        resetValidation();
+        bondCalculatorFields.style.display = 'block';
+        loanCalculatorFields.style.display = 'none';
+    });
+
+    // Reset validation states
+    function resetValidation() {
         [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
             input.classList.remove('error', 'success');
             input.value = '';
         });
-        bondCalculatorFields.style.display = 'block';
-        loanCalculatorFields.style.display = 'none';
-    });
+    }
+
+    // Mark inputs as valid
+    function markValid(inputs) {
+        inputs.forEach(input => {
+            input.classList.remove('error');
+            input.classList.add('success');
+        });
+    }
+
+    // Mark inputs as invalid
+    function markInvalid(inputs) {
+        inputs.forEach(input => {
+            input.classList.add('error');
+        });
+    }
 
     // Navbar toggler icon update
     navbarToggler.addEventListener('click', function () {
