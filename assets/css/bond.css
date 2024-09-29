@@ -101,7 +101,14 @@ footer .social-icons a:hover {
 
 button {
     margin-bottom: 1rem; /* Add space between buttons */
+    transition: background-color 0.3s, transform 0.2s; /* Add smooth transitions */
 }
+
+button:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
 .error {
     border: 1px solid red;
+    background-color: #ffe6e6; /* Light red background for errors */
 }
