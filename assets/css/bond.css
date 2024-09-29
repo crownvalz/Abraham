@@ -173,31 +173,3 @@ button {
     margin-bottom: 0.5rem;
 }
 
-/* Custom Styles for Floating Labels */
-.form-floating {
-    position: relative;
-}
-
-.form-floating > label {
-    position: absolute;
-    top: 0.75rem; /* Position label */
-    left: 0.75rem; /* Position label */
-    transition: all 0.2s ease; /* Animation for floating effect */
-    color: #6c757d; /* Bootstrap secondary color */
-}
-
-.form-floating > input:focus + label,
-.form-floating > input:not(:placeholder-shown) + label,
-.form-floating > select:focus + label,
-.form-floating > select:not(:placeholder-shown) + label {
-    top: -0.5rem; /* Raise label when input is focused */
-    left: 0.75rem; /* Maintain left position */
-    font-size: 75%; /* Adjust label size */
-    color: #495057; /* Bootstrap text color */
-}
-
-/* Input focus effect */
-.form-control:focus {
-    border-color: #495057; /* Change border color on focus */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add shadow */
-}
