@@ -1,197 +1,61 @@
-/* Body Styling */
-body {
-    background-color: #2c2c2c; /* Dark background for the overall page */
-    color: #f0f0f0; /* Light text for the body */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Dark Mode Improvements */
+body.dark-mode {
+    background-color: #1c1c1e; /* Slightly lighter dark background */
+    color: #f5f5f5; /* Bright white text */
+}
+
+footer.dark-mode-footer {
+    background-color: #2c2c2e; /* Slightly lighter footer background */
+    color: #f5f5f5;
 }
 
 /* Navbar */
-.navbar {
-    background-color: #1f1f1f; /* Dark navbar background */
-    padding: 1rem;
-    border-bottom: 1px solid #555; /* Subtle border for navbar */
+body.dark-mode .navbar {
+    background-color: #2c2c2e; /* Lighter dark background */
 }
 
-.navbar-brand img {
-    height: 40px;
-}
-
-.navbar h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-/* Center the navbar items */
-.navbar-nav {
-    flex-grow: 1;
-    justify-content: center;
-}
-
-/* Footer */
-footer {
-    background-color: #1c1c1c; /* Darker footer background */
-    color: #ffffff; /* White text for contrast */
-    padding: 2rem 0;
-    text-align: center;
-    border-top: 1px solid #444; /* Subtle border */
-}
-
-footer .footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
-}
-
-footer .footer-links a:hover {
-    text-decoration: underline;
-}
-
-footer .social-icons a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-footer .social-icons a:hover {
-    color: #007aff; /* Bright color for hover effect */
-}
-
-/* Input Fields */
-input, select, textarea {
-    background-color: #333333; /* Dark background for inputs */
-    color: #ffffff; /* Bright text inside input fields */
-    border: 1px solid #555555; /* Subtle border for inputs */
-    padding: 10px;
-    border-radius: 4px;
-    width: 100%; /* Make the input fields full-width */
+/* Form Fields (Dark Mode) */
+body.dark-mode input, 
+body.dark-mode select {
+    background-color: #333333; /* Lighter input background */
+    color: #e0e0e0; /* Light text for readability */
+    border-color: #555555; /* Clear input border */
 }
 
 input::placeholder, select::placeholder {
-    color: #cccccc; /* Light placeholder color */
+    color: #999999; /* Lighter placeholder for better readability */
 }
 
-/* Input Fields on Focus */
-input:focus, select:focus, textarea:focus {
-    background-color: #444444; /* Lighter background on focus */
-    border-color: #007aff; /* Blue border on focus */
-    color: #ffffff; /* Ensure the text stays bright */
-}
-
-/* Label Styling */
-label {
-    color: #f0f0f0; /* Light color for labels */
-}
-
-/* Button Styling */
+/* Buttons */
 button {
-    background-color: #007aff; /* Bright blue button */
-    color: white;
+    background-color: #007aff; /* Bright button color */
+    color: #ffffff; /* White text */
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
+body.dark-mode button {
+    background-color: #0a84ff; /* Bright blue button for dark mode */
+    color: #ffffff;
+}
+
+/* Button Hover */
 button:hover {
-    background-color: #005bb5; /* Darker blue on hover */
+    background-color: #005fcc;
 }
 
-button:disabled {
-    background-color: #555555; /* Gray color for disabled buttons */
+body.dark-mode button:hover {
+    background-color: #006fdc;
 }
 
-/* Calculator Container */
-.calculator-container {
-    max-width: 100%; /* Ensure the container doesn't overflow */
-    background-color: #1f1f1f; /* Darker background for the calculator */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    color: #f0f0f0;
+/* Calculator Container (Dark Mode) */
+body.dark-mode .calculator-container {
+    background-color: #2b2b2d; /* Lighter dark background */
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    border: 1px solid #3a3a3a; /* Clear boundary around form */
 }
 
-/* Button Group */
-.button-group {
-    margin-top: 2rem;
-}
-
-button {
-    margin-bottom: 1rem; /* Space between buttons */
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .calculator-container {
-        max-width: 95%; /* Ensures appropriate spacing for mobile devices */
-        padding: 1rem;
-    }
-}
-
-/* Dark Mode Button in Footer */
-.dark-mode-toggle {
-    background-color: #007aff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-
-.dark-mode-toggle:hover {
-    background-color: #005bb5;
-}
-
-/* Hamburger Animation */
-.navbar-toggler {
-    border: none;
-    outline: none;
-}
-
-.navbar-toggler span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.navbar-toggler.collapsed span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggler.collapsed span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggler.collapsed span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Dark Mode */
-.dark-mode {
-    background-color: #121212; /* Even darker background for full dark mode */
-    color: #ffffff; /* Light text */
-}
-
-.dark-mode input, .dark-mode select, .dark-mode textarea {
-    background-color: #333333;
-    color: #ffffff;
-    border-color: #555555;
-}
-
-.dark-mode input::placeholder, .dark-mode select::placeholder {
-    color: #cccccc;
-}
-
-.dark-mode footer {
-    background-color: #1c1c1c;
-    color: #ffffff;
+/* Modal */
+body.dark-mode .modal-content {
+    background-color: #2b2b2d; /* Slightly lighter background for modal */
+    color: #f5f5f5;
 }
