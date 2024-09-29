@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     const modalResult = document.getElementById('modalResult');
     const bondFrequency = document.getElementById('bondFrequency');
+    const navbarToggler = document.querySelector('.navbar-toggler');
 
     // Toggle calculator fields
     calculatorType.addEventListener('change', function () {
@@ -101,5 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         bondCalculatorFields.style.display = 'block';
         loanCalculatorFields.style.display = 'none';
+    });
+
+    // Update navbar toggler icon
+    navbarToggler.addEventListener('click', function () {
+        if (this.classList.contains('collapsed')) {
+            this.classList.remove('collapsed');
+        } else {
+            this.classList.add('collapsed');
+        }
     });
 });
