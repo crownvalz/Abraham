@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     const modalResult = document.getElementById('modalResult');
     const clearFormBtn = document.getElementById('clearFormBtn');
+    const navbarToggler = document.querySelector('.navbar-toggler');
 
     calculatorType.addEventListener('change', function () {
         bondCalculatorFields.style.display = this.value === 'bond' ? 'block' : 'none';
@@ -62,6 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
         inputs.forEach(input => input.classList.remove('error'));
         bondCalculatorFields.style.display = 'block';
         loanCalculatorFields.style.display = 'none';
+    });
+
+    // Toggle Navbar Button
+    navbarToggler.addEventListener('click', function () {
+        this.classList.toggle('collapsed');
     });
 
     function calculateBond(amount, interestRate, years) {
