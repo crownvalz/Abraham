@@ -138,6 +138,7 @@ footer {
     }
 }
 
+/* Validation Styles */
 .input-error {
     border: 2px solid red; /* Red border for errors */
 }
@@ -146,6 +147,17 @@ footer {
     border: 2px solid green; /* Green border for success */
 }
 
+/* Alert Styles */
 .alert {
     margin-bottom: 1rem;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+/* Hide alert by default */
+.alert.d-none {
+    display: none;
 }
