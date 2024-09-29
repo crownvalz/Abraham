@@ -67,16 +67,29 @@ footer .social-icons a:hover {
     transition: all 0.4s ease-in-out;
 }
 
+/* Animation for first line */
 .navbar-toggler.collapsed span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
 
+/* Animation for second line */
 .navbar-toggler.collapsed span:nth-child(2) {
     opacity: 0;
 }
 
+/* Animation for third line */
 .navbar-toggler.collapsed span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Add the reverse animation when the menu is collapsed */
+.navbar-toggler:not(.collapsed) span:nth-child(1),
+.navbar-toggler:not(.collapsed) span:nth-child(3) {
+    transform: rotate(0deg) translate(0, 0);
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(2) {
+    opacity: 1;
 }
 
 /* Calculator Container */
