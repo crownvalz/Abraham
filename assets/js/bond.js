@@ -90,11 +90,3 @@ document.getElementById("clearFormBtn").addEventListener("click", function() {
 });
 
 
-// Update navbar toggler icon
-    navbarToggler.addEventListener('click', function () {
-        if (this.classList.contains('collapsed')) {
-            this.classList.remove('collapsed');
-        } else {
-            this.classList.add('collapsed');
-        }
-    });
