@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Clear previous error styles
         [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
-            input.classList.remove('error');
+            input.classList.remove('error', 'success');
         });
 
         // Validate Bond Inputs
@@ -55,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 [bondAmount, bondInterestRate, bondYears].forEach(input => {
                     if (!input.value) {
                         input.classList.add('error'); // Add red border if empty
+                    } else {
+                        input.classList.add('success'); // Add green border if filled
                     }
                 });
             }
@@ -65,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 [loanAmount, loanInterestRate, loanYears].forEach(input => {
                     if (!input.value) {
                         input.classList.add('error'); // Add red border if empty
+                    } else {
+                        input.classList.add('success'); // Add green border if filled
                     }
                 });
             }
