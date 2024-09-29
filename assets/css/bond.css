@@ -103,24 +103,45 @@ button {
     margin-bottom: 1rem; /* Add space between buttons */
 }
 
+/* Custom Styling for Select Dropdowns */
+.custom-select {
+    position: relative;
+    appearance: none; /* Remove default arrow */
+    padding: 0.5rem 2rem 0.5rem 1rem; /* Adjust padding for better visibility */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #495057; /* Darker border on focus */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Arrow styling */
+.custom-select::after {
+    content: "▼"; /* Arrow character */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: #6c757d; /* Color of the arrow */
+    pointer-events: none; /* Prevent click on the arrow */
+}
+
+/* Change color when dropdown is open */
+.custom-select:focus::after {
+    color: #495057; /* Change color of arrow when focused */
+}
+
 .error {
-    border: 1px solid red; /* Add a red border for error state */
+    border: 1px solid red;
 }
 
-/* Modal Styles */
-.modal-body {
-    font-size: 1.1rem; /* Slightly increase font size for better readability */
-}
-
-.modal-header {
-    background-color: #343a40; /* Match footer color for consistency */
-    color: #ffffff;
-}
-
-.modal-title {
-    margin: 0; /* Remove default margin */
-}
-
-.modal-footer {
-    background-color: #f5f7fa; /* Light background for footer */
+.success {
+    border: 1px solid green;
 }
