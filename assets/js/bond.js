@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const calculatorForm = document.getElementById('calculatorForm');
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     const modalResult = document.getElementById('modalResult');
+    const bondFrequency = document.getElementById('bondFrequency');
 
     // Toggle calculator fields
     calculatorType.addEventListener('change', function () {
