@@ -50,6 +50,7 @@
   <script>
     const video = document.getElementById('video');
     let stream;
+    let isFlashOn = false;
 
     // Ask for camera access
     async function startCamera() {
@@ -64,34 +65,31 @@
     }
 
     // Flash toggle function
-    const flashToggle = document.getElementById('flashToggle');
-    let isFlashOn = false;
-
-    async function toggleFlash() {
+    async function toggleFlash(turnOn) {
       if (!stream) return;
 
       const track = stream.getVideoTracks()[0];
       const capabilities = track.getCapabilities();
 
       if (capabilities.torch) {
-        isFlashOn = !isFlashOn;
         await track.applyConstraints({
-          advanced: [{ torch: isFlashOn }]
+          advanced: [{ torch: turnOn }]
         });
-        flashToggle.textContent = isFlashOn ? 'Flash Off' : 'Flash On';
+        isFlashOn = turnOn;
+        document.getElementById('flashToggle').textContent = isFlashOn ? 'Flash Off' : 'Flash On';
       } else {
         alert("Flash is not supported on this device.");
       }
     }
 
-    // Event listeners
-    document.getElementById('capture').addEventListener('click', function() {
-      alert("ID captured!");
-      // Additional functionality can be added here to process the captured image.
+    // Capture button handler
+    document.getElementById('capture').addEventListener('click', async function() {
+      await toggleFlash(true); // Turn on the flash
+      alert("ID captured! Flash is on.");
+      // Add your capturing logic here, like taking a snapshot or processing the image.
+      setTimeout(() => toggleFlash(false), 1000); // Turn off flash after 1 second
     });
 
-    flashToggle.addEventListener('click', toggleFlash);
-    
     // Start the camera
     startCamera();
   </script>
