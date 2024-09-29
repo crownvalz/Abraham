@@ -1,4 +1,4 @@
- /* Custom Styling */
+/* Custom Styling */
 body {
     background-color: #f5f7fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,7 +17,6 @@ footer {
     background-color: #343a40;
     color: #ffffff;
     padding: 2rem 0;
-    text-align: center;
 }
 
 footer .footer-links a {
@@ -55,7 +54,6 @@ footer .social-icons a:hover {
 /* Hamburger Animation */
 .navbar-toggler {
     border: none;
-    outline: none;
 }
 
 .navbar-toggler span {
@@ -80,58 +78,21 @@ footer .social-icons a:hover {
 }
 
 .calculator-container {
-    max-width: 600px; /* Set a max width for better alignment */
+    max-width: 600px;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 2rem auto; /* Center on larger screens with margin */
+    margin: 2rem auto;
     background-color: #fff;
 }
 
 @media (max-width: 768px) {
     .calculator-container {
-        max-width: 95%; /* Ensure mobile devices have appropriate spacing */
-        padding: 1.5rem; /* Slightly reduced padding for smaller screens */
+        max-width: 95%;
+        padding: 1.5rem;
     }
 }
 
 .button-group {
-    margin-top: 2rem;
+    margin-top: 20px;
 }
-
-button {
-    margin-bottom: 1rem; /* Add space between buttons */
-}
-
-/* Custom Styling for Select Dropdowns */
-.form-select, .form-control {
-    height: 50px; /* Uniform height for all input types */
-    border-radius: 5px;
-}
-
-.form-select {
-    padding: 0.5rem 2rem 0.5rem 1rem; /* Adjust padding for better visibility */
-    background-color: #ffffff;
-    border: 1px solid #ced4da;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-select:focus, .form-control:focus {
-    border-color: #495057; /* Darker border on focus */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.error {
-    border: 1px solid red;
-}
-
-.success {
-    border: 1px solid green;
-    background-color: #e7f9e7;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-}
-
