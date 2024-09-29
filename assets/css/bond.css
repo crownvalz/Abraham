@@ -80,7 +80,7 @@ footer .social-icons a:hover {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-.container {
+.calculator-container {
     max-width: 600px; /* Set a max width for better alignment */
     padding: 2rem;
     border-radius: 10px;
