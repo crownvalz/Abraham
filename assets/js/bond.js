@@ -1,149 +1,138 @@
-// Toggle animation for hamburger icon
-const toggler = document.querySelector('.navbar-toggler');
-toggler.addEventListener('click', () => {
-    toggler.classList.toggle('collapsed');
-});
+document.addEventListener('DOMContentLoaded', function () {
+    const calculatorType = document.getElementById('calculatorType');
+    const bondCalculatorFields = document.getElementById('bondCalculatorFields');
+    const loanCalculatorFields = document.getElementById('loanCalculatorFields');
 
-// Switching between Bond and Loan calculator fields
-const calculatorType = document.getElementById('calculatorType');
-const bondCalculatorFields = document.getElementById('bondCalculatorFields');
-const loanCalculatorFields = document.getElementById('loanCalculatorFields');
-
-calculatorType.addEventListener('change', (event) => {
-    if (event.target.value === 'loan') {
-        bondCalculatorFields.style.display = 'none';
-        loanCalculatorFields.style.display = 'block';
-    } else {
-        bondCalculatorFields.style.display = 'block';
-        loanCalculatorFields.style.display = 'none';
-    }
-});
-
-// Clear form button functionality
-const clearFormBtn = document.getElementById('clearFormBtn');
-clearFormBtn.addEventListener('click', () => {
-    document.getElementById('calculatorForm').reset();
-    bondCalculatorFields.style.display = 'block';
-    loanCalculatorFields.style.display = 'none';
-    clearValidationStyles();
-});
-
-// Handle form submission for Bond Calculator
-document.getElementById('calculatorForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    clearValidationStyles(); // Reset validation styles
-    const modalResult = document.getElementById('modalResult');
-
-    let isValid = validateForm();
-
-    if (isValid) {
-        if (calculatorType.value === 'bond') {
-            const bondAmount = parseFloat(removeCommas(document.getElementById('bondAmount').value));
-            const bondInterestRate = parseFloat(document.getElementById('bondInterestRate').value) / 100;
-            const bondYears = parseFloat(document.getElementById('bondYears').value);
-            const bondFrequency = document.getElementById('bondFrequency').value;
-
-            // Calculate total payment and interest
-            const numberOfPayments = bondYears * getPaymentsPerYear(bondFrequency);
-            const monthlyInterestRate = bondInterestRate / getPaymentsPerYear(bondFrequency);
-            const bondPayment = (bondAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
-            const totalPayment = bondPayment * numberOfPayments;
-            const totalInterest = totalPayment - bondAmount;
-
-            // Display results
-            modalResult.innerHTML = `
-                <p><strong>Bond Payment:</strong> TZS ${bondPayment.toFixed(2)}</p>
-                <p><strong>Total Payment:</strong> TZS ${totalPayment.toFixed(2)}</p>
-                <p><strong>Total Interest:</strong> TZS ${totalInterest.toFixed(2)}</p>
-            `;
-
-        } else if (calculatorType.value === 'loan') {
-            const loanAmount = parseFloat(removeCommas(document.getElementById('loanAmount').value));
-            const loanInterestRate = parseFloat(document.getElementById('loanInterestRate').value) / 100;
-            const loanYears = parseFloat(document.getElementById('loanYears').value);
-
-            // Calculate monthly payment
-            const numberOfPayments = loanYears * 12;
-            const monthlyInterestRate = loanInterestRate / 12;
-            const loanPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
-            const totalPayment = loanPayment * numberOfPayments;
-            const totalInterest = totalPayment - loanAmount;
-
-            // Display results
-            modalResult.innerHTML = `
-                <p><strong>Loan Payment:</strong> TZS ${loanPayment.toFixed(2)}</p>
-                <p><strong>Total Payment:</strong> TZS ${totalPayment.toFixed(2)}</p>
-                <p><strong>Total Interest:</strong> TZS ${totalInterest.toFixed(2)}</p>
-            `;
-        }
-
-        const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-        resultModal.show();
-    }
-});
-
-// Function to validate form fields
-function validateForm() {
-    let isValid = true;
-    const requiredFields = document.querySelectorAll('#calculatorForm input, #calculatorForm select');
-
-    requiredFields.forEach(field => {
-        if (field.value === '') {
-            field.classList.add('is-invalid'); // Add red border
-            isValid = false;
+    // Show/hide calculator fields based on selection
+    calculatorType.addEventListener('change', function () {
+        if (this.value === 'bond') {
+            bondCalculatorFields.style.display = 'block';
+            loanCalculatorFields.style.display = 'none';
         } else {
-            field.classList.remove('is-invalid'); // Remove red border if valid
+            bondCalculatorFields.style.display = 'none';
+            loanCalculatorFields.style.display = 'block';
         }
     });
 
-    return isValid;
-}
+    // Add event listener for form submission
+    document.getElementById('calculatorForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        clearValidationStyles(); // Reset validation styles
 
-// Function to remove validation styles
-function clearValidationStyles() {
-    const fields = document.querySelectorAll('#calculatorForm input, #calculatorForm select');
-    fields.forEach(field => {
-        field.classList.remove('is-invalid');
+        let isValid = validateForm();
+
+        if (isValid) {
+            const resultText = calculateResult();
+            document.getElementById('modalResult').innerText = resultText;
+
+            // Show the modal after calculation
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
+        }
     });
-}
 
-// Function to get the number of payments per year based on frequency
-function getPaymentsPerYear(frequency) {
-    switch (frequency) {
-        case 'monthly':
-            return 12;
-        case 'quarterly':
-            return 4;
-        case 'semi-annually':
-            return 2;
-        case 'yearly':
-            return 1;
-        default:
-            return 1;
+    // Format input to add commas for thousands
+    const formatAmountField = (inputField) => {
+        inputField.value = inputField.value.replace(/,/g, '');
+        inputField.value = Number(inputField.value).toLocaleString();
+    };
+
+    const bondAmount = document.getElementById('bondAmount');
+    const loanAmount = document.getElementById('loanAmount');
+
+    bondAmount.addEventListener('blur', () => formatAmountField(bondAmount));
+    loanAmount.addEventListener('blur', () => formatAmountField(loanAmount));
+
+    // Form validation
+    function validateForm() {
+        let isValid = true;
+
+        const bondAmount = document.getElementById('bondAmount');
+        const bondInterestRate = document.getElementById('bondInterestRate');
+        const bondYears = document.getElementById('bondYears');
+
+        const loanAmount = document.getElementById('loanAmount');
+        const loanInterestRate = document.getElementById('loanInterestRate');
+        const loanYears = document.getElementById('loanYears');
+
+        // Example validation for bond fields
+        if (bondAmount && bondAmount.value.trim() === '') {
+            isValid = false;
+            bondAmount.classList.add('is-invalid');
+        } else {
+            bondAmount.classList.remove('is-invalid');
+        }
+
+        if (bondInterestRate && bondInterestRate.value.trim() === '') {
+            isValid = false;
+            bondInterestRate.classList.add('is-invalid');
+        } else {
+            bondInterestRate.classList.remove('is-invalid');
+        }
+
+        if (bondYears && bondYears.value.trim() === '') {
+            isValid = false;
+            bondYears.classList.add('is-invalid');
+        } else {
+            bondYears.classList.remove('is-invalid');
+        }
+
+        // Example validation for loan fields
+        if (loanAmount && loanAmount.value.trim() === '') {
+            isValid = false;
+            loanAmount.classList.add('is-invalid');
+        } else {
+            loanAmount.classList.remove('is-invalid');
+        }
+
+        if (loanInterestRate && loanInterestRate.value.trim() === '') {
+            isValid = false;
+            loanInterestRate.classList.add('is-invalid');
+        } else {
+            loanInterestRate.classList.remove('is-invalid');
+        }
+
+        if (loanYears && loanYears.value.trim() === '') {
+            isValid = false;
+            loanYears.classList.add('is-invalid');
+        } else {
+            loanYears.classList.remove('is-invalid');
+        }
+
+        return isValid;
     }
-}
 
-// Add comma formatting to bondAmount and loanAmount input fields
-const bondAmountInput = document.getElementById('bondAmount');
-const loanAmountInput = document.getElementById('loanAmount');
-
-[bondAmountInput, loanAmountInput].forEach(input => {
-    if (input) {
-        input.addEventListener('input', function (event) {
-            const value = event.target.value.replace(/,/g, ''); // Remove existing commas
-            if (!isNaN(value) && value.length > 0) {
-                event.target.value = addCommas(value);
-            }
+    function clearValidationStyles() {
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.classList.remove('is-invalid');
         });
     }
+
+    // Function to calculate results
+    function calculateResult() {
+        const bondAmountValue = parseFloat(bondAmount.value.replace(/,/g, '')) || 0;
+        const bondInterestRateValue = parseFloat(bondInterestRate.value) || 0;
+        const bondYearsValue = parseFloat(bondYears.value) || 0;
+
+        const loanAmountValue = parseFloat(loanAmount.value.replace(/,/g, '')) || 0;
+        const loanInterestRateValue = parseFloat(loanInterestRate.value) || 0;
+        const loanYearsValue = parseFloat(loanYears.value) || 0;
+
+        let resultText = '';
+
+        if (calculatorType.value === 'bond') {
+            // Bond calculation logic (simple example)
+            const interest = (bondAmountValue * bondInterestRateValue / 100) * bondYearsValue;
+            const totalAmount = bondAmountValue + interest;
+            resultText = `Total Amount Payable: TZS ${totalAmount.toLocaleString()}\nInterest: TZS ${interest.toLocaleString()}`;
+        } else {
+            // Loan calculation logic (simple example)
+            const interest = (loanAmountValue * loanInterestRateValue / 100) * loanYearsValue;
+            const totalAmount = loanAmountValue + interest;
+            resultText = `Total Amount Payable: TZS ${totalAmount.toLocaleString()}\nInterest: TZS ${interest.toLocaleString()}`;
+        }
+
+        return resultText;
+    }
 });
-
-// Function to add commas to a number string
-function addCommas(value) {
-    return value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-// Function to remove commas from a number string
-function removeCommas(value) {
-    return value.replace(/,/g, '');
-}
