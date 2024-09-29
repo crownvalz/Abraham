@@ -1,40 +1,67 @@
-/* Dark Mode Improvements */
+/* Base styles for light and dark mode */
+body {
+    background-color: #ffffff;
+    color: #333;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer {
+    background-color: #f8f8f8;
+    color: #333;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Dark Mode */
 body.dark-mode {
-    background-color: #1c1c1e; /* Slightly lighter dark background */
-    color: #f5f5f5; /* Bright white text */
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 footer.dark-mode-footer {
-    background-color: #2c2c2e; /* Slightly lighter footer background */
+    background-color: #1c1c1e;
     color: #f5f5f5;
 }
 
 /* Navbar */
+.navbar {
+    background-color: #ffffff;
+    transition: background-color 0.5s ease;
+}
+
 body.dark-mode .navbar {
-    background-color: #2c2c2e; /* Lighter dark background */
+    background-color: #1c1c1e;
 }
 
-/* Form Fields (Dark Mode) */
-body.dark-mode input, 
-body.dark-mode select {
-    background-color: #333333; /* Lighter input background */
-    color: #e0e0e0; /* Light text for readability */
-    border-color: #555555; /* Clear input border */
+/* Form Fields */
+input, select, button {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
 
-input::placeholder, select::placeholder {
-    color: #999999; /* Lighter placeholder for better readability */
+input, select {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccc;
 }
 
-/* Buttons */
+body.dark-mode input, body.dark-mode select {
+    background-color: #333;
+    color: #f1f1f1;
+    border-color: #555;
+}
+
+input:focus, select:focus {
+    border-color: #007aff; /* Apple-like focus */
+}
+
 button {
-    background-color: #007aff; /* Bright button color */
-    color: #ffffff; /* White text */
+    background-color: #007aff;
+    color: #ffffff;
     border: none;
 }
 
 body.dark-mode button {
-    background-color: #0a84ff; /* Bright blue button for dark mode */
+    background-color: #0a84ff;
     color: #ffffff;
 }
 
@@ -47,15 +74,35 @@ body.dark-mode button:hover {
     background-color: #006fdc;
 }
 
-/* Calculator Container (Dark Mode) */
-body.dark-mode .calculator-container {
-    background-color: #2b2b2d; /* Lighter dark background */
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-    border: 1px solid #3a3a3a; /* Clear boundary around form */
+/* Smooth transitions for dark/light mode */
+.calculator-container {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* Modal */
+body.dark-mode .calculator-container {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Modal (Light/Dark) */
+.modal-content {
+    background-color: #ffffff;
+    color: #333;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 body.dark-mode .modal-content {
-    background-color: #2b2b2d; /* Slightly lighter background for modal */
-    color: #f5f5f5;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.modal-header, .modal-footer {
+    border-color: #ccc;
+}
+
+body.dark-mode .modal-header, body.dark-mode .modal-footer {
+    border-color: #555;
 }
