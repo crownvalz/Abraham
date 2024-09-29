@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalResult = document.getElementById('modalResult');
     const bondFrequency = document.getElementById('bondFrequency');
     const navbarToggler = document.querySelector('.navbar-toggler');
+    const alertBox = document.getElementById('alert');
 
     // Toggle calculator fields
     calculatorType.addEventListener('change', function () {
@@ -26,12 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Add event listener for amount input formatting
+    [bondAmount, loanAmount].forEach(input => {
+        input.addEventListener('input', function () {
+            this.value = formatAmount(this.value);
+        });
+    });
+
     // Handle form submission
     calculatorForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // Reset validation classes
+        // Reset validation classes and alert
         resetValidation();
+        alertBox.classList.add('d-none');
 
         let isValid = true;
 
@@ -113,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             modalResult.innerHTML = result;
             resultModal.show();
+        } else {
+            alertBox.classList.remove('d-none');
+            alertBox.textContent = "Please fill in all required fields.";
         }
     });
 
@@ -145,6 +157,11 @@ document.addEventListener("DOMContentLoaded", function () {
         inputs.forEach(input => {
             input.classList.add('error');
         });
+    }
+
+    // Format amount with commas
+    function formatAmount(value) {
+        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     // Navbar toggler icon update
