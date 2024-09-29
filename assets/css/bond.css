@@ -17,6 +17,7 @@ footer {
     background-color: #343a40;
     color: #ffffff;
     padding: 2rem 0;
+    text-align: center;
 }
 
 footer .footer-links a {
@@ -51,45 +52,51 @@ footer .social-icons a:hover {
     font-weight: bold;
 }
 
+/* Hamburger Animation */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.navbar-toggler.collapsed span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.collapsed span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.collapsed span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 .calculator-container {
-    max-width: 600px;
+    max-width: 600px; /* Set a max width for better alignment */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 2rem auto;
+    margin: 2rem auto; /* Center on larger screens with margin */
     background-color: #fff;
 }
+
+@media (max-width: 768px) {
+    .calculator-container {
+        max-width: 95%; /* Ensure mobile devices have appropriate spacing */
+        padding: 1.5rem; /* Slightly reduced padding for smaller screens */
+    }
+}
+
 
 .button-group {
     margin-top: 20px;
 }
 
-/* Add this CSS at the bottom of your existing CSS */
-.navbar-toggler {
-    border: none; /* Remove default border */
-}
-
-.navbar-toggler:focus {
-    outline: none; /* Remove focus outline */
-}
-
-.navbar-toggler .line {
-    display: block;
-    width: 30px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: #333;
-    transition: all 0.3s ease;
-}
-
-.navbar-toggler.collapsed .line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggler.collapsed .line:nth-child(2) {
-    opacity: 0; /* Hide the middle line */
-}
-
-.navbar-toggler.collapsed .line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
