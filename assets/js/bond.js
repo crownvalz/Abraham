@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const toggler = document.querySelector('.navbar-toggler');
     const calculatorType = document.getElementById('calculatorType');
     const bondCalculatorFields = document.getElementById('bondCalculatorFields');
     const loanCalculatorFields = document.getElementById('loanCalculatorFields');
@@ -7,10 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const calculatorForm = document.getElementById('calculatorForm');
     const bondAmountInput = document.getElementById('bondAmount');
     const loanAmountInput = document.getElementById('loanAmount');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    // Toggle Dark Mode
+    darkModeToggle.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+    });
 
     // Switching between Bond and Loan calculator fields
-    calculatorType.addEventListener('change', (event) => {
-        if (event.target.value === 'loan') {
+    calculatorType.addEventListener('change', function () {
+        if (this.value === 'loan') {
             bondCalculatorFields.style.display = 'none';
             loanCalculatorFields.style.display = 'block';
         } else {
@@ -29,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Clear form button functionality
-    clearFormBtn.addEventListener('click', () => {
+    clearFormBtn.addEventListener('click', function () {
         calculatorForm.reset();
         clearValidationErrors();
         bondCalculatorFields.style.display = 'block';
