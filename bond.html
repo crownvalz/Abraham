@@ -13,39 +13,39 @@
 <body>
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
-        <div class="container-fluid d-flex align-items-center">
-            <a class="navbar-brand me-auto" href="#">
-                <img src="img/logo.png" alt="Logo"> <!-- Add your logo URL -->
-            </a>
-            <h1 class="mx-auto">Safe Bank Plc</h1>
-            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
+    <div class="container-fluid d-flex align-items-center">
+        <a class="navbar-brand me-auto" href="#">
+            <img src="img/logo.png" alt="Logo"> <!-- Add your logo URL -->
+        </a>
+        <h1 class="mx-auto">Safe Bank Plc</h1>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
 
-        <!-- Centered Navbar Links -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav mx-auto text-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Loans</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Centered Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Loans</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Calculator Form -->
+  <!-- Calculator Form -->
     <div class="container calculator-container mt-5 mb-5">
         <!-- Form for selecting between calculators -->
         <form id="calculatorForm" class="calculator-form">
@@ -64,10 +64,10 @@
                     <input type="tel" class="form-control" id="bondAmount" placeholder="Amount (TZS)">
                 </div>
                 <div class="form-group mb-3">
-                    <input type="tel" class="form-control" id="bondInterestRate" placeholder="Interest Rate (%)">
+                    <input type="tel" class="form-control" id="bondInterestRate" placeholder="Interest Rate">
                 </div>
                 <div class="form-group mb-3">
-                    <input type="tel" class="form-control" id="bondYears" placeholder="Duration (Years)">
+                    <input type="tel" class="form-control" id="bondYears" placeholder="Enter Duration (Years)">
                 </div>
                 <div class="form-group mb-3">
                     <label for="bondFrequency">Interest Paid</label>
@@ -84,13 +84,16 @@
             <div id="loanCalculatorFields" style="display: none;">
                 <h4 class="mt-4">Loan Calculator</h4>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" id="loanAmount" placeholder="Amount (TZS)">
+                    <label for="loanAmount">Amount (TZS)</label>
+                    <input type="text" class="form-control" id="loanAmount" placeholder="Enter Amount">
                 </div>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
+                    <label for="loanInterestRate">Interest Rate (%)</label>
+                    <input type="text" class="form-control" id="loanInterestRate" placeholder="Enter Interest Rate">
                 </div>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" id="loanYears" placeholder="Duration (Years)">
+                    <label for="loanYears">Years</label>
+                    <input type="text" class="form-control" id="loanYears" placeholder="Enter Duration">
                 </div>
             </div>
 
@@ -127,8 +130,11 @@
 
     <!-- Bootstrap 5 JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="assets/js/calculator.js"></script>
+    <!-- Bootstrap Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 
+    <!-- Custom JS -->
+    <script src="assets/js/bond.js"></script>
+    <script src="assets/js/calculator.js"></script>
 </body>
 </html>
