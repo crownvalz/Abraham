@@ -43,25 +43,30 @@ document.addEventListener("DOMContentLoaded", function () {
         // Perform validations and calculations here
         let isValid = true;
 
+        // Clear previous error styles
+        [bondAmount, bondInterestRate, bondYears, loanAmount, loanInterestRate, loanYears].forEach(input => {
+            input.classList.remove('error');
+        });
+
         // Validate Bond Inputs
         if (calculatorType.value === 'bond') {
             if (!bondAmount.value || !bondInterestRate.value || !bondYears.value) {
                 isValid = false;
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('error'));
-            } else {
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.remove('error'));
-                // Show success border
-                [bondAmount, bondInterestRate, bondYears].forEach(input => input.classList.add('success'));
+                [bondAmount, bondInterestRate, bondYears].forEach(input => {
+                    if (!input.value) {
+                        input.classList.add('error'); // Add red border if empty
+                    }
+                });
             }
         } else {
             // Validate Loan Inputs
             if (!loanAmount.value || !loanInterestRate.value || !loanYears.value) {
                 isValid = false;
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('error'));
-            } else {
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.remove('error'));
-                // Show success border
-                [loanAmount, loanInterestRate, loanYears].forEach(input => input.classList.add('success'));
+                [loanAmount, loanInterestRate, loanYears].forEach(input => {
+                    if (!input.value) {
+                        input.classList.add('error'); // Add red border if empty
+                    }
+                });
             }
         }
 
