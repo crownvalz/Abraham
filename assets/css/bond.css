@@ -94,61 +94,42 @@ footer .social-icons a:hover {
         padding: 1.5rem; /* Slightly reduced padding for smaller screens */
     }
 }
-
-
-
-
-
-.calculator-form {
-    background-color: #ffffff; /* Form background */
-    border-radius: 10px; /* Rounded corners for the form */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 20px; /* Padding inside the form */
-}
-
-/* Form Fields */
-.form-floating {
-    margin-bottom: 1.5rem; /* Spacing between fields */
-}
-
-/* Button Styles */
-.btn {
-    font-weight: bold; /* Bold text on buttons */
-}
-
-/* Modal Styles */
-.modal-content {
-    padding: 20px; /* Padding inside the modal */
-}
-
-.modal-header {
-    border-bottom: none; /* Remove bottom border of the modal header */
-}
-
-/* Footer Styles */
-footer {
-    background-color: #ffffff; /* Footer background */
-    padding: 10px 0; /* Padding for footer */
-}
-
-/* Responsive Styles */
-@media (max-width: 576px) {
-    .line {
-        width: 25px; /* Smaller lines on mobile */
-    }
     
-    .container {
-        padding: 0 15px; /* Padding for mobile */
-    }
-}
-.input-error {
-    border: 2px solid red; /* Red border for errors */
+    
+    
+    
+    
+
+
+
+
+
+.error {
+    border: 1px solid red;
 }
 
-.input-success {
-    border: 2px solid green; /* Green border for success */
+.success {
+    border: 1px solid green;
+    background-color: #e7f9e7;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
 }
 
-.alert {
-    margin-bottom: 1rem;
+/* Button styles */
+.btn {
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #23272b; /* Darker shade on hover */
+    transform: translateY(-1px); /* Slight lift effect on hover */
 }
