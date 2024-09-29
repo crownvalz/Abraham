@@ -1,178 +1,63 @@
-/* Custom Styling */
+/* General Lightening of Components */
 body {
-    background-color: #1c1c1e;
-    color: #f5f5f5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2c2c2e; /* Slightly lighter background */
+    color: #f5f5f5; /* Bright white text */
 }
 
 .navbar {
-    background-color: #333;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.navbar-brand img {
-    height: 40px;
+    background-color: #2e2e30; /* Lighten the navbar background */
+    color: #ffffff;
 }
 
 footer {
-    background-color: #1c1c1e;
-    color: #f5f5f5;
-    padding: 2rem 0;
-    text-align: center;
+    background-color: #3a3a3a; /* Lighter footer background */
+    color: #ffffff;
 }
 
-footer .footer-links a {
-    color: #f5f5f5;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 1rem;
+input, select, textarea {
+    background-color: #4b4b4d; /* Lighter input background */
+    color: #ffffff; /* White text for inputs */
+    border: 1px solid #777777; /* Lighter border */
 }
 
-footer .footer-links a:hover {
-    text-decoration: underline;
+input::placeholder, select::placeholder {
+    color: #aaaaaa; /* Lighter placeholder text */
 }
 
-footer .social-icons a {
-    color: #f5f5f5;
-    font-size: 1.5rem;
-    margin: 0 10px;
-}
-
-footer .social-icons a:hover {
-    color: #00bcd4;
-}
-
-.navbar-nav {
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.navbar h1 {
-    font-size: 1.5rem;
-    color: #f5f5f5;
-    margin: 0;
-    font-weight: bold;
-}
-
-/* Hamburger Animation */
-.navbar-toggler {
+/* Buttons */
+button {
+    background-color: #007aff; /* Bright button color */
+    color: #ffffff; /* White text */
     border: none;
-    outline: none;
 }
 
-.navbar-toggler span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #f5f5f5;
-    margin: 5px 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.navbar-toggler.collapsed span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar-toggler.collapsed span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar-toggler.collapsed span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+button:hover {
+    background-color: #005fcc; /* Darken button on hover */
 }
 
 /* Calculator Container */
 .calculator-container {
-    max-width: 100%;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    margin: 0 auto;
-    background-color: #2e2e30;
+    background-color: #3b3b3d; /* Lighter dark background for form */
+    color: #ffffff;
+    border: 1px solid #555555; /* Clear boundaries around the form */
 }
 
-@media (max-width: 768px) {
-    .calculator-container {
-        max-width: 95%;
-        padding: 1rem;
-    }
-}
-
-.button-group {
-    margin-top: 2rem;
-}
-
-button {
-    margin-bottom: 1rem;
-    border-radius: 25px;
-}
-
-/* Dropdown and Form Field Styles */
-form select, form input[type="text"], form input[type="tel"] {
-    background-color: #3a3a3c;
-    border: 1px solid #4a4a4c;
-    border-radius: 25px;
-    padding: 12px 15px;
-    font-size: 1rem;
-    color: #f5f5f5;
-    transition: border-color 0.3s ease-in-out;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-form select:hover, form input[type="text"]:hover, form input[type="tel"]:hover {
-    border-color: #00bcd4;
-}
-
-form select:focus, form input[type="text"]:focus, form input[type="tel"]:focus {
-    border-color: #00bcd4;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
-}
-
-form select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE2IDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEuMzMgMGwuNy43TDggNi42bDYtNS45LjctLjctMS4zMi0xLjMtNy4zNSA3LjM1eiIgZmlsbD0iIzAwY2QyZiIvPjwvc3ZnPg==') no-repeat right 12px center;
-    padding-right: 40px;
-    background-color: #3a3a3c;
-}
-
-form select:focus {
-    background-position: right 10px center;
-}
-
-/* Improve Overall Form Styling */
+/* Improve visibility of labels */
 label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #f5f5f5;
+    color: #f5f5f5; /* Bright white for form labels */
 }
 
-h4 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f5f5f5;
-    margin-bottom: 1rem;
+/* Modal for better contrast */
+.modal-content {
+    background-color: #3b3b3d; /* Lighter modal background */
+    color: #ffffff; /* White text for modal content */
 }
 
-button[type="submit"] {
-    background-color: #00bcd4;
-    color: #fff;
-    border: none;
-    transition: background-color 0.3s ease-in-out;
+/* Button Fixes */
+button.calculate {
+    background-color: #0a84ff; /* Brighter blue for calculate button */
 }
 
-button[type="submit"]:hover {
-    background-color: #008ba3;
-}
-
-button#clearFormBtn {
-    background-color: #6c757d;
-    color: #fff;
-}
-
-button#clearFormBtn:hover {
-    background-color: #5a6268;
+button.clear {
+    background-color: #6c757d; /* Lighter gray for clear button */
 }
