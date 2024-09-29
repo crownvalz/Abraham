@@ -33,8 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Format input to add commas for thousands
     const formatAmountField = (inputField) => {
-        inputField.value = inputField.value.replace(/,/g, '');
-        inputField.value = Number(inputField.value).toLocaleString();
+        inputField.value = inputField.value.replace(/,/g, ''); // Remove existing commas
+        const value = Number(inputField.value);
+        if (!isNaN(value)) {
+            inputField.value = value.toLocaleString(); // Format with commas
+        }
     };
 
     const bondAmount = document.getElementById('bondAmount');
@@ -55,44 +58,44 @@ document.addEventListener('DOMContentLoaded', function () {
         const loanInterestRate = document.getElementById('loanInterestRate');
         const loanYears = document.getElementById('loanYears');
 
-        // Example validation for bond fields
-        if (bondAmount && bondAmount.value.trim() === '') {
+        // Bond validation
+        if (bondAmount.value.trim() === '') {
             isValid = false;
             bondAmount.classList.add('is-invalid');
         } else {
             bondAmount.classList.remove('is-invalid');
         }
 
-        if (bondInterestRate && bondInterestRate.value.trim() === '') {
+        if (bondInterestRate.value.trim() === '') {
             isValid = false;
             bondInterestRate.classList.add('is-invalid');
         } else {
             bondInterestRate.classList.remove('is-invalid');
         }
 
-        if (bondYears && bondYears.value.trim() === '') {
+        if (bondYears.value.trim() === '') {
             isValid = false;
             bondYears.classList.add('is-invalid');
         } else {
             bondYears.classList.remove('is-invalid');
         }
 
-        // Example validation for loan fields
-        if (loanAmount && loanAmount.value.trim() === '') {
+        // Loan validation
+        if (loanAmount.value.trim() === '') {
             isValid = false;
             loanAmount.classList.add('is-invalid');
         } else {
             loanAmount.classList.remove('is-invalid');
         }
 
-        if (loanInterestRate && loanInterestRate.value.trim() === '') {
+        if (loanInterestRate.value.trim() === '') {
             isValid = false;
             loanInterestRate.classList.add('is-invalid');
         } else {
             loanInterestRate.classList.remove('is-invalid');
         }
 
-        if (loanYears && loanYears.value.trim() === '') {
+        if (loanYears.value.trim() === '') {
             isValid = false;
             loanYears.classList.add('is-invalid');
         } else {
@@ -122,12 +125,12 @@ document.addEventListener('DOMContentLoaded', function () {
         let resultText = '';
 
         if (calculatorType.value === 'bond') {
-            // Bond calculation logic (simple example)
+            // Bond calculation logic (simple interest calculation)
             const interest = (bondAmountValue * bondInterestRateValue / 100) * bondYearsValue;
             const totalAmount = bondAmountValue + interest;
             resultText = `Total Amount Payable: TZS ${totalAmount.toLocaleString()}\nInterest: TZS ${interest.toLocaleString()}`;
         } else {
-            // Loan calculation logic (simple example)
+            // Loan calculation logic (simple interest calculation)
             const interest = (loanAmountValue * loanInterestRateValue / 100) * loanYearsValue;
             const totalAmount = loanAmountValue + interest;
             resultText = `Total Amount Payable: TZS ${totalAmount.toLocaleString()}\nInterest: TZS ${interest.toLocaleString()}`;
