@@ -101,14 +101,26 @@ footer .social-icons a:hover {
 
 button {
     margin-bottom: 1rem; /* Add space between buttons */
-    transition: background-color 0.3s, transform 0.2s; /* Add smooth transitions */
-}
-
-button:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .error {
-    border: 1px solid red;
-    background-color: #ffe6e6; /* Light red background for errors */
+    border: 1px solid red; /* Add a red border for error state */
+}
+
+/* Modal Styles */
+.modal-body {
+    font-size: 1.1rem; /* Slightly increase font size for better readability */
+}
+
+.modal-header {
+    background-color: #343a40; /* Match footer color for consistency */
+    color: #ffffff;
+}
+
+.modal-title {
+    margin: 0; /* Remove default margin */
+}
+
+.modal-footer {
+    background-color: #f5f7fa; /* Light background for footer */
 }
