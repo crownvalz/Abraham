@@ -1,141 +1,61 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const calculatorType = document.getElementById('calculatorType');
-    const bondCalculatorFields = document.getElementById('bondCalculatorFields');
-    const loanCalculatorFields = document.getElementById('loanCalculatorFields');
+document.getElementById('calculatorType').addEventListener('change', function() {
+    const bondFields = document.getElementById('bondCalculatorFields');
+    const loanFields = document.getElementById('loanCalculatorFields');
+    if (this.value === 'bond') {
+        bondFields.style.display = 'block';
+        loanFields.style.display = 'none';
+    } else {
+        bondFields.style.display = 'none';
+        loanFields.style.display = 'block';
+    }
+});
 
-    // Show/hide calculator fields based on selection
-    calculatorType.addEventListener('change', function () {
-        if (this.value === 'bond') {
-            bondCalculatorFields.style.display = 'block';
-            loanCalculatorFields.style.display = 'none';
+document.getElementById('calculatorForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const calculatorType = document.getElementById('calculatorType').value;
+    let isValid = true;
+    const inputs = calculatorType === 'bond' ? ['bondAmount', 'bondInterestRate', 'bondYears'] : ['loanAmount', 'loanInterestRate', 'loanYears'];
+
+    inputs.forEach(id => {
+        const input = document.getElementById(id);
+        if (!input.value) {
+            input.classList.add('error');
+            isValid = false;
         } else {
-            bondCalculatorFields.style.display = 'none';
-            loanCalculatorFields.style.display = 'block';
+            input.classList.remove('error');
         }
     });
 
-    // Add event listener for form submission
-    document.getElementById('calculatorForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        clearValidationStyles(); // Reset validation styles
+    if (!isValid) return;
 
-        let isValid = validateForm();
+    let result;
+    if (calculatorType === 'bond') {
+        const amount = parseFloat(document.getElementById('bondAmount').value);
+        const interestRate = parseFloat(document.getElementById('bondInterestRate').value) / 100;
+        const years = parseFloat(document.getElementById('bondYears').value);
+        const frequency = document.getElementById('bondFrequency').value;
 
-        if (isValid) {
-            const resultText = calculateResult();
-            document.getElementById('modalResult').innerText = resultText;
+        // Calculate Bond result (simple example)
+        result = amount * Math.pow(1 + interestRate, years);
+    } else {
+        const amount = parseFloat(document.getElementById('loanAmount').value);
+        const interestRate = parseFloat(document.getElementById('loanInterestRate').value) / 100;
+        const years = parseFloat(document.getElementById('loanYears').value);
 
-            // Show the modal after calculation
-            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-            resultModal.show();
-        }
-    });
-
-    // Format input to add commas for thousands
-    const formatAmountField = (inputField) => {
-        inputField.value = inputField.value.replace(/,/g, ''); // Remove existing commas
-        const value = Number(inputField.value);
-        if (!isNaN(value)) {
-            inputField.value = value.toLocaleString(); // Format with commas
-        }
-    };
-
-    const bondAmount = document.getElementById('bondAmount');
-    const loanAmount = document.getElementById('loanAmount');
-
-    bondAmount.addEventListener('blur', () => formatAmountField(bondAmount));
-    loanAmount.addEventListener('blur', () => formatAmountField(loanAmount));
-
-    // Form validation
-    function validateForm() {
-        let isValid = true;
-
-        const bondAmount = document.getElementById('bondAmount');
-        const bondInterestRate = document.getElementById('bondInterestRate');
-        const bondYears = document.getElementById('bondYears');
-
-        const loanAmount = document.getElementById('loanAmount');
-        const loanInterestRate = document.getElementById('loanInterestRate');
-        const loanYears = document.getElementById('loanYears');
-
-        // Bond validation
-        if (bondAmount.value.trim() === '') {
-            isValid = false;
-            bondAmount.classList.add('is-invalid');
-        } else {
-            bondAmount.classList.remove('is-invalid');
-        }
-
-        if (bondInterestRate.value.trim() === '') {
-            isValid = false;
-            bondInterestRate.classList.add('is-invalid');
-        } else {
-            bondInterestRate.classList.remove('is-invalid');
-        }
-
-        if (bondYears.value.trim() === '') {
-            isValid = false;
-            bondYears.classList.add('is-invalid');
-        } else {
-            bondYears.classList.remove('is-invalid');
-        }
-
-        // Loan validation
-        if (loanAmount.value.trim() === '') {
-            isValid = false;
-            loanAmount.classList.add('is-invalid');
-        } else {
-            loanAmount.classList.remove('is-invalid');
-        }
-
-        if (loanInterestRate.value.trim() === '') {
-            isValid = false;
-            loanInterestRate.classList.add('is-invalid');
-        } else {
-            loanInterestRate.classList.remove('is-invalid');
-        }
-
-        if (loanYears.value.trim() === '') {
-            isValid = false;
-            loanYears.classList.add('is-invalid');
-        } else {
-            loanYears.classList.remove('is-invalid');
-        }
-
-        return isValid;
+        // Calculate Loan result (simple example)
+        const monthlyRate = interestRate / 12;
+        const numberOfPayments = years * 12;
+        result = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
     }
 
-    function clearValidationStyles() {
-        const inputs = document.querySelectorAll('.form-control');
-        inputs.forEach(input => {
-            input.classList.remove('is-invalid');
-        });
-    }
+    document.getElementById('modalResult').innerText = `The result is: ${result.toFixed(2)} TZS`;
+    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+    resultModal.show();
+});
 
-    // Function to calculate results
-    function calculateResult() {
-        const bondAmountValue = parseFloat(bondAmount.value.replace(/,/g, '')) || 0;
-        const bondInterestRateValue = parseFloat(bondInterestRate.value) || 0;
-        const bondYearsValue = parseFloat(bondYears.value) || 0;
-
-        const loanAmountValue = parseFloat(loanAmount.value.replace(/,/g, '')) || 0;
-        const loanInterestRateValue = parseFloat(loanInterestRate.value) || 0;
-        const loanYearsValue = parseFloat(loanYears.value) || 0;
-
-        let resultText = '';
-
-        if (calculatorType.value === 'bond') {
-            // Bond calculation logic (simple interest calculation)
-            const interest = (bondAmountValue * bondInterestRateValue / 100) * bondYearsValue;
-            const totalAmount = bondAmountValue + interest;
-            resultText = `Total Amount Payable: TZS ${totalAmount.toLocaleString()}\nInterest: TZS ${interest.toLocaleString()}`;
-        } else {
-            // Loan calculation logic (simple interest calculation)
-            const interest = (loanAmountValue * loanInterestRateValue / 100) * loanYearsValue;
-            const totalAmount = loanAmountValue + interest;
-            resultText = `Total Amount Payable: TZS ${totalAmount.toLocaleString()}\nInterest: TZS ${interest.toLocaleString()}`;
-        }
-
-        return resultText;
-    }
+document.getElementById('clearFormBtn').addEventListener('click', function() {
+    document.getElementById('calculatorForm').reset();
+    document.querySelectorAll('.form-control').forEach(input => input.classList.remove('error'));
+    document.getElementById('bondCalculatorFields').style.display = 'block';
+    document.getElementById('loanCalculatorFields').style.display = 'none';
 });
