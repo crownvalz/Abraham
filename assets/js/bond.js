@@ -74,18 +74,58 @@ document.addEventListener("DOMContentLoaded", function () {
                 const years = parseFloat(bondYears.value);
                 const frequency = bondFrequency.value;
 
-                // Calculate interest based on frequency
-                let interestPaid = (amount * interestRate / 100) * years;
-                let frequencyText = frequency.charAt(0).toUpperCase() + frequency.slice(1);
+                // Calculate total interest
+                const totalInterest = (amount * interestRate / 100) * years;
+                let paymentFrequency;
+                let interestPaid;
 
-                result = `For a bond of TZS ${amount.toLocaleString()}, with an interest rate of ${interestRate}%, over ${years} years, the interest paid is TZS ${interestPaid.toLocaleString()} (${frequencyText}).`;
+                // Calculate interest based on selected frequency
+                if (frequency === 'monthly') {
+                    interestPaid = totalInterest / (years * 12);
+                    paymentFrequency = "Monthly";
+                } else if (frequency === 'quarterly') {
+                    interestPaid = totalInterest / (years * 4);
+                    paymentFrequency = "Quarterly";
+                } else if (frequency === 'semi-annually') {
+                    interestPaid = totalInterest / (years * 2);
+                    paymentFrequency = "Semi-annually";
+                } else if (frequency === 'yearly') {
+                    interestPaid = totalInterest / years;
+                    paymentFrequency = "Yearly";
+                }
+
+                // Format results
+                result = `
+                    <div>
+                        <h5>Bond Calculation Summary:</h5>
+                        <hr>
+                        <p><strong>Bond Amount:</strong> TZS ${amount.toLocaleString()}</p>
+                        <p><strong>Interest Rate:</strong> ${interestRate}%</p>
+                        <p><strong>Duration:</strong> ${years} years</p>
+                        <p><strong>Total Interest:</strong> TZS ${totalInterest.toLocaleString()}</p>
+                        <p><strong>Interest Paid (${paymentFrequency}):</strong> TZS ${interestPaid.toLocaleString()}</p>
+                    </div>
+                `;
             } else {
                 // Loan calculation logic
                 const amount = parseFloat(loanAmount.value.replace(/,/g, ''));
                 const interestRate = parseFloat(loanInterestRate.value);
                 const years = parseFloat(loanYears.value);
-                
-                result = `For a loan of TZS ${amount.toLocaleString()}, with an interest rate of ${interestRate}%, over ${years} years, the total amount paid is TZS ${(amount + (amount * interestRate / 100) * years).toLocaleString()}.`;
+                const totalPaid = amount + (amount * interestRate / 100) * years;
+                const monthlyPayment = totalPaid / (years * 12);
+
+                // Format results
+                result = `
+                    <div>
+                        <h5>Loan Calculation Summary:</h5>
+                        <hr>
+                        <p><strong>Loan Amount:</strong> TZS ${amount.toLocaleString()}</p>
+                        <p><strong>Interest Rate:</strong> ${interestRate}%</p>
+                        <p><strong>Duration:</strong> ${years} years</p>
+                        <p><strong>Total Payment:</strong> TZS ${totalPaid.toLocaleString()}</p>
+                        <p><strong>Monthly Payment:</strong> TZS ${monthlyPayment.toLocaleString()}</p>
+                    </div>
+                `;
             }
 
             modalResult.innerHTML = result;
