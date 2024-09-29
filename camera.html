@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Scanner</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* CSS for camera layout */
+    .camera-container {
+      width: 320px;
+      height: 240px;
+      border: 2px solid #333;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .camera-square {
+      width: 300px;
+      height: 220px;
+      border: 2px dashed #007bff;
+      position: absolute;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center mt-5">
+    <h1>ID Scanner</h1>
+    <div class="camera-container">
+      <video id="video" autoplay></video>
+      <div class="camera-square"></div>
+    </div>
+    <button class="btn btn-primary" id="capture">Capture ID</button>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Access the camera
+    const video = document.getElementById('video');
+
+    // Ask for camera access
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+        .then(function(stream) {
+          video.srcObject = stream;
+        })
+        .catch(function(error) {
+          console.error("Error accessing the camera: ", error);
+        });
+    }
+
+    // Capture button handler
+    document.getElementById('capture').addEventListener('click', function() {
+      alert("ID captured!");
+      // Additional functionality can be added here to process the captured image.
+    });
+  </script>
+</body>
+</html>
