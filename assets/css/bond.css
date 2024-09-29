@@ -85,24 +85,6 @@ label {
     color: #f0f0f0; /* Light color for labels */
 }
 
-/* Button Styling */
-button {
-    background-color: #007aff; /* Bright blue button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #005bb5; /* Darker blue on hover */
-}
-
-button:disabled {
-    background-color: #555555; /* Gray color for disabled buttons */
-}
 
 /* Calculator Container */
 .calculator-container {
