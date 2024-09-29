@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom">
         <div class="container-fluid d-flex align-items-center">
             <a class="navbar-brand me-auto" href="#">
-                <img src="img/logo.png" alt="Logo"> <!-- Add your logo URL -->
+                <img src="img/logo.png" alt="Logo">
             </a>
             <h1 class="mx-auto">Safe Bank Plc</h1>
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
                     <label for="bondInterestRate">Interest Rate (%)</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" step="1" class="form-control" id="bondYears" placeholder="Duration (Years)">
+                    <input type="number" class="form-control" id="bondYears" placeholder="Duration (Years)">
                     <label for="bondYears">Duration (Years)</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -78,7 +78,6 @@
                         <option value="semi-annually">Semi-annually</option>
                         <option value="yearly">Yearly</option>
                     </select>
-                    <label for="bondFrequency">Interest Frequency</label>
                 </div>
             </div>
 
@@ -86,15 +85,15 @@
             <div id="loanCalculatorFields" style="display: none;">
                 <h4 class="mt-4">Loan Calculator</h4>
                 <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="loanAmount" placeholder="Amount (TZS)" required>
+                    <input type="number" step="0.01" class="form-control" id="loanAmount" placeholder="Amount (TZS)">
                     <label for="loanAmount">Amount (TZS)</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)" required>
+                    <input type="number" step="0.01" class="form-control" id="loanInterestRate" placeholder="Interest Rate (%)">
                     <label for="loanInterestRate">Interest Rate (%)</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" step="1" class="form-control" id="loanYears" placeholder="Duration (Years)" required>
+                    <input type="number" class="form-control" id="loanYears" placeholder="Duration (Years)">
                     <label for="loanYears">Duration (Years)</label>
                 </div>
             </div>
