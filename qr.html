@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke API Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Random Joke Generator
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="joke-setup">Click the button to get a joke!</h5>
+                        <p class="card-text" id="joke-punchline"></p>
+                        <button class="btn btn-primary" id="joke-btn">Get Joke</button>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Enjoy your joke!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript to fetch the Joke API -->
+    <script>
+        document.getElementById('joke-btn').addEventListener('click', function() {
+            fetch('https://official-joke-api.appspot.com/random_joke')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('joke-setup').innerText = data.setup;
+                    document.getElementById('joke-punchline').innerText = data.punchline;
+                })
+                .catch(error => {
+                    console.log('Error fetching the joke:', error);
+                });
+        });
+    </script>
+</body>
+</html>
