@@ -1,132 +1,129 @@
 /* General styles */
 body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
 /* Ensure the container fills the entire screen */
 .camera-container {
-  width: 100vw;  /* Full width */
-  height: 100vh; /* Full height */
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
 }
 
 .camera-square {
-  width: 80%; /* Adjust this to your desired capture frame size */
-  height: 70%; /* Adjust this to your desired capture frame size */
-  border: 4px dashed #007bff; /* Highlighted border for the capture area */
-  position: absolute;
-  pointer-events: none;
-  top: 15%; /* Center vertically */
-  left: 10%; /* Center horizontally */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: none;
+    pointer-events: none;
 }
 
 /* Full-screen video feed */
 #video {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover; /* Ensure the video covers the full screen */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensure the video covers the full screen */
 }
 
 /* Captured image also takes up the full screen */
 img.captured-image {
-  width: 100vw; 
-  height: 100vh; 
-  object-fit: cover; /* Ensure the image covers the full screen */
-  display: none; /* Initially hidden */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensure the image covers the full screen */
+    display: none;
 }
 
 /* Full-screen confirmation image */
 #confirmationImage {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover; /* Ensure the image covers the full screen */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensure the image covers the full screen */
 }
 
 /* Messages and buttons */
 .photo-captured-message {
-  text-align: center;
-  color: green;
-  font-weight: bold;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 10px 20px;
-  border-radius: 5px;
-  display: none; /* Initially hidden */
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 button {
-  display: block;
-  margin: 10px auto;
+    display: block;
+    margin: 10px auto;
 }
 
 button.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 button.btn-primary {
-  background-color: #007bff;
-  color: white;
+    background-color: #007bff;
+    color: white;
 }
 
 button.btn-danger {
-  background-color: #dc3545;
-  color: white;
+    background-color: #dc3545;
+    color: white;
 }
 
 button.btn-success {
-  background-color: #28a745;
-  color: white;
+    background-color: #28a745;
+    color: white;
 }
 
 button.btn-secondary {
-  background-color: #6c757d;
-  color: white;
+    background-color: #6c757d;
+    color: white;
 }
 
 /* Full-screen confirmation step */
 #step-2 {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
 }
 
 #step-2 p {
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 /* Footer */
 footer {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 14px;
-  color: #777;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+    color: #777;
 }
