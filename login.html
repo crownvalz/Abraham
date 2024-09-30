@@ -47,58 +47,58 @@
     </div>
 
     <script type="module">
-        // Import Firebase libraries
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+    // Import Firebase libraries
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
-        // Your Firebase configuration object
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
+    // Your Firebase configuration object
+    const firebaseConfig = {
+        apiKey: "AIzaSyBe1HYgEzdcZj0ZOgimd1ODz8B-2aztUYs",
+        authDomain: "bank-operations-school.firebaseapp.com",
+        projectId: "bank-operations-school",
+        storageBucket: "bank-operations-school.appspot.com",
+        messagingSenderId: "292213603678",
+        appId: "1:292213603678:web:464bf951de870b94baa3cf"
+    };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-        // Handle registration form submission
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    // Handle registration form submission
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const phone = document.getElementById('phone').value;
-            const errorMessage = document.getElementById('errorMessage');
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const phone = document.getElementById('phone').value;
+        const errorMessage = document.getElementById('errorMessage');
 
-            // Register the user with email and password
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    // Store additional user information in Firestore
-                    return setDoc(doc(db, "users", user.uid), {
-                        uid: user.uid,
-                        name: name,
-                        email: email,
-                        phone: phone
-                    });
-                })
-                .then(() => {
-                    alert("Registration successful!");
-                    // Redirect to home page or show success message
-                    window.location.href = "home.html";
-                })
-                .catch((error) => {
-                    errorMessage.textContent = error.message;
-                    errorMessage.style.display = 'block';
+        // Register the user with email and password
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                // Store additional user information in Firestore
+                return setDoc(doc(db, "users", user.uid), {
+                    uid: user.uid,
+                    name: name,
+                    email: email,
+                    phone: phone
                 });
-        });
-    </script>
+            })
+            .then(() => {
+                alert("Registration successful!");
+                // Redirect to home page or show success message
+                window.location.href = "home.html";
+            })
+            .catch((error) => {
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = 'block';
+            });
+    });
+</script>
 </body>
 </html>
