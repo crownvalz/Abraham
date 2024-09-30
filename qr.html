@@ -3,68 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate PDF Letter</title>
+  <title>Certificate of Completion</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      margin: 50px;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h1 class="text-center">Generate PDF Letter</h1>
-    <form id="pdfForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Your Name" required><br><br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Your Email" required><br><br>
-      <label for="address">Address:</label>
-      <textarea id="address" placeholder="Your Address" required></textarea><br><br>
-      <label for="message">Message:</label>
-      <textarea id="message" placeholder="Type your message here..." required></textarea><br><br>
-      <button type="button" onclick="generatePDF()">Generate PDF</button>
+  <div class="container">
+    <h1>Generate Certificate of Completion</h1>
+    <form id="certificateForm">
+      <label for="name">Recipient Name:</label>
+      <input type="text" id="name" placeholder="Enter Name" required><br>
+      <label for="date">Date of Completion:</label>
+      <input type="text" id="date" placeholder="Enter Date (e.g., 2024-09-30)" required><br>
+      <button type="button" onclick="generateCertificate()">Generate Certificate</button>
     </form>
   </div>
 
   <script>
-    async function generatePDF() {
+    async function generateCertificate() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
       const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const address = document.getElementById('address').value;
-      const message = document.getElementById('message').value;
+      const date = document.getElementById('date').value;
 
-      // Set the font size and style
+      // Draw border
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      doc.rect(10, 10, pageWidth - 20, pageHeight - 20); // outer border
+      doc.rect(15, 15, pageWidth - 30, pageHeight - 30); // inner border
+
+      // Set font styles
+      doc.setFontSize(24);
+      doc.text("Certificate of Completion", pageWidth / 2, 50, null, null, "center");
+
+      doc.setFontSize(16);
+      doc.text(`This certifies that`, pageWidth / 2, 90, null, null, "center");
+
+      doc.setFontSize(20);
+      doc.text(name, pageWidth / 2, 110, null, null, "center");
+
+      doc.setFontSize(16);
+      doc.text("has successfully completed the course", pageWidth / 2, 130, null, null, "center");
+      doc.text("Date: " + date, pageWidth / 2, 150, null, null, "center");
+
+      // Add a decorative element
       doc.setFontSize(12);
-      doc.setFont("helvetica");
+      doc.text("Presented this day", pageWidth / 2, 170, null, null, "center");
 
-      // Add letter header
-      doc.text('Your Company Name', 10, 10);
-      doc.text('Your Company Address', 10, 15);
-      doc.text('City, State, Zip Code', 10, 20);
-      doc.text('Date: ' + new Date().toLocaleDateString(), 10, 30);
-      doc.text('Email: ' + email, 10, 35);
-      doc.text('-----------------------------------', 10, 40);
-
-      // Add recipient information
-      doc.text(`To: ${name}`, 10, 50);
-      doc.text(`Address: ${address}`, 10, 55);
-      doc.text('-----------------------------------', 10, 65);
-
-      // Add message body
-      doc.text('Dear ' + name + ',', 10, 75);
-      doc.text(message, 10, 85);
-      doc.text('-----------------------------------', 10, 100);
-
-      // Add closing
-      doc.text('Sincerely,', 10, 110);
-      doc.text('Your Name', 10, 115);
-
-      // Add signature image
-      const img = new Image();
-      img.src = 'assets/img/signature.png'; // Path to your signature image
-      img.onload = function() {
-        doc.addImage(img, 'PNG', 10, 120, 50, 20); // Adjust the position and size of the signature
-        doc.save('letter.pdf');
-      };
+      // Save the PDF
+      doc.save("certificate_of_completion.pdf");
     }
   </script>
 </body>
