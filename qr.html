@@ -3,133 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Currency Converter</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Custom CSS */
-    .switch-arrow {
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .currency-input {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .currency-input select {
-      width: 100px;
-      margin-right: 10px;
-    }
-  </style>
+  <title>Form to PDF Example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Dynamic Currency Converter</h1>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <!-- Currency Converter Form -->
-        <form id="currencyForm">
-          <!-- Currency input fields -->
-          <div class="currency-input">
-            <input type="number" class="form-control" id="amountTop" placeholder="Amount" required>
-            <select class="form-select" id="currencyTop">
-              <option value="TZS">TZS - Tanzanian Shilling</option>
-              <option value="USD">USD - US Dollar</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - British Pound</option>
-              <option value="KES">KES - Kenyan Shilling</option>
-              <option value="UGX">UGX - Ugandan Shilling</option>
-            </select>
-          </div>
-
-          <!-- Arrow to switch currencies -->
-          <div class="text-center switch-arrow">
-            <button type="button" class="btn btn-secondary" id="switchCurrencies">⇅ Switch</button>
-          </div>
-
-          <!-- Bottom currency input -->
-          <div class="currency-input mt-3">
-            <input type="text" class="form-control" id="amountBottom" placeholder="Converted Amount" disabled>
-            <select class="form-select" id="currencyBottom">
-              <option value="USD">USD - US Dollar</option>
-              <option value="TZS">TZS - Tanzanian Shilling</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - British Pound</option>
-              <option value="KES">KES - Kenyan Shilling</option>
-              <option value="UGX">UGX - Ugandan Shilling</option>
-            </select>
-          </div>
-
-          <!-- Convert button -->
-          <button type="submit" class="btn btn-primary w-100 mt-3">Convert</button>
-        </form>
-      </div>
-    </div>
+    <h1 class="text-center">Generate PDF from Form</h1>
+    <form id="pdfForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Your Name" required><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Your Email" required><br><br>
+      <button type="button" onclick="generatePDF()">Generate PDF</button>
+    </form>
   </div>
 
-  <!-- Modal to show conversion result -->
-  <div class="modal fade" id="conversionModal" tabindex="-1" aria-labelledby="conversionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="conversionModalLabel">Conversion Result</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Converted Amount:</strong> <span id="modalConvertedAmount"></span></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- JavaScript for handling the currency conversion and modal -->
   <script>
-    // Event listener for the form submission
-    document.getElementById('currencyForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
 
-      const amountTop = document.getElementById('amountTop').value;
-      const currencyTop = document.getElementById('currencyTop').value;
-      const currencyBottom = document.getElementById('currencyBottom').value;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
 
-      fetchCurrencyConversion(amountTop, currencyTop, currencyBottom);
-    });
-
-    // Function to switch the currencies
-    document.getElementById('switchCurrencies').addEventListener('click', function () {
-      const currencyTop = document.getElementById('currencyTop');
-      const currencyBottom = document.getElementById('currencyBottom');
-      const tempCurrency = currencyTop.value;
-
-      currencyTop.value = currencyBottom.value;
-      currencyBottom.value = tempCurrency;
-    });
-
-    // Function to fetch currency conversion
-    function fetchCurrencyConversion(amount, fromCurrency, toCurrency) {
-      const apiUrl = `https://v6.exchangerate-api.com/v6/90cdb3b5f0f1776b709f45e7/pair/${fromCurrency}/${toCurrency}/${amount}`;
-
-      fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-          if (data.result === 'success') {
-            document.getElementById('amountBottom').value = data.conversion_result;
-            document.getElementById('modalConvertedAmount').textContent = `${data.conversion_result} ${toCurrency}`;
-            // Display result in modal
-            const conversionModal = new bootstrap.Modal(document.getElementById('conversionModal'));
-            conversionModal.show();
-          } else {
-            alert('Conversion failed: ' + data['error-type']);
-          }
-        })
-        .catch(error => console.error('Error:', error));
+      doc.text(`Name: ${name}`, 10, 10);
+      doc.text(`Email: ${email}`, 10, 20);
+      
+      doc.save('form-data.pdf');
     }
   </script>
 </body>
