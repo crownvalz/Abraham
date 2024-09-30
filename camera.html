@@ -3,51 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="assets/css/camera.css">
-    <title>ID Capture</title>
+    <title>ID Scanner</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<!-- Step 1: Capture ID -->
-<div id="step-1" class="step step-active">
-    <h1>ID Scanner</h1>
-    <p>Align the ID within the box and press "Capture" to scan.</p>
-    <div class="camera-container">
-        <video id="video" autoplay playsinline></video>
-        <div class="camera-square"></div>
-        <img id="capturedImage" class="captured-image" alt="Captured ID">
-    </div>
-    <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
-    <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
-    <button class="btn btn-danger mt-3" id="retake" style="display: none;">Retake</button>
-    <button class="btn btn-success mt-3" id="next-step" style="display: none;">Proceed</button>
-</div>
-
-<!-- Step 2: Show Customer Information for Confirmation -->
-<div id="step-2" class="step">
-    <h1>Customer Information</h1>
-    <p>Please confirm the information below:</p>
-    <div class="row justify-content-center">
-        <div class="col-md-4 text-start">
-            <p><strong>Full Name:</strong> John Doe</p>
-            <p><strong>ID Number:</strong> 123456789</p>
-            <p><strong>Date of Birth:</strong> 01/01/1990</p>
-            <p><strong>Address:</strong> 123 Main St, City, Country</p>
-            <!-- Display the captured image here with the same size as the camera box -->
-            <img id="confirmationImage" src="" alt="Captured ID for Confirmation" class="img-fluid mt-3">
+    <!-- Step 1: Capture ID -->
+    <div id="step-1" class="step step-active">
+        <h1>ID Scanner</h1>
+        <p>Align the ID within the square and press "Capture" to scan.</p>
+        <div class="camera-container">
+            <video id="video" autoplay playsinline></video>
+            <div class="camera-square"></div>
+            <img id="capturedImage" class="captured-image" alt="Captured ID">
+            <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
         </div>
+        <button class="btn btn-primary" id="capture">Capture ID</button>
+        <button class="btn btn-danger" id="retake" style="display: none;">Retake</button>
+        <button class="btn btn-success" id="next-step" style="display: none;">Proceed</button>
     </div>
-    <button class="btn btn-secondary mt-3" id="back-step">Back</button>
-    <button class="btn btn-success mt-3" id="confirm-submit">Confirm and Submit</button>
-</div>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Your Company. All rights reserved.</p>
-</footer>
+    <!-- Step 2: Show Customer Information for Confirmation -->
+    <div id="step-2" class="step">
+        <h1>Customer Information</h1>
+        <p>Please confirm the information below:</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 text-start">
+                <p><strong>Full Name:</strong> John Doe</p>
+                <p><strong>ID Number:</strong> 123456789</p>
+                <p><strong>Date of Birth:</strong> 01/01/1990</p>
+                <p><strong>Address:</strong> 123 Main St, City, Country</p>
+                <img id="confirmationImage" src="" alt="Captured ID for Confirmation" class="img-fluid mt-3">
+            </div>
+        </div>
+        <button class="btn btn-secondary" id="back-step">Back</button>
+        <button class="btn btn-success" id="confirm-submit">Confirm and Submit</button>
+    </div>
 
-<script src="assets/fs/camera.js"></script> <!-- Link to your JavaScript file -->
+    <footer>
+        <p>&copy; 2024 ID Scanner App</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
