@@ -106,12 +106,16 @@
         sign2.src = 'img/sign2.png'; // Signature for Director General
         
         sign1.onload = function() {
-          doc.addImage(sign1, 'PNG', 20, 240, 50, 20); // Principal signature position
-          
+          const principalX = 20;
+          const principalY = 240;
+          doc.addImage(sign1, 'PNG', principalX, principalY, 50, 20); // Principal signature position
+          doc.text("Principal", principalX + 25, principalY + 20, null, null, "center"); // Align Principal title
+
           sign2.onload = function() {
-            doc.addImage(sign2, 'PNG', 140, 240, 50, 20); // Director General signature position
-            doc.text("Principal", 45, 265, null, null, "center");
-            doc.text("Director General", 155, 265, null, null, "center");
+            const directorX = 140;
+            const directorY = 240;
+            doc.addImage(sign2, 'PNG', directorX, directorY, 50, 20); // Director General signature position
+            doc.text("Director General", directorX + 25, directorY + 20, null, null, "center"); // Align Director General title
 
             // Save the PDF
             doc.save("colorful_certificate_of_completion.pdf");
