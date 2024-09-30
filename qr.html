@@ -3,33 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form to PDF Example</title>
+  <title>Generate PDF Letter</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Generate PDF from Form</h1>
+    <h1 class="text-center">Generate PDF Letter</h1>
     <form id="pdfForm">
       <label for="name">Name:</label>
       <input type="text" id="name" placeholder="Your Name" required><br><br>
       <label for="email">Email:</label>
       <input type="email" id="email" placeholder="Your Email" required><br><br>
+      <label for="address">Address:</label>
+      <textarea id="address" placeholder="Your Address" required></textarea><br><br>
+      <label for="message">Message:</label>
+      <textarea id="message" placeholder="Type your message here..." required></textarea><br><br>
       <button type="button" onclick="generatePDF()">Generate PDF</button>
     </form>
   </div>
 
   <script>
-    function generatePDF() {
+    async function generatePDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const message = document.getElementById('message').value;
 
-      doc.text(`Name: ${name}`, 10, 10);
-      doc.text(`Email: ${email}`, 10, 20);
-      
-      doc.save('form-data.pdf');
+      // Set the font size and style
+      doc.setFontSize(12);
+      doc.setFont("helvetica");
+
+      // Add letter header
+      doc.text('Your Company Name', 10, 10);
+      doc.text('Your Company Address', 10, 15);
+      doc.text('City, State, Zip Code', 10, 20);
+      doc.text('Date: ' + new Date().toLocaleDateString(), 10, 30);
+      doc.text('Email: ' + email, 10, 35);
+      doc.text('-----------------------------------', 10, 40);
+
+      // Add recipient information
+      doc.text(`To: ${name}`, 10, 50);
+      doc.text(`Address: ${address}`, 10, 55);
+      doc.text('-----------------------------------', 10, 65);
+
+      // Add message body
+      doc.text('Dear ' + name + ',', 10, 75);
+      doc.text(message, 10, 85);
+      doc.text('-----------------------------------', 10, 100);
+
+      // Add closing
+      doc.text('Sincerely,', 10, 110);
+      doc.text('Your Name', 10, 115);
+
+      // Add signature image
+      const img = new Image();
+      img.src = 'assets/img/signature.png'; // Path to your signature image
+      img.onload = function() {
+        doc.addImage(img, 'PNG', 10, 120, 50, 20); // Adjust the position and size of the signature
+        doc.save('letter.pdf');
+      };
     }
   </script>
 </body>
