@@ -40,6 +40,9 @@
       const name = document.getElementById('name').value;
       const date = document.getElementById('date').value;
 
+      // Generate a random certificate number
+      const certificateNumber = Math.floor(Math.random() * 1000000);
+
       // Set the background color
       doc.setFillColor(255, 239, 186); // Light yellow background
       doc.rect(0, 0, 210, 297, 'F'); // Fill the whole page
@@ -57,38 +60,43 @@
       const logo = new Image();
       logo.src = 'img/logo.png'; // Path to your logo image
       logo.onload = function() {
-        const logoWidth = 60; // Desired width for the logo
+        const logoWidth = 50; // Desired width for the logo
         const logoHeight = (logo.height * logoWidth) / logo.width; // Maintain aspect ratio
-        doc.addImage(logo, 'PNG', (doc.internal.pageSize.width - logoWidth) / 2, 25, logoWidth, logoHeight); // Center the logo
+        doc.addImage(logo, 'PNG', (doc.internal.pageSize.width - logoWidth) / 2, 20, logoWidth, logoHeight); // Center the logo
+
+        // Certificate Number
+        doc.setFontSize(12);
+        doc.setTextColor(0, 150, 136); // Color for the certificate number
+        doc.text(`Certificate No: ${certificateNumber}`, 180, 25, null, null, "right");
 
         // Title
         doc.setFontSize(30);
         doc.setTextColor(0, 87, 141); // Dark blue color
-        doc.text("Certificate of Completion", 105, 70, null, null, "center");
+        doc.text("Certificate of Completion", 105, 80, null, null, "center");
 
         // Body text
         doc.setFontSize(16);
         doc.setTextColor(0); // Black color
-        doc.text("This certifies that", 105, 100, null, null, "center");
+        doc.text("This certifies that", 105, 110, null, null, "center");
 
         doc.setFontSize(24);
         doc.setFont("helvetica", "bold");
-        doc.text(name, 105, 120, null, null, "center");
+        doc.text(name, 105, 130, null, null, "center");
 
         doc.setFontSize(16);
         doc.setFont("helvetica", "normal");
-        doc.text("has successfully completed the course", 105, 140, null, null, "center");
-        doc.text("on this day:", 105, 160, null, null, "center");
+        doc.text("has successfully completed the course", 105, 150, null, null, "center");
+        doc.text("on this day:", 105, 170, null, null, "center");
 
         // Date
         doc.setFontSize(20);
         doc.setFont("helvetica", "bold");
-        doc.text(date, 105, 180, null, null, "center");
+        doc.text(date, 105, 190, null, null, "center");
 
         // Footer
         doc.setFontSize(12);
         doc.setFont("helvetica", "italic");
-        doc.text("Presented by Your Organization", 105, 220, null, null, "center");
+        doc.text("Presented by Your Organization", 105, 230, null, null, "center");
         
         // Signatures
         const sign1 = new Image();
