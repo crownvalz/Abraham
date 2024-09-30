@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificate of Completion</title>
+  <title>Colorful Certificate of Completion</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
@@ -22,7 +22,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Generate Certificate of Completion</h1>
+    <h1>Generate Colorful Certificate of Completion</h1>
     <form id="certificateForm">
       <label for="name">Recipient Name:</label>
       <input type="text" id="name" placeholder="Enter Name" required><br>
@@ -40,32 +40,51 @@
       const name = document.getElementById('name').value;
       const date = document.getElementById('date').value;
 
-      // Draw border
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const pageHeight = doc.internal.pageSize.getHeight();
-      doc.rect(10, 10, pageWidth - 20, pageHeight - 20); // outer border
-      doc.rect(15, 15, pageWidth - 30, pageHeight - 30); // inner border
+      // Set the background color
+      doc.setFillColor(255, 239, 186); // Light yellow background
+      doc.rect(0, 0, 210, 297, 'F'); // Fill the whole page
 
-      // Set font styles
+      // Draw decorative border
+      doc.setDrawColor(0, 150, 136); // Teal color for border
+      doc.setLineWidth(5);
+      doc.rect(10, 10, 190, 277); // Outer border
+
+      doc.setDrawColor(255, 87, 34); // Orange color for inner border
+      doc.setLineWidth(3);
+      doc.rect(15, 15, 180, 267); // Inner border
+
+      // Title
+      doc.setFontSize(30);
+      doc.setTextColor(0, 87, 141); // Dark blue color
+      doc.text("Certificate of Completion", 105, 70, null, null, "center");
+
+      // Body text
+      doc.setFontSize(16);
+      doc.setTextColor(0); // Black color
+      doc.text("This certifies that", 105, 100, null, null, "center");
+
       doc.setFontSize(24);
-      doc.text("Certificate of Completion", pageWidth / 2, 50, null, null, "center");
+      doc.setFont("helvetica", "bold");
+      doc.text(name, 105, 120, null, null, "center");
 
       doc.setFontSize(16);
-      doc.text(`This certifies that`, pageWidth / 2, 90, null, null, "center");
+      doc.setFont("helvetica", "normal");
+      doc.text("has successfully completed the course", 105, 140, null, null, "center");
+      doc.text("on this day:", 105, 160, null, null, "center");
 
+      // Date
       doc.setFontSize(20);
-      doc.text(name, pageWidth / 2, 110, null, null, "center");
+      doc.setFont("helvetica", "bold");
+      doc.text(date, 105, 180, null, null, "center");
 
-      doc.setFontSize(16);
-      doc.text("has successfully completed the course", pageWidth / 2, 130, null, null, "center");
-      doc.text("Date: " + date, pageWidth / 2, 150, null, null, "center");
-
-      // Add a decorative element
+      // Footer
       doc.setFontSize(12);
-      doc.text("Presented this day", pageWidth / 2, 170, null, null, "center");
+      doc.setFont("helvetica", "italic");
+      doc.text("Presented by Your Organization", 105, 220, null, null, "center");
+      doc.text("Signature: ____________________", 105, 240, null, null, "center");
 
       // Save the PDF
-      doc.save("certificate_of_completion.pdf");
+      doc.save("colorful_certificate_of_completion.pdf");
     }
   </script>
 </body>
