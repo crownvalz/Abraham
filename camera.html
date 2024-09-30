@@ -3,46 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ID Scanner</title>
-    <link rel="stylesheet" href="assets/css/camera.css">
+    <title>QR Code Scanner</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Html5 QR Code Scanner JS -->
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+
+    <style>
+        #qr-reader__dashboard_section_swaplink { 
+            display: none; 
+        }
+        #result {
+            padding-top: 20px;
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    <!-- Step 1: Capture ID -->
-    <div id="step-1" class="step step-active">
-        <h1>ID Scanner</h1>
-        <p>Align the ID within the square and press "Capture" to scan.</p>
-        <div class="camera-container">
-            <video id="video" autoplay playsinline></video>
-            <div class="camera-square"></div>
-            <img id="capturedImage" class="captured-image" alt="Captured ID">
-            <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1>QR Code Scanner</h1>
+            <div id="qr-reader" style="width: 100%;"></div>
+            <div id="result"></div>
         </div>
-        <button class="btn btn-primary" id="capture">Capture ID</button>
-        <button class="btn btn-danger" id="retake" style="display: none;">Retake</button>
-        <button class="btn btn-success" id="next-step" style="display: none;">Proceed</button>
     </div>
+</div>
 
-    <!-- Step 2: Show Customer Information for Confirmation -->
-    <div id="step-2" class="step">
-        <h1>Customer Information</h1>
-        <p>Please confirm the information below:</p>
-        <div class="row justify-content-center">
-            <div class="col-md-4 text-start">
-                <p><strong>Full Name:</strong> John Doe</p>
-                <p><strong>ID Number:</strong> 123456789</p>
-                <p><strong>Date of Birth:</strong> 01/01/1990</p>
-                <p><strong>Address:</strong> 123 Main St, City, Country</p>
-                <img id="confirmationImage" src="" alt="Captured ID for Confirmation" class="img-fluid mt-3">
-            </div>
-        </div>
-        <button class="btn btn-secondary" id="back-step">Back</button>
-        <button class="btn btn-success" id="confirm-submit">Confirm and Submit</button>
-    </div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    <footer>
-        <p>&copy; 2024 ID Scanner App</p>
-    </footer>
+<script>
+    function onScanSuccess(decodedText, decodedResult) {
+        // Handle the result here
+        document.getElementById('result').innerText = `QR Code: ${decodedText}`;
+        console.log(`Scan result: ${decodedText}`, decodedResult);
+    }
 
-    <script src="assets/js/camera.js"></script>
+    function onScanError(errorMessage) {
+        // Handle the error during scanning
+        console.error(errorMessage);
+    }
+
+    // Set up the QR code scanner
+    let html5QrCode = new Html5Qrcode("qr-reader");
+
+    html5QrCode.start(
+        { facingMode: "environment" },  // Use rear camera
+        {
+            fps: 10,    // Scans per second
+            qrbox: { width: 250, height: 250 }  // Display box
+        },
+        onScanSuccess,
+        onScanError
+    ).catch(err => {
+        console.error("Error in starting QR code scanner", err);
+    });
+</script>
+
 </body>
 </html>
