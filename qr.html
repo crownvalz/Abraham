@@ -57,7 +57,9 @@
       const logo = new Image();
       logo.src = 'img/logo.png'; // Path to your logo image
       logo.onload = function() {
-        doc.addImage(logo, 'PNG', 15, 25, 50, 30); // Adjust logo position and size
+        const logoWidth = 60; // Desired width for the logo
+        const logoHeight = (logo.height * logoWidth) / logo.width; // Maintain aspect ratio
+        doc.addImage(logo, 'PNG', (doc.internal.pageSize.width - logoWidth) / 2, 25, logoWidth, logoHeight); // Center the logo
 
         // Title
         doc.setFontSize(30);
