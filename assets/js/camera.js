@@ -1,56 +1,72 @@
-// script.js
-
-// Access the video element and the image
+// Accessing necessary elements
 const video = document.getElementById('video');
-const capturedImage = document.getElementById('capturedImage');
-const photoCapturedMessage = document.getElementById('photoCapturedMessage');
-const nextStepButton = document.getElementById('next-step');
+const captureButton = document.getElementById('capture');
 const retakeButton = document.getElementById('retake');
+const nextStepButton = document.getElementById('next-step');
+const capturedImage = document.getElementById('capturedImage');
 const confirmationImage = document.getElementById('confirmationImage');
+const photoCapturedMessage = document.getElementById('photoCapturedMessage');
 
-// Access media devices for the camera
+// Access the device camera
 navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
         video.srcObject = stream;
     })
     .catch(err => {
-        console.error("Error accessing the camera: ", err);
+        console.error("Error accessing camera: ", err);
     });
 
-// Capture the image
-document.getElementById('capture').addEventListener('click', () => {
-    // Create a canvas to capture the image
+// Capture image
+captureButton.addEventListener('click', () => {
+    // Turn on the flashlight (iOS only)
+    const track = video.srcObject.getVideoTracks()[0];
+    const settings = track.getSettings();
+    if (settings.torch) {
+        track.applyConstraints({ advanced: [{ torch: true }] });
+    }
+    
+    // Create a canvas to capture the frame
     const canvas = document.createElement('canvas');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     const context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    capturedImage.src = canvas.toDataURL('image/png'); // Get the image data
-    capturedImage.style.display = 'block'; // Show the captured image
-    photoCapturedMessage.style.display = 'block'; // Show the message
-    nextStepButton.style.display = 'block'; // Show next step button
-    retakeButton.style.display = 'block'; // Show retake button
+    
+    // Get the data URL from the canvas
+    const dataURL = canvas.toDataURL('image/png');
+    
+    // Show the captured image
+    capturedImage.src = dataURL;
+    capturedImage.style.display = 'block';
+    
+    // Show success message and buttons
+    photoCapturedMessage.style.display = 'block';
+    retakeButton.style.display = 'inline-block';
+    nextStepButton.style.display = 'inline-block';
+    captureButton.style.display = 'none';
 });
 
 // Retake the photo
 retakeButton.addEventListener('click', () => {
-    capturedImage.style.display = 'none'; // Hide captured image
-    photoCapturedMessage.style.display = 'none'; // Hide message
-    nextStepButton.style.display = 'none'; // Hide next step button
-    retakeButton.style.display = 'none'; // Hide retake button
+    capturedImage.style.display = 'none';
+    photoCapturedMessage.style.display = 'none';
+    retakeButton.style.display = 'none';
+    nextStepButton.style.display = 'none';
+    captureButton.style.display = 'inline-block';
 });
 
 // Proceed to the next step
 nextStepButton.addEventListener('click', () => {
-    // Logic to show the next step
-    confirmationImage.src = capturedImage.src; // Pass the captured image to the next step
-    confirmationImage.style.display = 'block'; // Show it in the next step
-    document.getElementById('step-1').style.display = 'none'; // Hide the first step
-    document.getElementById('step-2').style.display = 'flex'; // Show the confirmation step
+    // Hide the capture step and show the confirmation step
+    document.getElementById('step-1').classList.remove('step-active');
+    document.getElementById('step-2').classList.add('step-active');
+    
+    // Display the captured image in the confirmation step
+    confirmationImage.src = capturedImage.src;
 });
 
-// Back to the capture step
+// Go back to the capture step
 document.getElementById('back-step').addEventListener('click', () => {
-    document.getElementById('step-1').style.display = 'block'; // Show the first step
-    document.getElementById('step-2').style.display = 'none'; // Hide the confirmation step
+    document.getElementById('step-2').classList.remove('step-active');
+    document.getElementById('step-1').classList.add('step-active');
 });
