@@ -55,7 +55,7 @@
 
       // Logo
       const logo = new Image();
-      logo.src = 'logo.png'; // Path to your logo image
+      logo.src = 'img/logo.png'; // Path to your logo image
       logo.onload = function() {
         doc.addImage(logo, 'PNG', 15, 25, 50, 30); // Adjust logo position and size
 
@@ -92,8 +92,8 @@
         const sign1 = new Image();
         const sign2 = new Image();
         
-        sign1.src = 'sign1.png'; // Signature for Principal
-        sign2.src = 'sign2.png'; // Signature for Director General
+        sign1.src = 'img/sign1.png'; // Signature for Principal
+        sign2.src = 'img/sign2.png'; // Signature for Director General
         
         sign1.onload = function() {
           doc.addImage(sign1, 'PNG', 20, 240, 50, 20); // Principal signature position
