@@ -3,27 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIDA Verification</title>
+  <title>Currency Converter (TZS)</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">NIDA ID Verification</h1>
+    <h1 class="text-center">Tanzanian Shilling (TZS) Currency Converter</h1>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form id="nidaForm">
+        <form id="currencyForm">
           <div class="mb-3">
-            <label for="nidaInput" class="form-label">Enter NIDA Number</label>
-            <input type="text" class="form-control" id="nidaInput" placeholder="e.g., 1234567890" required>
+            <label for="amountInput" class="form-label">Amount in TZS</label>
+            <input type="number" class="form-control" id="amountInput" placeholder="Enter amount in TZS" required>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Verify NIDA</button>
+          <div class="mb-3">
+            <label for="currencyInput" class="form-label">Convert to</label>
+            <select class="form-select" id="currencyInput" required>
+              <option value="USD">USD - United States Dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British Pound</option>
+              <option value="KES">KES - Kenyan Shilling</option>
+              <option value="UGX">UGX - Ugandan Shilling</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Convert</button>
         </form>
-        <div class="mt-4" id="nidaInfo" style="display: none;">
-          <h4>Details for NIDA ID: <span id="nidaNumber"></span></h4>
-          <p><strong>Name:</strong> <span id="fullName"></span></p>
-          <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
-          <p><strong>Gender:</strong> <span id="gender"></span></p>
+        <div class="mt-4" id="conversionResult" style="display: none;">
+          <h4>Conversion Result</h4>
+          <p><strong>Amount in TZS:</strong> <span id="amountInTzs"></span></p>
+          <p><strong>Converted Amount:</strong> <span id="convertedAmount"></span></p>
         </div>
       </div>
     </div>
@@ -34,35 +43,26 @@
 
   <!-- JavaScript for API call -->
   <script>
-    document.getElementById('nidaForm').addEventListener('submit', function (e) {
+    document.getElementById('currencyForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const nidaId = document.getElementById('nidaInput').value;
-      fetchNidaData(nidaId);
+      const amountInTzs = document.getElementById('amountInput').value;
+      const targetCurrency = document.getElementById('currencyInput').value;
+      fetchCurrencyConversion(amountInTzs, targetCurrency);
     });
 
-    function fetchNidaData(nationalId) {
-      const apiUrl = 'https://nida.api.nida.co.tz/verify'; // Example endpoint
-      const apiKey = '1964'; // Replace with actual API key
+    function fetchCurrencyConversion(amount, currency) {
+      const apiUrl = `https://v6.exchangerate-api.com/v6/your_api_key/pair/TZS/${currency}/${amount}`; // Replace 'your_api_key' with your actual API key
 
-      fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({ nationalId: nationalId })
-      })
+      fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-          if (data.success) {
-            document.getElementById('nidaNumber').textContent = data.nationalId;
-            document.getElementById('fullName').textContent = data.fullName;
-            document.getElementById('dob').textContent = data.dob;
-            document.getElementById('gender').textContent = data.gender;
-            document.getElementById('nidaInfo').style.display = 'block';
+          if (data.result === 'success') {
+            document.getElementById('amountInTzs').textContent = amount + ' TZS';
+            document.getElementById('convertedAmount').textContent = data.conversion_result + ' ' + currency;
+            document.getElementById('conversionResult').style.display = 'block';
           } else {
-            alert('Verification failed: ' + data.message);
+            alert('Conversion failed: ' + data['error-type']);
           }
         })
         .catch(error => console.error('Error:', error));
