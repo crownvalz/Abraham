@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Operations Quiz</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    .step {
+      display: none;
+    }
+    .active-step {
+      display: block;
+    }
+    .timer {
+      font-size: 20px;
+      color: red;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Bank Operations Quiz</h1>
+    <form id="quizForm">
+      <div id="questionContainer"></div>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" id="prevBtn" onclick="prevStep()">Previous</button>
+        <span class="timer" id="timer"></span>
+        <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let currentStep = 0;
+    let score = 0;
+    let totalQuestions = 50;
+    let timePerQuestion = 30; // 30 seconds per question
+    let timer;
+
+    const questions = [
+      {question: 'What is the procedure for opening an account?', options: ['Option 1', 'Option 2', 'Option 3'], answer: 'Option 1'},
+      {question: 'How do you handle dormant accounts?', options: ['Option 1', 'Option 2', 'Option 3'], answer: 'Option 2'},
+      {question: 'What is the procedure for money laundering reports?', options: ['Option 1', 'Option 2', 'Option 3'], answer: 'Option 3'},
+      // Add more questions from the document here
+    ];
+
+    const questionContainer = document.getElementById('questionContainer');
+
+    function loadQuiz() {
+      // Generate the question form dynamically
+      questions.forEach((q, index) => {
+        let questionStep = document.createElement('div');
+        questionStep.classList.add('step');
+        if (index === 0) questionStep.classList.add('active-step');
+
+        let questionHTML = `<h3>Question ${index + 1}: ${q.question}</h3>`;
+        q.options.forEach((option, i) => {
+          questionHTML += `
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="question${index}" value="${option}">
+              <label class="form-check-label">${option}</label>
+            </div>
+          `;
+        });
+        questionStep.innerHTML = questionHTML;
+        questionContainer.appendChild(questionStep);
+      });
+      updateTimer();
+    }
+
+    function nextStep() {
+      let answers = document.getElementsByName(`question${currentStep}`);
+      let selectedAnswer = Array.from(answers).find(input => input.checked)?.value;
+      
+      if (selectedAnswer) {
+        // Check if the answer is correct
+        if (selectedAnswer === questions[currentStep].answer) {
+          score++;
+        }
+        // Move to the next step
+        currentStep++;
+        showStep(currentStep);
+        resetTimer();
+      } else {
+        alert('Please select an answer!');
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+        resetTimer();
+      }
+    }
+
+    function showStep(step) {
+      const steps = document.querySelectorAll('.step');
+      steps.forEach(stepElement => stepElement.classList.remove('active-step'));
+      steps[step].classList.add('active-step');
+
+      document.getElementById('prevBtn').style.display = step === 0 ? 'none' : 'inline';
+      document.getElementById('nextBtn').textContent = step === totalQuestions - 1 ? 'Submit' : 'Next';
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      updateTimer();
+    }
+
+    function updateTimer() {
+      let timeLeft = timePerQuestion;
+      document.getElementById('timer').textContent = `Time: ${timeLeft}s`;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `Time: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          nextStep();
+        }
+      }, 1000);
+    }
+
+    function submitQuiz() {
+      let percentage = (score / totalQuestions) * 100;
+      if (percentage >= 75) {
+        generateCertificate();
+      } else {
+        alert(`You scored ${percentage}%. You need at least 75% to pass.`);
+      }
+    }
+
+    function generateCertificate() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.text('Certificate of Completion', 105, 30, null, null, 'center');
+      doc.text(`This certifies that you have successfully completed the Bank Operations Quiz`, 105, 50, null, null, 'center');
+      doc.text(`Score: ${score}/${totalQuestions}`, 105, 70, null, null, 'center');
+      doc.text(`Date: ${new Date().toLocaleDateString()}`, 105, 90, null, null, 'center');
+
+      doc.save('certificate.pdf');
+    }
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
