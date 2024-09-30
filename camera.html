@@ -33,6 +33,14 @@
       height: auto;
     }
 
+    .captured-image {
+      width: 320px;
+      height: auto;
+      border: 2px solid #007bff;
+      display: block;
+      margin: 20px auto;
+    }
+
     footer {
       position: fixed;
       bottom: 0;
@@ -40,6 +48,14 @@
       text-align: center;
       background-color: #f8f9fa;
       padding: 10px 0;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step-active {
+      display: block;
     }
   </style>
 </head>
@@ -67,16 +83,27 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
+  <!-- Multi-step Form -->
   <div class="container text-center mt-5">
-    <h1>ID Scanner</h1>
-    <p>Align the ID within the square and press "Capture" to scan.</p>
-    <div class="camera-container">
-      <video id="video" autoplay playsinline></video>
-      <div class="camera-square"></div>
+    <!-- Step 1: Capture ID -->
+    <div id="step-1" class="step step-active">
+      <h1>ID Scanner</h1>
+      <p>Align the ID within the square and press "Capture" to scan.</p>
+      <div class="camera-container">
+        <video id="video" autoplay playsinline></video>
+        <div class="camera-square"></div>
+      </div>
+      <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
     </div>
-    <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
-    <a href="preview.html" class="btn btn-success mt-3" id="next" style="display: none;">Next</a>
+
+    <!-- Step 2: Preview Captured ID -->
+    <div id="step-2" class="step">
+      <h1>Preview Captured ID</h1>
+      <p>This is a preview of the captured ID. If the image is clear, you can proceed.</p>
+      <img id="capturedImage" class="captured-image" alt="Captured ID">
+      <button class="btn btn-secondary mt-3" id="back">Back</button>
+      <button class="btn btn-success mt-3" id="confirm">Confirm and Submit</button>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -104,6 +131,12 @@
       }
     }
 
+    // Helper to switch steps
+    function showStep(step) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('step-active'));
+      document.getElementById(step).classList.add('step-active');
+    }
+
     // Capture button handler
     document.getElementById('capture').addEventListener('click', function() {
       // Turn on the flash, if applicable
@@ -117,12 +150,12 @@
       canvas.height = video.videoHeight;
       canvas.getContext('2d').drawImage(video, 0, 0);
       capturedImage = canvas.toDataURL('image/png'); // Save captured image as data URL
-      
-      // Store captured image in localStorage for the next page
-      localStorage.setItem('capturedImage', capturedImage);
 
-      // Show the next button
-      document.getElementById('next').style.display = 'inline-block';
+      // Show the preview in the next step
+      document.getElementById('capturedImage').src = capturedImage;
+
+      // Move to step 2
+      showStep('step-2');
 
       // Optionally turn off the flash after capturing
       if (track.getCapabilities().torch) {
@@ -130,7 +163,18 @@
       }
     });
 
-    // Start the camera
+    // Back button handler (to go back to camera step)
+    document.getElementById('back').addEventListener('click', function() {
+      showStep('step-1');
+    });
+
+    // Confirm and Submit button handler
+    document.getElementById('confirm').addEventListener('click', function() {
+      alert("ID confirmed and submitted!");
+      // Add your submission logic here (e.g., send the capturedImage to a server)
+    });
+
+    // Start the camera on page load
     startCamera();
   </script>
 </body>
