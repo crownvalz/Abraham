@@ -7,57 +7,130 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .camera-container {
-      width: 320px;
-      height: 240px;
-      border: 2px solid #333;
-      margin: 20px auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
+    /* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 20px;
+}
 
-    .camera-square {
-      width: 300px;
-      height: 220px;
-      border: 2px dashed #007bff;
-      position: absolute;
-      pointer-events: none;
-    }
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    video, img {
-      width: 100%;
-      height: auto;
-    }
+p {
+  text-align: center;
+  color: #555;
+}
 
-    .captured-image {
-      display: none;
-    }
+.step {
+  display: none;
+}
 
-    .photo-captured-message {
-      color: green;
-      font-weight: bold;
-      margin-top: 10px;
-    }
+.step-active {
+  display: block;
+}
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      background-color: #f8f9fa;
-      padding: 10px 0;
-    }
+/* Camera and capture styles */
+.camera-container {
+  width: 320px;
+  height: 240px;
+  border: 2px solid #333;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    .step {
-      display: none;
-    }
+.camera-square {
+  width: 300px;
+  height: 220px;
+  border: 2px dashed #007bff;
+  position: absolute;
+  pointer-events: none;
+}
 
-    .step-active {
-      display: block;
-    }
+#video {
+  width: 300px;
+  height: 220px;
+}
+
+img.captured-image {
+  width: 300px;
+  height: 220px;
+  display: none;
+}
+
+#confirmationImage {
+  width: 300px;
+  height: 220px;
+}
+
+.photo-captured-message {
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+}
+
+button.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+button.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Confirmation step styles */
+#step-2 {
+  margin-top: 30px;
+}
+
+#step-2 p {
+  text-align: left;
+  font-size: 18px;
+}
+
+#step-2 img {
+  display: block;
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 14px;
+  color: #777;
+}
   </style>
 </head>
 <body>
@@ -87,21 +160,21 @@
   <!-- Multi-step Form -->
   <div class="container text-center mt-5">
     <!-- Step 1: Capture ID -->
-    <div id="step-1" class="step step-active">
-      <h1>ID Scanner</h1>
-      <p>Align the ID within the square and press "Capture" to scan.</p>
-      <div class="camera-container">
-        <video id="video" autoplay playsinline></video>
-        <div class="camera-square"></div>
-        <img id="capturedImage" class="captured-image" alt="Captured ID">
-      </div>
-      <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
-      <button class="btn btn-danger mt-3" id="retake" style="display: none;">Retake</button>
-      <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
-      <button class="btn btn-success mt-3" id="next-step" style="display: none;">Proceed</button>
-    </div>
+<div id="step-1" class="step step-active">
+  <h1>ID Scanner</h1>
+  <p>Align the ID within the square and press "Capture" to scan.</p>
+  <div class="camera-container">
+    <video id="video" autoplay playsinline></video>
+    <div class="camera-square"></div>
+    <img id="capturedImage" class="captured-image" alt="Captured ID">
+  </div>
+  <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
+  <button class="btn btn-danger mt-3" id="retake" style="display: none;">Retake</button>
+  <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
+  <button class="btn btn-success mt-3" id="next-step" style="display: none;">Proceed</button>
+</div>
 
-    <!-- Step 2: Show Customer Information for Confirmation -->
+<!-- Step 2: Show Customer Information for Confirmation -->
 <div id="step-2" class="step">
   <h1>Customer Information</h1>
   <p>Please confirm the information below:</p>
@@ -111,14 +184,13 @@
       <p><strong>ID Number:</strong> 123456789</p>
       <p><strong>Date of Birth:</strong> 01/01/1990</p>
       <p><strong>Address:</strong> 123 Main St, City, Country</p>
-      <!-- Display the captured image here -->
+      <!-- Display the captured image here with the same size as the camera box -->
       <img id="confirmationImage" src="" alt="Captured ID for Confirmation" class="img-fluid mt-3">
     </div>
   </div>
   <button class="btn btn-secondary mt-3" id="back-step">Back</button>
   <button class="btn btn-success mt-3" id="confirm-submit">Confirm and Submit</button>
 </div>
-
   <!-- Footer -->
   <footer class="text-center">
     <p>&copy; 2024 ID Scanner. All rights reserved.</p>
