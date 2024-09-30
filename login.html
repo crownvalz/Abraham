@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Operations Authentication</title>
+    <title>Bank Operations Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js"></script>
@@ -39,11 +39,11 @@
     </div>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
+        // Import Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-        // Your web app's Firebase configuration
+        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBe1HYgEzdcZj0ZOgimd1ODz8B-2aztUYs",
             authDomain: "bank-operations-school.firebaseapp.com",
@@ -72,7 +72,8 @@
                         // Signed in 
                         const user = userCredential.user;
                         alert("Login successful! Welcome, " + user.email);
-                        // You can redirect the user to another page or do something else after login
+                        // Redirect to the home page
+                        window.location.href = "home.html";
                     })
                     .catch((error) => {
                         const errorMessageText = error.message;
@@ -84,7 +85,8 @@
                     .then((userCredential) => {
                         // User registered
                         alert("Registration successful! Welcome, " + userCredential.user.email);
-                        // Optionally, you can log the user in right after registration
+                        // Optionally, redirect after registration
+                        window.location.href = "home.html";
                     })
                     .catch((error) => {
                         const errorMessageText = error.message;
