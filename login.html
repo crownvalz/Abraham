@@ -1,119 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Types in Bootstrap 5</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Operations Authentication</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 100px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h2>Different Form Types</h2>
-    <form class="needs-validation" novalidate>
+    <div class="container">
+        <h2 class="text-center" id="formTitle">Login</h2>
+        <form id="authForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Login</button>
+            <p class="mt-3 text-center">Don't have an account? <a href="#" id="registerLink">Register here</a></p>
+            <div id="errorMessage" class="text-danger mt-2" style="display: none;"></div>
+        </form>
+    </div>
 
-      <!-- Text Input -->
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
-        <div class="valid-feedback">Looks good!</div>
-        <div class="invalid-feedback">Please enter a username.</div>
-      </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-      <!-- Password Input -->
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-        <div class="valid-feedback">Password is valid!</div>
-        <div class="invalid-feedback">Please enter a password.</div>
-      </div>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBe1HYgEzdcZj0ZOgimd1ODz8B-2aztUYs",
+            authDomain: "bank-operations-school.firebaseapp.com",
+            projectId: "bank-operations-school",
+            storageBucket: "bank-operations-school.appspot.com",
+            messagingSenderId: "292213603678",
+            appId: "1:292213603678:web:464bf951de870b94baa3cf"
+        };
 
-      <!-- Email Input -->
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-        <div class="valid-feedback">Email looks good!</div>
-        <div class="invalid-feedback">Please enter a valid email address.</div>
-      </div>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-      <!-- Select Dropdown -->
-      <div class="mb-3">
-        <label for="userRole" class="form-label">User Role</label>
-        <select class="form-select" id="userRole" required>
-          <option selected disabled value="">Choose...</option>
-          <option value="admin">Admin</option>
-          <option value="user">User</option>
-          <option value="guest">Guest</option>
-        </select>
-        <div class="valid-feedback">Role selected!</div>
-        <div class="invalid-feedback">Please select a user role.</div>
-      </div>
-
-      <!-- Radio Buttons -->
-      <div class="mb-3">
-        <label class="form-label">Gender</label><br>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
-          <label class="form-check-label" for="male">Male</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-          <label class="form-check-label" for="female">Female</label>
-        </div>
-        <div class="invalid-feedback">Please select your gender.</div>
-      </div>
-
-      <!-- Checkboxes -->
-      <div class="mb-3">
-        <label class="form-label">Interests</label><br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="coding" value="coding">
-          <label class="form-check-label" for="coding">Coding</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="music" value="music">
-          <label class="form-check-label" for="music">Music</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="sports" value="sports">
-          <label class="form-check-label" for="sports">Sports</label>
-        </div>
-      </div>
-
-      <!-- Textarea -->
-      <div class="mb-3">
-        <label for="bio" class="form-label">Bio</label>
-        <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
-      </div>
-
-      <!-- File Input -->
-      <div class="mb-3">
-        <label for="formFile" class="form-label">Upload Profile Picture</label>
-        <input class="form-control" type="file" id="formFile">
-      </div>
-
-      <!-- Submit Button -->
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-  </div>
-
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-      'use strict';
-      const forms = document.querySelectorAll('.needs-validation');
-
-      Array.prototype.slice.call(forms).forEach((form) => {
-        form.addEventListener('submit', (event) => {
-          if (!form.checkValidity()) {
+        // Handle login form submission
+        document.getElementById('authForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    })();
-  </script>
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+            const submitBtn = document.getElementById('submitBtn');
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (submitBtn.textContent === "Login") {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        alert("Login successful! Welcome, " + user.email);
+                        // You can redirect the user to another page or do something else after login
+                    })
+                    .catch((error) => {
+                        const errorMessageText = error.message;
+                        errorMessage.textContent = errorMessageText;
+                        errorMessage.style.display = 'block';
+                    });
+            } else {
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // User registered
+                        alert("Registration successful! Welcome, " + userCredential.user.email);
+                        // Optionally, you can log the user in right after registration
+                    })
+                    .catch((error) => {
+                        const errorMessageText = error.message;
+                        errorMessage.textContent = errorMessageText;
+                        errorMessage.style.display = 'block';
+                    });
+            }
+        });
+
+        // Handle register link
+        document.getElementById('registerLink').addEventListener('click', function() {
+            const formTitle = document.getElementById('formTitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const registerLink = document.getElementById('registerLink');
+
+            if (submitBtn.textContent === "Login") {
+                formTitle.textContent = "Register";
+                submitBtn.textContent = "Register";
+                registerLink.textContent = "Already have an account? Login here";
+            } else {
+                formTitle.textContent = "Login";
+                submitBtn.textContent = "Login";
+                registerLink.textContent = "Don't have an account? Register here";
+            }
+        });
+    </script>
 </body>
 </html>
