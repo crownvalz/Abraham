@@ -33,7 +33,7 @@
   </div>
 
   <script>
-    function generateCertificate() {
+    async function generateCertificate() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
@@ -53,56 +53,59 @@
       doc.setLineWidth(3);
       doc.rect(15, 15, 180, 267); // Inner border
 
-      // Add logo
+      // Logo
       const logo = new Image();
       logo.src = 'logo.png'; // Path to your logo image
-      doc.addImage(logo, 'PNG', 75, 20, 60, 30); // Position and size of the logo
+      logo.onload = function() {
+        doc.addImage(logo, 'PNG', 15, 25, 50, 30); // Adjust logo position and size
 
-      // Title
-      doc.setFontSize(30);
-      doc.setTextColor(0, 87, 141); // Dark blue color
-      doc.text("Certificate of Completion", 105, 70, null, null, "center");
+        // Title
+        doc.setFontSize(30);
+        doc.setTextColor(0, 87, 141); // Dark blue color
+        doc.text("Certificate of Completion", 105, 70, null, null, "center");
 
-      // Body text
-      doc.setFontSize(16);
-      doc.setTextColor(0); // Black color
-      doc.text("This certifies that", 105, 100, null, null, "center");
+        // Body text
+        doc.setFontSize(16);
+        doc.setTextColor(0); // Black color
+        doc.text("This certifies that", 105, 100, null, null, "center");
 
-      doc.setFontSize(24);
-      doc.setFont("helvetica", "bold");
-      doc.text(name, 105, 120, null, null, "center");
+        doc.setFontSize(24);
+        doc.setFont("helvetica", "bold");
+        doc.text(name, 105, 120, null, null, "center");
 
-      doc.setFontSize(16);
-      doc.setFont("helvetica", "normal");
-      doc.text("has successfully completed the course", 105, 140, null, null, "center");
-      doc.text("on this day:", 105, 160, null, null, "center");
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "normal");
+        doc.text("has successfully completed the course", 105, 140, null, null, "center");
+        doc.text("on this day:", 105, 160, null, null, "center");
 
-      // Date
-      doc.setFontSize(20);
-      doc.setFont("helvetica", "bold");
-      doc.text(date, 105, 180, null, null, "center");
+        // Date
+        doc.setFontSize(20);
+        doc.setFont("helvetica", "bold");
+        doc.text(date, 105, 180, null, null, "center");
 
-      // Footer with signatures
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "italic");
-      doc.text("Presented by Your Organization", 105, 220, null, null, "center");
+        // Footer
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "italic");
+        doc.text("Presented by Your Organization", 105, 220, null, null, "center");
+        
+        // Signatures
+        const sign1 = new Image();
+        const sign2 = new Image();
+        
+        sign1.src = 'sign1.png'; // Signature for Principal
+        sign2.src = 'sign2.png'; // Signature for Director General
+        
+        sign1.onload = function() {
+          doc.addImage(sign1, 'PNG', 20, 240, 50, 20); // Principal signature position
+          
+          sign2.onload = function() {
+            doc.addImage(sign2, 'PNG', 140, 240, 50, 20); // Director General signature position
+            doc.text("Principal", 45, 265, null, null, "center");
+            doc.text("Director General", 155, 265, null, null, "center");
 
-      // Add Principal signature
-      const principalSign = new Image();
-      principalSign.src = 'img/sign1.png'; // Path to the Principal's signature
-      principalSign.onload = function() {
-        doc.addImage(principalSign, 'PNG', 15, 240, 50, 20); // Position and size of the signature
-        doc.text("Principal", 15, 265, null, null, "center");
-
-        // Add Director General signature
-        const directorSign = new Image();
-        directorSign.src = 'img/sign2.png'; // Path to the Director General's signature
-        directorSign.onload = function() {
-          doc.addImage(directorSign, 'PNG', 145, 240, 50, 20); // Position and size of the signature
-          doc.text("Director General", 145, 265, null, null, "center");
-
-          // Save the PDF
-          doc.save("colorful_certificate_of_completion.pdf");
+            // Save the PDF
+            doc.save("colorful_certificate_of_completion.pdf");
+          };
         };
       };
     }
