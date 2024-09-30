@@ -19,7 +19,7 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    input, button {
+    input, select, button {
       margin: 10px;
     }
     .form-group {
@@ -39,6 +39,17 @@
         <label for="date">Date of Completion:</label>
         <input type="date" class="form-control" id="date" required>
       </div>
+      <div class="form-group">
+        <label for="course">Course Completed:</label>
+        <select class="form-control" id="course" required>
+          <option value="" disabled selected>Select Course</option>
+          <option value="Field Practical">Field Practical</option>
+          <option value="Internship">Internship</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Training Program">Training Program</option>
+          <option value="Seminar">Seminar</option>
+        </select>
+      </div>
       <button type="button" class="btn btn-primary" onclick="generateCertificate()">Generate Certificate</button>
     </form>
   </div>
@@ -50,6 +61,7 @@
 
       const name = document.getElementById('name').value;
       const date = document.getElementById('date').value;
+      const course = document.getElementById('course').value;
 
       // Generate a random certificate number
       const certificateNumber = Math.floor(Math.random() * 1000000);
@@ -96,7 +108,7 @@
 
         doc.setFontSize(16);
         doc.setFont("helvetica", "normal");
-        doc.text("has successfully completed the course", 105, 150, null, null, "center");
+        doc.text(`has successfully completed the ${course}`, 105, 150, null, null, "center");
         doc.text("on this day:", 105, 170, null, null, "center");
 
         // Date
@@ -108,14 +120,14 @@
         doc.setFontSize(12);
         doc.setFont("helvetica", "italic");
         doc.text("Presented by Your Organization", 105, 230, null, null, "center");
-        
+
         // Signatures
         const sign1 = new Image();
         const sign2 = new Image();
-        
+
         sign1.src = 'img/sign1.png'; // Signature for Principal
         sign2.src = 'img/sign2.png'; // Signature for Director General
-        
+
         sign1.onload = function() {
           const principalX = 20;
           const principalY = 240;
