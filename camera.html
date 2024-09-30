@@ -28,17 +28,19 @@
       pointer-events: none;
     }
 
-    video {
+    video, img {
       width: 100%;
       height: auto;
     }
 
     .captured-image {
-      width: 320px;
-      height: auto;
-      border: 2px solid #007bff;
-      display: block;
-      margin: 20px auto;
+      display: none;
+    }
+
+    .photo-captured-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     footer {
@@ -92,15 +94,11 @@
       <div class="camera-container">
         <video id="video" autoplay playsinline></video>
         <div class="camera-square"></div>
+        <img id="capturedImage" class="captured-image" alt="Captured ID">
       </div>
       <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
-      
-      <!-- Inline Preview -->
-      <div id="preview-section" class="mt-4" style="display: none;">
-        <h2>Preview Captured ID</h2>
-        <img id="capturedImage" class="captured-image" alt="Captured ID">
-        <button class="btn btn-success mt-3" id="next-step">Proceed</button>
-      </div>
+      <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
+      <button class="btn btn-success mt-3" id="next-step" style="display: none;">Proceed</button>
     </div>
 
     <!-- Step 2: Show Customer Information for Confirmation -->
@@ -130,6 +128,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const video = document.getElementById('video');
+    const img = document.getElementById('capturedImage');
+    const photoCapturedMessage = document.getElementById('photoCapturedMessage');
+    const nextStepButton = document.getElementById('next-step');
     let stream;
     let canvas = document.createElement('canvas');
     let capturedImage = null;
@@ -146,12 +147,6 @@
       }
     }
 
-    // Helper to switch steps
-    function showStep(step) {
-      document.querySelectorAll('.step').forEach(s => s.classList.remove('step-active'));
-      document.getElementById(step).classList.add('step-active');
-    }
-
     // Capture button handler
     document.getElementById('capture').addEventListener('click', function() {
       // Turn on the flash, if applicable
@@ -166,9 +161,12 @@
       canvas.getContext('2d').drawImage(video, 0, 0);
       capturedImage = canvas.toDataURL('image/png'); // Save captured image as data URL
 
-      // Show the preview in the same step
-      document.getElementById('capturedImage').src = capturedImage;
-      document.getElementById('preview-section').style.display = 'block';
+      // Replace the video feed with the captured image
+      img.src = capturedImage;
+      img.style.display = 'block'; // Show the captured image
+      video.style.display = 'none'; // Hide the video feed
+      photoCapturedMessage.style.display = 'block'; // Show the "photo captured" message
+      nextStepButton.style.display = 'inline-block'; // Show the next button
 
       // Optionally turn off the flash after capturing
       if (track.getCapabilities().torch) {
@@ -185,6 +183,9 @@
     // Back to capture step
     document.getElementById('back-step').addEventListener('click', function() {
       showStep('step-1');
+      img.style.display = 'none'; // Hide the image when going back
+      video.style.display = 'block'; // Show the video feed again
+      startCamera(); // Restart the camera
     });
 
     // Confirm and submit handler
@@ -192,6 +193,12 @@
       alert("Customer information confirmed and submitted!");
       // Add your submission logic here (e.g., send the capturedImage and customer info to a server)
     });
+
+    // Helper to switch steps
+    function showStep(step) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('step-active'));
+      document.getElementById(step).classList.add('step-active');
+    }
 
     // Start the camera on page load
     startCamera();
