@@ -33,29 +33,12 @@
   </div>
 
   <script>
-    async function generateCertificate() {
+    function generateCertificate() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
       const name = document.getElementById('name').value;
       const date = document.getElementById('date').value;
-
-      // Load images
-      const logo = new Image();
-      logo.src = 'logo.png'; // Path to your logo image
-
-      const principalSign = new Image();
-      principalSign.src = 'img/sign1.png'; // Path to the Principal's signature
-
-      const directorSign = new Image();
-      directorSign.src = 'img/sign2.png'; // Path to the Director General's signature
-
-      // Wait for images to load before generating PDF
-      await Promise.all([
-        loadImage(logo),
-        loadImage(principalSign),
-        loadImage(directorSign)
-      ]);
 
       // Set the background color
       doc.setFillColor(255, 239, 186); // Light yellow background
@@ -71,6 +54,8 @@
       doc.rect(15, 15, 180, 267); // Inner border
 
       // Add logo
+      const logo = new Image();
+      logo.src = 'logo.png'; // Path to your logo image
       doc.addImage(logo, 'PNG', 75, 20, 60, 30); // Position and size of the logo
 
       // Title
@@ -101,27 +86,25 @@
       doc.setFontSize(12);
       doc.setFont("helvetica", "italic");
       doc.text("Presented by Your Organization", 105, 220, null, null, "center");
-      
+
       // Add Principal signature
-      doc.addImage(principalSign, 'PNG', 15, 240, 50, 20); // Position and size of the signature
-      doc.text("Principal", 15, 265, null, null, "center");
+      const principalSign = new Image();
+      principalSign.src = 'img/sign1.png'; // Path to the Principal's signature
+      principalSign.onload = function() {
+        doc.addImage(principalSign, 'PNG', 15, 240, 50, 20); // Position and size of the signature
+        doc.text("Principal", 15, 265, null, null, "center");
 
-      // Add Director General signature
-      doc.addImage(directorSign, 'PNG', 145, 240, 50, 20); // Position and size of the signature
-      doc.text("Director General", 145, 265, null, null, "center");
+        // Add Director General signature
+        const directorSign = new Image();
+        directorSign.src = 'img/sign2.png'; // Path to the Director General's signature
+        directorSign.onload = function() {
+          doc.addImage(directorSign, 'PNG', 145, 240, 50, 20); // Position and size of the signature
+          doc.text("Director General", 145, 265, null, null, "center");
 
-      // Save the PDF
-      doc.save("colorful_certificate_of_completion.pdf");
-    }
-
-    function loadImage(image) {
-      return new Promise((resolve) => {
-        image.onload = resolve;
-        image.onerror = () => {
-          console.error('Error loading image:', image.src);
-          resolve(); // Resolve even if there's an error
+          // Save the PDF
+          doc.save("colorful_certificate_of_completion.pdf");
         };
-      });
+      };
     }
   </script>
 </body>
