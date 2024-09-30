@@ -1,292 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID Scanner</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* General styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-p {
-  text-align: center;
-  color: #555;
-}
-
-.step {
-  display: none;
-}
-
-.step-active {
-  display: block;
-}
-
-/* Camera and capture styles */
-.camera-container {
-  width: 320px;
-  height: 240px;
-  border: 2px solid #333;
-  margin: 20px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.camera-square {
-  width: 300px;
-  height: 220px;
-  border: 2px dashed #007bff;
-  position: absolute;
-  pointer-events: none;
-}
-
-#video {
-  width: 300px;
-  height: 220px;
-}
-
-img.captured-image {
-  width: 300px;
-  height: 220px;
-  display: none;
-}
-
-#confirmationImage {
-  width: 300px;
-  height: 220px;
-}
-
-.photo-captured-message {
-  text-align: center;
-  color: green;
-  font-weight: bold;
-}
-
-button {
-  display: block;
-  margin: 10px auto;
-}
-
-button.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button.btn-primary {
-  background-color: #007bff;
-  color: white;
-}
-
-button.btn-danger {
-  background-color: #dc3545;
-  color: white;
-}
-
-button.btn-success {
-  background-color: #28a745;
-  color: white;
-}
-
-button.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-}
-
-/* Confirmation step styles */
-#step-2 {
-  margin-top: 30px;
-}
-
-#step-2 p {
-  text-align: left;
-  font-size: 18px;
-}
-
-#step-2 img {
-  display: block;
-  margin: 10px 0;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 14px;
-  color: #777;
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <title>ID Capture</title>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">ID Scanner</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Multi-step Form -->
-  <div class="container text-center mt-5">
-    <!-- Step 1: Capture ID -->
+<!-- Step 1: Capture ID -->
 <div id="step-1" class="step step-active">
-  <h1>ID Scanner</h1>
-  <p>Align the ID within the square and press "Capture" to scan.</p>
-  <div class="camera-container">
-    <video id="video" autoplay playsinline></video>
-    <div class="camera-square"></div>
-    <img id="capturedImage" class="captured-image" alt="Captured ID">
-  </div>
-  <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
-  <button class="btn btn-danger mt-3" id="retake" style="display: none;">Retake</button>
-  <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
-  <button class="btn btn-success mt-3" id="next-step" style="display: none;">Proceed</button>
+    <h1>ID Scanner</h1>
+    <p>Align the ID within the box and press "Capture" to scan.</p>
+    <div class="camera-container">
+        <video id="video" autoplay playsinline></video>
+        <div class="camera-square"></div>
+        <img id="capturedImage" class="captured-image" alt="Captured ID">
+    </div>
+    <p id="photoCapturedMessage" class="photo-captured-message" style="display: none;">Photo has been captured successfully!</p>
+    <button class="btn btn-primary mt-3" id="capture">Capture ID</button>
+    <button class="btn btn-danger mt-3" id="retake" style="display: none;">Retake</button>
+    <button class="btn btn-success mt-3" id="next-step" style="display: none;">Proceed</button>
 </div>
 
 <!-- Step 2: Show Customer Information for Confirmation -->
 <div id="step-2" class="step">
-  <h1>Customer Information</h1>
-  <p>Please confirm the information below:</p>
-  <div class="row justify-content-center">
-    <div class="col-md-4 text-start">
-      <p><strong>Full Name:</strong> John Doe</p>
-      <p><strong>ID Number:</strong> 123456789</p>
-      <p><strong>Date of Birth:</strong> 01/01/1990</p>
-      <p><strong>Address:</strong> 123 Main St, City, Country</p>
-      <!-- Display the captured image here with the same size as the camera box -->
-      <img id="confirmationImage" src="" alt="Captured ID for Confirmation" class="img-fluid mt-3">
+    <h1>Customer Information</h1>
+    <p>Please confirm the information below:</p>
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-start">
+            <p><strong>Full Name:</strong> John Doe</p>
+            <p><strong>ID Number:</strong> 123456789</p>
+            <p><strong>Date of Birth:</strong> 01/01/1990</p>
+            <p><strong>Address:</strong> 123 Main St, City, Country</p>
+            <!-- Display the captured image here with the same size as the camera box -->
+            <img id="confirmationImage" src="" alt="Captured ID for Confirmation" class="img-fluid mt-3">
+        </div>
     </div>
-  </div>
-  <button class="btn btn-secondary mt-3" id="back-step">Back</button>
-  <button class="btn btn-success mt-3" id="confirm-submit">Confirm and Submit</button>
+    <button class="btn btn-secondary mt-3" id="back-step">Back</button>
+    <button class="btn btn-success mt-3" id="confirm-submit">Confirm and Submit</button>
 </div>
-  <!-- Footer -->
-  <footer class="text-center">
-    <p>&copy; 2024 ID Scanner. All rights reserved.</p>
-  </footer>
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const video = document.getElementById('video');
-  const img = document.getElementById('capturedImage');
-  const photoCapturedMessage = document.getElementById('photoCapturedMessage');
-  const nextStepButton = document.getElementById('next-step');
-  const retakeButton = document.getElementById('retake');
-  let stream;
-  let canvas = document.createElement('canvas');
-  let capturedImage = null;
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Your Company. All rights reserved.</p>
+</footer>
 
-  // Start the camera
-  async function startCamera() {
-    try {
-      stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' } // Use back camera
-      });
-      video.srcObject = stream;
-    } catch (error) {
-      console.error("Error accessing the camera: ", error);
-    }
-  }
-
-  // Capture button handler
-  document.getElementById('capture').addEventListener('click', function() {
-    const track = stream.getVideoTracks()[0];
-    if (track.getCapabilities().torch) {
-      track.applyConstraints({ advanced: [{ torch: true }] }); // Turn on flash before capture
-    }
-
-    setTimeout(function() {
-      // Capture the frame
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0);
-      capturedImage = canvas.toDataURL('image/png'); // Save captured image as data URL
-
-      // Replace the video feed with the captured image
-      img.src = capturedImage;
-      img.style.display = 'block'; // Show the captured image
-      video.style.display = 'none'; // Hide the video feed
-      photoCapturedMessage.style.display = 'block'; // Show the "photo captured" message
-      nextStepButton.style.display = 'inline-block'; // Show the next button
-      retakeButton.style.display = 'inline-block'; // Show the "Retake" button
-
-      // Turn off the flash after capture
-      if (track.getCapabilities().torch) {
-        setTimeout(() => track.applyConstraints({ advanced: [{ torch: false }] }), 500);
-      }
-    }, 500); // Adding a slight delay to synchronize the capture
-  });
-
-  // Retake button handler
-  document.getElementById('retake').addEventListener('click', function() {
-    img.style.display = 'none'; // Hide the captured image
-    video.style.display = 'block'; // Show the video feed again
-    photoCapturedMessage.style.display = 'none'; // Hide the capture message
-    nextStepButton.style.display = 'none'; // Hide the next button
-    retakeButton.style.display = 'none'; // Hide the retake button
-    startCamera(); // Restart the camera
-  });
-
-  // Proceed to customer information step
-  document.getElementById('next-step').addEventListener('click', function() {
-    document.getElementById('confirmationImage').src = capturedImage; // Pass the captured image to the next step
-    showStep('step-2');
-  });
-
-  // Back to capture step
-  document.getElementById('back-step').addEventListener('click', function() {
-    showStep('step-1');
-    img.style.display = 'none'; // Hide the image when going back
-    video.style.display = 'block'; // Show the video feed again
-    startCamera(); // Restart the camera
-  });
-
-  // Confirm and submit handler
-  document.getElementById('confirm-submit').addEventListener('click', function() {
-    alert("Customer information confirmed and submitted!");
-    // Add your submission logic here (e.g., send the capturedImage and customer info to a server)
-  });
-
-  // Helper to switch steps
-  function showStep(step) {
-    document.querySelectorAll('.step').forEach(s => s.classList.remove('step-active'));
-    document.getElementById(step).classList.add('step-active');
-  }
-
-  // Start the camera on page load
-  startCamera();
-</script>
+<script src="script.js"></script> <!-- Link to your JavaScript file -->
 </body>
 </html>
