@@ -23,48 +23,14 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>Crownvalz</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="index.html#bravo">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.html#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Loan</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="loanmath.html">Our loan types</a></li>
-              <li class="dropdown"><a href="#"><span>Major facilities</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="loanmath.html">Facility topup</a></li>
-                  <li><a href="loanmath.html">New facility</a></li>
-                </ul>
-              </li>
-              <li><a href="loanmath.html">Facility balance</a></li>
-              <li><a href="loanmath.html">Claim clearence</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">Products</a></li>
-          <li><a class="nav-link scrollto" href="index.html#team">Team</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
 
     <!-- ======= bravo Section ======= -->
     <section id="bravo" class="d-flex flex-column justify-content-end align-items-center">
@@ -75,8 +41,34 @@
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Generate your <span>CV now</span></h2>
           <p class="animate__animated animate__fadeInUp">We offer a range of services to meet your digital needs, including CVs generation for free, website designing, research consultation, and tech advisory. Let's work together to achieve your goals.</p>
-          <a href="cvgen.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">Generate Free CV</a>
-        </div>
+          <a href="cvgen.html" class="d-none btn-get-started animate__animated animate__fadeInUp scrollto">Generate Free CV</a>
+
+
+          <form class="" id="certificateForm">
+            <div class="form-group d-none">
+              <label for="name">Recipient Name:</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter Name" value="Godfrey Mono">
+            </div>
+            <div class="form-group d-none">
+              <label for="date">Date of Completion:</label>
+              <input type="date" class="form-control" id="date">
+            </div>
+            <div class="form-group d-none">
+              <label for="course">Course Completed:</label>
+              <select class="form-control" id="course">
+                <option value="" disabled selected>Select Course</option>
+                <option value="Field Practical">Field Practical</option>
+                <option value="Internship">Internship</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Training Program">Training Program</option>
+                <option value="Seminar">Seminar</option>
+              </select>
+            </div>
+            <a class="btn-get-started animate__animated animate__fadeInUp scrollto" onclick="generateCertificate()">Generate Certificate</a>
+        </form>
+
+
+      </div>
       </div>
   
       <!-- Slide 2 (You can add more slides if needed) -->
@@ -142,775 +134,6 @@
     </section><!-- End bravo -->
 
 
-<main id="main">
-
-<!-- ======= Our Services Section ======= -->
-<section id="services" class="services">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Download free Templetes</h2>
-      <p>Explore our range of services tailored to meet your digital needs. We are dedicated to delivering excellence in website designing, research consultation, and tech advisory.</p>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box">
-          <div class="icon"><i class="bx bxl-dribbble"></i></div>
-          <h4 class="title"><a href="#">Website Designing</a></h4>
-          <p class="description">Download this template for free and experience highly advanced automation features.</p>
-          <a class="btn btn-primary" href="assets/hide_formurar.xlsx" download>
-            <img src="assets/img/excellogo.png" alt="Excel Logo" width="24" height="24">
-            Download
-          </a>
-        </div>
-      </div>
-
-        <div class="col-md-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4 class="title"><a href="#">Website Designing</a></h4>
-            <p class="description">Download this template for free and experience highly advanced automation features.</p>
-            <a class="btn btn-primary" href="assets/lockformular.xlsx" download>
-              <img src="assets/img/excellogo.png" alt="Excel Logo" width="24" height="24">
-              Download
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4 class="title"><a href="#">Website Designing</a></h4>
-            <p class="description">Download this template for free and experience highly advanced automation features.</p>
-            <a class="btn btn-primary" href="assets/vlookup.xlsx" download>
-              <img src="assets/img/excellogo.png" alt="Excel Logo" width="24" height="24">
-              Download
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4 class="title"><a href="#">Website Designing</a></h4>
-            <p class="description">Download this template for free and experience highly advanced automation features.</p>
-            <a class="btn btn-primary" href="assets/calclator.xlsx" download>
-              <img src="assets/img/excellogo.png" alt="Excel Logo" width="24" height="24">
-              Download
-            </a>
-          </div>
-        </div>
-      </div>
-  </div>
-</section><!-- End Our Services Section -->
-
-
-
-<!-- ======= About Us Section ======= -->
-<section id="about" class="about">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>About Us</h2>
-      <p>We are a passionate team offering a range of services to meet your digital needs. Our dedication to excellence sets us apart. Learn more about our expertise and how we can help you achieve your goals.</p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-6">
-        <img src="assets/img/about.jpeg" class="img-fluid" alt="">
-      </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content">
-        <h3><strong>Our Expertise</strong></h3>
-        <p class="fst-italic">
-          Our work ncluding website designing, research consultation, and tech advisory. We combine creativity and technical know-how to deliver exceptional results for our clients.
-        </p>
-        <p>
-          Our team excels in various areas, including website designing, research consultation, and tech advisory. We combine creativity and technical know-how to deliver exceptional results for our clients.
-        </p>
-
-        <div class="skills-content">
-
-          <div class="progress">
-            <span class="skill">Website Design <i class="val">100%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Research Consultation <i class="val">90%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Tech Advisory <i class="val">75%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Design Tools <i class="val">55%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section><!-- End About Us Section -->
-
-
-<!-- ======= Counts Section ======= -->
-<section class="counts section-bg">
-  <div class="container">
-
-    <div class="row no-gutters">
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-emoji-smile"></i>
-          <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Satisfied Clients</strong> We pride ourselves on delivering smiles to our clients. Discover what makes them happy.</p>
-          <a href="#">Find out more &raquo;</a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-journal-richtext"></i>
-          <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Projects Completed</strong> We've successfully completed a wide range of projects. Explore our portfolio.</p>
-          <a href="#">Find out more &raquo;</a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-headset"></i>
-          <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Support Hours</strong> Our dedicated team provides support round the clock. Learn more about our availability.</p>
-          <a href="#">Find out more &raquo;</a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-people"></i>
-          <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Experienced Team</strong> Meet our hard-working team with a wealth of experience. Get to know us better.</p>
-          <a href="#">Find out more &raquo;</a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- End Counts Section -->
-
-
-<!-- ======= Our Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Pick Your favourite</h2>
-      <p>
-        We offer a range of services to meet your digital needs, including CVs generation for free, website designing, research consultation, and tech advisory. Let's work together to achieve your goals.</p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-app">Top Free 📥</li>
-          <li data-filter=".filter-card">Premium Resume 💎</li>
-          <li data-filter=".filter-web">Cover Leters 📃</li>
-        </ul>
-      </div>
-    </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="pcvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-10.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-10.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="cvgen.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Our Portfolio Section -->
-
-
-<!-- ======= Our Services Section ======= -->
-<section id="services" class="services">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Our Services</h2>
-      <p>Explore our range of services tailored to meet your digital needs. We are dedicated to delivering excellence in website designing, research consultation, and tech advisory.</p>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box">
-          <div class="icon"><i class="bx bxl-dribbble"></i></div>
-          <h4 class="title"><a href="#">Website Designing</a></h4>
-          <p class="description">We create stunning and functional websites that leave a lasting impression on your audience.</p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box">
-          <div class="icon"><i class="bx bx-file"></i></div>
-          <h4 class="title"><a href="#">Research Consultation</a></h4>
-          <p class="description">Benefit from our research expertise to make informed decisions for your business or projects.</p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box">
-          <div class="icon"><i class="bx bx-tachometer"></i></div>
-          <h4 class="title"><a href="#">Tech Advisory</a></h4>
-          <p class="description">Navigate the complex world of technology with our advisory services for business growth and success.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- End Our Services Section -->
-
-<!-- ======= Cta Section ======= -->
-<section class="cta">
-  <div class="container">
-
-    <div class="text-center">
-      <h3>Call To Action</h3>
-      <p>Ready to take the next step in improving your digital presence? Contact us to explore how our website designing, research consultation, and tech advisory services can benefit you.</p>
-      <a class="cta-btn" href="#">Get in Touch</a>
-    </div>
-
-  </div>
-</section><!-- End Section -->
-
-<!-- ======= Our Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Products</h2>
-      <p>
-        We offer a range of services to meet your digital needs, including CVs generation for free, website designing, research consultation, and tech advisory. Let's work together to achieve your goals.</p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-app">Top Free 📥</li>
-          <li data-filter=".filter-card">Premium Resume 💎</li>
-          <li data-filter=".filter-web">Cover Leters 📃</li>
-        </ul>
-      </div>
-    </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/products/product1.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/products/product1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-10.jpeg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-10.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Our Portfolio Section -->
-
-    <!-- ======= Our Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container">
-        <div class="section-title">
-          <h2>Our Team</h2>
-          <p>Meet the experts behind <span>Your Company Name</span>. We are a team of professionals passionate about delivering high-quality website designing, research consultation, and tech advisory services. Get to know the faces that drive our success.</p>
-        </div>        
-
-        <div class="row">
-
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member">
-              <img src="assets/img/team/team-1.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Travis Abraham</h4>
-                  <span>Chief Executive Officer</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-            <div class="member">
-              <img src="assets/img/team/team-2.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Abraham Mwinuka</h4>
-                  <span>Product Manager</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-            <div class="member">
-              <img src="assets/img/team/team-3.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>John Travis</h4>
-                  <span>CTO</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
-            <div class="member">
-              <img src="assets/img/team/team-4.jpeg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Best Paul</h4>
-                  <span>Accountant</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Our Team Section -->
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-info">
-            <h3>Crownvalz</h3>
-            <p>
-              7856 Mriti Street <br>
-              Kigamboni 6547, DSM<br><br>
-              <strong>Phone:</strong> +255 712 2207 82<br>
-              <strong>Email:</strong> crownvalz@gmail.com<br>
-            </p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input class="" type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Crownvalz</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://Crownvalz.com/">Crownvalz</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -925,7 +148,99 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    async function generateCertificate() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
 
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+      const course = document.getElementById('course').value;
+
+      // Generate a random certificate number
+      const certificateNumber = Math.floor(Math.random() * 1000000);
+
+      // Set the background color
+      doc.setFillColor(255, 239, 186); // Light yellow background
+      doc.rect(0, 0, 210, 297, 'F'); // Fill the whole page
+
+      // Draw decorative border
+      doc.setDrawColor(0, 150, 136); // Teal color for border
+      doc.setLineWidth(5);
+      doc.rect(10, 10, 190, 277); // Outer border
+
+      doc.setDrawColor(255, 87, 34); // Orange color for inner border
+      doc.setLineWidth(3);
+      doc.rect(15, 15, 180, 267); // Inner border
+
+      // Logo
+      const logo = new Image();
+      logo.src = 'img/logo.png'; // Path to your logo image
+      logo.onload = function() {
+        const logoWidth = 50; // Desired width for the logo
+        const logoHeight = (logo.height * logoWidth) / logo.width; // Maintain aspect ratio
+        doc.addImage(logo, 'PNG', (doc.internal.pageSize.width - logoWidth) / 2, 20, logoWidth, logoHeight); // Center the logo
+
+        // Certificate Number
+        doc.setFontSize(12);
+        doc.setTextColor(0, 150, 136); // Color for the certificate number
+        doc.text(`Certificate No: ${certificateNumber}`, 180, 25, null, null, "right");
+
+        // Title
+        doc.setFontSize(30);
+        doc.setTextColor(0, 87, 141); // Dark blue color
+        doc.text("Certificate of Completion", 105, 80, null, null, "center");
+
+        // Body text
+        doc.setFontSize(16);
+        doc.setTextColor(0); // Black color
+        doc.text("This certifies that", 105, 110, null, null, "center");
+
+        doc.setFontSize(24);
+        doc.setFont("helvetica", "bold");
+        doc.text(name, 105, 130, null, null, "center");
+
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "normal");
+        doc.text(`has successfully completed the ${course}`, 105, 150, null, null, "center");
+        doc.text("on this day:", 105, 170, null, null, "center");
+
+        // Date
+        doc.setFontSize(20);
+        doc.setFont("helvetica", "bold");
+        doc.text(date, 105, 190, null, null, "center");
+
+        // Footer
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "italic");
+        doc.text("Presented by Your Organization", 105, 230, null, null, "center");
+
+        // Signatures
+        const sign1 = new Image();
+        const sign2 = new Image();
+
+        sign1.src = 'img/sign1.png'; // Signature for Principal
+        sign2.src = 'img/sign2.png'; // Signature for Director General
+
+        sign1.onload = function() {
+          const principalX = 20;
+          const principalY = 240;
+          doc.addImage(sign1, 'PNG', principalX, principalY, 50, 20); // Principal signature position
+          doc.text("Principal", principalX + 25, principalY + 20, null, null, "center"); // Align Principal title
+
+          sign2.onload = function() {
+            const directorX = 140;
+            const directorY = 240;
+            doc.addImage(sign2, 'PNG', directorX, directorY, 50, 20); // Director General signature position
+            doc.text("Director General", directorX + 25, directorY + 20, null, null, "center"); // Align Director General title
+
+            // Save the PDF
+            doc.save("colorful_certificate_of_completion.pdf");
+          };
+        };
+      };
+    }
+  </script>
 </body>
 
 </html>
