@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport Photo Generator with Crop</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #cropContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    #cropCanvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Passport Photo Generator with Crop</h1>
+    <form id="photoForm">
+      <div class="form-group">
+        <label for="imageUpload">Upload Image</label>
+        <input type="file" class="form-control-file" id="imageUpload" accept="image/*" required>
+      </div>
+      <div id="cropContainer" style="display: none;">
+        <canvas id="cropCanvas" width="300" height="300"></canvas>
+        <div class="ml-3">
+          <button type="button" class="btn btn-secondary mb-2" onclick="applyCrop()">Apply Crop</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="generatePDF()" disabled id="generateBtn">Generate PDF</button>
+    </form>
+  </div>
+
+  <script>
+    let img = new Image();
+    let canvas = document.getElementById("cropCanvas");
+    let ctx = canvas.getContext("2d");
+    let cropStartX, cropStartY, cropEndX, cropEndY;
+
+    document.getElementById("imageUpload").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          img.src = event.target.result;
+          img.onload = () => {
+            // Resize canvas to match image aspect ratio, with max height of 300
+            const aspectRatio = img.width / img.height;
+            canvas.width = 300 * aspectRatio;
+            canvas.height = 300;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            document.getElementById("cropContainer").style.display = "block";
+            document.getElementById("generateBtn").disabled = false;
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Set crop box using mouse events
+    canvas.addEventListener("mousedown", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      cropStartX = e.clientX - rect.left;
+      cropStartY = e.clientY - rect.top;
+    });
+
+    canvas.addEventListener("mouseup", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      cropEndX = e.clientX - rect.left;
+      cropEndY = e.clientY - rect.top;
+      drawCropBox();
+    });
+
+    function drawCropBox() {
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.rect(cropStartX, cropStartY, cropEndX - cropStartX, cropEndY - cropStartY);
+      ctx.strokeStyle = "red";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function applyCrop() {
+      const width = cropEndX - cropStartX;
+      const height = cropEndY - cropStartY;
+
+      // Create a temporary canvas to store the cropped image
+      const croppedCanvas = document.createElement("canvas");
+      croppedCanvas.width = width;
+      croppedCanvas.height = height;
+      const croppedCtx = croppedCanvas.getContext("2d");
+
+      croppedCtx.drawImage(canvas, cropStartX, cropStartY, width, height, 0, 0, width, height);
+      img.src = croppedCanvas.toDataURL();
+      img.onload = () => ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // Update crop preview
+    }
+
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('portrait', 'mm', 'a4');
+      const imgWidth = 45; // Height fixed, width auto-calculated
+      const imgHeight = 45; // Fixed height
+      const margin = 10; // Margin around each image in mm
+      const docWidth = 210; // A4 width in mm
+      const docHeight = 297; // A4 height in mm
+
+      let x = margin;
+      let y = margin;
+
+      // Draw multiple images with flexible width and fixed height
+      while (y + imgHeight + margin <= docHeight) {
+        if (x + imgWidth + margin > docWidth) {
+          x = margin;
+          y += imgHeight + margin;
+        }
+        doc.addImage(img.src, 'JPEG', x, y, (img.width / img.height) * imgHeight, imgHeight);
+        x += (img.width / img.height) * imgHeight + margin;
+      }
+
+      doc.save('passport_photos.pdf');
+    }
+  </script>
+</body>
+</html>

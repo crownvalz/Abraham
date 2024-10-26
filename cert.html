@@ -3,21 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bank Operations Quiz</title>
+  <title>Certificate Generator</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    .step {
-      display: none;
-    }
-    .active-step {
-      display: block;
-    }
-    .timer {
-      font-size: 20px;
-      color: red;
-      text-align: right;
-    }
     body {
       background-color: #f8f9fa;
     }
@@ -28,201 +17,74 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    input[type="radio"]:checked + label {
-      font-weight: bold; /* Highlight correct answers */
-    }
   </style>
 </head>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Bank Operations Quiz</h1>
-    <form id="quizForm">
-      <div id="questionContainer"></div>
-      <div class="d-flex justify-content-between mt-3">
-        <button type="button" class="btn btn-primary" id="prevBtn" onclick="prevStep()" style="display:none;">Previous</button>
-        <span class="timer" id="timer"></span>
-        <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next</button>
+    <h1 class="text-center">Certificate Request Form</h1>
+    <form id="certificateForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" class="form-control" id="name" required>
       </div>
+      <div class="form-group">
+        <label for="date">Date of Completion</label>
+        <input type="date" class="form-control" id="date" required>
+      </div>
+      <div class="form-group">
+        <label for="program">Program Type</label>
+        <input type="text" class="form-control" id="program" required>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="generateCertificate()">Generate Certificate</button>
     </form>
   </div>
 
   <script>
-    let currentStep = 0;
-    let score = 0;
-    let totalQuestions = 5;
-    let timePerQuestion = 30; // 30 seconds per question
-    let timer;
-
-    const questions = [
-      {question: 'What is the procedure for opening an account?', options: ['Fill the form', 'Provide ID', 'Both'], answer: 'Both'},
-      {question: 'How do you handle dormant accounts?', options: ['Close them', 'Activate with approval', 'Ignore'], answer: 'Activate with approval'},
-      {question: 'What is the process for money laundering reports?', options: ['Notify the supervisor', 'File a report', 'File report and notify the supervisor'], answer: 'File report and notify the supervisor'},
-      {question: 'What is the cash withdrawal limit without manager approval?', options: ['1000 USD', '5000 USD', '2000 USD'], answer: '5000 USD'},
-      {question: 'What is the purpose of internal audits?', options: ['Improve operations', 'Ensure compliance', 'Both'], answer: 'Both'}
-    ];
-
-    const questionContainer = document.getElementById('questionContainer');
-
-    function loadQuiz() {
-      // Generate the question form dynamically
-      questions.forEach((q, index) => {
-        let questionStep = document.createElement('div');
-        questionStep.classList.add('step');
-        if (index === 0) questionStep.classList.add('active-step');
-
-        let questionHTML = `<h3>Question ${index + 1}: ${q.question}</h3>`;
-        q.options.forEach((option, i) => {
-          questionHTML += `
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="question${index}" value="${option}">
-              <label class="form-check-label">${option}</label>
-            </div>
-          `;
-        });
-        questionStep.innerHTML = questionHTML;
-        questionContainer.appendChild(questionStep);
-      });
-      updateTimer();
-    }
-
-    function nextStep() {
-      let answers = document.getElementsByName(`question${currentStep}`);
-      let selectedAnswer = Array.from(answers).find(input => input.checked)?.value;
-      
-      if (selectedAnswer) {
-        // Check if the answer is correct
-        if (selectedAnswer === questions[currentStep].answer) {
-          score++;
-        }
-        // Move to the next step
-        currentStep++;
-        if (currentStep >= totalQuestions) {
-          submitQuiz();
-        } else {
-          showStep(currentStep);
-          resetTimer();
-        }
-      } else {
-        alert('Please select an answer!');
-      }
-    }
-
-    function prevStep() {
-      if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
-        resetTimer();
-      }
-    }
-
-    function showStep(step) {
-      const steps = document.querySelectorAll('.step');
-      steps.forEach(stepElement => stepElement.classList.remove('active-step'));
-      steps[step].classList.add('active-step');
-
-      document.getElementById('prevBtn').style.display = step === 0 ? 'none' : 'inline';
-      document.getElementById('nextBtn').textContent = step === totalQuestions - 1 ? 'Submit' : 'Next';
-    }
-
-    function resetTimer() {
-      clearInterval(timer);
-      updateTimer();
-    }
-
-    function updateTimer() {
-      let timeLeft = timePerQuestion;
-      document.getElementById('timer').textContent = `Time: ${timeLeft}s`;
-      timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById('timer').textContent = `Time: ${timeLeft}s`;
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          nextStep();
-        }
-      }, 1000);
-    }
-
-    function submitQuiz() {
-      let percentage = (score / totalQuestions) * 100;
-      if (percentage >= 75) {
-        generateCertificate();
-      } else {
-        alert(`You scored ${percentage}%. You need at least 75% to pass.`);
-      }
-    }
-
     function generateCertificate() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
-      // Set certificate background color and borders
+      // Fetch form values
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+      const program = document.getElementById('program').value;
+
+      // Validate form inputs
+      if (!name || !date || !program) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Design the certificate
       doc.setFillColor(255, 239, 186); // Light yellow background
       doc.rect(0, 0, 210, 297, 'F'); // Fill the whole page
       doc.setDrawColor(0, 150, 136); // Teal color for border
       doc.setLineWidth(5);
       doc.rect(10, 10, 190, 277); // Outer border
-      doc.setDrawColor(255, 87, 34); // Orange inner border
-      doc.setLineWidth(3);
-      doc.rect(15, 15, 180, 267); // Inner border
 
-      // Add logo (centered)
-      const logo = new Image();
-      logo.src = 'img/logo.png'; // Replace with your logo path
-      logo.onload = function() {
-        const logoWidth = 50;
-        const logoHeight = 30;
-        doc.addImage(logo, 'PNG', (doc.internal.pageSize.width - logoWidth) / 2, 20, logoWidth, logoHeight);
+      // Title and content
+      doc.setFontSize(30);
+      doc.setTextColor(0, 87, 141); // Dark blue
+      doc.text("Certificate of Completion", 105, 70, null, null, "center");
 
-        // Certificate title
-        doc.setFontSize(30);
-        doc.setTextColor(0, 87, 141); // Dark blue
-        doc.text("Certificate of Completion", 105, 70, null, null, "center");
+      doc.setFontSize(16);
+      doc.setTextColor(0);
+      doc.text("This certifies that", 105, 100, null, null, "center");
 
-        // Certificate body
-        doc.setFontSize(16);
-        doc.setTextColor(0);
-        doc.text("This certifies that", 105, 100, null, null, "center");
+      doc.setFontSize(24);
+      doc.setFont("helvetica", "bold");
+      doc.text(name, 105, 120, null, null, "center");
 
-        doc.setFontSize(24);
-        doc.setFont("helvetica", "bold");
-        doc.text("You", 105, 120, null, null, "center");
+      doc.setFontSize(16);
+      doc.setFont("helvetica", "normal");
+      doc.text(`has successfully completed the ${program} program`, 105, 140, null, null, "center");
 
-        doc.setFontSize(16);
-        doc.setFont("helvetica", "normal");
-        doc.text(`has successfully completed the Bank Operations Quiz`, 105, 140, null, null, "center");
+      doc.setFontSize(12);
+      doc.text(`Date: ${new Date(date).toLocaleDateString()}`, 105, 160, null, null, "center");
 
-        doc.setFontSize(16);
-        doc.setTextColor(0, 87, 141); // Dark blue for score
-        doc.text(`Score: ${score}/${totalQuestions}`, 105, 160, null, null, "center");
-
-        // Footer with date
-        doc.setFontSize(12);
-        doc.setFont("helvetica", "italic");
-        doc.text(`Presented by Your Organization`, 105, 190, null, null, "center");
-        doc.text(`Date: ${new Date().toLocaleDateString()}`, 105, 210, null, null, "center");
-
-        // Signatures
-        const sign1 = new Image();
-        const sign2 = new Image();
-        sign1.src = 'img/sign1.png'; // Replace with your signature path
-        sign2.src = 'img/sign2.png'; // Replace with your signature path
-
-        sign1.onload = function() {
-          doc.addImage(sign1, 'PNG', 40, 230, 50, 20); // Principal signature position
-          doc.text("Principal", 65, 260, null, null, "center"); // Principal title
-
-          sign2.onload = function() {
-            doc.addImage(sign2, 'PNG', 140, 230, 50, 20); // Director signature position
-            doc.text("Director General", 165, 260, null, null, "center"); // Director title
-
-            // Save PDF
-            doc.save('certificate_of_completion.pdf');
-          };
-        };
-      };
+      // Save the PDF
+      doc.save('certificate_of_completion.pdf');
     }
-
-    window.onload = loadQuiz;
   </script>
 </body>
 </html>
