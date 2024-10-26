@@ -13,12 +13,11 @@
       background: linear-gradient(to bottom right, #6a11cb, #2575fc);
       color: #ffffff;
       font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
     .container {
       max-width: 600px;
@@ -28,8 +27,14 @@
       padding: 20px 30px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      position: relative;
-      z-index: 1;
+      margin-top: 20px;
+    }
+    .scrollable-content {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      padding: 60px 15px 60px; /* To account for navbar and footer */
     }
     .form-title {
       font-size: 28px;
@@ -107,37 +112,41 @@
     <a class="navbar-brand mx-auto" href="#">Passport Photo Generator</a>
   </nav>
 
-  <!-- Main Container -->
-  <div class="container">
-    <h1 class="form-title">Generate Your Passport Photos</h1>
-    
-    <!-- Form Section -->
-    <form id="photoForm">
-      <div class="form-group">
-        <label for="imageUpload">Upload Image</label>
-        <input type="file" class="form-control" id="imageUpload" accept="image/*" onchange="displaySelectedImage(event)" required>
-        <small class="instructions">Upload a clear photo for best results</small>
-      </div>
+  <section>
+  <!-- Scrollable Content Container -->
+  <div class="scrollable-content">
+    <div class="container">
+      <h1 class="form-title">Generate Your Passport Photos</h1>
+      
+      <!-- Form Section -->
+      <form id="photoForm">
+        <div class="form-group">
+          <label for="imageUpload">Upload Image</label>
+          <input type="file" class="form-control" id="imageUpload" accept="image/*" onchange="displaySelectedImage(event)" required>
+          <small class="instructions">Upload a clear photo for best results</small>
+        </div>
 
-      <!-- Image Preview -->
-      <div id="cropContainer" style="display: none;">
-        <img id="imageToCrop" src="" alt="To Crop">
-        <button type="button" class="btn btn-secondary mt-3" onclick="applyCrop()">Apply Crop</button>
-      </div>
+        <!-- Image Preview -->
+        <div id="cropContainer" style="display: none;">
+          <img id="imageToCrop" src="" alt="To Crop">
+          <button type="button" class="btn btn-secondary mt-3" onclick="applyCrop()">Apply Crop</button>
+        </div>
 
-      <div class="form-group mt-3">
-        <label for="nameField">Name (Optional)</label>
-        <input type="text" class="form-control" id="nameField" placeholder="Enter a name for the PDF file">
-      </div>
+        <div class="form-group mt-3">
+          <label for="nameField">Name (Optional)</label>
+          <input type="text" class="form-control" id="nameField" placeholder="Enter a name for the PDF file">
+        </div>
 
-      <div class="form-group mt-3">
-        <label for="photoCount">Number of Photos</label>
-        <input type="number" class="form-control" id="photoCount" value="1" min="1" max="20" required>
-      </div>
+        <div class="form-group mt-3">
+          <label for="photoCount">Number of Photos</label>
+          <input type="number" class="form-control" id="photoCount" value="1" min="1" max="20" required>
+        </div>
 
-      <button type="button" class="btn btn-primary mt-3" onclick="generatePDF()" disabled id="generateBtn">Generate PDF</button>
-    </form>
+        <button type="button" class="btn btn-primary mt-3" onclick="generatePDF()" disabled id="generateBtn">Generate PDF</button>
+      </form>
+    </div>
   </div>
+  </section>
 
   <!-- Footer Section -->
   <footer class="footer">
