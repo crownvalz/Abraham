@@ -67,10 +67,12 @@
       align-items: center;
       margin-top: 15px;
     }
-    #cropContainer img {
-      max-width: 100%;
+    #imageToCrop {
+      width: 200px; /* Fixed width */
+      height: 250px; /* Fixed height */
       border: 1px solid #ddd;
       border-radius: 5px;
+      object-fit: cover; /* Ensures the image fits within the fixed area */
     }
     .instructions {
       font-size: 14px;
@@ -112,7 +114,6 @@
     <a class="navbar-brand mx-auto" href="#">Passport Photo Generator</a>
   </nav>
 
-  <section>
   <!-- Scrollable Content Container -->
   <div class="scrollable-content">
     <div class="container">
@@ -126,7 +127,7 @@
           <small class="instructions">Upload a clear photo for best results</small>
         </div>
 
-        <!-- Image Preview -->   
+        <!-- Image Preview -->
         <div id="cropContainer" style="display: none;">
           <img id="imageToCrop" src="" alt="To Crop">
           <button type="button" class="btn btn-secondary mt-3" onclick="applyCrop()">Apply Crop</button>
@@ -146,7 +147,6 @@
       </form>
     </div>
   </div>
-  </section>
 
   <!-- Footer Section -->
   <footer class="footer">
@@ -184,7 +184,10 @@
     });
 
     function applyCrop() {
-      const croppedCanvas = cropper.getCroppedCanvas();
+      const croppedCanvas = cropper.getCroppedCanvas({
+        width: 200,
+        height: 250,
+      });
       imageToCrop.src = croppedCanvas.toDataURL("image/jpeg");
       cropper.destroy();
     }
