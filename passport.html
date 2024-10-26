@@ -19,28 +19,54 @@
       flex-direction: column;
       height: 100vh;
     }
-    .container {
-      max-width: 600px;
+    .navbar, .footer {
+      background-color: #343a40;
+      color: #ffffff;
+      position: fixed;
       width: 100%;
-      background-color: #ffffff;
-      color: #333333;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
+      z-index: 1000;
+    }
+    .navbar {
+      top: 0;
+    }
+    .footer {
+      bottom: 0;
+      text-align: center;
+      padding: 10px;
+    }
+    .footer-text, .footer-links a {
+      color: #ffffff !important;
+      font-size: 14px;
+    }
+    .footer-links a {
+      margin: 0 10px;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
     }
     .scrollable-content {
       flex: 1;
       overflow-y: auto;
       display: flex;
       justify-content: center;
-      padding: 60px 15px 60px; /* To account for navbar and footer */
+      padding: 80px 15px 60px; /* Adjusted for fixed navbar and footer */
+    }
+    .container {
+      max-width: 100%;
+      width: 100%;
+      max-width: 500px;
+      background-color: #ffffff;
+      color: #333333;
+      padding: 20px 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     .form-title {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
       text-align: center;
       color: #333333;
+      margin-bottom: 20px;
     }
     .form-group label {
       font-weight: 600;
@@ -80,31 +106,6 @@
       text-align: center;
       margin-top: 5px;
     }
-    .navbar, .footer {
-      background-color: #343a40;
-      color: #ffffff;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-    }
-    .navbar {
-      top: 0;
-    }
-    .footer {
-      bottom: 0;
-      text-align: center;
-      padding: 10px;
-    }
-    .footer-text, .footer-links a {
-      color: #ffffff !important;
-      font-size: 14px;
-    }
-    .footer-links a {
-      margin: 0 10px;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -113,6 +114,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand mx-auto" href="#">Passport Photo Generator</a>
   </nav>
+
+<section>
 
   <!-- Scrollable Content Container -->
   <div class="scrollable-content">
@@ -147,7 +150,7 @@
       </form>
     </div>
   </div>
-
+</section>
   <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-text">© 2024 Passport Photo Generator. All Rights Reserved.</div>
