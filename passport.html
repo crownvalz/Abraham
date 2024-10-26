@@ -3,46 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Passport Photo Generator with Adjustable Crop</title>
+  <title>Passport Photo Generator</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
   <style>
     body {
-      background-color: #f8f9fa;
+      background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
     }
     .container {
-      margin-top: 50px;
+      max-width: 600px;
+      width: 100%;
       background-color: #ffffff;
-      padding: 30px;
+      color: #333333;
+      padding: 20px 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    .form-title {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      color: #333333;
+    }
+    .form-group label {
+      font-weight: 600;
+      color: #555555;
+    }
+    .btn-primary, .btn-secondary {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 5px;
+      width: 100%;
+    }
+    .btn-primary {
+      background-color: #6a11cb;
+      border-color: #6a11cb;
+    }
+    .btn-primary:hover {
+      background-color: #2575fc;
+      border-color: #2575fc;
+    }
+    #cropContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
     }
     #cropContainer img {
       max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .instructions {
+      font-size: 14px;
+      color: #777777;
+      text-align: center;
+      margin-top: 5px;
+    }
+    .navbar, .footer {
+      background-color: #343a40;
+      color: #ffffff;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar {
+      top: 0;
+    }
+    .footer {
+      bottom: 0;
+      text-align: center;
+      padding: 10px;
+    }
+    .footer-text, .footer-links a {
+      color: #ffffff !important;
+      font-size: 14px;
+    }
+    .footer-links a {
+      margin: 0 10px;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h1 class="text-center">Passport Photo Generator with Adjustable Crop</h1>
+
+  <!-- Navbar Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand mx-auto" href="#">Passport Photo Generator</a>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1 class="form-title">Generate Your Passport Photos</h1>
+    
+    <!-- Form Section -->
     <form id="photoForm">
       <div class="form-group">
         <label for="imageUpload">Upload Image</label>
-        <input type="file" class="form-control-file" id="imageUpload" accept="image/*" required>
+        <input type="file" class="form-control" id="imageUpload" accept="image/*" onchange="displaySelectedImage(event)" required>
+        <small class="instructions">Upload a clear photo for best results</small>
       </div>
+
+      <!-- Image Preview -->
       <div id="cropContainer" style="display: none;">
         <img id="imageToCrop" src="" alt="To Crop">
         <button type="button" class="btn btn-secondary mt-3" onclick="applyCrop()">Apply Crop</button>
       </div>
+
+      <div class="form-group mt-3">
+        <label for="nameField">Name (Optional)</label>
+        <input type="text" class="form-control" id="nameField" placeholder="Enter a name for the PDF file">
+      </div>
+
       <div class="form-group mt-3">
         <label for="photoCount">Number of Photos</label>
         <input type="number" class="form-control" id="photoCount" value="1" min="1" max="20" required>
       </div>
+
       <button type="button" class="btn btn-primary mt-3" onclick="generatePDF()" disabled id="generateBtn">Generate PDF</button>
     </form>
   </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-text">© 2024 Passport Photo Generator. All Rights Reserved.</div>
+    <div class="footer-links">
+      <a href="#" target="_blank">Facebook</a> |
+      <a href="#" target="_blank">Instagram</a> |
+      <a href="#" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
 
   <script>
     let cropper;
@@ -57,7 +162,7 @@
           document.getElementById("cropContainer").style.display = "block";
           if (cropper) cropper.destroy();
           cropper = new Cropper(imageToCrop, {
-            aspectRatio: 4 / 5, // Aspect ratio for passport-size photo
+            aspectRatio: 4 / 5,
             viewMode: 1,
             movable: true,
             scalable: true,
@@ -78,9 +183,9 @@
     function generatePDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF('portrait', 'mm', 'a4');
-      const imgWidth = 45;
-      const imgHeight = 55;
-      const margin = 10;
+      const imgWidth = 35;
+      const imgHeight = 45;
+      const margin = 8;
       const docWidth = 210;
       const docHeight = 297;
 
@@ -101,7 +206,12 @@
         x += imgWidth + margin;
       }
 
-      doc.save('passport_photos.pdf');
+      // Adding signature
+      doc.setFontSize(10);
+      doc.text("© 2024 Passport Photo Generator. All Rights Reserved.", docWidth / 2, docHeight - 10, null, null, 'center');
+
+      const fileName = document.getElementById("nameField").value || "passport_photos";
+      doc.save(`${fileName}.pdf`);
     }
   </script>
 </body>
