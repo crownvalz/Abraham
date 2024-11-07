@@ -10,29 +10,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
   <style>
     body {
-      background: linear-gradient(to bottom right, #6a11cb, #2575fc);
-      color: #ffffff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
       font-family: 'Arial', sans-serif;
       margin: 0;
-      overflow-x: hidden;
       display: flex;
       flex-direction: column;
       height: 100vh;
     }
     .navbar, .footer {
       background-color: #343a40;
-      color: #ffffff;
+      color: #fff;
       position: fixed;
       width: 100%;
       z-index: 1000;
     }
     .navbar {
       top: 0;
+      padding: 1rem;
     }
     .footer {
       bottom: 0;
       text-align: center;
-      padding: 10px;
+      padding: 10px 0;
     }
     .footer-text, .footer-links a {
       color: #ffffff !important;
@@ -55,22 +55,22 @@
       max-width: 100%;
       width: 100%;
       max-width: 500px;
-      background-color: #ffffff;
-      color: #333333;
+      background-color: #fff;
+      color: #333;
       padding: 20px 15px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
     .form-title {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       text-align: center;
-      color: #333333;
+      color: #333;
       margin-bottom: 20px;
     }
     .form-group label {
       font-weight: 600;
-      color: #555555;
+      color: #555;
     }
     .btn-primary, .btn-secondary {
       font-size: 16px;
@@ -102,7 +102,7 @@
     }
     .instructions {
       font-size: 14px;
-      color: #777777;
+      color: #777;
       text-align: center;
       margin-top: 5px;
     }
@@ -115,41 +115,42 @@
     <a class="navbar-brand mx-auto" href="#">Lifeme - Easy Work Hacks</a>
   </nav>
 
-<section class="mt-5">
-  <!-- Scrollable Content Container -->
-  <div class="scrollable-content">
-    <div class="container">
-      <h1 class="form-title">Generate Your Passport Photos</h1>
-      
-      <!-- Form Section -->
-      <form id="photoForm">
-        <div class="form-group">
-          <label for="imageUpload">Upload Image</label>
-          <input type="file" class="form-control" id="imageUpload" accept="image/*" onchange="displaySelectedImage(event)" required>
-          <small class="instructions">Upload a clear photo for best results</small>
-        </div>
+  <section>
+    <!-- Scrollable Content Container -->
+    <div class="scrollable-content">
+      <div class="container">
+        <h1 class="form-title">Generate Your Passport Photos</h1>
+        
+        <!-- Form Section -->
+        <form id="photoForm">
+          <div class="form-group">
+            <label for="imageUpload">Upload Image</label>
+            <input type="file" class="form-control" id="imageUpload" accept="image/*" onchange="displaySelectedImage(event)" required>
+            <small class="instructions">Upload a clear photo for best results</small>
+          </div>
 
-        <!-- Image Preview -->
-        <div class="text-center" id="cropContainer" style="display: none;">
-          <img id="imageToCrop" src="" alt="To Crop">
-          <button type="button" class="btn btn-secondary mt-3" onclick="applyCrop()">Apply Crop</button>
-        </div>
+          <!-- Image Preview -->
+          <div class="text-center" id="cropContainer" style="display: none;">
+            <img id="imageToCrop" src="" alt="To Crop">
+            <button type="button" class="btn btn-secondary mt-3" onclick="applyCrop()">Apply Crop</button>
+          </div>
 
-        <div class="form-group mt-3">
-          <label for="nameField">Name (Optional)</label>
-          <input type="text" class="form-control" id="nameField" placeholder="Enter a name for the PDF file">
-        </div>
+          <div class="form-group mt-3">
+            <label for="nameField">Name (Optional)</label>
+            <input type="text" class="form-control" id="nameField" placeholder="Enter a name for the PDF file">
+          </div>
 
-        <div class="form-group mt-3">
-          <label for="photoCount">Number of Photos</label>
-          <input type="number" class="form-control" id="photoCount" value="1" min="1" max="20" required>
-        </div>
+          <div class="form-group mt-3">
+            <label for="photoCount">Number of Photos</label>
+            <input type="number" class="form-control" id="photoCount" value="1" min="1" max="20" required>
+          </div>
 
-        <button type="button" class="btn btn-primary mt-3" onclick="generatePDF()" disabled id="generateBtn">Generate PDF</button>
-      </form>
+          <button type="button" class="btn btn-primary mt-3" onclick="generatePDF()" disabled id="generateBtn">Generate PDF</button>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
   <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-text">© 2024 Lifeme. All Rights Reserved. Your trusted source for easy work hacks.</div>
@@ -222,7 +223,7 @@
 
       // Adding signature
       doc.setFontSize(10);
-      doc.text("© 2024 Lifeme by Mono. Your trusted source for easy work hacks.", docWidth / 2, docHeight - 10, null, null, 'center');
+      doc.text("© 2024 Lifeme. All Rights Reserved. Your trusted source for easy work hacks.", docWidth / 2, docHeight - 10, null, null, 'center');
 
       const fileName = document.getElementById("nameField").value || "passport_photos";
       doc.save(`${fileName}.pdf`);
